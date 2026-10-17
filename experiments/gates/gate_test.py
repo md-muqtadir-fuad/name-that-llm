@@ -25,7 +25,12 @@ g = tr.prompt_id.values
 LABS = {'claude': [i for i, l in enumerate(LABELS) if l.startswith('claude')],
         'gemini': [i for i, l in enumerate(LABELS) if l.startswith('gemini')],
         'gpt': [i for i, l in enumerate(LABELS) if l.startswith('gpt')],
-        'glm': [i for i, l in enumerate(LABELS) if l.startswith('glm')]}
+        'glm': [i for i, l in enumerate(LABELS) if l.startswith('glm')],
+        # data-driven clusters from research/model_graph.md (confusion + style-centroid views agree)
+        'c_newclaude_glm': [LABELS.index(m) for m in ('claude-fable-5', 'claude-opus-5', 'glm-5.3', 'glm-5.3-flash')],
+        'c_oldclaude': [LABELS.index(m) for m in ('claude-opus-4-6', 'claude-opus-4-8', 'claude-sonnet-5')],
+        'c_gpt55_kimi': [LABELS.index(m) for m in ('gpt-5.5', 'kimi-k3')],
+        'c_gpt56_astra': [LABELS.index(m) for m in ('gpt-5.6-luna', 'gpt-5.6-sol', 'gpt-5.6-terra', 'gpt-6-astra')]}
 
 # ---------------- external passages
 ext = []
