@@ -71,7 +71,10 @@ def svc_decision(train_txt, train_y, test_txt):
         A.append(v.fit_transform([tf(t) for t in train_txt]) * wt)
         B.append(v.transform([tf(t) for t in test_txt]) * wt)
     m = LinearSVC(C=0.5, max_iter=4000).fit(hstack(A, format='csr'), train_y)
-    return m.classes_, m.decision_function(hstack(B, format='csr'))
+    d = m.decision_function(hstack(B, format='csr'))
+    if d.ndim == 1:   # binary: column for classes_[1] is +d
+        d = np.column_stack([-d, d])
+    return m.classes_, d
 
 
 folds = list(GroupKFold(5).split(tr, y, g))
@@ -93,6 +96,7 @@ for lab in labs_run:
             assert list(cls) == list(G)
             dec[b] = dd
         D[(lab, use_ext)] = dec
+        np.save(ROOT / f'experiments/gates/dec_{lab}_{int(use_ext)}.npy', dec)
         print(f'{lab} ext={use_ext} done', flush=True)
 
 print(f'\nbase strong blend {base:.4f}')

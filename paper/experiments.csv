@@ -18,3 +18,5 @@ date,id,category,description,config,metric,baseline,value,delta,folds_pos,ci95,f
 2026-10-17,E017,blend,strong + 0.5 * Gemma LoRA plain,gemma_oof.py,oof_bacc,0.4915,0.5238,+0.0323,5/5,,experiments/gemma_oof.py,agreement 0.553
 2026-10-17,E018,analysis,sibling ceiling: within-group acc on strong OOF,inline,within_acc,,,,,,,gpt-5.6 trio 0.556 (chance .333); gemini flash 0.556; glm pair 0.56 (chance .5); fable/opus5 0.83
 2026-10-17,E019,data,Gemini free API: gemini-3.7-flash served as 3.8 (modelVersion),tools/gemini_collect.py,,,,,,,research/ext_data/gemini_api/responses.csv,8/8 mismatched; relabelled
+2026-10-17,E020,submission,"v3 = v1 + Gemma-4-12B LoRA (w=0.3, half on clustered rows)",kernel ntl-v3-gemma v1,public_lb,0.544,,,,,nb/v3/v3.py,submitted 2026-10-17 13:50 UTC; score pending
+2026-10-17,E021,data,within-lab gates (Claude/Gemini/GPT/GLM) with vs without external passages (prvsiyan+seyit),gate_test.py,oof_bacc,0.4915,,,,,experiments/gates/gate_test.py,running
