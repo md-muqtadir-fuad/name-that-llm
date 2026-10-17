@@ -48,10 +48,7 @@ Model training and inference run on Kaggle (T4×2, internet off). Kernels are pu
 ## Data and rules
 
 - Competition data (CC BY-SA 4.0) is **not** included; download it from Kaggle after accepting the rules.
-- External data comes only from public, free sources (Kaggle datasets, Kaggle Benchmarks model proxy, free API
-  tiers). Generated passages will be published as a public Kaggle dataset before any submission uses them.
-- During the competition this repository is private, as the rules require. It becomes public after the final deadline
-  (2027-01-13).
+
 
 ## License
 
