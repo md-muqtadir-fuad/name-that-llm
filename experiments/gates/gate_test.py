@@ -3,6 +3,7 @@ Base = strong public frozen-LLM OOF blend. For rows whose base argmax is in lab 
   argmax_{c in G} [ log P_base(c) + lam * d_c ],  d = within-lab 4-view TF-IDF LinearSVC decision (as v1 stylegram),
 trained on the training-fold rows of lab G (+ optional external rows of lab G; external prompts are disjoint from train)."""
 import json
+import os
 import pathlib
 import re
 import sys
@@ -37,6 +38,9 @@ ext = []
 p = ROOT / 'research/ext_data/prvsiyan/passages_clean.csv'
 if p.exists():
     d = pd.read_csv(p)
+    import os
+    if os.environ.get('PRVSIYAN_NEW_ONLY'):   # drop proxy_v1 rows (possible multi-turn contamination)
+        d = d[d['split'] == 'new']
     ext.append(pd.DataFrame({'text': d['text'].astype(str), 'model': d['model'], 'src': 'prvsiyan'}))
 p = ROOT / 'research/ext_data/extra_api/ntl_extra_passages_claude.csv'
 if p.exists():
@@ -101,7 +105,7 @@ for lab in labs_run:
             assert list(cls) == list(G)
             dec[b] = dd
         D[(lab, use_ext)] = dec
-        np.save(ROOT / f'experiments/gates/dec_{lab}_{int(use_ext)}.npy', dec)
+        np.save(ROOT / f'experiments/gates/dec_{lab}_{int(use_ext)}{os.environ.get("DEC_SUFFIX", "")}.npy', dec)
         print(f'{lab} ext={use_ext} done', flush=True)
 
 print(f'\nbase strong blend {base:.4f}')

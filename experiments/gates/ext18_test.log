@@ -1,0 +1,4 @@
+external rows 3216 per label min/max 150 193
+w_ext 0.0: standalone 0.3845 | strong+0.25*svc 0.4901 (-0.0015) folds+ 2/5
+w_ext 0.3: standalone 0.3989 | strong+0.25*svc 0.5001 (+0.0085) folds+ 4/5
+w_ext 1.0: standalone 0.3882 | strong+0.25*svc 0.5049 (+0.0133) folds+ 4/5
