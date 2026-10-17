@@ -1,0 +1,31 @@
+prep 135s
+control: identity (PCA-512, uncentred train)               0.3971  folds [0.406 0.404 0.385 0.393 0.398]
+identity, prompt-centred train                             0.4019  folds [0.415 0.376 0.409 0.387 0.422]
+Phi l=(1, 1, 1, 1) C=0.0025 centred train                  0.4971  folds [0.48  0.474 0.509 0.507 0.515]
+Phi l=(1, 1, 1, 1) C=0.0025 uncentred train                0.4734  folds [0.456 0.459 0.483 0.502 0.467]
+Phi l=(1, 1, 1, 1) C=0.01 centred train                    0.4890  folds [0.478 0.465 0.513 0.485 0.504]
+Phi l=(1, 1, 1, 1) C=0.01 uncentred train                  0.4664  folds [0.459 0.452 0.478 0.502 0.441]
+Phi l=(1, 1, 0, 1) C=0.0025 centred train                  0.3982  folds [0.415 0.37  0.409 0.374 0.422]
+Phi l=(1, 1, 0, 1) C=0.0025 uncentred train                0.3660  folds [0.363 0.38  0.367 0.356 0.365]
+Phi l=(1, 1, 0, 1) C=0.01 centred train                    0.3801  folds [0.391 0.356 0.393 0.356 0.406]
+Phi l=(1, 1, 0, 1) C=0.01 uncentred train                  0.3715  folds [0.381 0.37  0.37  0.374 0.361]
+Phi l=(1, 0, 1, 1) C=0.0025 centred train                  0.5078  folds [0.485 0.493 0.522 0.515 0.524]
+Phi l=(1, 0, 1, 1) C=0.0025 uncentred train                0.3841  folds [0.393 0.369 0.398 0.413 0.348]
+Phi l=(1, 0, 1, 1) C=0.01 centred train                    0.5060  folds [0.5   0.483 0.526 0.513 0.508]
+Phi l=(1, 0, 1, 1) C=0.01 uncentred train                  0.4027  folds [0.394 0.398 0.415 0.45  0.356]
+Phi l=(1, 2, 2, 1) C=0.0025 centred train                  0.5056  folds [0.489 0.478 0.515 0.52  0.526]
+Phi l=(1, 2, 2, 1) C=0.0025 uncentred train                0.4978  folds [0.481 0.476 0.524 0.519 0.489]
+Phi l=(1, 2, 2, 1) C=0.01 centred train                    0.5001  folds [0.478 0.478 0.519 0.509 0.517]
+Phi l=(1, 2, 2, 1) C=0.01 uncentred train                  0.4968  folds [0.496 0.48  0.5   0.531 0.476]
+Phi l=(1, 1, 1, 0) C=0.0025 centred train                  0.5305  folds [0.507 0.513 0.552 0.548 0.532]
+Phi l=(1, 1, 1, 0) C=0.0025 uncentred train                0.5193  folds [0.487 0.513 0.544 0.543 0.509]
+Phi l=(1, 1, 1, 0) C=0.01 centred train                    0.5279  folds [0.517 0.517 0.546 0.533 0.526]
+Phi l=(1, 1, 1, 0) C=0.01 uncentred train                  0.5145  folds [0.507 0.496 0.526 0.543 0.5  ]
+
+best deltas vs control:
+  ((1, 1, 1, 0), 0.0025, True)             +0.1333  5/5
+  ((1, 1, 1, 0), 0.01, True)               +0.1308  5/5
+  ((1, 1, 1, 0), 0.0025, False)            +0.1222  5/5
+  ((1, 1, 1, 0), 0.01, False)              +0.1174  5/5
+  ((1, 0, 1, 1), 0.0025, True)             +0.1108  5/5
+  ((1, 0, 1, 1), 0.01, True)               +0.1089  5/5

@@ -1,0 +1,45 @@
+# --- secrets (never commit) ---
+kaggle.json
+.env
+.env.*
+**/.env.init
+*.key
+
+# --- competition data: rules forbid redistributing it ---
+data/
+comp_info/
+**/submission.parquet
+**/submission.csv
+
+# --- environment / caches ---
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# --- large or third-party artefacts (re-downloadable; keep SOURCE.txt / README only) ---
+*.npz
+*.npy
+*.safetensors
+*.parquet
+*.zip
+*.kaggle-partial
+research/kernels/
+research/kernels2/
+research/kernels3/
+research/kernel_outputs/
+research/kernels_txt/
+research/datasets/
+research/ext_oof/
+research/forum_raw/
+research/forum_raw2/
+research/ext_data/**
+!research/ext_data/**/SOURCE.txt
+!research/ext_data/*/
+nb/**/out/
+nb/**/out2/
+nb/lora_gemma/full_out/
+nb/lora_gemma/smoke_out/
+experiments/style/cache/
+experiments/grouping/feats/
+experiments/**/*.pkl

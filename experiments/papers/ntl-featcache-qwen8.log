@@ -1,0 +1,63 @@
+[{"stream_name":"stderr","time":7.68077588,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.680821355,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.680828084,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.680832616,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.304836679,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.304867933,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.30487647,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.304879333,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":38.515371071,"data":"model /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":59.032679807,"data":"[transformers] \u001b[1mQwen3Model LOAD REPORT\u001b[0m from: /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":59.032722899,"data":"Key                                                    | Status     |  | \n"}
+,{"stream_name":"stderr","time":59.032729985,"data":"-------------------------------------------------------+------------+--+-\n"}
+,{"stream_name":"stderr","time":59.032735089,"data":"model.layers.{23...35}.self_attn.q_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032739552,"data":"model.layers.{23...35}.self_attn.q_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032744258,"data":"model.layers.{23...35}.self_attn.v_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.03274889,"data":"model.layers.{23...35}.mlp.up_proj.weight              | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032753885,"data":"model.layers.{23...35}.self_attn.o_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032759351,"data":"model.layers.{23...35}.self_attn.k_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032764584,"data":"model.layers.{23...35}.mlp.gate_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032769751,"data":"model.layers.{23...35}.post_attention_layernorm.weight | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032775036,"data":"model.layers.{23...35}.input_layernorm.weight          | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032780208,"data":"model.layers.{23...35}.mlp.down_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032785572,"data":"model.layers.{23...35}.self_attn.k_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032790656,"data":"lm_head.weight                                         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032795849,"data":"\n"}
+,{"stream_name":"stderr","time":59.032800734,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":59.032805602,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":59.032811203,"data":"\n"}
+,{"stream_name":"stderr","time":59.032815936,"data":"[transformers] \u001b[1mQwen3Model LOAD REPORT\u001b[0m from: /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":59.032836,"data":"Key                                                    | Status     |  | \n"}
+,{"stream_name":"stderr","time":59.032840559,"data":"-------------------------------------------------------+------------+--+-\n"}
+,{"stream_name":"stderr","time":59.032844322,"data":"model.layers.{23...35}.self_attn.q_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032854112,"data":"model.layers.{23...35}.self_attn.q_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032857951,"data":"model.layers.{23...35}.self_attn.v_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032861742,"data":"model.layers.{23...35}.mlp.up_proj.weight              | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032865834,"data":"model.layers.{23...35}.self_attn.o_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032869728,"data":"model.layers.{23...35}.self_attn.k_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032873528,"data":"model.layers.{23...35}.mlp.gate_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032879273,"data":"model.layers.{23...35}.post_attention_layernorm.weight | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032883198,"data":"model.layers.{23...35}.input_layernorm.weight          | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032887063,"data":"model.layers.{23...35}.mlp.down_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.03289072,"data":"model.layers.{23...35}.self_attn.k_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032894542,"data":"lm_head.weight                                         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":59.032898314,"data":"\n"}
+,{"stream_name":"stderr","time":59.032901969,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":59.032905635,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":60.596491562,"data":"0 22s\n"}
+,{"stream_name":"stdout","time":73.210506761,"data":"400 35s\n"}
+,{"stream_name":"stdout","time":91.092930143,"data":"800 53s\n"}
+,{"stream_name":"stdout","time":114.040195722,"data":"1200 76s\n"}
+,{"stream_name":"stdout","time":144.230068827,"data":"1600 106s\n"}
+,{"stream_name":"stdout","time":186.699944456,"data":"2000 148s\n"}
+,{"stream_name":"stdout","time":244.211270903,"data":"2400 206s\n"}
+,{"stream_name":"stdout","time":299.290376605,"data":"saved (2699, 5, 4096) 261s\n"}
+,{"stream_name":"stderr","time":305.061385602,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":305.06141201,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":305.222041569,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":305.222065405,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":305.993712233,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":306.065282941,"data":"[NbConvertApp] Writing 18630 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":308.509980448,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":309.005602251,"data":"[NbConvertApp] Writing 302902 bytes to __results__.html\n"}
+]

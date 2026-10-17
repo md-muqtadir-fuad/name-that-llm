@@ -1,0 +1,7 @@
+fold 2: plain 0.3648, Xc nnz 52.2M, 394s
+fold 0: plain 0.3556, Xc nnz 51.8M, 401s
+fold 1: plain 0.3981, Xc nnz 52.0M, 406s
+fold 4: plain 0.3778, Xc nnz 51.9M, 308s
+fold 3: plain 0.3760, Xc nnz 52.4M, 317s
+final fit 389s
+plain OOF bacc 0.3745  plain score-centred (true prompts) 0.4137  twin centred (true prompts) 0.4397  Tp 4.71 Tt 4.77

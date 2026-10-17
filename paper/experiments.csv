@@ -1,0 +1,20 @@
+date,id,category,description,config,metric,baseline,value,delta,folds_pos,ci95,files,notes
+2026-10-16,E001,submission,v1 = public 0.541 stack + LoRA half readout on clustered rows,kernel ntl-v1-lora-half v1,public_lb,0.541,0.544,+0.0030,,,nb/v1/v1.py,
+2026-10-17,E002,submission,v2 = v1 + soft repulsion a=0.2 in clusters<=6,kernel ntl-v1-lora-half v2,public_lb,0.544,0.536,-0.0080,,,nb/v1/v1.py,hard/soft one-model-per-group hurts on LB
+2026-10-16,E003,structure,"Hungarian/centering decoders on strong OOF, true vs recovered groups, pools 1-18/prompt",assign.py,oof_bacc,0.492,,,,,experiments/local/out/summary_assign.md,"gains large at 18/prompt, ~0 at 1-3"
+2026-10-17,E004,specialist,within-family stylometric+TF-IDF specialists on strong OOF (9 groups),specialist.py,oof_bacc,0.4915,,,0/5-3/5,,experiments/lexical/out/specialist.csv,all ~0 or negative
+2026-10-17,E005,representation,"frozen Qwen3-8B head, layers 7+22, test-std",paper_tests.py,oof_bacc,,0.4512,,,,experiments/papers/out/paper_tests.log,single-head reference
+2026-10-17,E006,representation,NAP top-k prompt-mean PCs removed (k=4..64),paper_tests.py,oof_bacc,0.4512,0.4523,+0.0011,,,experiments/papers/out/paper_tests.log,k>=8 negative (-0.006..-0.018)
+2026-10-17,E007,transductive,hard pseudo-labelling top 30-50%,paper_tests.py,oof_bacc,0.4512,0.4045,-0.0467,,,experiments/papers/out/paper_tests.log,-0.047..-0.067
+2026-10-17,E008,structure,"centred twin, 1-3/prompt, TRUE groups",paper_tests.py,oof_bacc,0.4375,0.4909,+0.0534,,,experiments/papers/out/paper_tests.log,recovered TF-IDF groups: -0.005
+2026-10-17,E009,hierarchy,lab term on single head (+0.5 log p(lab)),paper_tests.py,oof_bacc,0.4512,0.4608,+0.0096,,,experiments/papers/out/paper_tests.log,on strong blend: -0.003 (lab_on_blend.py)
+2026-10-17,E010,residualise,"M1 predicted-topic residualisation (KRR, TF-IDF/LLM kernel)",residualize.py,oof_bacc,0.4508,0.4493,-0.0015,2/5,,experiments/papers/out/residualize.log,all settings -0.0015..-0.0055
+2026-10-17,E011,residualise,M2 length residualisation within-model slope,residualize.py,oof_bacc,0.4508,0.4523,+0.0015,4/5,,experiments/papers/out/residualize.log,below bar
+2026-10-17,E012,hierarchy,"lab-gated MoE (gate 1, experts C=0.0025, within-lab std) single head",moe.py,oof_bacc,0.4512,0.4630,+0.0118,4/5,,experiments/papers/out/moe.log,idea: Md Muqtadir Fuad; on blend +0.005 vs flat +0.0067 (moe_blend.log)
+2026-10-17,E013,balancing,uniform partial Sinkhorn a=0.5 under Dirichlet-skewed class mix,argon_tests.py,oof_bacc,0.4932,0.4901,-0.0031,,,experiments/papers/out/argon.log,prior-aware ~0; balanced folds +0.004
+2026-10-17,E014,transductive,CORAL lam0.5 PCA-512 (optimistic pools = complete held-out prompts),argon_tests.py / coral_real.py,oof_bacc,0.4508,0.5097,+0.0589,5/5,,experiments/papers/out/coral_real*.log,realistic pools invalid (genre/class-skew distractors); unproven
+2026-10-17,E015,transductive,"transductive nuisance whitening (Sigma_test - Sigma_W), optimistic pools",twhiten.py,oof_bacc,0.3971,0.5305,+0.1334,5/5,,experiments/papers/out/twhiten.log,same near-oracle caveat as E014
+2026-10-17,E016,member,"Gemma-4-12B LoRA (24L, r16, plain+centred chunk 2-3+lab aux), 5-fold OOF plain",nb/lora_gemma v5,oof_bacc,,0.4686,,,,nb/lora_gemma/full_out/lora_gemma/summary.json,half(true chunks) 0.506; lab acc 0.787; 0 nonfinite
+2026-10-17,E017,blend,strong + 0.5 * Gemma LoRA plain,gemma_oof.py,oof_bacc,0.4915,0.5238,+0.0323,5/5,,experiments/gemma_oof.py,agreement 0.553
+2026-10-17,E018,analysis,sibling ceiling: within-group acc on strong OOF,inline,within_acc,,,,,,,gpt-5.6 trio 0.556 (chance .333); gemini flash 0.556; glm pair 0.56 (chance .5); fable/opus5 0.83
+2026-10-17,E019,data,Gemini free API: gemini-3.7-flash served as 3.8 (modelVersion),tools/gemini_collect.py,,,,,,,research/ext_data/gemini_api/responses.csv,8/8 mismatched; relabelled

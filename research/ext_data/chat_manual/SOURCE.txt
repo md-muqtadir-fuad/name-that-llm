@@ -1,0 +1,6 @@
+Manually collected responses from public chat apps (no API, no automation), via tools/chat_collect.py.
+Prompts: seyitkaangunes/ntl-extra-api-passages prompts.csv (public Kaggle dataset, 1,000 competition-style prompts)
+plus a per-prompt random word range and a single-paragraph instruction.
+Per row: model label (one of 18), exact model name shown by the app (ui_model), timestamp, raw and cleaned text.
+Collection rules: fresh/temporary chat per prompt; memory and custom instructions off; answer copied verbatim.
+Must be published as a public Kaggle dataset before being used in any submission (competition rule on external data).

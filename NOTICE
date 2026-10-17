@@ -1,0 +1,15 @@
+name-that-llm
+Copyright 2026 Md. Muqtadir Fuad
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project includes or adapts code from the following works:
+
+- "LoRA x Adaptive Centering" and related notebooks by Lucas Boesen (Kaggle, Name That LLM), Apache License 2.0.
+  Basis of nb/v1/v1.py and nb/v3/v3.py (blend, adaptive centring, frozen readouts).
+- "ntl-lora24-fivefold-training" by Vladislav Lavrentev (Kaggle), Apache License 2.0.
+  Reference recipe for the LoRA trainers (nb/v1/lora24_src, nb/lora_gemma).
+
+Third-party pretrained models (Qwen, Gemma, GLM, DeBERTa, ELECTRA, desklib, UltraBERT) are used under their
+own licenses and are not distributed in this repository. Competition data (Kaggle "Name That LLM", CC BY-SA 4.0)
+is not included. External datasets are referenced by their public Kaggle URLs only.

@@ -1,0 +1,22 @@
+train (2699, 8192) distractors (1000, 8192)
+fold 0 done 65s
+fold 1 done 120s
+fold 2 done 166s
+fold 3 done 218s
+fold 4 done 282s
+
+optimistic       CORAL lam0.15      0.4938  delta vs full test-std +0.0430
+optimistic       CORAL lam0.5       0.5097  delta vs full test-std +0.0589
+optimistic       CORAL lam0.8       0.5101  delta vs full test-std +0.0593
+optimistic       PCA512 test-std    0.4375  delta vs full test-std -0.0133
+optimistic       full test-std      0.4508  delta vs full test-std +0.0000
+realistic        CORAL lam0.15      0.3749  delta vs full test-std +0.0225
+realistic        CORAL lam0.5       0.3663  delta vs full test-std +0.0140
+realistic        CORAL lam0.8       0.3592  delta vs full test-std +0.0068
+realistic        PCA512 test-std    0.3432  delta vs full test-std -0.0091
+realistic        full test-std      0.3524  delta vs full test-std +0.0000
+realistic_nodis  CORAL lam0.15      0.3960  delta vs full test-std -0.0476
+realistic_nodis  CORAL lam0.5       0.4191  delta vs full test-std -0.0245
+realistic_nodis  CORAL lam0.8       0.4417  delta vs full test-std -0.0019
+realistic_nodis  PCA512 test-std    0.4299  delta vs full test-std -0.0136
+realistic_nodis  full test-std      0.4436  delta vs full test-std +0.0000

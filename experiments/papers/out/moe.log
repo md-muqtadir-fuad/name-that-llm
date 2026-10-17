@@ -1,0 +1,37 @@
+fold done 62s
+fold done 106s
+fold done 163s
+fold done 291s
+fold done 360s
+flat 18-way                                      0.4512  folds [0.452 0.426 0.467 0.437 0.475]
+gate lab acc 0.6401  flat->lab acc 0.6480
+  within-cla: flat 0.609  expC0.0025 0.607  expC0.01 0.606  expC0.04 0.598
+  within-gem: flat 0.000  expC0.0025 0.000  expC0.01 0.000  expC0.04 0.000
+  within-glm: flat 0.000  expC0.0025 0.000  expC0.01 0.000  expC0.04 0.000
+  within-gpt: flat 0.000  expC0.0025 0.000  expC0.01 0.000  expC0.04 0.000
+MoE: 1.0*log p(lab) + expert C=0.0025            0.4630  folds [0.461 0.437 0.476 0.48  0.461]
+MoE: 2.0*log p(lab) + expert C=0.0025            0.4597  folds [0.459 0.433 0.463 0.478 0.465]
+flat + 0.5*expert C=0.0025 (residual MoE)        0.4438  folds [0.45  0.424 0.457 0.433 0.454]
+flat + 1.0*expert C=0.0025 (residual MoE)        0.4315  folds [0.441 0.42  0.437 0.42  0.439]
+MoE: 1.0*log p(lab) + expert C=0.01              0.4579  folds [0.45  0.441 0.457 0.472 0.469]
+MoE: 2.0*log p(lab) + expert C=0.01              0.4560  folds [0.45  0.441 0.461 0.463 0.465]
+flat + 0.5*expert C=0.01 (residual MoE)          0.4460  folds [0.448 0.424 0.456 0.437 0.465]
+flat + 1.0*expert C=0.01 (residual MoE)          0.4352  folds [0.439 0.426 0.441 0.426 0.445]
+MoE: 1.0*log p(lab) + expert C=0.04              0.4545  folds [0.446 0.441 0.456 0.463 0.467]
+MoE: 2.0*log p(lab) + expert C=0.04              0.4549  folds [0.446 0.439 0.461 0.459 0.469]
+flat + 0.5*expert C=0.04 (residual MoE)          0.4486  folds [0.45  0.424 0.461 0.439 0.469]
+flat + 1.0*expert C=0.04 (residual MoE)          0.4389  folds [0.439 0.424 0.443 0.43  0.46 ]
+
+delta vs flat (mean, positive folds):
+  MoE C0.0025 gate1.0          +0.0118  4/5
+  MoE C0.0025 gate2.0          +0.0085  3/5
+  flat+0.5*exp C0.0025         -0.0074  0/5
+  flat+1.0*exp C0.0025         -0.0197  0/5
+  MoE C0.01 gate1.0            +0.0067  2/5
+  MoE C0.01 gate2.0            +0.0048  2/5
+  flat+0.5*exp C0.01           -0.0052  0/5
+  flat+1.0*exp C0.01           -0.0160  0/5
+  MoE C0.04 gate1.0            +0.0033  2/5
+  MoE C0.04 gate2.0            +0.0037  2/5
+  flat+0.5*exp C0.04           -0.0026  1/5
+  flat+1.0*exp C0.04           -0.0123  0/5

@@ -1,0 +1,35 @@
+idea,bacc,note
+base L7+22 C0.0025 test-std,0.4511782252050709,
+base without test-std,0.4400571712652249,
+"layers [4, 12]",0.4271116082525479,
+"layers [12, 16]",0.3937658463832961,
+"layers [7, 12, 22]",0.44748943574446925,
+"layers [4, 7, 12, 16, 22]",0.44562515535669905,
+NAP remove top-4 prompt-mean PCs,0.4522967934377331,delta +0.0011
+NAP remove top-8 prompt-mean PCs,0.44525727069351234,delta -0.0059
+NAP remove top-16 prompt-mean PCs,0.44081531195625157,delta -0.0104
+NAP remove top-32 prompt-mean PCs,0.4419214516529953,delta -0.0093
+NAP remove top-64 prompt-mean PCs,0.4330375341784738,delta -0.0181
+hierarchical: + 0.25 * log p(lab),0.458960974397216,delta +0.0078
+hierarchical: + 0.5 * log p(lab),0.4608227690778026,delta +0.0096
+hierarchical: + 1.0 * log p(lab),0.46045239870743226,delta +0.0093
+"prototype head alone (cos, T=1/20)",0.2826348496147154,
+LR + 0.25 * prototype,0.4363559532687049,delta -0.0148
+LR + 0.5 * prototype,0.4178274919214517,delta -0.0334
+pseudo-label top 30% weight 0.5,0.40450658712403675,delta -0.0467
+pseudo-label top 50% weight 0.5,0.39042257022122795,delta -0.0608
+pseudo-label top 50% weight 1.0,0.3841262739249317,delta -0.0671
+"[pools 1-3/prompt, rec groups] plain",0.43754524263409067,delta +0.0000
+"[pools 1-3/prompt, rec groups] shrink-centre k=1.0 (plain head)",0.43335601138603586,delta -0.0042
+"[pools 1-3/prompt, rec groups] shrink-centre k=3.0 (plain head)",0.4316901228083826,delta -0.0059
+"[pools 1-3/prompt, rec groups] twin(chunks2-3) full add w=0.5",0.43593576550990765,delta -0.0016
+"[pools 1-3/prompt, rec groups] twin(chunks2-3) full add w=1.0",0.43272498119618213,delta -0.0048
+"[pools 1-3/prompt, rec groups] twin(chunks2-3) shrink k=1 add w=0.5",0.4349553733530449,delta -0.0026
+"[pools 1-3/prompt, rec groups] twin(chunks2-3) shrink k=1 add w=1.0",0.4332805367517377,delta -0.0043
+"[pools 1-3/prompt, true groups] plain",0.43754524263409067,delta +0.0000
+"[pools 1-3/prompt, true groups] shrink-centre k=1.0 (plain head)",0.4424452014602137,delta +0.0049
+"[pools 1-3/prompt, true groups] shrink-centre k=3.0 (plain head)",0.44819032705674866,delta +0.0106
+"[pools 1-3/prompt, true groups] twin(chunks2-3) full add w=0.5",0.4781089843344746,delta +0.0406
+"[pools 1-3/prompt, true groups] twin(chunks2-3) full add w=1.0",0.4908962045466335,delta +0.0534
+"[pools 1-3/prompt, true groups] twin(chunks2-3) shrink k=1 add w=0.5",0.4423352234412283,delta +0.0048
+"[pools 1-3/prompt, true groups] twin(chunks2-3) shrink k=1 add w=1.0",0.4484270282186949,delta +0.0109

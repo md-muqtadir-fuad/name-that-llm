@@ -1,0 +1,7 @@
+flat alone 0.4512  MoE alone 0.4630  strong 0.4915
+strong + 0.25*flat: 0.4978 (+0.0063) folds+ 5/5
+strong + 0.25*MoE : 0.4945 (+0.0030) folds+ 3/5
+strong + 0.50*flat: 0.4982 (+0.0067) folds+ 4/5
+strong + 0.50*MoE : 0.4967 (+0.0052) folds+ 4/5
+strong + 1.00*flat: 0.4949 (+0.0033) folds+ 3/5
+strong + 1.00*MoE : 0.4941 (+0.0026) folds+ 4/5

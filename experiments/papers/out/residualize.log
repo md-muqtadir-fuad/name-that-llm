@@ -1,0 +1,17 @@
+base                                          0.4508  folds [0.452 0.426 0.467 0.435 0.475]  (100s)
+H: length residual                            0.4523  folds [0.457 0.43  0.469 0.437 0.469]  (205s)
+B: topic residual (tfidf) alpha 0.3 lam 0.5   0.4490  folds [0.456 0.424 0.457 0.439 0.469]  (349s)
+B: topic residual (tfidf) alpha 0.3 lam 1.0   0.4453  folds [0.446 0.422 0.456 0.441 0.462]  (495s)
+B: topic residual (tfidf) alpha 1.0 lam 0.5   0.4493  folds [0.452 0.426 0.461 0.437 0.471]  (661s)
+B: topic residual (tfidf) alpha 1.0 lam 1.0   0.4464  folds [0.446 0.42  0.456 0.446 0.463]  (836s)
+B: topic residual (centred LLM-feature kernel) a1 l1 0.4486  folds [0.454 0.411 0.461 0.459 0.458]  (1208s)
+B(B a1.0 l0.5)+H                              0.4490  folds [0.459 0.435 0.463 0.433 0.454]  (1596s)
+
+fold-wise delta vs base (positive folds / 5):
+  H length     mean +0.0015  pos 4/5
+  B a0.3 l0.5  mean -0.0019  pos 2/5
+  B a0.3 l1.0  mean -0.0055  pos 1/5
+  B a1.0 l0.5  mean -0.0015  pos 2/5
+  B a1.0 l1.0  mean -0.0044  pos 1/5
+  B llm        mean -0.0022  pos 2/5
+  B+H          mean -0.0019  pos 2/5

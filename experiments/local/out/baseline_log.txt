@@ -1,0 +1,54 @@
+lr_raw: bacc 0.3467 (folds 0.016 sd) lab-bacc 0.5525 nll 2.068 T=1.00 [171s]
+lr_sub: bacc 0.3375 (folds 0.007 sd) lab-bacc 0.5643 nll 2.094 T=1.00 [157s]
+lr_sub_C30: bacc 0.3363 (folds 0.006 sd) lab-bacc 0.5610 nll 2.026 T=1.00 [167s]
+svm_sub: bacc 0.3304 (folds 0.012 sd) lab-bacc 0.5503 nll 2.063 T=6.68 [90s]
+svm_sub_C0.2: bacc 0.3308 (folds 0.014 sd) lab-bacc 0.5509 nll 2.011 T=9.96 [95s]
+svm_sub_sty: bacc 0.3745 (folds 0.014 sd) lab-bacc 0.5917 nll 1.913 T=4.71 [100s]
+lr_sub_sty: bacc 0.3663 (folds 0.007 sd) lab-bacc 0.5937 nll 1.854 T=1.00 [519s]
+svm_char_case: bacc 0.3382 (folds 0.004 sd) lab-bacc 0.5540 nll 2.009 T=7.83 [158s]
+svm_char_case_sty: bacc 0.3748 (folds 0.014 sd) lab-bacc 0.5824 nll 1.902 T=5.08 [142s]
+## 2. TF-IDF baselines (5-fold GroupKFold by prompt_id, OOF)
+
+Features: char_wb(1-5) + word(1-2, punctuation tokens kept), min_df=2, vectorizers fit on the train fold only.
+
+| variant | balanced acc | fold sd | lab-level bacc | NLL | secs |
+|---|---|---|---|---|---|
+| lr_raw | 0.3467 | 0.016 | 0.5525 | 2.068 | 171 |
+| lr_sub | 0.3375 | 0.007 | 0.5643 | 2.094 | 157 |
+| lr_sub_C30 | 0.3363 | 0.006 | 0.5610 | 2.026 | 167 |
+| svm_sub | 0.3304 | 0.012 | 0.5503 | 2.063 | 90 |
+| svm_sub_C0.2 | 0.3308 | 0.014 | 0.5509 | 2.011 | 95 |
+| svm_sub_sty | 0.3745 | 0.014 | 0.5917 | 1.913 | 100 |
+| lr_sub_sty | 0.3663 | 0.007 | 0.5937 | 1.854 | 519 |
+| svm_char_case | 0.3382 | 0.004 | 0.5540 | 2.009 | 158 |
+| svm_char_case_sty | 0.3748 | 0.014 | 0.5824 | 1.902 | 142 |
+
+Best: **svm_char_case_sty**. Per-class recall:
+
+| model | recall | most-confused-with (share of its passages) |
+|---|---|---|
+| claude-fable-5 | 0.07 | claude-opus-5 19%, glm-5.3 13%, claude-sonnet-5 12% |
+| claude-opus-4-6 | 0.57 | claude-sonnet-5 11%, claude-opus-5 7%, claude-opus-4-8 5% |
+| claude-opus-4-8 | 0.18 | claude-sonnet-5 17%, claude-opus-4-6 15%, claude-opus-5 9% |
+| claude-opus-5 | 0.69 | glm-5.3 7%, claude-sonnet-5 5%, glm-5.3-flash 4% |
+| claude-sonnet-5 | 0.37 | claude-opus-4-6 12%, claude-opus-4-8 9%, claude-fable-5 6% |
+| gemini-3.1-pro-preview | 0.77 | gemini-3.6-flash 7%, gemini-3.7-flash 7%, gemini-3.8-flash 5% |
+| gemini-3.6-flash | 0.40 | gemini-3.1-pro-preview 21%, gemini-3.7-flash 19%, gemini-3.8-flash 14% |
+| gemini-3.7-flash | 0.49 | gemini-3.8-flash 17%, gemini-3.1-pro-preview 14%, gemini-3.6-flash 13% |
+| gemini-3.8-flash | 0.35 | gemini-3.7-flash 31%, gemini-3.1-pro-preview 14%, gemini-3.6-flash 12% |
+| glm-5.3 | 0.11 | claude-opus-5 26%, glm-5.3-flash 21%, claude-sonnet-5 12% |
+| glm-5.3-flash | 0.17 | claude-opus-5 19%, glm-5.3 15%, claude-sonnet-5 11% |
+| gpt-5.5 | 0.39 | qwen3.8-max 15%, gpt-6-astra 11%, kimi-k3 10% |
+| gpt-5.6-luna | 0.29 | gpt-6-astra 17%, qwen3.8-max 11%, gpt-5.6-sol 11% |
+| gpt-5.6-sol | 0.15 | gpt-6-astra 16%, gpt-5.6-luna 13%, qwen3.8-max 12% |
+| gpt-5.6-terra | 0.24 | gpt-5.6-luna 17%, gpt-5.5 16%, gpt-6-astra 11% |
+| gpt-6-astra | 0.68 | gpt-5.6-luna 5%, kimi-k3 5%, gemini-3.1-pro-preview 4% |
+| kimi-k3 | 0.25 | gpt-5.5 17%, glm-5.3 7%, glm-5.3-flash 7% |
+| qwen3.8-max | 0.56 | gpt-5.5 9%, gpt-6-astra 8%, gemini-3.1-pro-preview 4% |
+
+Top confused pairs (symmetric counts out of ~300):
+
+gemini-3.7-flash <-> gemini-3.8-flash: 72, glm-5.3 <-> glm-5.3-flash: 54, claude-opus-5 <-> glm-5.3: 49, gemini-3.6-flash <-> gemini-3.7-flash: 48, gemini-3.1-pro-preview <-> gemini-3.6-flash: 43, gpt-5.5 <-> kimi-k3: 41, gpt-5.6-luna <-> gpt-5.6-terra: 39, gemini-3.6-flash <-> gemini-3.8-flash: 39, claude-opus-4-8 <-> claude-sonnet-5: 38, gpt-5.5 <-> qwen3.8-max: 37, gpt-5.5 <-> gpt-5.6-terra: 37, gpt-5.6-luna <-> gpt-5.6-sol: 35, claude-opus-5 <-> glm-5.3-flash: 35, claude-opus-4-6 <-> claude-sonnet-5: 35, gpt-5.6-luna <-> gpt-6-astra: 32
+
+Share of errors that stay within the true lab: 50%.
+

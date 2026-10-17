@@ -1,0 +1,22 @@
+(1) balancing on skewed-prior pools (200 draws), mean bacc and delta vs none:
+   none                 0.4932  delta +0.0000  (sd 0.0000, positive 0.00)
+   uniform a0.5         0.4901  delta -0.0031  (sd 0.0219, positive 0.38)
+   prior-aware t0.85    0.4929  delta -0.0003  (sd 0.0168, positive 0.41)
+   prior-aware t1.0     0.4933  delta +0.0001  (sd 0.0217, positive 0.46)
+   (balanced folds) uniform a0.5 delta +0.0041
+
+(2)/(3) frozen Qwen3-8B L7+22 head
+base: StandardScaler + test-std (full dims)          0.4508  folds [0.452 0.426 0.467 0.435 0.475]  (253s)
+PCA-512 space (control for whitening/CORAL)          0.4375  folds [0.446 0.406 0.448 0.443 0.445]  (489s)
+nuisance whitening alpha 0.75 beta 0.1 (PCA-512)     0.4286  folds [0.431 0.426 0.419 0.443 0.424]  (659s)
+nuisance whitening alpha 0.5 beta 0.1 (PCA-512)      0.4212  folds [0.428 0.417 0.411 0.428 0.422]  (820s)
+nuisance whitening alpha 0.75 beta 0.3 (PCA-512)     0.4193  folds [0.428 0.422 0.404 0.419 0.424]  (959s)
+CORAL lambda 0.15 (PCA-512)                          0.4938  folds [0.496 0.47  0.522 0.483 0.497]  (1162s)
+CORAL lambda 0.5 (PCA-512)                           0.5097  folds [0.493 0.478 0.544 0.507 0.526]  (1368s)
+
+delta vs PCA-512 control (mean, positive folds):
+   whiten a0.75 b0.1      -0.0089  2/5
+   whiten a0.5 b0.1       -0.0163  1/5
+   whiten a0.75 b0.3      -0.0182  1/5
+   CORAL lam0.15          +0.0563  5/5
+   CORAL lam0.5           +0.0722  5/5

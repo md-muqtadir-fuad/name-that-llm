@@ -1,0 +1,1 @@
+Gemini API free tier generations via tools/gemini_collect.py. Publish before use.

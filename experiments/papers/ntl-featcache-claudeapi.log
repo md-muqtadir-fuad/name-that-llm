@@ -1,0 +1,65 @@
+[{"stream_name":"stderr","time":9.957103388,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.957146607,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.957150807,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.957153257,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.675922186,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.675951718,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.675964109,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.675967941,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":52.486500966,"data":"distractors 1000 {'claude-opus-4-8': 998, 'claude-opus-5': 2}\n"}
+,{"stream_name":"stdout","time":52.49336243,"data":"model /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":52.680606781,"data":"/tmp/ipykernel_23/787996179.py:19: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.\n"}
+,{"stream_name":"stderr","time":52.680637676,"data":"  ext = _ext.groupby('prompt_id', group_keys=False).apply(lambda d: d.sample(1, random_state=0)).reset_index(drop=True)\n"}
+,{"stream_name":"stderr","time":52.680644066,"data":"\n"}
+,{"stream_name":"stderr","time":52.680648356,"data":"/tmp/ipykernel_23/787996179.py:19: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.\n"}
+,{"stream_name":"stderr","time":52.680654492,"data":"  ext = _ext.groupby('prompt_id', group_keys=False).apply(lambda d: d.sample(1, random_state=0)).reset_index(drop=True)\n"}
+,{"stream_name":"stderr","time":74.158980655,"data":"[transformers] \u001b[1mQwen3Model LOAD REPORT\u001b[0m from: /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":74.159019919,"data":"Key                                                    | Status     |  | \n"}
+,{"stream_name":"stderr","time":74.159025607,"data":"-------------------------------------------------------+------------+--+-\n"}
+,{"stream_name":"stderr","time":74.15903034,"data":"model.layers.{23...35}.input_layernorm.weight          | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.15903482,"data":"model.layers.{23...35}.self_attn.v_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159039501,"data":"model.layers.{23...35}.self_attn.k_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159044075,"data":"model.layers.{23...35}.mlp.up_proj.weight              | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.15906894,"data":"model.layers.{23...35}.mlp.down_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159074089,"data":"model.layers.{23...35}.self_attn.q_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159091582,"data":"model.layers.{23...35}.self_attn.o_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159095808,"data":"model.layers.{23...35}.post_attention_layernorm.weight | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159099074,"data":"model.layers.{23...35}.mlp.gate_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159102619,"data":"model.layers.{23...35}.self_attn.k_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159106425,"data":"model.layers.{23...35}.self_attn.q_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159109692,"data":"lm_head.weight                                         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159112904,"data":"\n"}
+,{"stream_name":"stderr","time":74.159115999,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":74.159119049,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":74.159122532,"data":"\n"}
+,{"stream_name":"stderr","time":74.15912548,"data":"[transformers] \u001b[1mQwen3Model LOAD REPORT\u001b[0m from: /kaggle/input/models/qwen-lm/qwen-3/transformers/8b-base/1\n"}
+,{"stream_name":"stderr","time":74.159128761,"data":"Key                                                    | Status     |  | \n"}
+,{"stream_name":"stderr","time":74.159132049,"data":"-------------------------------------------------------+------------+--+-\n"}
+,{"stream_name":"stderr","time":74.159135707,"data":"model.layers.{23...35}.input_layernorm.weight          | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159138875,"data":"model.layers.{23...35}.self_attn.v_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159142295,"data":"model.layers.{23...35}.self_attn.k_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159145318,"data":"model.layers.{23...35}.mlp.up_proj.weight              | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159148576,"data":"model.layers.{23...35}.mlp.down_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159151769,"data":"model.layers.{23...35}.self_attn.q_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159155036,"data":"model.layers.{23...35}.self_attn.o_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159160204,"data":"model.layers.{23...35}.post_attention_layernorm.weight | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159163565,"data":"model.layers.{23...35}.mlp.gate_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159166784,"data":"model.layers.{23...35}.self_attn.k_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159169977,"data":"model.layers.{23...35}.self_attn.q_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159173537,"data":"lm_head.weight                                         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":74.159176774,"data":"\n"}
+,{"stream_name":"stderr","time":74.159180019,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":74.159183311,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":75.97614692,"data":"0 24s\n"}
+,{"stream_name":"stdout","time":94.811719433,"data":"400 43s\n"}
+,{"stream_name":"stdout","time":132.260681815,"data":"800 80s\n"}
+,{"stream_name":"stdout","time":163.553723781,"data":"saved (1000, 2, 4096) 112s\n"}
+,{"stream_name":"stderr","time":169.617136224,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":169.617172879,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":169.817351935,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":169.817377721,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":170.651617676,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":170.724072663,"data":"[NbConvertApp] Writing 19686 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":173.296348543,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":173.800235583,"data":"[NbConvertApp] Writing 306544 bytes to __results__.html\n"}
+]
