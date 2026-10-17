@@ -1,0 +1,33 @@
+external rows {'prvsiyan': 2700, 'seyit': 4998}
+claude ext=False done
+claude ext=True done
+gemini ext=False done
+gemini ext=True done
+gpt ext=False done
+gpt ext=True done
+
+base strong blend 0.4915
+claude  ext=False lam=0.5: bacc 0.4908 (-0.0007) folds+ 2/5 | lab recall 0.518 (base 0.520)
+claude  ext=False lam=1.0: bacc 0.4915 (+0.0000) folds+ 3/5 | lab recall 0.520 (base 0.520)
+claude  ext=False lam=1.5: bacc 0.4893 (-0.0022) folds+ 1/5 | lab recall 0.512 (base 0.520)
+claude  ext=False lam=3.0: bacc 0.4901 (-0.0015) folds+ 2/5 | lab recall 0.515 (base 0.520)
+claude  ext=True  lam=0.5: bacc 0.4938 (+0.0022) folds+ 3/5 | lab recall 0.528 (base 0.520)
+claude  ext=True  lam=1.0: bacc 0.4975 (+0.0059) folds+ 5/5 | lab recall 0.542 (base 0.520)
+claude  ext=True  lam=1.5: bacc 0.4997 (+0.0082) folds+ 5/5 | lab recall 0.550 (base 0.520)
+claude  ext=True  lam=3.0: bacc 0.4979 (+0.0063) folds+ 3/5 | lab recall 0.543 (base 0.520)
+gemini  ext=False lam=0.5: bacc 0.4886 (-0.0030) folds+ 1/5 | lab recall 0.560 (base 0.573)
+gemini  ext=False lam=1.0: bacc 0.4897 (-0.0019) folds+ 1/5 | lab recall 0.565 (base 0.573)
+gemini  ext=False lam=1.5: bacc 0.4915 (-0.0000) folds+ 2/5 | lab recall 0.573 (base 0.573)
+gemini  ext=False lam=3.0: bacc 0.4919 (+0.0004) folds+ 2/5 | lab recall 0.575 (base 0.573)
+gemini  ext=True  lam=0.5: bacc 0.4912 (-0.0004) folds+ 1/5 | lab recall 0.572 (base 0.573)
+gemini  ext=True  lam=1.0: bacc 0.4945 (+0.0030) folds+ 4/5 | lab recall 0.587 (base 0.573)
+gemini  ext=True  lam=1.5: bacc 0.4960 (+0.0044) folds+ 4/5 | lab recall 0.593 (base 0.573)
+gemini  ext=True  lam=3.0: bacc 0.4949 (+0.0033) folds+ 3/5 | lab recall 0.588 (base 0.573)
+gpt     ext=False lam=0.5: bacc 0.4897 (-0.0019) folds+ 0/5 | lab recall 0.469 (base 0.476)
+gpt     ext=False lam=1.0: bacc 0.4901 (-0.0015) folds+ 2/5 | lab recall 0.471 (base 0.476)
+gpt     ext=False lam=1.5: bacc 0.4901 (-0.0015) folds+ 1/5 | lab recall 0.471 (base 0.476)
+gpt     ext=False lam=3.0: bacc 0.4864 (-0.0052) folds+ 1/5 | lab recall 0.457 (base 0.476)
+gpt     ext=True  lam=0.5: bacc 0.4912 (-0.0004) folds+ 2/5 | lab recall 0.475 (base 0.476)
+gpt     ext=True  lam=1.0: bacc 0.4915 (-0.0000) folds+ 2/5 | lab recall 0.476 (base 0.476)
+gpt     ext=True  lam=1.5: bacc 0.4927 (+0.0011) folds+ 3/5 | lab recall 0.480 (base 0.476)
+gpt     ext=True  lam=3.0: bacc 0.4927 (+0.0011) folds+ 3/5 | lab recall 0.480 (base 0.476)
