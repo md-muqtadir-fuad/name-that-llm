@@ -1,0 +1,43 @@
+external rows {'prvsiyan': 3216, 'seyit': 4998}
+c_newclaude_glm ext=False done
+c_newclaude_glm ext=True done
+c_oldclaude ext=False done
+c_oldclaude ext=True done
+c_gpt55_kimi ext=False done
+c_gpt55_kimi ext=True done
+c_gpt56_astra ext=False done
+c_gpt56_astra ext=True done
+
+base strong blend 0.4915
+c_newclaude_glm ext=False lam=0.5: bacc 0.4927 (+0.0011) folds+ 3/5 | lab recall 0.377 (base 0.372)
+c_newclaude_glm ext=False lam=1.0: bacc 0.4919 (+0.0004) folds+ 2/5 | lab recall 0.374 (base 0.372)
+c_newclaude_glm ext=False lam=1.5: bacc 0.4915 (-0.0000) folds+ 2/5 | lab recall 0.372 (base 0.372)
+c_newclaude_glm ext=False lam=3.0: bacc 0.4900 (-0.0015) folds+ 1/5 | lab recall 0.365 (base 0.372)
+c_newclaude_glm ext=True  lam=0.5: bacc 0.4916 (+0.0000) folds+ 2/5 | lab recall 0.372 (base 0.372)
+c_newclaude_glm ext=True  lam=1.0: bacc 0.4897 (-0.0018) folds+ 1/5 | lab recall 0.364 (base 0.372)
+c_newclaude_glm ext=True  lam=1.5: bacc 0.4909 (-0.0007) folds+ 3/5 | lab recall 0.369 (base 0.372)
+c_newclaude_glm ext=True  lam=3.0: bacc 0.4861 (-0.0055) folds+ 1/5 | lab recall 0.347 (base 0.372)
+c_oldclaude ext=False lam=0.5: bacc 0.4908 (-0.0007) folds+ 1/5 | lab recall 0.542 (base 0.547)
+c_oldclaude ext=False lam=1.0: bacc 0.4908 (-0.0007) folds+ 1/5 | lab recall 0.542 (base 0.547)
+c_oldclaude ext=False lam=1.5: bacc 0.4882 (-0.0033) folds+ 0/5 | lab recall 0.527 (base 0.547)
+c_oldclaude ext=False lam=3.0: bacc 0.4875 (-0.0041) folds+ 1/5 | lab recall 0.522 (base 0.547)
+c_oldclaude ext=True  lam=0.5: bacc 0.4930 (+0.0015) folds+ 3/5 | lab recall 0.556 (base 0.547)
+c_oldclaude ext=True  lam=1.0: bacc 0.4934 (+0.0019) folds+ 3/5 | lab recall 0.558 (base 0.547)
+c_oldclaude ext=True  lam=1.5: bacc 0.4945 (+0.0030) folds+ 3/5 | lab recall 0.564 (base 0.547)
+c_oldclaude ext=True  lam=3.0: bacc 0.4952 (+0.0037) folds+ 4/5 | lab recall 0.569 (base 0.547)
+c_gpt55_kimi ext=False lam=0.5: bacc 0.4923 (+0.0007) folds+ 2/5 | lab recall 0.487 (base 0.480)
+c_gpt55_kimi ext=False lam=1.0: bacc 0.4923 (+0.0007) folds+ 3/5 | lab recall 0.487 (base 0.480)
+c_gpt55_kimi ext=False lam=1.5: bacc 0.4919 (+0.0004) folds+ 2/5 | lab recall 0.483 (base 0.480)
+c_gpt55_kimi ext=False lam=3.0: bacc 0.4897 (-0.0019) folds+ 2/5 | lab recall 0.463 (base 0.480)
+c_gpt55_kimi ext=True  lam=0.5: bacc 0.4923 (+0.0007) folds+ 4/5 | lab recall 0.487 (base 0.480)
+c_gpt55_kimi ext=True  lam=1.0: bacc 0.4901 (-0.0015) folds+ 0/5 | lab recall 0.467 (base 0.480)
+c_gpt55_kimi ext=True  lam=1.5: bacc 0.4890 (-0.0026) folds+ 0/5 | lab recall 0.457 (base 0.480)
+c_gpt55_kimi ext=True  lam=3.0: bacc 0.4849 (-0.0067) folds+ 0/5 | lab recall 0.420 (base 0.480)
+c_gpt56_astra ext=False lam=0.5: bacc 0.4901 (-0.0015) folds+ 0/5 | lab recall 0.470 (base 0.477)
+c_gpt56_astra ext=False lam=1.0: bacc 0.4893 (-0.0022) folds+ 0/5 | lab recall 0.467 (base 0.477)
+c_gpt56_astra ext=False lam=1.5: bacc 0.4886 (-0.0030) folds+ 0/5 | lab recall 0.463 (base 0.477)
+c_gpt56_astra ext=False lam=3.0: bacc 0.4852 (-0.0063) folds+ 0/5 | lab recall 0.448 (base 0.477)
+c_gpt56_astra ext=True  lam=0.5: bacc 0.4915 (-0.0000) folds+ 1/5 | lab recall 0.477 (base 0.477)
+c_gpt56_astra ext=True  lam=1.0: bacc 0.4912 (-0.0004) folds+ 2/5 | lab recall 0.475 (base 0.477)
+c_gpt56_astra ext=True  lam=1.5: bacc 0.4912 (-0.0004) folds+ 2/5 | lab recall 0.475 (base 0.477)
+c_gpt56_astra ext=True  lam=3.0: bacc 0.4897 (-0.0019) folds+ 2/5 | lab recall 0.468 (base 0.477)

@@ -13,3 +13,5 @@
 | 2026-10-17 | External data used for within-lab gates first, not raw 18-way training | register drift vs host data (prvsiyan table; seyit forum post) |
 | 2026-10-17 | Generated data published as public Kaggle dataset before any submission uses it | competition rule 2.6 |
 | 2026-10-17 | Repo private on GitHub until 2027-01-13 | public code sharing must be on Kaggle during the competition |
+| 2026-10-17 | b001 discarded; every kbench prompt runs in kbench.chats.new(orphan=True) with max_completion_tokens=4000 | prompt() accumulates chat history; default max tokens reserve $3.2/call |
+| 2026-10-17 | Keep lab gates (claude, gemini, gpt), not data-driven cluster gates | E023 cluster gates <= lab gates |

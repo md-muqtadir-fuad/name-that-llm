@@ -12,6 +12,7 @@ import kaggle_benchmarks as kbench
 import pandas as pd
 
 START, N = 3, 60          # FROZEN drift panel: prompts g0003-g0062 (do not edit)
+MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
 BATCH = 'drift_YYYYMM'   # set at run time only
 
 
@@ -36,10 +37,16 @@ def ntl_gen(llm) -> None:
         lo, hi = word_range(p.prompt_id, name)
         q = build_prompt(p.prompt, lo, hi)
         t0 = time.time()
-        try:
-            text, err = llm.prompt(q), ''
-        except Exception as e:  # keep going; record the failure
-            text, err = '', repr(e)[:300]
+        text, err = '', ''
+        for extra in ({'max_completion_tokens': MAX_OUT}, {'max_tokens': MAX_OUT}, {'max_output_tokens': MAX_OUT}):
+            try:
+                with kbench.chats.new(name=p.prompt_id, orphan=True):   # fresh, isolated chat per prompt
+                    text, err = llm.prompt(q, extra_api_params=extra), ''
+                break
+            except Exception as e:  # unsupported param name -> try the next; other errors recorded
+                err = repr(e)[:300]
+                if not any(k in err for k in ('max_completion_tokens', 'max_tokens', 'max_output_tokens', 'Unsupported', 'unexpected', 'not supported')):
+                    break
         rows.append(dict(batch=BATCH, prompt_id=p.prompt_id, llm=name, prompt_text=q, target_lo=lo, target_hi=hi,
                          response=text if isinstance(text, str) else str(text), error=err,
                          seconds=round(time.time() - t0, 2)))
