@@ -11,10 +11,10 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 63, 60         # batch window over the 1,000 public prompts (edit per push)
+START, N = 123, 40          # set by daily.py
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
-ONLY = {}   # retry mode: {llm name: [prompt_id, ...]} -> only these pairs are generated (set by daily.py)
-BATCH = 'b002'
+ONLY = {}   # set by daily.py
+BATCH = 'b003'
 
 
 def word_range(prompt_id, model=''):
