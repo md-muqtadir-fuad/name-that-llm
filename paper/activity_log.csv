@@ -24,3 +24,4 @@ timestamp_utc,actor,action,target,details
 2026-10-18 20:35,claude-code,kaggle submit,ntl-v6d v1,"E044; user approved (""submit both"")"
 2026-10-18 20:35,claude-code,kaggle submit,ntl-v6e v1,"E045; user approved (""submit both""); 1 submission left today"
 2026-10-18 20:35,claude-code,git push,origin experiments/fuad,E044/E045 submission logs (no attribution trailers from now on)
+2026-10-18 21:00,claude-code,file delivery,"research/spectro/*_fingerprint_zoom.png, *_fingerprint_z.png",magnified fingerprints with significance stars; CSVs experiments/spectro/out/*_fingerprint_zoom.csv
