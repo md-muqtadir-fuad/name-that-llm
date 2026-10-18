@@ -43,3 +43,6 @@ nb/lora_gemma/smoke_out/
 experiments/style/cache/
 experiments/grouping/feats/
 experiments/**/*.pkl
+nb/**/full_out/
+nb/**/smoke_out/
+**/train_plus_ext.csv
