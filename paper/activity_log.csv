@@ -19,3 +19,8 @@ timestamp_utc,actor,action,target,details
 2026-10-18 19:50,user,review received,Argon 4 answer to ask_other_ai_v2.md,claims checked against data; E040 + E042 tests
 2026-10-18 19:57,user,review received,Gemini 3.8 (Antigravity) repo inspection,"claims checked: E043 shield test, verdict table"
 2026-10-18 19:57,claude-code,git push,origin experiments/fuad,"E042, E043, review verdicts, fertility reference table (Antigravity)"
+2026-10-18 20:07,user,rule change,git commit messages,no credits block and no Co-Authored-By trailers from the next push on (agents are tools)
+2026-10-18 20:22,claude-code,kaggle test run complete,"ntl-v6d v1, ntl-v6e v1","v6d gates off: no gate lines, 2114 s; v6e ADAPT off: adapt rows 0, 1679 s; both wrote submission.parquet"
+2026-10-18 20:35,claude-code,kaggle submit,ntl-v6d v1,"E044; user approved (""submit both"")"
+2026-10-18 20:35,claude-code,kaggle submit,ntl-v6e v1,"E045; user approved (""submit both""); 1 submission left today"
+2026-10-18 20:35,claude-code,git push,origin experiments/fuad,E044/E045 submission logs (no attribution trailers from now on)
