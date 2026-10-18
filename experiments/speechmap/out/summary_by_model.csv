@@ -1,0 +1,17 @@
+label,file,rows,with_text,refusal_flagged,paragraphs,median_response_words,served_models,providers,paragraphs_nonrefusal
+claude-fable-5,us_hard_anthropic_claude-fable-5.jsonl,2120,2076,454,10707,490,anthropic/claude-5-fable-20260609:2062;anthropic/claude-fable-5:14,Amazon Bedrock:2049;Anthropic:27,10002
+claude-opus-4-6,us_hard_anthropic_claude-opus-4.6.jsonl,2120,2097,308,14812,236,anthropic/claude-opus-4.6:2031;anthropic/claude-4.6-opus-20260205:66,Anthropic:1129;Amazon Bedrock:968,14628
+claude-opus-4-8,us_hard_anthropic_claude-opus-4.8.jsonl,2120,2112,417,6128,350,anthropic/claude-4.8-opus-20260528:2111;anthropic/claude-opus-4.8:1,Anthropic:2109;Amazon Bedrock:2;Google:1,5559
+claude-opus-5,us_hard_anthropic_claude-opus-5.jsonl,2120,2110,309,20868,775,anthropic/claude-opus-5:2110,Anthropic:2110,19865
+claude-sonnet-5,us_hard_anthropic_claude-sonnet-5.jsonl,2120,2112,608,7356,364,anthropic/claude-sonnet-5-20260630:2112,Amazon Bedrock:2109;Anthropic:3,6416
+gemini-3.1-pro-preview,us_hard_google_gemini-3.1-pro-preview.jsonl,2120,2113,641,8050,603,google/gemini-3.1-pro-preview:1794;google/gemini-3.1-pro-preview-20260219:319,Google AI Studio:1097;Google:1016,7387
+gemini-3.6-flash,us_hard_google_gemini-3.6-flash.jsonl,2120,2112,237,10363,664,google/gemini-3.6-flash:2112,Google AI Studio:2112,10198
+gemini-3.7-flash,us_hard_google_gemini-3.7-flash.jsonl,2120,2107,201,10214,607,google/gemini-3.7-flash:2107,Google AI Studio:2107,10036
+gemini-3.8-flash,us_hard_google_gemini-3.8-flash.jsonl,2120,2112,246,11120,667,google/gemini-3.8-flash:2112,Google AI Studio:1769;Google:343,10855
+gpt-5.5,us_hard_openai_gpt-5.5.jsonl,2120,2120,10,11861,519,openai/gpt-5.5-20260423:2118;openai/gpt-5.5:2,OpenAI:2117;Azure:3,11860
+gpt-5.6-luna,us_hard_openai_gpt-5.6-luna.jsonl,2120,2120,0,9799,407,openai/gpt-5.6-luna-20260709:2108;openai/gpt-5.6-luna:12,OpenAI:1979;Azure:141,9799
+gpt-5.6-sol,us_hard_openai_gpt-5.6-sol.jsonl,2120,2120,81,7106,308,openai/gpt-5.6-sol-20260709:2119;openai/gpt-5.6-sol:1,OpenAI:2113;Azure:7,7067
+gpt-5.6-terra,us_hard_openai_gpt-5.6-terra.jsonl,2120,2120,4,10584,488,openai/gpt-5.6-terra-20260709:2099;openai/gpt-5.6-terra:21,OpenAI:1938;Azure:182,10584
+gpt-6-astra,us_hard_openai_gpt-6-astra.jsonl,2120,2118,71,9453,460,openai/gpt-6-astra:2118,OpenAI:2118,9450
+qwen3.8-max,us_hard_qwen_qwen3.8-max.jsonl,2120,2111,52,20993,1081,qwen/qwen3.8-max:2111,Alibaba:2111,20958
+glm-5.3-flash,us_hard_z-ai_glm-5.3-flash.jsonl,2120,2077,387,12946,644,z-ai/glm-5.3-flash:2077,Z.AI:2077,12360

@@ -46,3 +46,5 @@ experiments/**/*.pkl
 nb/**/full_out/
 nb/**/smoke_out/
 **/train_plus_ext.csv
+external_dataset
+external_dataset/

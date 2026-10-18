@@ -1,0 +1,4 @@
+SpeechMap raw responses: github.com/xlr8harder/llm-compliance (Apache-2.0), files responses/us_hard_<provider>_<model>.jsonl.
+Downloaded locally to external_dataset/speechmap (by Gemini, 2026-10-18; 16 of 18 labels; glm-5.3 and kimi-k3 are Git LFS, not pulled).
+Parsed by experiments/speechmap/parse.py into paragraphs.csv (text; git-ignored). Genre: persuasive essays/speeches on contested topics; refusals flagged.
+Model outputs may be subject to the providers' own terms.

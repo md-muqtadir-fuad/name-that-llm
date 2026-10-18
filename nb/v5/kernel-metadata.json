@@ -37,5 +37,5 @@
     "google/gemma-4/Transformers/gemma-4-12b/2"
   ],
   "machine_shape": "NvidiaTeslaT4",
-  "docker_image": "gcr.io/kaggle-images/python@sha256:81b1e7c4b4f0f2a7e0a33943c95754b1b7af6b30d65221633a284b6b601cd84a"
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f"
 }
