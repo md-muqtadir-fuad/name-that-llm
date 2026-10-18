@@ -25,3 +25,4 @@ timestamp_utc,actor,action,target,details
 2026-10-18 20:35,claude-code,kaggle submit,ntl-v6e v1,"E045; user approved (""submit both""); 1 submission left today"
 2026-10-18 20:35,claude-code,git push,origin experiments/fuad,E044/E045 submission logs (no attribution trailers from now on)
 2026-10-18 21:00,claude-code,file delivery,"research/spectro/*_fingerprint_zoom.png, *_fingerprint_z.png",magnified fingerprints with significance stars; CSVs experiments/spectro/out/*_fingerprint_zoom.csv
+2026-10-18 21:22,claude-code,kaggle push (run),ntl-backbone-screen v1,"E047 model performance study: 7 base LMs (qwen3-8b, gemma4-12b, llama31-8b, qwen3-14b 8bit, olmo2-7b, olmo2-13b 8bit, mistral-7b); smoke-tested locally on Qwen3-0.6B"

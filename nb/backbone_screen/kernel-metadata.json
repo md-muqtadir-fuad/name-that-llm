@@ -1,0 +1,27 @@
+{
+  "id": "mdmuqtadirfuad/ntl-backbone-screen",
+  "title": "ntl-backbone-screen",
+  "code_file": "ntl-backbone-screen.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "name-that-llm"
+  ],
+  "model_sources": [
+    "qwen-lm/qwen-3/transformers/8b-base/1",
+    "google/gemma-4/transformers/gemma-4-12b/2",
+    "metaresearch/llama-3.1/transformers/8b/2",
+    "qwen-lm/qwen-3/transformers/14b-base/1",
+    "allenai/olmo-2/transformers/1124-7b/1",
+    "allenai/olmo-2/transformers/1124-13b/1",
+    "mistral-ai/mistral/transformers/7b-v0.1-hf/1"
+  ],
+  "machine_shape": "NvidiaTeslaT4",
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f"
+}
