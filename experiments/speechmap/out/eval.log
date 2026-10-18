@@ -1,0 +1,11 @@
+{'none': 0, 'SM': 8000, 'PV': 3216, 'SM+PV': 11216}
+{'test': 'A_18way_svc', 'source': 'none', 'w_ext': 0.0, 'n_ext': 0, 'standalone': 0.3845, 'on_strong': 0.4901, 'delta_vs_strong': -0.0015, 'member_w': 0.25, 'folds_pos': '2/5', 'seconds': 159}
+{'test': 'A_18way_svc', 'source': 'SM', 'w_ext': 0.3, 'n_ext': 8000, 'standalone': 0.3545, 'on_strong': 0.4986, 'delta_vs_strong': 0.007, 'member_w': 0.5, 'folds_pos': '4/5', 'seconds': 563}
+{'test': 'A_18way_svc', 'source': 'SM', 'w_ext': 1.0, 'n_ext': 8000, 'standalone': 0.3289, 'on_strong': 0.5019, 'delta_vs_strong': 0.0104, 'member_w': 0.5, 'folds_pos': '5/5', 'seconds': 1033}
+{'test': 'A_18way_svc', 'source': 'PV', 'w_ext': 1.0, 'n_ext': 3216, 'standalone': 0.3882, 'on_strong': 0.5049, 'delta_vs_strong': 0.0133, 'member_w': 0.25, 'folds_pos': '4/5', 'seconds': 1400}
+{'test': 'A_18way_svc', 'source': 'SM+PV', 'w_ext': 1.0, 'n_ext': 11216, 'standalone': 0.3545, 'on_strong': 0.5119, 'delta_vs_strong': 0.0204, 'member_w': 0.5, 'folds_pos': '4/5', 'seconds': 2031}
+{'test': 'B_gates', 'source': 'none', 'n_ext': 0, 'on_strong': 0.4878, 'delta_vs_strong': -0.0037, 'folds_pos': '1/5', 'per_lab': '{"claude": -0.0022, "gemini": -0.0, "gpt": -0.0015}', 'seconds': 2161}
+{'test': 'B_gates', 'source': 'SM', 'n_ext': 8000, 'on_strong': 0.496, 'delta_vs_strong': 0.0044, 'folds_pos': '3/5', 'per_lab': '{"claude": 0.0007, "gemini": -0.0007, "gpt": 0.0044}', 'seconds': 2438}
+{'test': 'B_gates', 'source': 'PV', 'n_ext': 3216, 'on_strong': 0.5001, 'delta_vs_strong': 0.0085, 'folds_pos': '4/5', 'per_lab': '{"claude": -0.0007, "gemini": 0.0041, "gpt": 0.0052}', 'seconds': 2646}
+{'test': 'B_gates', 'source': 'SM+PV', 'n_ext': 11216, 'on_strong': 0.5023, 'delta_vs_strong': 0.0107, 'folds_pos': '5/5', 'per_lab': '{"claude": 0.0007, "gemini": 0.0037, "gpt": 0.0063}', 'seconds': 3046}
+done 3047 s
