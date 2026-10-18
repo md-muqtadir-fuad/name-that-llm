@@ -1,0 +1,7 @@
+test,set,w_ext,n_ext,standalone,on_strong,delta_vs_strong,member_w,folds_pos,seconds
+A_18way_svc,PV,1.0,3210,0.3904,0.5052,0.0137,0.25,4/5,500
+A_18way_svc,none,0.0,0,0.3845,0.4901,-0.0015,0.25,2/5,641
+A_18way_svc,ALL,1.0,18983,0.3856,0.5101,0.0185,0.25,5/5,2209
+A_18way_svc,ALL_balanced,1.0,15427,0.3775,0.5078,0.0163,0.25,5/5,3315
+A_18way_svc,ALL_minus_speechmap,1.0,9983,0.3868,0.5123,0.0208,0.75,5/5,4198
+A_18way_svc,ALL_minus_prvsiyan,1.0,15773,0.3727,0.5019,0.0104,0.5,4/5,5175

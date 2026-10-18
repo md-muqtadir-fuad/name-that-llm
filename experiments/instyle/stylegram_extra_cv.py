@@ -5,6 +5,7 @@ train + extra, per class the extra rows share EXTRA_W = 0.5 of the class weight.
 Variants: none | pool | pool+SM<q> (q SpeechMap questions with >= 12 labels, first paragraph) | SM<q> only.
 Reports standalone OOF bacc and gain on the strong frozen-LLM OOF blend (member weight grid, as experiments/speechmap/eval.py).
 Writes experiments/instyle/out/results.csv and appends paper/experiments.csv (E034_*)."""
+import glob
 import json
 import pathlib
 import re
@@ -27,6 +28,7 @@ from log import log_row  # noqa: E402
 
 OUT = ROOT / 'experiments/instyle/out'
 OUT.mkdir(parents=True, exist_ok=True)
+RUN_ID = __import__('os').environ.get('RUN_ID', 'E034')
 T0 = time.time()
 tr = pd.read_csv(ROOT / 'data/train.csv')
 L = sorted(tr.model.unique())
@@ -47,12 +49,12 @@ S = cal(S)
 base = bacc(y, S.argmax(1))
 
 
-def clean(x):
+def clean(x, k=EXTRA_MIN_LABELS):
     x = x[x.model.isin(L)].copy()
     x['text'] = x.text.astype(str).map(lambda t: re.sub(r'\s+', ' ', re.sub(r'^\*\*(.*)\*\*$', r'\1', t.strip())).strip())
     x = x[x.text.str.split().str.len().between(30, 300)].drop_duplicates(subset=['model', 'text'])
     x = x.drop_duplicates(subset=['prompt_id', 'model'], keep='first')
-    return x[x.groupby('prompt_id').model.transform('nunique') >= EXTRA_MIN_LABELS].reset_index(drop=True)
+    return x[x.groupby('prompt_id').model.transform('nunique') >= k].reset_index(drop=True)
 
 
 E = ROOT / 'research/ext_data'
@@ -63,7 +65,8 @@ fr.append(d[d.finish_reason.eq('stop')].rename(columns={'label': 'model'})[['pro
 fr.append(pd.read_csv(E / 'dophuchung/ntl_proxy_generations.csv').rename(columns={'label': 'model'})[['prompt_id', 'model', 'text']])
 d = pd.read_csv(E / 'prvsiyan/passages_clean.csv')[['prompt_id', 'model', 'text']]
 fr.append(d.assign(prompt_id='pv_' + d.prompt_id.astype(str)))
-POOL = clean(pd.concat(fr, ignore_index=True))
+RAW = pd.concat(fr, ignore_index=True)
+POOL = clean(RAW)
 sm = pd.read_csv(E / 'speechmap/kaggle_ds/speechmap_p0.csv')
 sm = clean(sm.rename(columns={'label': 'model'}).assign(prompt_id=lambda d: 'sm_' + d.question_id.astype(str))
            [['prompt_id', 'model', 'text']])
@@ -71,6 +74,21 @@ qs = sm.prompt_id.drop_duplicates().sample(frac=1, random_state=0).tolist()
 SM = {q: sm[sm.prompt_id.isin(qs[:q])] for q in (300, 900)}
 SETS = {'none': POOL.iloc[:0], 'pool': POOL, 'pool+SM300': pd.concat([POOL, SM[300]]),
         'pool+SM900': pd.concat([POOL, SM[900]]), 'SM900': SM[900]}
+# our Kaggle Benchmarks generations (seyit prompt bank, 'about N words' protocol); b001 excluded (contaminated)
+kb = []
+for f in sorted(glob.glob(str(E / 'kbench/b0*/**/ntl_gen_b*.csv'), recursive=True)):
+    if '/b001' in f.replace(chr(92), '/'):
+        continue
+    d = pd.read_csv(f)
+    d = d[d.error.fillna('').eq('') & d.response.fillna('').astype(str).str.len().gt(0)]
+    kb.append(pd.DataFrame({'prompt_id': d.prompt_id, 'text': d.response.astype(str),
+                            'model': d.llm.str.split('/').str[-1].str.replace('@default', '').str.replace('-2026-04-23', '')}))
+KB = pd.concat(kb, ignore_index=True) if kb else POOL.iloc[:0]
+for _k in (10, 11, 12):   # min labels per prompt (pool rows first, so duplicates keep the public passage)
+    SETS[f'pool@{_k}'] = clean(RAW, _k)
+    SETS[f'pool+kb@{_k}'] = clean(pd.concat([RAW, KB], ignore_index=True), _k)
+if len(sys.argv) > 1:
+    SETS = {k: SETS[k] for k in sys.argv[1].split(',')}
 print({k: len(v) for k, v in SETS.items()}, '| pool per label', POOL.model.value_counts().to_dict(), flush=True)
 
 FW = set("a an the and or but if while although because as so than that which who whom whose this these those it its they them their theirs he him his she her hers we us our ours you your yours i me my mine in on at to from with without for of by over under between through into about is are was were be been being have has had do does did can could will would shall should may might must not no nor all any some each every both either neither other another such only also just very too more most less least here there when where why how what whether then now still yet even much many few little".split())
@@ -108,11 +126,12 @@ for name, X in SETS.items():
     res.append(r)
     np.save(OUT / f'oof_{name}.npy', D)
     print(r, flush=True)
-    pd.DataFrame(res).to_csv(OUT / 'results.csv', index=False)
+    pd.DataFrame(res).to_csv(OUT / f'results_{RUN_ID}.csv', index=False)
 ref = {r['variant']: r for r in res}
+ref.setdefault('pool', res[0])
 for r in res:
     fs, fp = json.loads(r['fold_standalone']), json.loads(ref['pool']['fold_standalone'])
-    log_row(id=f"E034_{r['variant']}", category='data', description=f"in-style stylegram scheme (0.563 notebook), extra set {r['variant']}",
+    log_row(id=f"{RUN_ID}_{r['variant']}", category='data', description=f"in-style stylegram scheme (0.563 notebook), extra set {r['variant']}",
             config='experiments/instyle/stylegram_extra_cv.py', metric='oof_bacc_standalone', baseline=str(ref['pool']['standalone']),
             value=str(r['standalone']), delta=str(round(r['standalone'] - ref['pool']['standalone'], 4)),
             folds_pos=f"{sum(a > b for a, b in zip(fs, fp))}/5 vs pool", files='experiments/instyle/out/results.csv',
