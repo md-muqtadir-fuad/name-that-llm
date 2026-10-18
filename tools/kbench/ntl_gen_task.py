@@ -11,9 +11,9 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 0, 3          # batch window over the 1,000 public prompts (edit per push)
+START, N = 63, 60         # batch window over the 1,000 public prompts (edit per push)
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
-BATCH = 'smoke2'
+BATCH = 'b002'
 
 
 def word_range(prompt_id, model=''):

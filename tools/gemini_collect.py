@@ -52,14 +52,15 @@ def clean(t):
     return t, '\n' not in t
 
 
-def call(path, key, body=None, tries=4):
+def call(path, key, body=None, tries=6):
     for t in range(tries):
         try:
             return _call(path, key, body)
         except (urllib.error.URLError, ConnectionError, TimeoutError) as e:
-            if isinstance(e, urllib.error.HTTPError) or t == tries - 1:
+            transient = not isinstance(e, urllib.error.HTTPError) or e.code in (500, 502, 503, 504)
+            if not transient or t == tries - 1:
                 raise
-            time.sleep(15 * (t + 1))
+            time.sleep(20 * (t + 1))
 
 
 def _call(path, key, body=None):
