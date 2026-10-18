@@ -106,3 +106,20 @@ Takeaway: **GroupKFold by prompt_id tracks the LB within about 0.014.** Random-s
 4. Hierarchical lab-then-model modelling could help. Lab-level accuracy is much higher than model-level, and the Gemini Flash trio plus GLM → claude-opus-5 are the main confusions.
 5. Use per-prompt clustering of test only as a soft constraint. Do not assume each model appears exactly once per test prompt.
 6. Re-check the forum before relying on API-generated data. A host ruling on 749613 / 749664 could appear at any time.
+
+## 2026-10-18 batch 3 (raw: research/forum_raw3/)
+- 750390 Adisak Sukul (LB #1, now 0.650): StratifiedGroupKFold by prompt tracks LB; random K-fold misleads (0.217 vs 0.369).
+  Test-cluster + Hungarian (+0.10 CV) and per-cluster centering LOWER public LB (0.353 -> 0.344 -> 0.329): "hidden test
+  likely has few passages per prompt". Single Qwen3-14B-Base LoRA r16 all-linear, cls head, 3 ep, max_len 384, no extra
+  data, trained OFF Kaggle: fold-0 CV 0.443, public 0.466. Inference: merge LoRA, fp16, device_map auto over 2xT4
+  (~14 GiB each), sort by length, ~17-20 min / 4k rows. "More passages from the 18 models help."
+- 750462 Osipenko: frozen Qwen3-4B, LR per layer (grouped CV): L3 0.391 > L6 0.379 > L9 0.370 > L18 0.327 > L36 0.311;
+  6 layers concat 0.414. CV ~0.015 above public LB.
+- 750447 Adamski: 10% ATLAS (Qwen3-8B, official data only) +0.002 on two bases (0.556->0.558, 0.549->0.551).
+- 749629 Oleg corpus (olegzholobov/name-that-llm-response-corpus): 135k responses, 24k 40-250-word candidates,
+  1,902 prompt groups with all 18 models; sources incl. speechmap (52,640), eqbench, arena-prose, bullshit-benchmark,
+  GLM-flash harvest, reasoning traces. HALX: formatting gap made it hurt CV even after flattening -> needs a
+  single-paragraph 40-250 view.
+- 750421 HALX (Claude Code writeup, 0.345 -> 0.552): local gains vanished on LB; external data with mismatched format hurt.
+- 749613 / 750379: self-generated API data and test clustering - rules questions, no host answer yet.
+- 750230 beginner journey; ZavodRobotov: improve training pipeline, not ensembling.
