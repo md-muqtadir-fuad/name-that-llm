@@ -1,0 +1,11 @@
+test,base,param,bacc,delta,folds_pos
+A_topic_subtract,strong,beta=0.25,0.4901,-0.0015,2/5
+A_topic_subtract,strong,beta=0.5,0.489,-0.0026,2/5
+A_topic_subtract,strong,beta=1.0,0.4871,-0.0044,1/5
+A_topic_subtract,strong+loras,beta=0.25,0.5383,-0.0006,1/3
+A_topic_subtract,strong+loras,beta=0.5,0.5432,0.0043,2/3
+A_topic_subtract,strong+loras,beta=1.0,0.5414,0.0025,2/3
+B_sinkhorn,strong,full folds (complete prompts),,0.0041,4/5
+B_sinkhorn,strong,"sparse batches (100 prompts x 1-4 passages, 300 trials)",,0.0019,167/300 trials positive
+B_sinkhorn,strong+loras,full folds (complete prompts),,0.0043,2/3
+B_sinkhorn,strong+loras,"sparse batches (100 prompts x 1-4 passages, 300 trials)",,-0.0052,113/300 trials positive

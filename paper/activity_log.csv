@@ -16,3 +16,6 @@ timestamp_utc,actor,action,target,details
 2026-10-18 19:46,user,note,git commit trailers,"from now on no ""Co-Authored-By: Claude"" trailer: Codex and Antigravity also edit this repo; commit bodies name agents where known"
 2026-10-18 19:49,user,rule change,git commit credits,every commit credits all contributing agents (Claude Code / Codex / Antigravity) with a Credits block + trailers; from the next commit on
 2026-10-18 19:49,claude-code,git push,origin experiments/fuad,"activity log, RL feature-set experiment (E041) code, parallel-agent files"
+2026-10-18 19:50,user,review received,Argon 4 answer to ask_other_ai_v2.md,claims checked against data; E040 + E042 tests
+2026-10-18 19:57,user,review received,Gemini 3.8 (Antigravity) repo inspection,"claims checked: E043 shield test, verdict table"
+2026-10-18 19:57,claude-code,git push,origin experiments/fuad,"E042, E043, review verdicts, fertility reference table (Antigravity)"

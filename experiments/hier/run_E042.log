@@ -1,0 +1,10 @@
+{'test': 'A_topic_subtract', 'base': 'strong', 'param': 'beta=0.25', 'bacc': 0.4901, 'delta': -0.0015, 'folds_pos': '2/5'}
+{'test': 'A_topic_subtract', 'base': 'strong', 'param': 'beta=0.5', 'bacc': 0.489, 'delta': -0.0026, 'folds_pos': '2/5'}
+{'test': 'A_topic_subtract', 'base': 'strong', 'param': 'beta=1.0', 'bacc': 0.4871, 'delta': -0.0044, 'folds_pos': '1/5'}
+{'test': 'A_topic_subtract', 'base': 'strong+loras', 'param': 'beta=0.25', 'bacc': 0.5383, 'delta': -0.0006, 'folds_pos': '1/3'}
+{'test': 'A_topic_subtract', 'base': 'strong+loras', 'param': 'beta=0.5', 'bacc': 0.5432, 'delta': 0.0043, 'folds_pos': '2/3'}
+{'test': 'A_topic_subtract', 'base': 'strong+loras', 'param': 'beta=1.0', 'bacc': 0.5414, 'delta': 0.0025, 'folds_pos': '2/3'}
+{'test': 'B_sinkhorn', 'base': 'strong', 'param': 'full folds (complete prompts)', 'bacc': '', 'delta': 0.0041, 'folds_pos': '4/5'}
+{'test': 'B_sinkhorn', 'base': 'strong', 'param': 'sparse batches (100 prompts x 1-4 passages, 300 trials)', 'bacc': '', 'delta': 0.0019, 'folds_pos': '167/300 trials positive'}
+{'test': 'B_sinkhorn', 'base': 'strong+loras', 'param': 'full folds (complete prompts)', 'bacc': '', 'delta': 0.0043, 'folds_pos': '2/3'}
+{'test': 'B_sinkhorn', 'base': 'strong+loras', 'param': 'sparse batches (100 prompts x 1-4 passages, 300 trials)', 'bacc': '', 'delta': -0.0052, 'folds_pos': '113/300 trials positive'}
