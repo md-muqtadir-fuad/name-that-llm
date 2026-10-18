@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-SRC = ROOT / 'external_dataset/speechmap'
+SRCS = [ROOT / 'external_dataset/speechmap', ROOT / 'external_dataset/speechmap-data/responses']
 OUT_TXT = ROOT / 'research/ext_data/speechmap'
 OUT = ROOT / 'experiments/speechmap/out'
 OUT_TXT.mkdir(parents=True, exist_ok=True)
@@ -30,9 +30,15 @@ END = re.compile(r'[.!?…]["”’)\]]?\s*$')
 
 
 def label_of(fname):
+    """-> (label, variant) or (None, None). variant: base | reasoning | dated. Non-target versions (e.g. fable-5.1,
+    opus-5.5, sonnet-5.5) return None."""
     m = re.match(r'us_hard_[^_]+_(.+)\.jsonl$', fname)
     lab = m.group(1).replace('claude-opus-4.6', 'claude-opus-4-6').replace('claude-opus-4.8', 'claude-opus-4-8')
-    return lab if lab in LABELS else None
+    variant = 'base'
+    for suf, var in (('-reasoning', 'reasoning'), ('-thinking', 'reasoning'), ('-0902', 'dated')):
+        if lab.endswith(suf):
+            lab, variant = lab[:-len(suf)], var
+    return (lab, variant) if lab in LABELS else (None, None)
 
 
 def content_of(d):
@@ -60,9 +66,9 @@ def paragraphs(text):
 
 
 rows, summ = [], []
-for f in sorted(glob.glob(str(SRC / '*.jsonl'))):
+for f in sorted(glob.glob(str(SRCS[0] / '*.jsonl')) + glob.glob(str(SRCS[1] / '*.jsonl'))):
     fn = pathlib.Path(f).name
-    lab = label_of(fn)
+    lab, variant = label_of(fn)
     if lab is None:
         print('skip (not a target label):', fn)
         continue
@@ -90,18 +96,18 @@ for f in sorted(glob.glob(str(SRC / '*.jsonl'))):
             ps = paragraphs(c)
             n_par += len(ps)
             for i, p in enumerate(ps):
-                rows.append(dict(label=lab, question_id=d.get('question_id', ''), para_idx=i, n_paras_resp=len(ps),
+                rows.append(dict(label=lab, variant=variant, question_id=d.get('question_id', ''), para_idx=i, n_paras_resp=len(ps),
                                  words=len(p.split()), refusal=ref, served_model=sv, provider=pv,
                                  timestamp=d.get('timestamp', ''), text=p))
-    summ.append(dict(label=lab, file=fn, rows=n, with_text=n_text, refusal_flagged=n_ref, paragraphs=n_par,
+    summ.append(dict(label=lab, variant=variant, file=fn, rows=n, with_text=n_text, refusal_flagged=n_ref, paragraphs=n_par,
                      median_response_words=int(np.median(lens)) if lens else 0,
                      served_models=';'.join(f'{k}:{v}' for k, v in sorted(served.items(), key=lambda x: -x[1])[:3]),
                      providers=';'.join(f'{k}:{v}' for k, v in sorted(provs.items(), key=lambda x: -x[1])[:3])))
-    print(f'{lab:24s} rows {n:5d} text {n_text:5d} refusal {n_ref:5d} paragraphs {n_par:6d}', flush=True)
+    print(f'{lab:24s} {variant:9s} rows {n:5d} text {n_text:5d} refusal {n_ref:5d} paragraphs {n_par:6d}', flush=True)
 P = pd.DataFrame(rows)
 P.to_csv(OUT_TXT / 'paragraphs.csv', index=False)
 S = pd.DataFrame(summ)
-S['paragraphs_nonrefusal'] = S.label.map(P[P.refusal == 0].groupby('label').size()).fillna(0).astype(int)
+S['paragraphs_nonrefusal'] = [int(((P.label == r.label) & (P.variant == r.variant) & (P.refusal == 0)).sum()) for r in S.itertuples()]
 S.to_csv(OUT / 'summary_by_model.csv', index=False)
 missing = sorted(set(LABELS) - set(S.label))
 print('missing labels:', missing)
@@ -121,7 +127,7 @@ def stats(texts):
 
 
 comp = []
-Pn = P[P.refusal == 0]
+Pn = P[(P.refusal == 0) & (P.variant != 'reasoning')]
 for lab in LABELS:
     a = stats(tr.text[tr.model == lab])
     b = stats(Pn.text[Pn.label == lab]) if (Pn.label == lab).any() else {k: np.nan for k in a}

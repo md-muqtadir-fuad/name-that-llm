@@ -1,0 +1,28 @@
+claude-opus-4-6          reasoning rows  2120 text  2080 refusal   229 paragraphs  18914
+claude-opus-4-8          reasoning rows  2120 text     0 refusal     0 paragraphs      0
+claude-opus-5            reasoning rows  2120 text  2113 refusal   197 paragraphs  22761
+kimi-k3                  base      rows  2120 text  2108 refusal   518 paragraphs  12535
+gpt-5.5                  reasoning rows  2120 text  2120 refusal     5 paragraphs  14267
+gpt-5.6-luna             reasoning rows  2120 text  2118 refusal     8 paragraphs  15262
+gpt-5.6-sol              reasoning rows  2120 text  2120 refusal   250 paragraphs   9174
+gpt-5.6-terra            reasoning rows  2120 text  2118 refusal    58 paragraphs  12360
+qwen3.8-max              dated     rows  2120 text  2120 refusal    57 paragraphs  21246
+glm-5.3                  base      rows  2120 text  2117 refusal   424 paragraphs  15514
+claude-fable-5           base      rows  2120 text  2076 refusal   454 paragraphs  10707
+claude-opus-4-6          base      rows  2120 text  2097 refusal   308 paragraphs  14812
+claude-opus-4-8          base      rows  2120 text  2112 refusal   417 paragraphs   6128
+claude-opus-5            base      rows  2120 text  2110 refusal   309 paragraphs  20868
+claude-sonnet-5          base      rows  2120 text  2112 refusal   608 paragraphs   7356
+gemini-3.1-pro-preview   base      rows  2120 text  2113 refusal   641 paragraphs   8050
+gemini-3.6-flash         base      rows  2120 text  2112 refusal   237 paragraphs  10363
+gemini-3.7-flash         base      rows  2120 text  2107 refusal   201 paragraphs  10214
+gemini-3.8-flash         base      rows  2120 text  2112 refusal   246 paragraphs  11120
+gpt-5.5                  base      rows  2120 text  2120 refusal    10 paragraphs  11861
+gpt-5.6-luna             base      rows  2120 text  2120 refusal     0 paragraphs   9799
+gpt-5.6-sol              base      rows  2120 text  2120 refusal    81 paragraphs   7106
+gpt-5.6-terra            base      rows  2120 text  2120 refusal     4 paragraphs  10584
+gpt-6-astra              base      rows  2120 text  2118 refusal    71 paragraphs   9453
+qwen3.8-max              base      rows  2120 text  2111 refusal    52 paragraphs  20993
+glm-5.3-flash            base      rows  2120 text  2077 refusal   387 paragraphs  12946
+missing labels: []
+wrote I:\venv_python\that_llm\research\ext_data\speechmap\paragraphs.csv 324393 rows | I:\venv_python\that_llm\experiments\speechmap\out\summary_by_model.csv | I:\venv_python\that_llm\experiments\speechmap\out\style_vs_train.csv

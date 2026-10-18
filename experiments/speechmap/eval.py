@@ -39,6 +39,8 @@ folds = list(GroupKFold(5).split(tr, y, g))
 
 sm = pd.read_csv(ROOT / 'research/ext_data/speechmap/paragraphs.csv')
 sm = sm[(sm.refusal == 0) & (sm.para_idx == 0) & sm.label.isin(L)]
+if 'variant' in sm:   # reasoning/thinking variants excluded by default (API default settings = base)
+    sm = sm[sm.variant != 'reasoning']
 sm = pd.concat([d.sample(min(len(d), K_PER_LABEL), random_state=0) for _, d in sm.groupby('label')])
 SM = pd.DataFrame({'text': sm.text.astype(str).values, 'y': sm.label.map(lid).values})
 pv = pd.read_csv(ROOT / 'research/ext_data/prvsiyan/passages_clean.csv')
