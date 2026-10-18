@@ -1,0 +1,10 @@
+{'level': 'char', 'standalone': 0.1919, 'delta_on_strong': -0.0063, 'member_w': 0.1, 'folds_pos': '0/5'}
+{'level': 'char_collapsed', 'standalone': 0.2611, 'delta_on_strong': -0.0026, 'member_w': 0.1, 'folds_pos': '1/5'}
+{'level': 'word', 'standalone': 0.0974, 'delta_on_strong': -0.0019, 'member_w': 0.1, 'folds_pos': '1/5'}
+{'level': 'word_collapsed', 'standalone': 0.1382, 'delta_on_strong': -0.0, 'member_w': 0.25, 'folds_pos': '2/5'}
+{'level': 'sentence', 'standalone': 0.0989, 'delta_on_strong': -0.0004, 'member_w': 0.25, 'folds_pos': '2/5'}
+{'level': 'sentence_collapsed', 'standalone': 0.0907, 'delta_on_strong': -0.0, 'member_w': 0.25, 'folds_pos': '3/5'}
+{'level': 'token', 'standalone': 0.0989, 'delta_on_strong': -0.0015, 'member_w': 0.25, 'folds_pos': '2/5'}
+{'level': 'token_collapsed', 'standalone': 0.1193, 'delta_on_strong': -0.0022, 'member_w': 0.5, 'folds_pos': '2/5'}
+{'level': 'all', 'standalone': 0.1786, 'delta_on_strong': -0.0007, 'member_w': 0.1, 'folds_pos': '1/5'}
+wrote I:\venv_python\that_llm\research\spectro
