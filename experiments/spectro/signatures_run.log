@@ -1,0 +1,10 @@
+features (2699, 11051)
+claude signatures done
+gemini signatures done
+glm signatures done
+gpt signatures done
+{'family': 'claude', 'n_models': 5, 'chance': 0.2, 'signature_lr': 0.4004, 'gate_svc': 0.5137, 'svc_plus_signature': 0.5097, 'sig_weight': 0.25, 'features_selected': 147}
+{'family': 'gemini', 'n_models': 4, 'chance': 0.25, 'signature_lr': 0.435, 'gate_svc': 0.5467, 'svc_plus_signature': 0.5417, 'sig_weight': 0.25, 'features_selected': 109}
+{'family': 'glm', 'n_models': 2, 'chance': 0.5, 'signature_lr': 0.52, 'gate_svc': 0.5033, 'svc_plus_signature': 0.5267, 'sig_weight': 2.0, 'features_selected': 40}
+{'family': 'gpt', 'n_models': 5, 'chance': 0.2, 'signature_lr': 0.3133, 'gate_svc': 0.4493, 'svc_plus_signature': 0.456, 'sig_weight': 0.25, 'features_selected': 165}
+done
