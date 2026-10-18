@@ -13,6 +13,7 @@ import pandas as pd
 
 START, N = 63, 60         # batch window over the 1,000 public prompts (edit per push)
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
+ONLY = {}   # retry mode: {llm name: [prompt_id, ...]} -> only these pairs are generated (set by daily.py)
 BATCH = 'b002'
 
 
@@ -34,6 +35,8 @@ def ntl_gen(llm) -> None:
     prompts = pd.read_csv(hits[0]).iloc[START:START + N]
     name = str(getattr(llm, 'name', None) or getattr(llm, 'model', None) or llm)
     rows = []
+    if ONLY:
+        prompts = prompts[prompts.prompt_id.isin(ONLY.get(name, []))]
     for p in prompts.itertuples():
         lo, hi = word_range(p.prompt_id, name)
         q = build_prompt(p.prompt, lo, hi)

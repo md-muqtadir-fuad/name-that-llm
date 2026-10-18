@@ -40,15 +40,16 @@ def sh(args, timeout=None):
     return out
 
 
-def set_task(start, n, batch):
+def set_task(start, n, batch, only=None):
     s = TASK.read_text(encoding='utf-8')
+    s = re.sub(r'^ONLY = .*$', 'ONLY = ' + json.dumps(only or {}) + '   # set by daily.py', s, flags=re.M)
     s = re.sub(r'^START, N = .*$', f'START, N = {start}, {n}          # set by daily.py', s, flags=re.M)
     s = re.sub(r"^BATCH = .*$", f"BATCH = '{batch}'", s, flags=re.M)
     TASK.write_text(s, encoding='utf-8', newline='\n')
 
 
-def run_batch(start, n, batch, models, dry):
-    set_task(start, n, batch)
+def run_batch(start, n, batch, models, dry, only=None):
+    set_task(start, n, batch, only)
     if dry:
         print(f'[dry] would run {batch} [{start}, {start + n}) on {models}')
         return None
@@ -72,11 +73,13 @@ def run_batch(start, n, batch, models, dry):
     stats = d.groupby('llm').ok.agg(['sum', 'size'])
     print(stats.to_string())
     failed = [SLUG_OF.get(l, l) for l, r in stats.iterrows() if r['sum'] < r['size'] and SLUG_OF.get(l, l) in models]
+    failed_pairs = {l: sorted(d.loc[(d.llm == l) & ~d.ok, 'prompt_id'].unique().tolist()) for l in stats.index
+                    if SLUG_OF.get(l, l) in failed}
     with open(ROOT / 'paper/data_log.csv', 'a', encoding='utf-8', newline='') as f:
         f.write(f"{dt.date.today().isoformat()},kb_{batch},ntl-gen daily.py,Kaggle Benchmarks,{len(models)} labels,"
                 f"window {start}-{start + n - 1},{int(stats['sum'].sum())}/{int(stats['size'].sum())} ok,about N words,"
                 f"downloaded,research/ext_data/kbench/{batch},models with failures: {' '.join(failed) or 'none'}\n")
-    return failed
+    return failed, failed_pairs
 
 
 def main():
@@ -87,13 +90,14 @@ def main():
     st = json.loads(STATE.read_text()) if STATE.exists() else {'next_start': 123, 'batch_no': 3, 'pending_retry': None}
     pr = st.get('pending_retry')
     if pr and pr.get('models'):
-        f = run_batch(pr['start'], pr['n'], pr['batch'] + 'r', pr['models'], a.dry)
+        f = run_batch(pr['start'], pr['n'], pr['batch'] + 'r', pr['models'], a.dry, pr.get('only'))
         if not a.dry:
             st['pending_retry'] = None
     batch = f"b{st['batch_no']:03d}"
-    failed = run_batch(st['next_start'], a.n, batch, PRIORITY, a.dry)
+    res = run_batch(st['next_start'], a.n, batch, PRIORITY, a.dry)
+    failed, pairs = res if res else ([], {})
     if not a.dry:
-        st['pending_retry'] = {'batch': batch, 'start': st['next_start'], 'n': a.n, 'models': failed or []}
+        st['pending_retry'] = {'batch': batch, 'start': st['next_start'], 'n': a.n, 'models': failed, 'only': pairs}
         st['next_start'] += a.n
         st['batch_no'] += 1
         STATE.write_text(json.dumps(st, indent=2))
