@@ -50,7 +50,7 @@ Proceed only when the gain is at least +0.005 and holds in at least 4 of the 5 f
 | 12f | Prior-aware balancing (EM prior, then Sinkhorn, then divide by $\hat\pi^\tau$) vs uniform partial Sinkhorn under skewed priors; nuisance whitening; CORAL | CPU (running) | +0.003 under skewed priors / +0.005 |
 | 12g | Log-likelihood ratios across open LLMs from the same lab (GLM-4 / Gemma-4 / Qwen) plus token surprisal statistics | ~1 GPU-h (full depth) | +0.005 |
 | 12h | Model-debiased kNN centering (subtract neighbours' expected model style before averaging) | CPU, pool simulation | +0.005 at 1–3 passages/prompt |
-Rejected: damped test-prior balancing (pushing toward the estimated test prior lowers balanced accuracy, whatever that prior is); test-set-wide evidence summing; 8–10 epochs (overfits); PCA/NAP projection; kNN label propagation; entropy and reverse-cloze features.
+Rejected: damped test-prior balancing (pushing toward the estimated test prior lowers balanced accuracy, whatever that prior is); test-set-wide evidence summing; 8–10 epochs (overfits); PCA/NAP projection; kNN label propagation; entropy and reverse-cloze features. Tree models (LightGBM/ExtraTrees) on the stylegram TF-IDF instead of or beside the LinearSVC (E032: standalone 0.26–0.29 vs 0.385; blend +0.0015 at best, 3/5).
 
 ## Month 2: ensemble, robustness, inference (Nov 14 to Dec 13)
 
