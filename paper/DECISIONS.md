@@ -16,3 +16,4 @@
 | 2026-10-17 | b001 discarded; every kbench prompt runs in kbench.chats.new(orphan=True) with max_completion_tokens=4000 | prompt() accumulates chat history; default max tokens reserve $3.2/call |
 | 2026-10-17 | Keep lab gates (claude, gemini, gpt), not data-driven cluster gates | E023 cluster gates <= lab gates |
 | 2026-10-18 | Daily Benchmarks batches use 10 priority models; gemini-3.1-pro-preview and gpt-6-astra dropped (drift panel keeps all 12, weekly) | $10/day ran out at ~540 passages; these two are expensive and already easy classes |
+| 2026-10-18 | Ablation in 3 stages: continuous CV with/without; OOF-harness ablation + sensitivity at final freeze; late-submission ablation on the private test after the deadline | private-test ablation is only possible after the competition; final-submission choice needs stage 2 |

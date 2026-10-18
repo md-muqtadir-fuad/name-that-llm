@@ -39,3 +39,13 @@ Nothing is reported in the paper unless it has a log row. Results files referenc
 - Dry sensitivity (CPU, cached OOF only, no retraining): perturb each blend weight x{0.5, 0.75, 1.25, 1.5}, gate
   lambda, Sinkhorn alpha {0, 0.25, 0.5}, LR C x{0.5, 2}, twin weights; report OOF range. Plus class-mix sensitivity:
   Dirichlet(alpha in {1, 3, 10}) resampled class mixes, 200 draws.
+
+### 5.1 Ablation schedule (fixed 2026-10-18)
+1. **Continuous (during the competition):** every component is admitted only after a with/without prompt-grouped CV test
+   (logged as E-rows); every submission is a public-LB with/without against its parent version.
+2. **Final-system freeze (late Dec 2026 / early Jan 2027):** one OOF-harness GPU run produces 5-fold OOF for every
+   member of the final blend (members without honest OOF, e.g. public full-train checkpoints, are retrained on our
+   folds or excluded from the ablation and marked). CPU: leave-one-component-out ablation + dry sensitivity grid
+   (section 5) + Dirichlet class-mix resampling. Used to choose the 2 final submissions.
+3. **After the deadline (2027-01-13):** late submissions of the ablated notebooks (final minus each component) to
+   obtain public AND private test scores per component; report CV vs public vs private agreement.
