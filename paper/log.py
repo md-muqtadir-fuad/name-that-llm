@@ -29,11 +29,33 @@ def log_row(**kw):
     return row
 
 
+ACT = LOG.parent / 'activity_log.csv'
+ACT_FIELDS = ['timestamp_utc', 'actor', 'action', 'target', 'details']
+
+
+def log_activity(action, target='', details='', actor='claude-code', ts=''):
+    """Append one row to paper/activity_log.csv: every action that changes state outside a pure computation
+    (Kaggle pushes / submissions / dataset creation, downloads, generation runs, git pushes, file deliveries)."""
+    new = not ACT.exists()
+    row = dict(timestamp_utc=ts or dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d %H:%M'), actor=actor,
+               action=action, target=target, details=details)
+    with open(ACT, 'a', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=ACT_FIELDS)
+        if new:
+            w.writeheader()
+        w.writerow(row)
+    return row
+
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    for k in ('id', 'cat', 'desc', 'config', 'metric', 'base', 'value', 'folds', 'ci', 'files', 'notes', 'date'):
+    for k in ('id', 'cat', 'desc', 'config', 'metric', 'base', 'value', 'folds', 'ci', 'files', 'notes', 'date',
+              'act', 'target', 'details', 'actor'):
         ap.add_argument(f'--{k}', default='')
     a = ap.parse_args()
+    if a.act:   # activity log: python paper/log.py --act "kaggle push" --target ntl-v6d --details "test run"
+        print(log_activity(a.act, a.target, a.details, a.actor or 'claude-code'))
+        raise SystemExit
     print(log_row(id=a.id, category=a.cat, description=a.desc, config=a.config, metric=a.metric or 'oof_bacc',
                   baseline=a.base, value=a.value, folds_pos=a.folds, ci95=a.ci, files=a.files, notes=a.notes,
                   date=a.date))

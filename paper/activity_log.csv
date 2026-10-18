@@ -1,0 +1,18 @@
+timestamp_utc,actor,action,target,details
+2026-10-18,claude-code,kaggle submit,ntl-v5-2gemma-gates v2,E029; public 0.552
+2026-10-18,claude-code,download,research/kernels4/*,"kaggle kernels pull: 5 top public notebooks (0.563, 0.559, adaptive-centered stylegram, family gates, ATLAS)"
+2026-10-18,claude-code,download,research/forum_raw3/*,kaggle topics show + topic-messages for 8 threads
+2026-10-18,claude-code,kaggle dataset create (private),mdmuqtadirfuad/ntl-speechmap-paragraphs,speechmap_p0.csv + speechmap_all.parquet
+2026-10-18,claude-code,download,"research/ext_data/{lucas,abdullah,dophuchung}",public Kaggle generation datasets
+2026-10-18,claude-code,download,research/ext_data/oleg/*,"external_all_wide, cell_metadata, cell_provenance parquet"
+2026-10-18,claude-code,kaggle push (test run),ntl-v6a v1,fork of public 0.563 + Gemma-ext LoRA; 2 GPUs 35 min OK
+2026-10-18,claude-code,kaggle submit,ntl-v6a v1,E035; public 0.556
+2026-10-18,claude-code,kaggle benchmarks run,ntl-gen b002r + b003,daily.py --n 40; 116/116 + 400/400 ok (~$10 quota)
+2026-10-19,claude-code,git branch,experiments/fuad,created from master; work continues here
+2026-10-19,claude-code,git push,origin experiments/fuad,first push (15 commits); later pushes after each result
+2026-10-19,claude-code,file delivery,"TEAMMATE_SETUP.md, DATA_SOURCES.md, TREE.md, tools/fetch_data.sh, requirements.txt",teammate onboarding
+2026-10-19,claude-code,file delivery,research/ask_other_ai_v2.md,prompt for external reviewers
+2026-10-19,claude-code,kaggle push (test run),"ntl-v6d v1, ntl-v6e v1",v6a ablations: no gates / no adaptive centering
+2026-10-18 19:46,user,note,git commit trailers,"from now on no ""Co-Authored-By: Claude"" trailer: Codex and Antigravity also edit this repo; commit bodies name agents where known"
+2026-10-18 19:49,user,rule change,git commit credits,every commit credits all contributing agents (Claude Code / Codex / Antigravity) with a Credits block + trailers; from the next commit on
+2026-10-18 19:49,claude-code,git push,origin experiments/fuad,"activity log, RL feature-set experiment (E041) code, parallel-agent files"
