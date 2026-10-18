@@ -14,3 +14,4 @@
 | 2026-10-17 | prvsiyan passages_clean.csv | checked for train_regen rows / train openings | none found (splits new, proxy_v1 only) | OK |
 | 2026-10-17 | prvsiyan proxy_v1 (516 rows) | generated via Kaggle Benchmarks proxy, possibly same multi-turn pattern | possible contamination | gate test re-run without proxy_v1 (pending) |
 | 2026-10-17 | prvsiyan proxy_v1 (gate re-run E027) | without proxy_v1: claude/gemini unchanged, GPT gate +0.0052 -> +0.0011; combined +0.0174 -> +0.0137 | rows help on clean CV; kept in v4 (CV is the judge), caveat logged | resolved |
+| 2026-10-18 | v4 kernel v3 | Kaggle assigned no GPU (gpus 0); ran 12 h on CPU | v4 never scored | v5 asserts NGPU>=1 at start |

@@ -1,0 +1,158 @@
+{
+  "smoke": false,
+  "backbone": "gemma4-12b",
+  "backbone_spec": {
+    "match": "/gemma-4-12b/",
+    "slug": "google/gemma-4/Transformers/gemma-4-12b/2",
+    "depth": 24,
+    "pool_layers": [
+      2,
+      4,
+      8,
+      12,
+      14,
+      16,
+      20,
+      24
+    ]
+  },
+  "hp": {
+    "r": 16,
+    "alpha": 32,
+    "lora_dropout": 0.05,
+    "lr_adapter": 0.0001,
+    "lr_head": 0.001,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "warmup": 0.1,
+    "eff_batch": 18,
+    "pack": 8,
+    "length_window": 64,
+    "max_len": 448,
+    "head_dropout": 0.1,
+    "lab_weight": 0.5,
+    "clip": 1.0,
+    "seed": 42,
+    "init_scale": 256.0,
+    "growth_interval": 2000,
+    "n_folds": 5
+  },
+  "labels": [
+    "claude-fable-5",
+    "claude-opus-4-6",
+    "claude-opus-4-8",
+    "claude-opus-5",
+    "claude-sonnet-5",
+    "gemini-3.1-pro-preview",
+    "gemini-3.6-flash",
+    "gemini-3.7-flash",
+    "gemini-3.8-flash",
+    "glm-5.3",
+    "glm-5.3-flash",
+    "gpt-5.5",
+    "gpt-5.6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-6-astra",
+    "kimi-k3",
+    "qwen3.8-max"
+  ],
+  "labs": [
+    "claude",
+    "gemini",
+    "glm",
+    "gpt",
+    "kimi",
+    "qwen"
+  ],
+  "class_lab": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3,
+    4,
+    5
+  ],
+  "worker_jobs": {
+    "0": [
+      "fold0",
+      "fold2"
+    ],
+    "1": [
+      "final",
+      "fold1"
+    ]
+  },
+  "worker_jobs_full": {
+    "0": [
+      "fold0",
+      "fold2"
+    ],
+    "1": [
+      "final",
+      "fold1"
+    ]
+  },
+  "full_counts": {
+    "fold0": {
+      "fit": 4859,
+      "valid": 540,
+      "updates": 519,
+      "train_rows": 9718
+    },
+    "fold1": {
+      "fit": 4859,
+      "valid": 540,
+      "updates": 516,
+      "train_rows": 9718
+    },
+    "fold2": {
+      "fit": 4859,
+      "valid": 540,
+      "updates": 516,
+      "train_rows": 9718
+    },
+    "fold3": {
+      "fit": 4859,
+      "valid": 540,
+      "updates": 519,
+      "train_rows": 9718
+    },
+    "fold4": {
+      "fit": 4860,
+      "valid": 539,
+      "updates": 519,
+      "train_rows": 9720
+    },
+    "final": {
+      "fit": 5399,
+      "valid": 0,
+      "updates": 575,
+      "train_rows": 10798
+    }
+  },
+  "job_seed": {
+    "fold0": 42,
+    "fold1": 43,
+    "fold2": 44,
+    "fold3": 45,
+    "fold4": 46,
+    "final": 47
+  },
+  "train_csv": "/kaggle/working/train_plus_ext.csv",
+  "train_sha256": "5ec303b89b496ebed1d1537b61f1387d66db492383ad604347fc4135076f09b5",
+  "model_dir": "/kaggle/input/models/google/gemma-4/transformers/gemma-4-12b/2",
+  "fold_method": "sklearn GroupKFold(n_splits=5).split(X, y, groups=prompt_id), default ordering; folds.csv"
+}

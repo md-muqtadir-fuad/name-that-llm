@@ -1,0 +1,231 @@
+{
+  "smoke": false,
+  "backbone": "gemma4-12b",
+  "worker_exit_codes": [
+    0,
+    0
+  ],
+  "jobs": {
+    "fold0": {
+      "fit_rows": 4859,
+      "valid_rows": 540,
+      "total_updates": 519,
+      "pack": 8,
+      "train_seconds": 5927.580310344696,
+      "extract_seconds": 73.55382657051086,
+      "save_seconds": 0.4617600440979004,
+      "median_sec_per_update": 11.531408548355103,
+      "median_sec_per_row": 0.6218161702156066,
+      "mean_rows_per_update": 18.72447013487476,
+      "extract_sec_per_row": 0.1362107899453905,
+      "peak_train": {
+        "allocated_gb": 12.838185787200928,
+        "reserved_gb": 13.318359375
+      },
+      "nonfinite_packs": 0,
+      "skipped_updates": 1,
+      "nonfinite_valid_rows": 0,
+      "heldout_accuracy": {
+        "plain": 0.48703703703703705,
+        "centred_chunk": 0.44074074074074077,
+        "half": 0.5148148148148148,
+        "lab": 0.7944444444444444
+      },
+      "oom_events": [],
+      "complete_json": true
+    },
+    "fold1": {
+      "fit_rows": 4859,
+      "valid_rows": 540,
+      "total_updates": 516,
+      "pack": 8,
+      "train_seconds": 5765.371556758881,
+      "extract_seconds": 71.61554861068726,
+      "save_seconds": 0.440901517868042,
+      "median_sec_per_update": 11.2059485912323,
+      "median_sec_per_row": 0.6008635037823727,
+      "mean_rows_per_update": 18.833333333333332,
+      "extract_sec_per_row": 0.1326213863160875,
+      "peak_train": {
+        "allocated_gb": 12.862796783447266,
+        "reserved_gb": 13.123046875
+      },
+      "nonfinite_packs": 0,
+      "skipped_updates": 0,
+      "nonfinite_valid_rows": 0,
+      "heldout_accuracy": {
+        "plain": 0.45185185185185184,
+        "centred_chunk": 0.48148148148148145,
+        "half": 0.5,
+        "lab": 0.7870370370370371
+      },
+      "oom_events": [],
+      "complete_json": true
+    },
+    "fold2": {
+      "fit_rows": 4859,
+      "valid_rows": 540,
+      "total_updates": 516,
+      "pack": 8,
+      "train_seconds": 5940.885724306107,
+      "extract_seconds": 73.65501475334167,
+      "save_seconds": 0.5068473815917969,
+      "median_sec_per_update": 11.599711179733276,
+      "median_sec_per_row": 0.623583127532089,
+      "mean_rows_per_update": 18.833333333333332,
+      "extract_sec_per_row": 0.13639817546915126,
+      "peak_train": {
+        "allocated_gb": 12.81966257095337,
+        "reserved_gb": 13.044921875
+      },
+      "nonfinite_packs": 0,
+      "skipped_updates": 0,
+      "nonfinite_valid_rows": 0,
+      "heldout_accuracy": {
+        "plain": 0.49444444444444446,
+        "centred_chunk": 0.4777777777777778,
+        "half": 0.5574074074074075,
+        "lab": 0.7962962962962963
+      },
+      "oom_events": [],
+      "complete_json": true
+    },
+    "final": {
+      "fit_rows": 5399,
+      "valid_rows": 0,
+      "total_updates": 575,
+      "pack": 8,
+      "train_seconds": 6368.171591758728,
+      "extract_seconds": 0.0,
+      "save_seconds": 1.488656759262085,
+      "median_sec_per_update": 11.245066165924072,
+      "median_sec_per_row": 0.6000439524650574,
+      "mean_rows_per_update": 18.77913043478261,
+      "extract_sec_per_row": null,
+      "peak_train": {
+        "allocated_gb": 12.838185787200928,
+        "reserved_gb": 13.318359375
+      },
+      "nonfinite_packs": 0,
+      "skipped_updates": 0,
+      "nonfinite_valid_rows": 0,
+      "heldout_accuracy": {},
+      "oom_events": [],
+      "complete_json": true
+    }
+  },
+  "workers": {
+    "0": {
+      "status": "COMPLETE",
+      "completed": [
+        "fold0",
+        "fold2"
+      ],
+      "load_seconds": 73.13446593284607,
+      "base_memory_gb": 10.335858821868896,
+      "probe": {
+        "pack": 8,
+        "max_len": 363,
+        "seconds": 8.86124038696289,
+        "finite": true,
+        "peak_allocated_gb": 12.730611801147461,
+        "peak_reserved_gb": 12.951171875
+      },
+      "versions": {
+        "torch": "2.11.0+cu128",
+        "transformers": "5.16.1",
+        "peft": "0.20.0",
+        "accelerate": "1.14.0",
+        "safetensors": "0.8.0"
+      },
+      "gpu": "Tesla T4",
+      "failed": []
+    },
+    "1": {
+      "status": "COMPLETE",
+      "completed": [
+        "final",
+        "fold1"
+      ],
+      "load_seconds": 80.45734071731567,
+      "base_memory_gb": 10.335858821868896,
+      "probe": {
+        "pack": 8,
+        "max_len": 363,
+        "seconds": 7.421276569366455,
+        "finite": true,
+        "peak_allocated_gb": 12.730611801147461,
+        "peak_reserved_gb": 12.951171875
+      },
+      "versions": {
+        "torch": "2.11.0+cu128",
+        "transformers": "5.16.1",
+        "peft": "0.20.0",
+        "accelerate": "1.14.0",
+        "safetensors": "0.8.0"
+      },
+      "gpu": "Tesla T4",
+      "failed": []
+    }
+  },
+  "oof": {
+    "rows": 1620,
+    "folds": [
+      "fold0",
+      "fold1",
+      "fold2"
+    ],
+    "plain": 0.47777777777777775,
+    "centred_chunk": 0.4666666666666667,
+    "half": 0.5240740740740741,
+    "lab_accuracy": 0.7925925925925926
+  },
+  "extrapolation": {
+    "sec_per_row": 0.6115766884987814,
+    "median_sec_per_update": 11.395533621311188,
+    "rows_per_full_update": 18,
+    "extract_sec_per_row": 0.13507678391020975,
+    "full_updates": {
+      "fold0": {
+        "fit": 4859,
+        "valid": 540,
+        "updates": 519,
+        "train_rows": 9718
+      },
+      "fold1": {
+        "fit": 4859,
+        "valid": 540,
+        "updates": 516,
+        "train_rows": 9718
+      },
+      "fold2": {
+        "fit": 4859,
+        "valid": 540,
+        "updates": 516,
+        "train_rows": 9718
+      },
+      "fold3": {
+        "fit": 4859,
+        "valid": 540,
+        "updates": 519,
+        "train_rows": 9718
+      },
+      "fold4": {
+        "fit": 4860,
+        "valid": 539,
+        "updates": 519,
+        "train_rows": 9720
+      },
+      "final": {
+        "fit": 5399,
+        "valid": 0,
+        "updates": 575,
+        "train_rows": 10798
+      }
+    },
+    "worker0_hours": 3.3645168503135965,
+    "worker1_hours": 3.527840903263291,
+    "wall_hours": 3.527840903263291,
+    "gpu_hours": 6.892357753576888
+  }
+}

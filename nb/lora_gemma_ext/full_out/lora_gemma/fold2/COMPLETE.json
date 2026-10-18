@@ -1,0 +1,42 @@
+{
+  "job": "fold2",
+  "train_sha256": "5ec303b89b496ebed1d1537b61f1387d66db492383ad604347fc4135076f09b5",
+  "files": {
+    "adapter/README.md": {
+      "sha256": "9181c5d9f1eb8c14e8af1d6fdb3fffff191f67aaf68bc566d3b83d169481455d",
+      "bytes": 5128
+    },
+    "adapter/adapter_config.json": {
+      "sha256": "91f29fc332ded4f72415ce35ef8c2c160b132a4927440ce978592c57a5c6daae",
+      "bytes": 1260
+    },
+    "adapter/adapter_model.safetensors": {
+      "sha256": "14124d8ff6fc4a6fdbf72c08af19bb53ec8bf68a334981cfa0fc984db5f91989",
+      "bytes": 131179392
+    },
+    "heads.safetensors": {
+      "sha256": "795db6b65021c15bceec14ec62d0e94dc5cf3385d79a039162358dfee6671a2d",
+      "bytes": 5408640
+    },
+    "kept_token_ids.npy": {
+      "sha256": "1aa448726fad1cdad6a92d200bf216ce07b16a38519275cb98c9789c2181307e",
+      "bytes": 205656
+    },
+    "model_meta.json": {
+      "sha256": "182e8e75cc6d7cb12d1cdecb751a7156de48479ff7f02bd836bd850e25057ec6",
+      "bytes": 3496
+    },
+    "readouts.npz": {
+      "sha256": "67022d69e6353f45155a5b23f752d60b2cd92a245be044450960815995248656",
+      "bytes": 4792782
+    },
+    "training_report.json": {
+      "sha256": "7b625c33b1e605c2d55e2fd46c5531b3a45114f7deed68f61997b1824fa4ac95",
+      "bytes": 387912
+    },
+    "val_outputs.npz": {
+      "sha256": "58d40313509f83147e627d8380126b72c19d538c6cc2b252799bd300e7f0e056",
+      "bytes": 32009749
+    }
+  }
+}
