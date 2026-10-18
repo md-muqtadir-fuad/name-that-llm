@@ -13,6 +13,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 VAR = sys.argv[1] if len(sys.argv) > 1 else 'a'
 NQ = int(sys.argv[2]) if len(sys.argv) > 2 else 300
+FLAGS = set(sys.argv[3:])   # single-variable ablations on top of v6a: nogates (Claude + family gates off), noadapt
+                            # (adaptive test-cluster centering off)
 src = (ROOT / 'research/kernels4/ntl-lora-instyle-0-563-please-vote-me/code.py').read_text(encoding='utf-8')
 v5 = (ROOT / 'nb/v5/v5.py').read_text(encoding='utf-8').splitlines()
 gemma = '\n'.join(v5[646:771])   # v5 section 3c2 (gemma_lora_proba + add loop)
@@ -62,6 +64,14 @@ s = sub(s, """    run_loras(TE, TR[:3], [('lora_q25', '**/ntl-train-lora-qwen25-
                             'valid_features.npz')], ('qwen2', 3584, 20), [2, 4, 6, 8, 10, 12, 16, 20])
 """, "    # v6: lora_q25 (private kernel) removed; our Gemma LoRA below takes its weight\n\n\n" + gemma + "\n")
 (ROOT / 'nb/v6').mkdir(exist_ok=True)
+s = sub(s, "\nLORA = dict(enabled=True", f"\nGATES_ON = {'nogates' not in FLAGS}   # v6d: False = Claude gate and family gates skipped "
+        "(OOF E040: with our LoRAs in the blend the gates cost -0.003..-0.004, 0/3 folds)\nLORA = dict(enabled=True")
+s = sub(s, "\nif DC_TE is not None:\n", "\nif DC_TE is not None and GATES_ON:\n")
+s = sub(s, "for _fname, (_scores, _fidx) in FAMILY_GATES.items():", "for _fname, (_scores, _fidx) in (FAMILY_GATES.items() if GATES_ON else []):")
+if 'noadapt' in FLAGS:   # v6e: adaptive prompt-centering on inferred test clusters off (leader: test clustering hurt the LB)
+    s = sub(s, "ADAPT, ADAPT_THRESH, ADAPT_MIN, ADAPT_MAX, ADAPT_C_MULT = True,", "ADAPT, ADAPT_THRESH, ADAPT_MIN, ADAPT_MAX, ADAPT_C_MULT = False,")
+if FLAGS:
+    s = s.replace(head, head + f"#   (3) ablation flags: {' '.join(sorted(FLAGS))}\n", 1)
 (ROOT / f'nb/v6/v6{VAR}.py').write_text(s, encoding='utf-8', newline='\n')
 compile(s, f'v6{VAR}.py', 'exec')
 nb = {'cells': [{'cell_type': 'code', 'execution_count': None, 'metadata': {}, 'outputs': [], 'source': s.splitlines(True)}],

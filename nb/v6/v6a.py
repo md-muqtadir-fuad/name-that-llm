@@ -64,6 +64,7 @@ W['gemma_lora_ext'] = 0.17   # v6: our in-style Gemma LoRA takes its slot and we
 GEMMA = dict(enabled=True, half=True)
 GEMMA_CKPTS = [('gemma_lora_ext', 'ntl-lora-gemma12b-ext-train')]
 SPEECHMAP = dict(enabled=False, n_questions=300)   # v6b: SpeechMap questions (>= 12 labels) added to the extra pool
+GATES_ON = True   # v6d: False = Claude gate and family gates skipped (OOF E040: with our LoRAs in the blend the gates cost -0.003..-0.004, 0/3 folds)
 LORA = dict(enabled=True, layers=[2, 4, 6, 8, 12, 16, 20, 24], max_len=447, bs=8)
 LORAS = [  # (key, checkpoint marker glob, norms file, anchor-features file): all share the Qwen3-8B-Base 24-layer trunk
     ('lora', '**/lora24/final/COMPLETE.json', 'heads.safetensors', 'anchor_features.npz'),   # public lightningv08 run
@@ -1061,7 +1062,7 @@ if BALANCE_ALPHA > 0 and len(P) >= 2:
         P /= P.sum(1, keepdims=True) + 1e-12
     print('balancing changed', int((P.argmax(1) != LOGIT.argmax(1)).sum()), 'of', len(P), flush=True)
 pred = P.argmax(1)
-if DC_TE is not None:
+if DC_TE is not None and GATES_ON:
     _isc = np.isin(pred, CLAUDE_IDX)
     _s = np.log(np.clip(P[:, CLAUDE_IDX], 1e-12, 1)) + CLAUDE_GATE_LAM * DC_TE
     if LC_TE is not None:
@@ -1069,7 +1070,7 @@ if DC_TE is not None:
     _new = CLAUDE_IDX[_s.argmax(1)]
     print('claude gate changed', int((_new[_isc] != pred[_isc]).sum()), 'of', int(_isc.sum()), 'Claude predictions', flush=True)
     pred[_isc] = _new[_isc]
-for _fname, (_scores, _fidx) in FAMILY_GATES.items():   # v15 within-family gates
+for _fname, (_scores, _fidx) in (FAMILY_GATES.items() if GATES_ON else []):   # v15 within-family gates
     _ism = np.isin(pred, _fidx)
     _new = _fidx[(np.log(np.clip(P[:, _fidx], 1e-12, 1)) + FAMILY_GATE_LAM * _scores).argmax(1)]
     print(f'{_fname} gate changed', int((_new[_ism] != pred[_ism]).sum()), 'of', int(_ism.sum()), f'{_fname} predictions', flush=True)
