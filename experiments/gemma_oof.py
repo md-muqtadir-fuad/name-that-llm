@@ -42,6 +42,6 @@ b = bacc(y[ok], S[ok].argmax(1))
 print(f'strong blend {b:.4f}; agreement gemma-vs-strong {np.mean(P[ok].argmax(1) == S[ok].argmax(1)):.3f}')
 for wt in (0.25, 0.5, 0.75, 1.0, 1.5):
     B = S + wt * Lp
-    fd = [bacc(y[fold == k], B[fold == k].argmax(1)) - bacc(y[fold == k], S[fold == k].argmax(1)) for k in range(5)]
+    fd = [bacc(y[fold == k], B[fold == k].argmax(1)) - bacc(y[fold == k], S[fold == k].argmax(1)) for k in np.unique(fold[ok])]
     print(f'strong + {wt:4.2f}*gemma_plain: {bacc(y[ok], B[ok].argmax(1)):.4f} ({bacc(y[ok], B[ok].argmax(1)) - b:+.4f}) '
-          f'folds+ {sum(d > 0 for d in fd)}/5')
+          f'folds+ {sum(d > 0 for d in fd)}/{len(fd)}')
