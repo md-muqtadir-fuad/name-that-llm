@@ -43,10 +43,13 @@ def ntl_gen(llm) -> None:
                 with kbench.chats.new(name=p.prompt_id, orphan=True):   # fresh, isolated chat per prompt
                     text, err = llm.prompt(q, extra_api_params=extra), ''
                 break
-            except Exception as e:  # unsupported param name -> try the next; other errors recorded
-                err = repr(e)[:300]
-                if not any(k in err for k in ('max_completion_tokens', 'max_tokens', 'max_output_tokens', 'Unsupported', 'unexpected', 'not supported')):
+            except Exception as e:  # only a wrong parameter NAME moves on to the next name; keep the first real error
+                msg = repr(e)
+                wrong_name = isinstance(e, TypeError) and 'unexpected keyword' in msg or                     ('400' in msg and ('nsupported parameter' in msg or 'not supported' in msg))
+                if not wrong_name:
+                    err = msg[:300]
                     break
+                err = err or msg[:300]
         rows.append(dict(batch=BATCH, prompt_id=p.prompt_id, llm=name, prompt_text=q, target_lo=lo, target_hi=hi,
                          response=text if isinstance(text, str) else str(text), error=err,
                          seconds=round(time.time() - t0, 2)))

@@ -16,3 +16,4 @@
 | 2026-10-17 | prvsiyan proxy_v1 (gate re-run E027) | without proxy_v1: claude/gemini unchanged, GPT gate +0.0052 -> +0.0011; combined +0.0174 -> +0.0137 | rows help on clean CV; kept in v4 (CV is the judge), caveat logged | resolved |
 | 2026-10-18 | v4 kernel v3 | Kaggle assigned no GPU (gpus 0); ran 12 h on CPU | v4 never scored | v5 asserts NGPU>=1 at start |
 | 2026-10-18 | git commit 3805b91 | nb/lora_gemma_ext/full_out (incl. train_plus_ext.csv = competition train text) committed and pushed to the PRIVATE repo; .gitignore only covered nb/lora_gemma/full_out | data-security rule | untracked in 4th commit after; ignore now covers nb/**/full_out; history purge pending user OK |
+| 2026-10-18 | ntl_gen_task.py param fallback | errors mentioning max_output_tokens (e.g. quota reservation) were treated as wrong-parameter and overwritten by a TypeError | 183 b002 errors mislabeled | fallback only on TypeError unexpected keyword / 400 unsupported param |
