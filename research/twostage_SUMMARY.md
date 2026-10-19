@@ -1,0 +1,13 @@
+# Two-Stage LoRA (Qwen3-8B 24L) Summary (E048)
+- **Architecture**: Qwen3-8B-Base, 24 layers, pooling layers [2, 4, 6, 8, 12, 16, 20, 24], rank 16 LoRA.
+- **Stage 1**: 1 epoch on 11,886 external rows (`mdmuqtadirfuad/ntl-unified-ext`, excluding speechmap/oleg, with kbench b002/b002r/b003) with prompt-masked softmax.
+- **Stage 2**: 2 epochs continuing from stage-1 adapter on fold host train rows at LR/5.
+- **Execution**: Dual T4 Kaggle kernel (`mdmuqtadirfuad/ntl-lora-twostage-train`), folds 0, 1, 2, and final completed with zero OOMs.
+- **Standalone OOF (folds 0-2, 1620 rows)**:
+  - Plain logits: **0.5136** (vs Gemma-ext LoRA 0.4778, **+0.0358**)
+  - Half-window logits: **0.5568** (vs Gemma-ext LoRA 0.5241, **+0.0327**)
+- **Blend with Strong Baseline (base 0.4938, agreement 0.602)**:
+  - strong + 0.50 * plain: **0.5284** (+0.0346, folds+ 3/3)
+  - strong + 0.75 * plain: **0.5290** (+0.0352, folds+ 3/3 vs Gemma's +0.0327)
+  - strong + 1.00 * plain: **0.5321** (**+0.0383**, folds+ 3/3)
+- **Conclusion**: Two-stage prompt-masked LoRA substantially outperforms single-stage Gemma LoRA on both standalone BAcc and ensemble blend lift.

@@ -37,3 +37,5 @@ timestamp_utc,actor,action,target,details
 2026-10-19 06:39,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-unified-ext,unified ext rows minus speechmap/oleg plus kbench b002/b002r/b003
 2026-10-19 06:46,claude-code,kaggle push (run),ntl-lora-twostage-train,"Two-stage LoRA (Qwen3-8B 24L): stage 1 unified ext + kbench (prompt-masked), stage 2 host train (2 ep, LR/5); folds 0-2 + final"
 2026-10-19 06:48,claude-code,git push,origin/experiments/fuad,Two-stage LoRA kernel and dataset push
+2026-10-19 13:35,claude-code,download,nb/lora_twostage/full_out,Two-stage LoRA (Qwen3-8B 24L) kernel outputs without adapter weights (52 files)
+2026-10-19 13:38,claude-code,git push,origin/experiments/fuad,Two-stage LoRA (Qwen3-8B 24L) results (E048)
