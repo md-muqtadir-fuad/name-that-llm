@@ -30,3 +30,4 @@ timestamp_utc,actor,action,target,details
 2026-10-18 22:00,claude-code,kaggle push (run),ntl-backbone-screen-tpu v1 (Tpu1VmV38),"TPU port (torch_xla SPMD, bf16, fixed shapes); local parity vs GPU kernel: features cos 1.000; models: 0.6b smoke, qwen3-8b parity, qwen3-14b, olmo2-13b, gemma4-12b, llama31-8b, mistral-7b"
 2026-10-18 22:17,claude-code,pause (user),local jobs,"stopped: RL search E041 (partial episodes in experiments/rl_featsel/out/episodes.csv), magnify test E046, surprisal cache (no checkpoint, ~1400/2699), backbone eval rerun, 2 Kaggle watchers; Kaggle runs continue in the cloud"
 2026-10-19 05:04,claude-code,scores received,"v6d 0.554, v6e 0.537",E044/E045 logged
+2026-10-19 05:09,claude-code,kaggle push (run),ntl-backbone-screen v2,"failed v1 models on GPU: gemma4-12b (bs1), qwen3-14b + olmo2-13b (8-bit, bitsandbytes via pip, internet on), llama31-8b, mistral-7b (pytorch slug); smoke-tested locally"

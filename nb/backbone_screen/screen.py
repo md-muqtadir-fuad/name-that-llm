@@ -24,15 +24,17 @@ os.makedirs(OUT, exist_ok=True)
 DEPTHS = [0.1, 0.2, 0.3, 0.45, 0.6, 0.8, 1.0]
 MAXLEN, BS = 512, 4
 # (name, config.json glob, load in 8 bit, has a usable LM head)
-CANDS = [('qwen3-8b', '**/qwen-3/transformers/8b-base/*/config.json', False, True),
-         ('gemma4-12b', '**/gemma-4/transformers/gemma-4-12b/*/config.json', False, True),
-         ('llama31-8b', '**/llama-3.1/transformers/8b/*/config.json', False, True),
-         ('qwen3-14b', '**/qwen-3/transformers/14b-base/*/config.json', True, True),
-         ('olmo2-7b', '**/olmo-2/transformers/1124-7b/*/config.json', False, True),
-         ('olmo2-13b', '**/olmo-2/transformers/1124-13b/*/config.json', True, True),
-         ('mistral-7b', '**/mistral/transformers/7b-v0.1-hf/*/config.json', False, True)]
+# v2 (2026-10-19): only the models that failed in v1; internet on to install bitsandbytes for 8-bit 13-14B;
+# per-model batch size (Gemma's 262k vocabulary made the LM-statistics logits OOM at batch 4).
+CANDS = [('gemma4-12b', '**/gemma-4/transformers/gemma-4-12b/*/config.json', False, True, 1),
+         ('qwen3-14b', '**/qwen-3/transformers/14b-base/*/config.json', True, True, 2),
+         ('olmo2-13b', '**/olmo-2/transformers/1124-13b/*/config.json', True, True, 2),
+         ('llama31-8b', '**/llama-3.1/transformers/8b/*/config.json', False, True, 4),
+         ('mistral-7b', '**/mistral/*/7b-v0.1-hf/*/config.json', False, True, 4)]
+if os.path.exists('/kaggle/input'):
+    os.system('pip install -q "bitsandbytes>=0.46.1"')
 if LOCAL:
-    CANDS = [('qwen3-0.6b-smoke', '../../research/ext_data/hf/Qwen3-0.6B-Base/config.json', False, True)]
+    CANDS = [('qwen3-0.6b-smoke', '../../research/ext_data/hf/Qwen3-0.6B-Base/config.json', False, True, 4)]
 hits = glob.glob('/kaggle/input/**/train.csv', recursive=True) if not LOCAL else ['../../data/train.csv']
 tr = pd.read_csv([h for h in hits if 'name-that-llm' in h or LOCAL][0])
 if SMOKE:
@@ -55,14 +57,14 @@ def load(path, eight_bit):
     kw = dict(dtype=torch.float16 if NGPU else torch.float32)
     if NGPU:
         kw['device_map'] = 'auto'
-        kw['max_memory'] = {i: '14GiB' for i in range(NGPU)}
+        kw['max_memory'] = {i: '13GiB' for i in range(NGPU)}
         if eight_bit:
             from transformers import BitsAndBytesConfig
             kw['quantization_config'] = BitsAndBytesConfig(load_in_8bit=True)
     return AutoModelForCausalLM.from_pretrained(path, **kw).eval()
 
 
-for name, pat, eight, has_lm in CANDS:
+for name, pat, eight, has_lm, BS in CANDS:
     path = find(pat)
     if path is None:
         print(f'{name}: not attached, skipped', flush=True)
@@ -142,5 +144,5 @@ for name, pat, eight, has_lm in CANDS:
             torch.cuda.empty_cache()
             for i in range(NGPU):
                 torch.cuda.reset_peak_memory_stats(i)
-json.dump(report, open(f'{OUT}/screen_report.json', 'w'), indent=1)
+json.dump(report, open(f'{OUT}/screen_report_gpu2.json', 'w'), indent=1)
 print('done', flush=True)
