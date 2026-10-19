@@ -1,0 +1,14 @@
+fold 0 done 400s {'svc': 0.3574, 'lgb_chi2': 0.2741, 'et_chi2': 0.25, 'lgb_svd': 0.2759}
+fold 1 done 757s {'svc': 0.363, 'lgb_chi2': 0.287, 'et_chi2': 0.2593, 'lgb_svd': 0.2704}
+fold 2 done 1065s {'svc': 0.4, 'lgb_chi2': 0.2815, 'et_chi2': 0.263, 'lgb_svd': 0.2833}
+fold 3 done 1403s {'svc': 0.4093, 'lgb_chi2': 0.2926, 'et_chi2': 0.2593, 'lgb_svd': 0.2685}
+fold 4 done 1710s {'svc': 0.3928, 'lgb_chi2': 0.315, 'et_chi2': 0.2781, 'lgb_svd': 0.2929}
+        variant standalone  on_strong  delta_vs_strong  member_w folds_pos                notes
+0           svc     0.3845     0.4901          -0.0015      0.25       2/5                  NaN
+1      lgb_chi2       0.29     0.4912          -0.0004      0.10       2/5                  NaN
+2       et_chi2     0.2619     0.4930           0.0015      0.25       3/5                  NaN
+3       lgb_svd     0.2782     0.4878          -0.0037      0.10       0/5                  NaN
+4  svc+lgb_chi2                0.4912           0.0011      0.10            delta vs strong+svc
+5   svc+et_chi2                0.4912           0.0011      0.10            delta vs strong+svc
+6   svc+lgb_svd                0.4882          -0.0018      0.10            delta vs strong+svc 
+base 0.4915  1711s

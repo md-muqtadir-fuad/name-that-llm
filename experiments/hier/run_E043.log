@@ -1,0 +1,25 @@
+                 label   n  share_curly  share_emdash_any  share_emdash_2plus
+        claude-fable-5 149       0.0000            0.8322              0.4027
+       claude-opus-4-6 150       0.0000            0.7533              0.3467
+       claude-opus-4-8 150       0.0000            0.6267              0.2867
+         claude-opus-5 150       0.0000            0.8133              0.4600
+       claude-sonnet-5 150       0.0000            0.7333              0.3533
+gemini-3.1-pro-preview 150       0.0600            0.0000              0.0000
+      gemini-3.6-flash 150       0.1933            0.0000              0.0000
+      gemini-3.7-flash 150       0.3067            0.0067              0.0067
+      gemini-3.8-flash 150       0.2600            0.0000              0.0000
+               glm-5.3 150       0.0000            0.8200              0.5133
+         glm-5.3-flash 150       0.0000            0.7933              0.5133
+               gpt-5.5 150       0.4667            0.1333              0.0733
+          gpt-5.6-luna 150       0.5467            0.3667              0.1133
+           gpt-5.6-sol 150       0.5800            0.2733              0.1067
+         gpt-5.6-terra 150       0.4800            0.2267              0.1400
+           gpt-6-astra 150       0.4867            0.0867              0.0133
+               kimi-k3 150       0.3733            0.5200              0.2600
+           qwen3.8-max 150       0.2933            0.0333              0.0200
+{'base': 'strong', 'penalty': 0.5, 'bacc': 0.4915, 'delta': 0.0, 'folds_pos': '0/5', 'violating_predictions_before': 5, 'rows': 2699}
+{'base': 'strong', 'penalty': 1.0, 'bacc': 0.4915, 'delta': 0.0, 'folds_pos': '0/5', 'violating_predictions_before': 5, 'rows': 2699}
+{'base': 'strong', 'penalty': 2.0, 'bacc': 0.4915, 'delta': 0.0, 'folds_pos': '0/5', 'violating_predictions_before': 5, 'rows': 2699}
+{'base': 'strong+loras', 'penalty': 0.5, 'bacc': 0.5389, 'delta': 0.0, 'folds_pos': '0/3', 'violating_predictions_before': 1, 'rows': 1620}
+{'base': 'strong+loras', 'penalty': 1.0, 'bacc': 0.5389, 'delta': 0.0, 'folds_pos': '0/3', 'violating_predictions_before': 1, 'rows': 1620}
+{'base': 'strong+loras', 'penalty': 2.0, 'bacc': 0.5389, 'delta': 0.0, 'folds_pos': '0/3', 'violating_predictions_before': 1, 'rows': 1620}

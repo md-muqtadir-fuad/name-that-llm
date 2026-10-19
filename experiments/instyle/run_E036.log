@@ -1,0 +1,5 @@
+{'pool@10': 5716, 'pool+kb@10': 6869, 'pool+kb@11': 6869} | pool per label {'claude-opus-4-6': 373, 'claude-opus-4-8': 373, 'claude-opus-5': 373, 'claude-sonnet-5': 373, 'gemini-3.6-flash': 373, 'gemini-3.8-flash': 373, 'gpt-5.5': 373, 'gpt-5.6-luna': 373, 'gpt-5.6-sol': 373, 'gpt-5.6-terra': 373, 'gpt-6-astra': 373, 'claude-fable-5': 330, 'gemini-3.1-pro-preview': 313, 'gemini-3.7-flash': 150, 'glm-5.3': 150, 'glm-5.3-flash': 150, 'kimi-k3': 150, 'qwen3.8-max': 150}
+{'variant': 'pool@10', 'n_ext': 5716, 'standalone': 0.4097, 'fold_standalone': '[0.4037, 0.3907, 0.4019, 0.4167, 0.4356]', 'on_strong': 0.5041, 'delta_vs_strong': 0.0126, 'member_w': 0.25, 'seconds': 635}
+{'variant': 'pool+kb@10', 'n_ext': 6869, 'standalone': 0.4075, 'fold_standalone': '[0.4, 0.3944, 0.3963, 0.4241, 0.4226]', 'on_strong': 0.5027, 'delta_vs_strong': 0.0111, 'member_w': 0.25, 'seconds': 1561}
+{'variant': 'pool+kb@11', 'n_ext': 6869, 'standalone': 0.4075, 'fold_standalone': '[0.4, 0.3944, 0.3963, 0.4241, 0.4226]', 'on_strong': 0.5027, 'delta_vs_strong': 0.0111, 'member_w': 0.25, 'seconds': 2331}
+done 2332 s

@@ -1,0 +1,8 @@
+variant,standalone,on_strong,delta_vs_strong,member_w,folds_pos,notes
+svc,0.3845,0.4901,-0.0015,0.25,2/5,
+lgb_chi2,0.29,0.4912,-0.0004,0.1,2/5,
+et_chi2,0.2619,0.493,0.0015,0.25,3/5,
+lgb_svd,0.2782,0.4878,-0.0037,0.1,0/5,
+svc+lgb_chi2,,0.4912,0.0011,0.1,,delta vs strong+svc
+svc+et_chi2,,0.4912,0.0011,0.1,,delta vs strong+svc
+svc+lgb_svd,,0.4882,-0.0018,0.1,,delta vs strong+svc

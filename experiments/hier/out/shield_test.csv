@@ -1,0 +1,7 @@
+base,penalty,bacc,delta,folds_pos,violating_predictions_before,rows
+strong,0.5,0.4915,0.0,0/5,5,2699
+strong,1.0,0.4915,0.0,0/5,5,2699
+strong,2.0,0.4915,0.0,0/5,5,2699
+strong+loras,0.5,0.5389,0.0,0/3,1,1620
+strong+loras,1.0,0.5389,0.0,0/3,1,1620
+strong+loras,2.0,0.5389,0.0,0/3,1,1620
