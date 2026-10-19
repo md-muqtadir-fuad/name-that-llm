@@ -34,3 +34,6 @@ timestamp_utc,actor,action,target,details
 2026-10-19 05:09,claude-code,resume (user: cntd),"local jobs, sequential",backbone eval -> magnify test E046 -> RL E041; surprisal cache dropped (spectro line closed)
 2026-10-19 05:31,claude-code,remove,nb/backbone_screen_tpu,TPU queue #930; user cancelled and removed TPU from pipeline
 2026-10-19 05:35,claude-code,download,research/kernels5/two-stage,pulled 0.592 notebook (two-stage LoRA)
+2026-10-19 06:39,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-unified-ext,unified ext rows minus speechmap/oleg plus kbench b002/b002r/b003
+2026-10-19 06:46,claude-code,kaggle push (run),ntl-lora-twostage-train,"Two-stage LoRA (Qwen3-8B 24L): stage 1 unified ext + kbench (prompt-masked), stage 2 host train (2 ep, LR/5); folds 0-2 + final"
+2026-10-19 06:48,claude-code,git push,origin/experiments/fuad,Two-stage LoRA kernel and dataset push
