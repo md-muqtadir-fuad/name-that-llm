@@ -38,7 +38,7 @@ folds = list(GroupKFold(5).split(tr, y, tr.prompt_id.values))
 pos = {i: k for k, i in enumerate(tr.id.values)}
 FAM = {f: np.array([i for i, l in enumerate(L) if l.startswith(f)]) for f in ('claude', 'gemini', 'gpt', 'glm')}
 rep = {}
-for _r in sorted(SRC.glob('screen_report*.json')):   # GPU and TPU runs
+for _r in sorted(SRC.glob('screen_report*.json')):   # GPU runs (v1, v2)
     rep.update({k: v for k, v in json.loads(_r.read_text()).items() if v.get('status') == 'ok'})
 zz = np.load(ROOT / 'research/ext_oof/q35heads/oof_predictions.npz', allow_pickle=False)
 names = list(zz['component_names'])
