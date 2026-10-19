@@ -123,3 +123,7 @@ Takeaway: **GroupKFold by prompt_id tracks the LB within about 0.014.** Random-s
 - 750421 HALX (Claude Code writeup, 0.345 -> 0.552): local gains vanished on LB; external data with mismatched format hurt.
 - 749613 / 750379: self-generated API data and test clustering - rules questions, no host answer yet.
 - 750230 beginner journey; ZavodRobotov: improve training pipeline, not ensembling.
+
+## 2026-10-19 public notebooks
+- nishantdahal/two-stage-lora-on-the-public-pool: LB 0.592. Stage 1: LoRA (Qwen3-8B 24L, Qwen3-14B 27L, 8-depth pooling) trained on ~35k public passages ONLY; stage 2: 2 epochs on host train (+9 pts CV). SVC on train + public pool, balanced weights. Same-prompt pair centering. Checkpoints private (dataset source blank).
+- Other new: The Prompt Is Not the Author 0.569; Gaussian Ensemble ELECTRA 0.568; Two-Stage LoRA Centered Stylegram 0.567; Gaussian Prompt Heads + OLMo2 LoRA 0.558.
