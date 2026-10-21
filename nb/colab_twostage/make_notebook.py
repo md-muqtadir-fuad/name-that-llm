@@ -14,7 +14,7 @@ parts; stage 2 fine-tunes on host train for fold0-2 + final. Outputs go to Googl
 (otherwise `/content`, lost on disconnect), then to a private Kaggle dataset.
 
 **Run:** Runtime = GPU (T4 or better). Run all cells. After a disconnect, run all cells again: finished jobs are skipped.
-**Secrets:** Colab secrets `KAGGLE_USERNAME` and `KAGGLE_KEY` (key icon in the left bar), or type them when asked.
+**Secrets:** type your Kaggle username and API key when asked (input boxes at the top of VS Code).
 Never print them.
 '''),
     code('''
@@ -25,12 +25,9 @@ print(subprocess.run(['nvidia-smi', '--query-gpu=name,memory.total', '--format=c
     code('''
 import getpass, json, os
 from pathlib import Path
-try:
-    from google.colab import userdata
-    _u, _k = userdata.get('KAGGLE_USERNAME'), userdata.get('KAGGLE_KEY')
-except Exception:
-    _u = input('Kaggle username: ')
-    _k = getpass.getpass('Kaggle API key: ')
+# plain prompts (Colab secrets block in VS Code); the input boxes appear at the TOP of the VS Code window
+_u = input('Kaggle username: ').strip()
+_k = getpass.getpass('Kaggle API key: ').strip()
 Path('~/.kaggle').expanduser().mkdir(exist_ok=True)
 _p = Path('~/.kaggle/kaggle.json').expanduser()
 _p.write_text(json.dumps({'username': _u, 'key': _k}))
