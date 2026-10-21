@@ -39,3 +39,5 @@ timestamp_utc,actor,action,target,details
 2026-10-19 06:48,claude-code,git push,origin/experiments/fuad,Two-stage LoRA kernel and dataset push
 2026-10-19 13:35,claude-code,download,nb/lora_twostage/full_out,Two-stage LoRA (Qwen3-8B 24L) kernel outputs without adapter weights (52 files)
 2026-10-19 13:38,claude-code,git push,origin/experiments/fuad,Two-stage LoRA (Qwen3-8B 24L) results (E048)
+2026-10-21 18:49,claude-code,kaggle push (test run),ntl-v7 v1,exact fork of public 0.607 (josephadamski91/teach-the-model-10-atlas); blank kernel source restored to lightningv08/ntl-lora24-fivefold-training
+2026-10-21 18:50,claude-code,blocked,ntl-v7 test run,Kaggle weekly GPU quota 30 h reached; v7 = fork of public 0.607 prepared in nb/v7

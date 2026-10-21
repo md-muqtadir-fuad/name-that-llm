@@ -1,0 +1,22 @@
+fold 0 features ready 33s
+fold 1 features ready 72s
+fold 2 features ready 104s
+fold 3 features ready 138s
+fold 4 features ready 170s
+default reward (folds 0-2): 0.3735
+random search best: 0.392 {'char35': 1.0, 'word13': 1.5, 'shape26': 0.5, 'func13': 1.0, 'char12': 0.0, 'lchar35': 0.5, 'punct': 0.0, 'spectro': 0.5, 'C': 0.25}
+RL ep 6: batch mean 0.3653, best 0.3926
+RL ep 12: batch mean 0.3562, best 0.3926
+RL ep 18: batch mean 0.3606, best 0.3926
+RL ep 24: batch mean 0.3801, best 0.3926
+RL ep 30: batch mean 0.3627, best 0.3926
+RL ep 36: batch mean 0.3737, best 0.3926
+RL ep 42: batch mean 0.3736, best 0.3926
+RL ep 48: batch mean 0.3617, best 0.3926
+RL ep 54: batch mean 0.3778, best 0.3926
+RL ep 60: batch mean 0.3621, best 0.3926
+RL best: 0.3926 {'char35': 1.0, 'word13': 1.5, 'shape26': 0.0, 'func13': 1.0, 'char12': 1.0, 'lchar35': 1.5, 'punct': 1.5, 'spectro': 0.5, 'C': 1.0}
+{'method': 'default', 'config': '{"char35": 1.0, "word13": 0.7, "shape26": 0.5, "func13": 0.5, "char12": 0.0, "lchar35": 0.0, "punct": 0.0, "spectro": 0.0, "C": 0.5}', 'search_reward_folds012': 0.3735, 'holdout_standalone_folds34': 0.401, 'holdout_fold_scores': '[0.4093, 0.3928]', 'holdout_on_strong': 0.4909, 'strong_alone': 0.4881, 'member_w': 0.25}
+{'method': 'random_best', 'config': '{"char35": 1.0, "word13": 1.5, "shape26": 0.5, "func13": 1.0, "char12": 0.0, "lchar35": 0.5, "punct": 0.0, "spectro": 0.5, "C": 0.25}', 'search_reward_folds012': 0.392, 'holdout_standalone_folds34': 0.3982, 'holdout_fold_scores': '[0.413, 0.3835]', 'holdout_on_strong': 0.4891, 'strong_alone': 0.4881, 'member_w': 0.5}
+{'method': 'reinforce_best', 'config': '{"char35": 1.0, "word13": 1.5, "shape26": 0.0, "func13": 1.0, "char12": 1.0, "lchar35": 1.5, "punct": 1.5, "spectro": 0.5, "C": 1.0}', 'search_reward_folds012': 0.3926, 'holdout_standalone_folds34': 0.4039, 'holdout_fold_scores': '[0.4074, 0.4004]', 'holdout_on_strong': 0.4956, 'strong_alone': 0.4881, 'member_w': 0.5}
+done 11807 s

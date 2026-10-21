@@ -1,0 +1,12 @@
+fold 0 done
+fold 1 done
+fold 2 done
+fold 3 done
+fold 4 done
+{'group': 'none (default stylegram)', 'magnify': 0, 'standalone': 0.3845, 'delta_standalone_vs_default': 0.0, 'folds_pos': '0/5', 'on_strong': 0.4901, 'member_w': 0.25}
+{'group': 'all_spectro', 'magnify': 1, 'standalone': 0.3852, 'delta_standalone_vs_default': 0.0007, 'folds_pos': '2/5', 'on_strong': 0.4927, 'member_w': 0.25}
+{'group': 'all_spectro', 'magnify': 3, 'standalone': 0.37, 'delta_standalone_vs_default': -0.0144, 'folds_pos': '1/5', 'on_strong': 0.4912, 'member_w': 0.5}
+{'group': 'all_spectro', 'magnify': 10, 'standalone': 0.3634, 'delta_standalone_vs_default': -0.0211, 'folds_pos': '1/5', 'on_strong': 0.4897, 'member_w': 0.25}
+{'group': 'token_only', 'magnify': 1, 'standalone': 0.3723, 'delta_standalone_vs_default': -0.0122, 'folds_pos': '1/5', 'on_strong': 0.493, 'member_w': 0.25}
+{'group': 'token_only', 'magnify': 3, 'standalone': 0.3719, 'delta_standalone_vs_default': -0.0126, 'folds_pos': '1/5', 'on_strong': 0.4926, 'member_w': 0.25}
+{'group': 'token_only', 'magnify': 10, 'standalone': 0.3715, 'delta_standalone_vs_default': -0.013, 'folds_pos': '1/5', 'on_strong': 0.4926, 'member_w': 0.25}
