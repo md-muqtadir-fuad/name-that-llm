@@ -41,3 +41,4 @@ timestamp_utc,actor,action,target,details
 2026-10-19 13:38,claude-code,git push,origin/experiments/fuad,Two-stage LoRA (Qwen3-8B 24L) results (E048)
 2026-10-21 18:49,claude-code,kaggle push (test run),ntl-v7 v1,exact fork of public 0.607 (josephadamski91/teach-the-model-10-atlas); blank kernel source restored to lightningv08/ntl-lora24-fivefold-training
 2026-10-21 18:50,claude-code,blocked,ntl-v7 test run,Kaggle weekly GPU quota 30 h reached; v7 = fork of public 0.607 prepared in nb/v7
+2026-10-21 19:14,claude-code,file delivery,nb/colab_twostage/twostage_colab.ipynb,two-stage OLMo-2-7B LoRA trainer for Colab (built from the Kaggle trainer; dry-run plans OK; Colab CLI needs WSL on Windows)
