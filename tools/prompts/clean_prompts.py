@@ -154,8 +154,10 @@ def main():
             rep.loc[keep[near_old], 'reason'] = 'near-duplicate of existing prompts'
         S = cosine_similarity(X)
         np.fill_diagonal(S, 0)
+        alive = (rep.loc[keep, 'reason'] == '').to_numpy()
         for a in range(len(keep)):
-            if rep.at[keep[a], 'reason'] == '' and (S[a, :a][rep.loc[keep[:a], 'reason'].eq('').to_numpy()] >= 0.85).any():
+            if alive[a] and (S[a, :a][alive[:a]] >= 0.85).any():
+                alive[a] = False
                 rep.at[keep[a], 'reason'] = 'near-duplicate within set'
     out = rep[rep.reason == ''].copy()
     # interleave source files so every daily generation window mixes topics (round-robin over files)

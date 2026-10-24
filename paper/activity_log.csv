@@ -64,3 +64,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 15:21,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-lstm-final,"private; final_lstm.pt + final_lstm.json (CC-BY-SA-4.0, trained on pool_v4 + host)"
 2026-10-24 15:21,claude-code,v9 built,nb/v9,v8 + word-BiLSTM 10% before Sinkhorn; LSTM cell runs in preview too; local test on 400 train rows ok; push waiting for a free GPU session slot
 2026-10-24 19:20,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added history scrapes p1+p2
+2026-10-24 19:25,claude-code,kaggle push,mdmuqtadirfuad/ntl-v9 v1,"test run (pushed by retry loop at 01:23 after GPU slot freed); history prompts added: 860 titles, 764 kept, total 1,292"
