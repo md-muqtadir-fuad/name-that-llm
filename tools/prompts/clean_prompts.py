@@ -188,7 +188,11 @@ def main():
     out['task_type'] = out.prompt.map(lambda t: next((k for k, p in TASKS if re.search(p, t, re.I)),
                                                      'open question' if '?' in t else 'describe/narrate'))
     out['topic'] = out.prompt.str.split().str[:8].str.join(' ')
-    out['prompt_id'] = [f'own{i:05d}' for i in range(len(out))]
+    # permanent IDs from the normalised text: adding sources later never renumbers prompts already generated
+    import hashlib
+    out['prompt_id'] = ['own_' + hashlib.md5(re.sub(r'\W+', ' ', t.lower()).strip().encode()).hexdigest()[:10]
+                        for t in out.prompt]
+    assert out.prompt_id.is_unique
     out[['prompt_id', 'domain', 'task_type', 'topic', 'prompt', 'source']].to_csv(D / 'prompts.csv', index=False)
     rep.assign(reason=rep.reason.replace('', 'kept')).to_csv(D / 'clean_report.csv', index=False)
     print(f'{len(rep)} raw items -> {len(out)} prompts')

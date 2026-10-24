@@ -40,20 +40,50 @@ def sh(args, timeout=None):
     return out
 
 
-def set_task(start, n, batch, only=None):
+OWN_DATASET = 'mdmuqtadirfuad/ntl-own-prompts'   # private; our cleaned real-user prompts (tools/prompts/clean_prompts.py)
+OWN_CSV = ROOT / 'research/ext_data/own_prompts/prompts.csv'
+OWN_DS_DIR = ROOT / 'research/ext_data/own_prompts_ds'
+
+
+def sync_own_dataset(st_own):
+    """Upload prompts.csv as a new private dataset version when it changed since the last run."""
+    import hashlib
+    import shutil
+    import time
+    sha = hashlib.sha256(OWN_CSV.read_bytes()).hexdigest()
+    if st_own.get('ds_sha') == sha:
+        return
+    OWN_DS_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copy(OWN_CSV, OWN_DS_DIR / 'prompts.csv')
+    (OWN_DS_DIR / 'dataset-metadata.json').write_text(json.dumps(
+        {'title': 'ntl-own-prompts', 'id': OWN_DATASET, 'licenses': [{'name': 'unknown'}]}))
+    if st_own.get('ds_sha'):
+        sh([KAGGLE, 'datasets', 'version', '-p', str(OWN_DS_DIR), '-m', f'prompts {sha[:8]}'], timeout=600)
+    else:
+        sh([KAGGLE, 'datasets', 'create', '-p', str(OWN_DS_DIR)], timeout=600)
+    for _ in range(30):
+        if 'ready' in sh([KAGGLE, 'datasets', 'status', OWN_DATASET], timeout=120):
+            break
+        time.sleep(20)
+    st_own['ds_sha'] = sha
+
+
+def set_task(start, n, batch, only=None, ids=None):
     s = TASK.read_text(encoding='utf-8')
     s = re.sub(r'^ONLY = .*$', 'ONLY = ' + json.dumps(only or {}) + '   # set by daily.py', s, flags=re.M)
+    s = re.sub(r'^IDS = .*$', 'IDS = ' + json.dumps(ids or []) + '   # set by daily.py', s, flags=re.M)
     s = re.sub(r'^START, N = .*$', f'START, N = {start}, {n}          # set by daily.py', s, flags=re.M)
     s = re.sub(r"^BATCH = .*$", f"BATCH = '{batch}'", s, flags=re.M)
     TASK.write_text(s, encoding='utf-8', newline='\n')
 
 
-def run_batch(start, n, batch, models, dry, only=None):
-    set_task(start, n, batch, only)
+def run_batch(start, n, batch, models, dry, only=None, ids=None, dataset=DATASET):
+    set_task(start, n, batch, only, ids)
     if dry:
-        print(f'[dry] would run {batch} [{start}, {start + n}) on {models}')
+        print(f'[dry] would run {batch} ' + (f'{len(ids)} ids {ids[:3]}...' if ids else f'[{start}, {start + n})')
+              + f' on {models} from {dataset}')
         return None
-    sh([KAGGLE, 'b', 't', 'push', 'ntl-gen', '-f', str(TASK), '-d', DATASET], timeout=900)
+    sh([KAGGLE, 'b', 't', 'push', 'ntl-gen', '-f', str(TASK), '-d', dataset], timeout=900)
     for _ in range(90):   # the push triggers a default run; wait until the task is runnable
         if 'Status:   Completed' in sh([KAGGLE, 'b', 't', 'status', 'ntl-gen'], timeout=120):
             break
@@ -76,8 +106,9 @@ def run_batch(start, n, batch, models, dry, only=None):
     failed_pairs = {l: sorted(d.loc[(d.llm == l) & ~d.ok, 'prompt_id'].unique().tolist()) for l in stats.index
                     if SLUG_OF.get(l, l) in failed}
     with open(ROOT / 'paper/data_log.csv', 'a', encoding='utf-8', newline='') as f:
+        window = f'own prompts {len(ids)} ids' if ids else f'window {start}-{start + n - 1}'
         f.write(f"{dt.date.today().isoformat()},kb_{batch},ntl-gen daily.py,Kaggle Benchmarks,{len(models)} labels,"
-                f"window {start}-{start + n - 1},{int(stats['sum'].sum())}/{int(stats['size'].sum())} ok,about N words,"
+                f"{window},{int(stats['sum'].sum())}/{int(stats['size'].sum())} ok,about N words,"
                 f"downloaded,research/ext_data/kbench/{batch},models with failures: {' '.join(failed) or 'none'}\n")
     return failed, failed_pairs
 
@@ -86,8 +117,30 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--n', type=int, default=70)
     ap.add_argument('--dry', action='store_true')
+    ap.add_argument('--own', action='store_true', help='use our own prompt set (next unused prompt_ids)')
     a = ap.parse_args()
     st = json.loads(STATE.read_text()) if STATE.exists() else {'next_start': 123, 'batch_no': 3, 'pending_retry': None}
+    if a.own:
+        so = st.setdefault('own', {'used': [], 'batch_no': 1, 'pending_retry': None})
+        if not a.dry:
+            sync_own_dataset(so)
+        pr = so.get('pending_retry')
+        if pr and pr.get('models'):
+            run_batch(0, len(pr['ids']), pr['batch'] + 'r', pr['models'], a.dry, pr.get('only'), pr['ids'], OWN_DATASET)
+            if not a.dry:
+                so['pending_retry'] = None
+        used = set(so['used'])
+        ids = [p for p in pd.read_csv(OWN_CSV).prompt_id if p not in used][:a.n]
+        batch = f"o{so['batch_no']:03d}"
+        res = run_batch(0, len(ids), batch, PRIORITY, a.dry, ids=ids, dataset=OWN_DATASET)
+        failed, pairs = res if res else ([], {})
+        if not a.dry:
+            so['pending_retry'] = {'batch': batch, 'ids': ids, 'models': failed, 'only': pairs}
+            so['used'] += ids
+            so['batch_no'] += 1
+            STATE.write_text(json.dumps(st, indent=2))
+        print('own state:', json.dumps({k: (len(v) if k == 'used' else v) for k, v in so.items() if k != 'pending_retry'}))
+        return
     pr = st.get('pending_retry')
     if pr and pr.get('models'):
         f = run_batch(pr['start'], pr['n'], pr['batch'] + 'r', pr['models'], a.dry, pr.get('only'))
