@@ -47,3 +47,5 @@ timestamp_utc,actor,action,target,details
 2026-10-24 11:40,claude-code,kaggle push,mdmuqtadirfuad/ntl-v8,"v8 = exact private copy of kirilltym 0.639 (teach-more-keep-the-signature), outputs cleared; test run v1"
 2026-10-24 11:48,claude-code,experiment E049,experiments/importance/source_shapley.py,exact Shapley of 7 sources in strong OOF blend; per label/family; CSVs in experiments/importance/out
 2026-10-24 12:04,claude-code,kaggle push,"mdmuqtadirfuad/ntl-cnn-cpu, ntl-lstm-cpu","E050 light CPU nets (byte CNN, word BiLSTM), two-stage on pool_v4; in-kernel smoke pass then full run"
+2026-10-24 12:10,claude-code,kaggle submit,ntl-v8 v1,"ref 57593727; user approved (""submit v8""); copy of public 0.639"
+2026-10-24 12:12,claude-code,kaggle push,mdmuqtadirfuad/ntl-pos-affect-cpu,"E051 POS-with-meaning feature extraction (spaCy + vaderSentiment), CPU, internet on (analysis only)"

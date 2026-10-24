@@ -1,0 +1,17 @@
+{
+  "id": "mdmuqtadirfuad/ntl-pos-affect-cpu",
+  "title": "ntl-pos-affect-cpu",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [
+    "name-that-llm"
+  ],
+  "kernel_sources": [],
+  "model_sources": []
+}
