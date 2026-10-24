@@ -97,6 +97,8 @@ def scraped_titles(path):
     cells = [c.strip() for row in csv.reader(open(path, encoding='utf-8', errors='replace')) for c in row if c.strip()]
     slugs = {m for c in cells for m in re.findall(r'reddit\.com/r/\w+/comments/\w+/([a-z0-9_]+)', c)}
     slugs |= {m.lower().replace('-', '_') for c in cells for m in re.findall(r'quora\.com/(?:[^/\s]+/)?([A-Za-z0-9-]{12,})', c)}
+    slugs |= {m.replace('-', '_') for c in cells
+              for m in re.findall(r'(?:stackexchange|stackoverflow|superuser|serverfault|askubuntu)\.com/questions/\d+/([a-z0-9-]+)', c)}
     by_head = {}
     for s in slugs:
         by_head.setdefault(s[:12], []).append(s)
@@ -119,6 +121,7 @@ def clean(t):
     t = re.sub(r'\[(?:serious|meta|discussion|question)\]', ' ', t, flags=re.I)   # AskReddit tags ([NSFW] stays -> dropped)
     t = re.sub(r'[(\[]\s*(?:\d{1,2}\s*[mfMF]|[mfMF]\s*\d{1,2})\s*[)\]]', ' ', t)   # age/sex tags like (28f), [M25]
     t = re.sub(r'^\s*(?:eli5|cmv|tifu|psa|til)\s*[:\-–]\s*', '', t, flags=re.I)   # subreddit prefixes (ELI5 would steer the style)
+    t = re.sub(r'\[(?:closed|duplicate|on hold|migrated|deleted)\]', ' ', t, flags=re.I)   # Stack Exchange status tags
     t = re.sub(r'\b(\w+ )?of reddit\b,?|\breddit,? ', ' ', t, flags=re.I)   # 'Physicist of reddit, what ...'
     for pat, rep in PII:
         t = re.sub(pat, rep, t)
@@ -138,7 +141,8 @@ def label_domain(t):
 def main():
     items = []
     for f in sorted((D / 'raw').glob('*.csv')):   # table-scraper exports of Reddit / Quora listings
-        src = 'quora' if 'quora.com/' in f.read_text(encoding='utf-8', errors='replace')[:2_000_000] else 'reddit'
+        head = f.read_text(encoding='utf-8', errors='replace')[:2_000_000]
+        src = 'quora' if 'quora.com/' in head else 'stackexchange' if '.com/questions/' in head else 'reddit'
         items += [dict(file=f.name, source=src, raw=t) for t in scraped_titles(f)]
     for f in sorted((D / 'raw').glob('*.txt')):
         text = f.read_text(encoding='utf-8')
