@@ -70,6 +70,29 @@ def reddit_titles(text):
     return out
 
 
+def scraped_titles(path):
+    """Post titles from a table-scraper CSV of a Reddit listing: a cell is a title when its text matches the title slug of
+    a /comments/<id>/<slug>/ URL in the same file (post bodies, usernames, ads and page chrome never match a slug)."""
+    import csv
+    csv.field_size_limit(10 ** 8)
+    cells = [c.strip() for row in csv.reader(open(path, encoding='utf-8', errors='replace')) for c in row if c.strip()]
+    slugs = {m for c in cells for m in re.findall(r'reddit\.com/r/\w+/comments/\w+/([a-z0-9_]+)', c)}
+    by_head = {}
+    for s in slugs:
+        by_head.setdefault(s[:12], []).append(s)
+    out = []
+    for c in cells:
+        if c.startswith('http') or len(c) > 400 or c in out:
+            continue
+        n = re.sub(r'[^a-z0-9]+', '_', re.sub(r"['’]", '', c.lower())).strip('_')
+        for s in by_head.get(n[:12], []):
+            k = min(len(s), len(n), 40)
+            if k >= 12 and n[:k] == s[:k]:
+                out.append(c)
+                break
+    return out
+
+
 def clean(t):
     t = t.replace('❔', '?')
     t = re.sub(r'\b(\w+ )?of reddit\b,?|\breddit,? ', ' ', t, flags=re.I)   # 'Physicist of reddit, what ...'
@@ -90,6 +113,8 @@ def label_domain(t):
 
 def main():
     items = []
+    for f in sorted((D / 'raw').glob('*.csv')):   # table-scraper exports of Reddit listings
+        items += [dict(file=f.name, source='reddit', raw=t) for t in scraped_titles(f)]
     for f in sorted((D / 'raw').glob('*.txt')):
         text = f.read_text(encoding='utf-8')
         if len(re.findall(r'(?m)^r/\w+\s*$', text)) >= 3 and 'votes·' in text:   # a saved Reddit search page

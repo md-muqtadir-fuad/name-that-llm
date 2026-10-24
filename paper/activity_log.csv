@@ -54,3 +54,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 12:32,claude-code,experiment E050 eval (cnn),experiments/cnn_lstm/out,byte-CNN standalone 0.2230; strong blend +0.0077 4/5 folds -> passes rule; lstm pending
 2026-10-24 12:36,claude-code,kaggle benchmarks run,ntl-gen b004,"daily.py --n 40; prompts [163,203) on 10 priority models; user asked (""genratetext using benchmark quota"")"
 2026-10-24 12:53,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,Reddit search page 'physics' (user paste): 126 titles -> 57 prompts; tools/prompts/clean_prompts.py
+2026-10-24 12:58,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added table-scraper CSV r/AskPhysics (139 titles via URL-slug match); total 265 raw -> 161 prompts
