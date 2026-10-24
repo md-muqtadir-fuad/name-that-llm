@@ -73,3 +73,7 @@ timestamp_utc,actor,action,target,details
 2026-10-24 21:07,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added society p2 (Downloads 'reddit (3).csv', new file, different from history p1)"
 2026-10-24 21:12,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added society p3 (Downloads reddit.csv, new file)"
 2026-10-24 21:13,claude-code,prompt cleaning,tools/prompts/clean_prompts.py,"filters: missing-context titles, age/sex tags, hostile group generalisations/abuse, romanised non-English; society p3 added"
+2026-10-24 21:20,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added everyday/society p1 (Downloads 'reddit (1).csv', new file)"
+2026-10-24 21:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added tech: r/datasciencecareers + r/AskProgramming
+2026-10-24 22:08,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added economics p1
+2026-10-24 22:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,economics: ELI5 listing (983 posts) + single-post comment scrape (1 title)

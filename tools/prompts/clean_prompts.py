@@ -118,6 +118,7 @@ def clean(t):
     t = t.replace('❔', '?')
     t = re.sub(r'\[(?:serious|meta|discussion|question)\]', ' ', t, flags=re.I)   # AskReddit tags ([NSFW] stays -> dropped)
     t = re.sub(r'[(\[]\s*(?:\d{1,2}\s*[mfMF]|[mfMF]\s*\d{1,2})\s*[)\]]', ' ', t)   # age/sex tags like (28f), [M25]
+    t = re.sub(r'^\s*(?:eli5|cmv|tifu|psa|til)\s*[:\-–]\s*', '', t, flags=re.I)   # subreddit prefixes (ELI5 would steer the style)
     t = re.sub(r'\b(\w+ )?of reddit\b,?|\breddit,? ', ' ', t, flags=re.I)   # 'Physicist of reddit, what ...'
     for pat, rep in PII:
         t = re.sub(pat, rep, t)
