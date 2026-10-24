@@ -22,7 +22,21 @@ BOILER = re.compile(r'^(edit|update|tl;?dr|eta|ps)\b.*$|\b(upvote|downvote|karma
                     r'link in bio|see more|comments?|share|like and)\b', re.I | re.M)
 EMOJI = re.compile('[\U0001F000-\U0001FAFF☀-➿️‍]+')
 UNSAFE = re.compile(r'\b(suicide|kill (myself|him|her|them)|self[- ]harm|porn|nsfw|nude|drugs? (dealer|buy)|weapon|'
-                    r'bomb|hack(ing)? into|steal|meth|cocaine|terroris\w*|racist joke)\b', re.I)
+                    r'bomb|hack(ing)? into|steal|meth|cocaine|terroris\w*|racist joke|pedophil\w*|paedophil\w*|rapists?)\b'
+                    r'|\bwhy (is it always|are all|do all) (the )?\w+s\b', re.I)
+# titles that only make sense with the missing post body / picture
+CONTEXT = r'(?i)\b(?:this|these|that|those) (?:matter|post|pic|photo|picture|video|image|thing|situation|book|one|guy|' \
+          r'girl|man|woman|place|news)\b|\bthoughts on this\b|\bwhat is this\b|\bis this (?:normal|real|true|legit)\b'
+EN = None   # English function words (sklearn), loaded lazily
+
+
+def english_share(t):
+    global EN
+    if EN is None:
+        from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+        EN = set(ENGLISH_STOP_WORDS) | {'i', 'you', 'is', 'are', 'what', 'how', 'why', 'do', 'does', 'can', 'the', 'a'}
+    w = re.findall(r'[a-z]+', t.lower())
+    return sum(x in EN for x in w) / max(len(w), 1)
 # worked-solution problems (formulas, arithmetic, 'solve/evaluate ...') give equations, not a prose paragraph
 COMPUTE = r'(?i)[=^√∫∑≥≤]|\d\s*[-+*/×÷]\s*\d|\b(?:solve|evaluate|calculate|simplify|integrate|differentiate|' \
           r'find the (?:value|sum|area|number|remainder|roots?|minimum|maximum))\b|\bmath\b.*\bmath\b'
@@ -103,6 +117,7 @@ def scraped_titles(path):
 def clean(t):
     t = t.replace('❔', '?')
     t = re.sub(r'\[(?:serious|meta|discussion|question)\]', ' ', t, flags=re.I)   # AskReddit tags ([NSFW] stays -> dropped)
+    t = re.sub(r'[(\[]\s*(?:\d{1,2}\s*[mfMF]|[mfMF]\s*\d{1,2})\s*[)\]]', ' ', t)   # age/sex tags like (28f), [M25]
     t = re.sub(r'\b(\w+ )?of reddit\b,?|\breddit,? ', ' ', t, flags=re.I)   # 'Physicist of reddit, what ...'
     for pat, rep in PII:
         t = re.sub(pat, rep, t)
@@ -139,10 +154,11 @@ def main():
     rep['prompt'] = rep.raw.map(clean)
     nw = rep.prompt.str.split().str.len()
     ascii_share = rep.prompt.map(lambda s: sum(c.isascii() for c in s) / max(len(s), 1))
-    rep['reason'] = np.select([nw < 4, nw > 120, ascii_share < 0.95, rep.prompt.map(lambda s: bool(UNSAFE.search(s))),
-                               ~rep.prompt.map(is_question), rep.prompt.str.contains(COMPUTE, regex=True)],
+    rep['reason'] = np.select([nw < 4, nw > 120, (ascii_share < 0.95) | ((nw >= 6) & (rep.prompt.map(english_share) < 0.15)),
+                               rep.prompt.map(lambda s: bool(UNSAFE.search(s))), ~rep.prompt.map(is_question),
+                               rep.prompt.str.contains(COMPUTE, regex=True), rep.prompt.str.contains(CONTEXT, regex=True)],
                               ['too short', 'too long', 'not English', 'refusal-prone topic', 'not a question/request',
-                               'computational problem'], '')
+                               'computational problem', 'needs missing context'], '')
     norm = rep.prompt.str.lower().str.replace(r'[^a-z0-9 ]', '', regex=True)
     rep.loc[(rep.reason == '') & norm.duplicated(), 'reason'] = 'exact duplicate'
     keep = rep.index[rep.reason == '']
