@@ -78,3 +78,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 22:08,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added economics p1
 2026-10-24 22:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,economics: ELI5 listing (983 posts) + single-post comment scrape (1 title)
 2026-10-24 22:11,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"economics.csv is Economics StackExchange (5,050 questions, s-link column); added StackExchange support"
+2026-10-24 22:14,claude-code,provenance note,research/own_prompts_sources.md,sources table incl. user note: Economics StackExchange scraped pages 1-51 x 50 questions
