@@ -83,3 +83,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 22:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added cooking: r/AskCulinary (old.csv) + r/AskFoodCooking
 2026-10-24 22:51,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added Physics StackExchange + Computational Science StackExchange
 2026-10-24 23:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added r/WritingPrompts (business.csv): 940 titles, 887 story prompts; total 12,146"
+2026-10-24 23:36,claude-code,result,ntl-v9 submission,public LB 0.637 vs v8 0.639 (-0.002): LSTM at 10% does not help the strong stack; v8 stays best
