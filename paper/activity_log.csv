@@ -45,3 +45,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 11:36,claude-code,leaderboard + public notebook pull,research/leader_update_2026-10-24.md,LB top 0.700; public best 0.639 (kirilltym); pool_v4 84k is the key lever; 10 notebooks pulled to research/kernels_2026-10-24 (ignored)
 2026-10-24 11:36,claude-code,E047 partial read,experiments/backbones/out/summary.csv,"olmo2-7b +0.0048 3/5, qwen3-8b -0.0007; eval crashed on truncated npz; rejected"
 2026-10-24 11:40,claude-code,kaggle push,mdmuqtadirfuad/ntl-v8,"v8 = exact private copy of kirilltym 0.639 (teach-more-keep-the-signature), outputs cleared; test run v1"
+2026-10-24 11:48,claude-code,experiment E049,experiments/importance/source_shapley.py,exact Shapley of 7 sources in strong OOF blend; per label/family; CSVs in experiments/importance/out
