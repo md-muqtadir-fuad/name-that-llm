@@ -55,3 +55,6 @@ timestamp_utc,actor,action,target,details
 2026-10-24 12:36,claude-code,kaggle benchmarks run,ntl-gen b004,"daily.py --n 40; prompts [163,203) on 10 priority models; user asked (""genratetext using benchmark quota"")"
 2026-10-24 12:53,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,Reddit search page 'physics' (user paste): 126 titles -> 57 prompts; tools/prompts/clean_prompts.py
 2026-10-24 12:58,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added table-scraper CSV r/AskPhysics (139 titles via URL-slug match); total 265 raw -> 161 prompts
+2026-10-24 13:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added philosophy scrape p1 (281 titles, 223 kept); total 546 raw -> 384 prompts"
+2026-10-24 13:17,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added philosophy scrape p2
+2026-10-24 13:20,claude-code,"experiment E050 eval (cnn, lstm, both)",experiments/cnn_lstm/out,see experiments.csv E050_*

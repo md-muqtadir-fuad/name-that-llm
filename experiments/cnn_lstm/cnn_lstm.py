@@ -208,7 +208,7 @@ def evaluate():
         pf = pd.DataFrame(per_fold)
         pf['member'] = name
         rows.append(pf)
-        r = pd.DataFrame([x for x in res if x['member'] == name])
+        r = pd.DataFrame([x for x in res if x.get('member') == name])
         fpos = int((pf.groupby('fold').value.mean() - pf.groupby('fold').base.mean()).gt(0).sum())
         alone = bacc(y, m.argmax(1))
         s1 = f'; stage-1-only host bacc {bacc(y, stage1.argmax(1)):.4f}' if stage1 is not None else ''
