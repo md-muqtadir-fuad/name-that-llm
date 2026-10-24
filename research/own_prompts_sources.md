@@ -21,7 +21,11 @@ every raw item with its keep/drop reason: `clean_report.csv`. Only titles are us
 | reddit_economics_eli5_listing_2026-10-25.csv | 2026-10-25 | r/explainlikeimfive economics listing | 901 | 854 |
 | stackexchange_economics_2026-10-25.csv | 2026-10-25 | Economics Stack Exchange: **pages 1-51, 50 questions per page** (user note); titles in the `s-link` column | 5,093 | 2,516 |
 
-Total after cleaning (2026-10-25): **8,190 prompts** from 17 files.
+| reddit_cooking_askculinary_2026-10-25.csv | 2026-10-25 | r/AskCulinary ("old.csv") | 969 (both cooking files) | 471 (both) |
+| reddit_cooking_askfoodcooking_2026-10-25.csv | 2026-10-25 | r/AskFoodCooking | | |
+
+Total after cleaning (2026-10-25): **8,664 prompts** from 19 files. Prompt IDs are permanent (`own_` + md5 of the normalised
+text); Benchmarks batches o001+ take the next unused IDs in the interleaved order (`tools/kbench/daily.py --own`).
 
 Licensing for publication: Stack Exchange content is CC BY-SA 4.0 (publishable with attribution). Reddit and Quora terms limit
 redistribution of their text: publish post URLs/IDs or paraphrases, not the scraped titles.
