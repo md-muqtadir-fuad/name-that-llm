@@ -117,6 +117,12 @@ def scraped_titles(path):
 
 
 def clean(t):
+    # r/WritingPrompts: story tags become a story request; image/music/meta/finished-story posts are dropped
+    m = re.match(r'\s*\[(WP|SP|CW|EU|TT|RF)\]\s*(.+)', t, re.S | re.I)
+    if m:
+        t = 'Write a short story based on this prompt: ' + m.group(2).strip()
+    elif re.match(r'\s*\[(PI|OT|IP|MP|MOD|META)\]', t, re.I):
+        return ''
     t = t.replace('❔', '?')
     t = re.sub(r'\[(?:serious|meta|discussion|question)\]', ' ', t, flags=re.I)   # AskReddit tags ([NSFW] stays -> dropped)
     t = re.sub(r'[(\[]\s*(?:\d{1,2}\s*[mfMF]|[mfMF]\s*\d{1,2})\s*[)\]]', ' ', t)   # age/sex tags like (28f), [M25]

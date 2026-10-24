@@ -82,3 +82,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 22:21,claude-code,kaggle benchmarks run,ntl-gen o001 (own prompts),"daily.py --own --n 40; first 40 interleaved own prompts x 10 models; private dataset mdmuqtadirfuad/ntl-own-prompts; user asked (""send todays benchmark 10 usd available"")"
 2026-10-24 22:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added cooking: r/AskCulinary (old.csv) + r/AskFoodCooking
 2026-10-24 22:51,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added Physics StackExchange + Computational Science StackExchange
+2026-10-24 23:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added r/WritingPrompts (business.csv): 940 titles, 887 story prompts; total 12,146"

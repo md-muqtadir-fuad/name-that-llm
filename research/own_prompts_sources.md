@@ -27,7 +27,9 @@ every raw item with its keep/drop reason: `clean_report.csv`. Only titles are us
 | stackexchange_physics_2026-10-25.csv | 2026-10-25 | Physics Stack Exchange listing | 4,564 | 2,358 |
 | stackexchange_scicomp_2026-10-25.csv | 2026-10-25 | Computational Science Stack Exchange listing | 802 | 239 |
 
-Total after cleaning (2026-10-25): **11,259 prompts** from 21 files. Prompt IDs are permanent (`own_` + md5 of the normalised
+| reddit_creative_writingprompts_2026-10-25.csv | 2026-10-25 | r/WritingPrompts ("business.csv"); [WP]/[SP]/[CW]/[EU]/[TT]/[RF] titles become "Write a short story based on this prompt: ..."; [PI]/[OT]/[IP]/[MP] dropped | 940 | 887 |
+
+Total after cleaning (2026-10-25): **12,146 prompts** from 22 files. Prompt IDs are permanent (`own_` + md5 of the normalised
 text); Benchmarks batches o001+ take the next unused IDs in the interleaved order (`tools/kbench/daily.py --own`).
 
 Licensing for publication: Stack Exchange content is CC BY-SA 4.0 (publishable with attribution). Reddit and Quora terms limit
