@@ -154,7 +154,7 @@ def main():
             rep.loc[keep[near_old], 'reason'] = 'near-duplicate of existing prompts'
         S = cosine_similarity(X)
         np.fill_diagonal(S, 0)
-        alive = (rep.loc[keep, 'reason'] == '').to_numpy()
+        alive = (rep.loc[keep, 'reason'] == '').to_numpy().copy()
         for a in range(len(keep)):
             if alive[a] and (S[a, :a][alive[:a]] >= 0.85).any():
                 alive[a] = False
