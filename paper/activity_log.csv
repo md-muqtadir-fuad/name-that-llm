@@ -52,3 +52,5 @@ timestamp_utc,actor,action,target,details
 2026-10-24 12:17,claude-code,experiment E051 eval,experiments/pos_affect,standalone 0.189 (centred 0.240); blend -0.0021 1/5 -> rejected
 2026-10-24 12:29,claude-code,kaggle push,mdmuqtadirfuad/ntl-oneshot-logprob,"E052 one-shot style-transfer log-probs, Qwen3-4B-Base on 2xT4, 540 eval rows; user approved test"
 2026-10-24 12:32,claude-code,experiment E050 eval (cnn),experiments/cnn_lstm/out,byte-CNN standalone 0.2230; strong blend +0.0077 4/5 folds -> passes rule; lstm pending
+2026-10-24 12:36,claude-code,kaggle benchmarks run,ntl-gen b004,"daily.py --n 40; prompts [163,203) on 10 priority models; user asked (""genratetext using benchmark quota"")"
+2026-10-24 12:53,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,Reddit search page 'physics' (user paste): 126 titles -> 57 prompts; tools/prompts/clean_prompts.py
