@@ -63,3 +63,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 13:51,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added Quora mathquestions (227 titles, 76 kept; formula titles dropped); total 951 raw -> 527 prompts"
 2026-10-24 15:21,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-lstm-final,"private; final_lstm.pt + final_lstm.json (CC-BY-SA-4.0, trained on pool_v4 + host)"
 2026-10-24 15:21,claude-code,v9 built,nb/v9,v8 + word-BiLSTM 10% before Sinkhorn; LSTM cell runs in preview too; local test on 400 train rows ok; push waiting for a free GPU session slot
+2026-10-24 19:20,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added history scrapes p1+p2

@@ -158,6 +158,8 @@ def main():
             if rep.at[keep[a], 'reason'] == '' and (S[a, :a][rep.loc[keep[:a], 'reason'].eq('').to_numpy()] >= 0.85).any():
                 rep.at[keep[a], 'reason'] = 'near-duplicate within set'
     out = rep[rep.reason == ''].copy()
+    # interleave source files so every daily generation window mixes topics (round-robin over files)
+    out = out.assign(_r=out.groupby('file').cumcount()).sort_values(['_r', 'file'], kind='stable').drop(columns='_r')
     out['domain'] = out.prompt.map(label_domain)
     out['task_type'] = out.prompt.map(lambda t: next((k for k, p in TASKS if re.search(p, t, re.I)),
                                                      'open question' if '?' in t else 'describe/narrate'))
