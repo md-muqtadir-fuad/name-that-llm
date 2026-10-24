@@ -5,6 +5,7 @@ host training rows (GroupKFold(5) by prompt_id, default order). Writes OOF log-p
 Usage (repo root): python experiments/cnn_lstm/cnn_lstm.py cnn|lstm   (env SMOKE=1: tiny run to check the code)
                    python experiments/cnn_lstm/cnn_lstm.py eval        (standalone + added to the strong OOF blend; logs E050)"""
 import csv
+import json
 import os
 import re
 import sys
@@ -21,6 +22,7 @@ from torch import nn
 
 ARCH = sys.argv[1]
 SMOKE = os.environ.get('SMOKE') == '1'
+FINAL = os.environ.get('FINAL') == '1'   # stage 2 on all host rows; saves weights + vocabulary for inference
 OUT = Path('experiments/cnn_lstm/out' + ('_smoke' if SMOKE else ''))
 OUT.mkdir(parents=True, exist_ok=True)
 torch.set_num_threads(os.cpu_count())
@@ -167,6 +169,14 @@ def train_arch():
     s1_state = {k: v.clone() for k, v in model.state_dict().items()}
     s1 = predict(model, seqs, host)
     say(f'stage 1 only (pool), host bacc {bacc(y, s1.argmax(1)):.4f}')
+    if FINAL:
+        fit(model, seqs, labels, host, hp['s2_epochs'], hp['s2_lr'], 32, np.ones(18), 99)
+        torch.save(model.state_dict(), OUT / f'final_{ARCH}.pt')
+        with open(OUT / f'final_{ARCH}.json', 'w', encoding='utf-8') as fh:
+            json.dump(dict(arch=ARCH, labels=LABELS.tolist(), hp=hp, vocab=vocab, tok_regex=TOK.pattern,
+                           n_pool=n_pool, seconds=time.time() - T0), fh)
+        say(f'final {ARCH} saved (stage 2 on all {len(host)} host rows)')
+        return
     oof = np.full((len(train), 18), np.nan, dtype=np.float32)
     for k in ([0] if SMOKE else range(5)):
         model.load_state_dict(s1_state)

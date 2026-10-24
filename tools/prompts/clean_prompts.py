@@ -23,7 +23,12 @@ BOILER = re.compile(r'^(edit|update|tl;?dr|eta|ps)\b.*$|\b(upvote|downvote|karma
 EMOJI = re.compile('[\U0001F000-\U0001FAFF☀-➿️‍]+')
 UNSAFE = re.compile(r'\b(suicide|kill (myself|him|her|them)|self[- ]harm|porn|nsfw|nude|drugs? (dealer|buy)|weapon|'
                     r'bomb|hack(ing)? into|steal|meth|cocaine|terroris\w*|racist joke)\b', re.I)
-DOMAINS = {'relationships': 'boyfriend girlfriend husband wife partner dating marriage friend breakup family parents',
+# worked-solution problems (formulas, arithmetic, 'solve/evaluate ...') give equations, not a prose paragraph
+COMPUTE = r'(?i)[=^√∫∑≥≤]|\d\s*[-+*/×÷]\s*\d|\b(?:solve|evaluate|calculate|simplify|integrate|differentiate|' \
+          r'find the (?:value|sum|area|number|remainder|roots?|minimum|maximum))\b|\bmath\b.*\bmath\b'
+DOMAINS = {'mathematics': 'math mathematics equation number prime proof theorem geometry algebra calculus probability '
+                          'infinity statistics',
+           'relationships': 'boyfriend girlfriend husband wife partner dating marriage friend breakup family parents',
            'health': 'health doctor sleep diet pain anxiety depression exercise symptom medicine weight',
            'money': 'money salary budget invest debt loan rent save tax job career interview boss',
            'technology': 'computer phone software app code programming ai internet laptop data',
@@ -77,6 +82,7 @@ def scraped_titles(path):
     csv.field_size_limit(10 ** 8)
     cells = [c.strip() for row in csv.reader(open(path, encoding='utf-8', errors='replace')) for c in row if c.strip()]
     slugs = {m for c in cells for m in re.findall(r'reddit\.com/r/\w+/comments/\w+/([a-z0-9_]+)', c)}
+    slugs |= {m.lower().replace('-', '_') for c in cells for m in re.findall(r'quora\.com/(?:[^/\s]+/)?([A-Za-z0-9-]{12,})', c)}
     by_head = {}
     for s in slugs:
         by_head.setdefault(s[:12], []).append(s)
@@ -88,7 +94,8 @@ def scraped_titles(path):
         for s in by_head.get(n[:12], []):
             k = min(len(s), len(n), 40)
             if k >= 12 and n[:k] == s[:k]:
-                out.append(c)
+                if not re.search(r'(^|_)math(_|$)', s):   # Quora formula titles lose their math in the scrape
+                    out.append(c)
                 break
     return out
 
@@ -113,8 +120,9 @@ def label_domain(t):
 
 def main():
     items = []
-    for f in sorted((D / 'raw').glob('*.csv')):   # table-scraper exports of Reddit listings
-        items += [dict(file=f.name, source='reddit', raw=t) for t in scraped_titles(f)]
+    for f in sorted((D / 'raw').glob('*.csv')):   # table-scraper exports of Reddit / Quora listings
+        src = 'quora' if 'quora.com/' in f.read_text(encoding='utf-8', errors='replace')[:2_000_000] else 'reddit'
+        items += [dict(file=f.name, source=src, raw=t) for t in scraped_titles(f)]
     for f in sorted((D / 'raw').glob('*.txt')):
         text = f.read_text(encoding='utf-8')
         if len(re.findall(r'(?m)^r/\w+\s*$', text)) >= 3 and 'votes·' in text:   # a saved Reddit search page
@@ -131,8 +139,9 @@ def main():
     nw = rep.prompt.str.split().str.len()
     ascii_share = rep.prompt.map(lambda s: sum(c.isascii() for c in s) / max(len(s), 1))
     rep['reason'] = np.select([nw < 4, nw > 120, ascii_share < 0.95, rep.prompt.map(lambda s: bool(UNSAFE.search(s))),
-                               ~rep.prompt.map(is_question)],
-                              ['too short', 'too long', 'not English', 'refusal-prone topic', 'not a question/request'], '')
+                               ~rep.prompt.map(is_question), rep.prompt.str.contains(COMPUTE, regex=True)],
+                              ['too short', 'too long', 'not English', 'refusal-prone topic', 'not a question/request',
+                               'computational problem'], '')
     norm = rep.prompt.str.lower().str.replace(r'[^a-z0-9 ]', '', regex=True)
     rep.loc[(rep.reason == '') & norm.duplicated(), 'reason'] = 'exact duplicate'
     keep = rep.index[rep.reason == '']
