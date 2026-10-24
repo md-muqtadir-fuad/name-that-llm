@@ -24,7 +24,10 @@ every raw item with its keep/drop reason: `clean_report.csv`. Only titles are us
 | reddit_cooking_askculinary_2026-10-25.csv | 2026-10-25 | r/AskCulinary ("old.csv") | 969 (both cooking files) | 471 (both) |
 | reddit_cooking_askfoodcooking_2026-10-25.csv | 2026-10-25 | r/AskFoodCooking | | |
 
-Total after cleaning (2026-10-25): **8,664 prompts** from 19 files. Prompt IDs are permanent (`own_` + md5 of the normalised
+| stackexchange_physics_2026-10-25.csv | 2026-10-25 | Physics Stack Exchange listing | 4,564 | 2,358 |
+| stackexchange_scicomp_2026-10-25.csv | 2026-10-25 | Computational Science Stack Exchange listing | 802 | 239 |
+
+Total after cleaning (2026-10-25): **11,259 prompts** from 21 files. Prompt IDs are permanent (`own_` + md5 of the normalised
 text); Benchmarks batches o001+ take the next unused IDs in the interleaved order (`tools/kbench/daily.py --own`).
 
 Licensing for publication: Stack Exchange content is CC BY-SA 4.0 (publishable with attribution). Reddit and Quora terms limit
