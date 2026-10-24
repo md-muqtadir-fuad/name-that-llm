@@ -102,6 +102,7 @@ def scraped_titles(path):
 
 def clean(t):
     t = t.replace('❔', '?')
+    t = re.sub(r'\[(?:serious|meta|discussion|question)\]', ' ', t, flags=re.I)   # AskReddit tags ([NSFW] stays -> dropped)
     t = re.sub(r'\b(\w+ )?of reddit\b,?|\breddit,? ', ' ', t, flags=re.I)   # 'Physicist of reddit, what ...'
     for pat, rep in PII:
         t = re.sub(pat, rep, t)

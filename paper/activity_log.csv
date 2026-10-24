@@ -68,3 +68,5 @@ timestamp_utc,actor,action,target,details
 2026-10-24 19:28,claude-code,result,ntl-v8 submission,"public LB 0.639 (new best, was 0.556); v9 test run ok (LSTM cell scored preview rows)"
 2026-10-24 19:33,claude-code,kaggle submit,ntl-v9 v1,"ref 57604945; user approved (""submit""); v8 + LSTM 10%; 2 submissions left today"
 2026-10-24 19:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added history scrape p3
+2026-10-24 20:45,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added psychology scrape p1
+2026-10-24 21:03,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added society/business scrape
