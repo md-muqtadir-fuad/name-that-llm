@@ -11,10 +11,10 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 123, 40          # set by daily.py
+START, N = 163, 40          # set by daily.py
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
 ONLY = {}   # set by daily.py
-BATCH = 'b003'
+BATCH = 'b004'
 
 
 def word_range(prompt_id, model=''):
