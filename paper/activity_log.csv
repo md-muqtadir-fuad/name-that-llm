@@ -42,3 +42,5 @@ timestamp_utc,actor,action,target,details
 2026-10-21 18:49,claude-code,kaggle push (test run),ntl-v7 v1,exact fork of public 0.607 (josephadamski91/teach-the-model-10-atlas); blank kernel source restored to lightningv08/ntl-lora24-fivefold-training
 2026-10-21 18:50,claude-code,blocked,ntl-v7 test run,Kaggle weekly GPU quota 30 h reached; v7 = fork of public 0.607 prepared in nb/v7
 2026-10-21 19:14,claude-code,file delivery,nb/colab_twostage/twostage_colab.ipynb,two-stage OLMo-2-7B LoRA trainer for Colab (built from the Kaggle trainer; dry-run plans OK; Colab CLI needs WSL on Windows)
+2026-10-24 11:36,claude-code,leaderboard + public notebook pull,research/leader_update_2026-10-24.md,LB top 0.700; public best 0.639 (kirilltym); pool_v4 84k is the key lever; 10 notebooks pulled to research/kernels_2026-10-24 (ignored)
+2026-10-24 11:36,claude-code,E047 partial read,experiments/backbones/out/summary.csv,"olmo2-7b +0.0048 3/5, qwen3-8b -0.0007; eval crashed on truncated npz; rejected"
