@@ -96,7 +96,9 @@
         "own_4055c36df8",
         "own_0e101b38ac"
       ],
-      "models": [],
+      "models": [
+        "claude-opus-5-default"
+      ],
       "only": {}
     },
     "ds_sha": "65eef0d75b00032101c7cd9e3bb3346a94227c2ab120767bfeff25bee3863788"

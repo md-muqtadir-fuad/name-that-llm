@@ -103,6 +103,8 @@ def run_batch(start, n, batch, models, dry, only=None, ids=None, dataset=DATASET
     stats = d.groupby('llm').ok.agg(['sum', 'size'])
     print(stats.to_string())
     failed = [SLUG_OF.get(l, l) for l, r in stats.iterrows() if r['sum'] < r['size'] and SLUG_OF.get(l, l) in models]
+    returned = {SLUG_OF.get(l, l) for l in stats.index}
+    failed += [m for m in models if m not in returned]   # a model with no output file at all is a failure too
     failed_pairs = {l: sorted(d.loc[(d.llm == l) & ~d.ok, 'prompt_id'].unique().tolist()) for l in stats.index
                     if SLUG_OF.get(l, l) in failed}
     with open(ROOT / 'paper/data_log.csv', 'a', encoding='utf-8', newline='') as f:
