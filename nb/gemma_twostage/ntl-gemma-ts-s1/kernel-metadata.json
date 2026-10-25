@@ -1,6 +1,6 @@
 {
-  "id": "mdmuqtadirfuad/ntl-gemma-twostage",
-  "title": "ntl-gemma-twostage",
+  "id": "mdmuqtadirfuad/ntl-gemma-ts-s1",
+  "title": "ntl-gemma-ts-s1",
   "code_file": "run.py",
   "language": "python",
   "kernel_type": "script",
@@ -9,7 +9,8 @@
   "enable_tpu": false,
   "enable_internet": false,
   "dataset_sources": [
-    "nishantdahal/ntl-handwriting-blend"
+    "nishantdahal/ntl-handwriting-blend",
+    "darragh1walsh/ntl-kaggle-ai-gen-run-1"
   ],
   "kernel_sources": [],
   "competition_sources": [

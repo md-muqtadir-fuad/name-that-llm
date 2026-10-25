@@ -2,7 +2,7 @@ B64 = 'IyBudGwgdHdvLXN0YWdlIExvUkEgdHJhaW5lciBmb3IgR29vZ2xlIENvbGFiIChzaW5nbGUgR
 import base64, glob, json, os, shutil, subprocess, sys
 SRC = base64.b64decode(B64).decode('utf-8')
 from pathlib import Path
-MODE = 'smoke'
+MODE = 'jobs:stage1a,stage1b'
 os.chdir('/kaggle/working')
 Path('twostage_train.py').write_text(SRC)
 cfg = [p for p in glob.glob('/kaggle/input/**/config.json', recursive=True) if '/gemma-4-12b/' in p.lower()]
@@ -13,8 +13,20 @@ work = Path('/kaggle/working/smoke' if MODE == 'smoke' else '/kaggle/working/ts'
 for prev in glob.glob('/kaggle/input/**/lora_twostage', recursive=True):   # resume: earlier sessions' completed jobs
     if MODE != 'smoke' and Path(prev).is_dir() and not (work / 'lora_twostage').exists():
         shutil.copytree(prev, work / 'lora_twostage')
+# stage-1 pool = pool_v4 + darragh1walsh/ntl-kaggle-ai-gen-run-1 (CC0, 1,481 in-style passages, none in pool_v4)
+import pandas as pd
+pv = pd.read_parquet(pool[0])
+dw = [pd.read_csv(f) for f in glob.glob('/kaggle/input/**/ntl-kaggle-ai-gen-*.csv', recursive=True)]
+if dw:
+    dw = pd.concat(dw, ignore_index=True)
+    dw = dw[dw.passed_filter.astype(str).str.lower().isin(['true', '1'])].reset_index(drop=True)
+    dw = pd.DataFrame({'id': 'dw_' + dw.index.astype(str), 'prompt_id': 'dw_' + dw.prompt_id.astype(str),
+                       'text': dw.text.astype(str), 'model': dw.model.astype(str)})
+    pv = pd.concat([pv[['id', 'prompt_id', 'text', 'model']].astype(str), dw], ignore_index=True)
+    print('pool_v4 +', len(dw), 'darragh rows ->', len(pv), flush=True)
+pv.to_parquet('/kaggle/working/pool_merged.parquet', index=False)
 env = dict(os.environ, NTL_BACKBONE='gemma4-12b', NTL_WORK=str(work), NTL_DATA=str(Path(train[0]).parent),
-           NTL_POOL=pool[0], NTL_MODEL_DIR=str(Path(cfg[0]).parent))
+           NTL_POOL='/kaggle/working/pool_merged.parquet', NTL_MODEL_DIR=str(Path(cfg[0]).parent))
 subprocess.run(['nvidia-smi', '--query-gpu=name,memory.total', '--format=csv,noheader'])
 args = [sys.executable, '-u', 'twostage_train.py'] + (['--smoke'] if MODE == 'smoke' else ['--jobs', MODE.split(':', 1)[1]])
 r = subprocess.run(args, env=env)
@@ -22,4 +34,7 @@ for f in glob.glob(str(work / 'lora_twostage' / '**' / 'lora_state.pt'), recursi
     if MODE == 'smoke':
         os.remove(f)
 os.remove('twostage_train.py')
+for f in ('pool_merged.parquet', str(work / 'train_plus_pool.csv')):   # large inputs; rebuilt each session
+    if os.path.exists(f):
+        os.remove(f)
 assert r.returncode == 0, 'trainer failed'

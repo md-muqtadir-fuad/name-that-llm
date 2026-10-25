@@ -85,3 +85,4 @@ timestamp_utc,actor,action,target,details
 2026-10-24 23:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added r/WritingPrompts (business.csv): 940 titles, 887 story prompts; total 12,146"
 2026-10-24 23:36,claude-code,result,ntl-v9 submission,public LB 0.637 vs v8 0.639 (-0.002): LSTM at 10% does not help the strong stack; v8 stays best
 2026-10-25 06:42,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-twostage v1 (smoke),"two-stage Gemma-4-12B LoRA on pool_v4 (75,783) + host; smoke = tiny stage1a + fold0 + full-run time estimate; user approved (proceed)"
+2026-10-25 06:55,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-ts-s1,Gemma-4-12B two-stage session 1: stage1a+stage1b on pool_v4 + darragh run-1 (CC0); smoke estimate 12 GPU-h total
