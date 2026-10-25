@@ -11,10 +11,11 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 123, 40          # set by daily.py
+START, N = 0, 40          # set by daily.py
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
 ONLY = {}   # set by daily.py
-BATCH = 'b003'
+IDS = ["own_3aa16fe76f", "own_0fb68d5a24", "own_96d74f9900", "own_f9b757a5b1", "own_7484b2c7f5", "own_2550f54359", "own_0932fb8486", "own_3028fbda0f", "own_36c87538e6", "own_63462406f5", "own_dc2438ca50", "own_2268f2cf9e", "own_675b495b60", "own_6d6d9bd138", "own_64016cf715", "own_82a1c29140", "own_3c15ba563d", "own_dc9b9254de", "own_3baa072cda", "own_5ef1983ab3", "own_a5afff7871", "own_f4af2c47c5", "own_67f7a5e3ae", "own_e9ea9e0be5", "own_ff53c12b19", "own_b237235ca3", "own_15a09f40e0", "own_90b5ad10ff", "own_93575108a0", "own_816700be93", "own_77f25955cc", "own_68f9fcb1f2", "own_f0fc3a0c87", "own_7dbf471cdc", "own_e542d86477", "own_4bfb9fa347", "own_dd004e381b", "own_f2fbeaeaf1", "own_4055c36df8", "own_0e101b38ac"]   # set by daily.py
+BATCH = 'o001'
 
 
 def word_range(prompt_id, model=''):
@@ -32,7 +33,8 @@ def build_prompt(text, lo, hi):
 @kbench.task(name="ntl-gen", description="Generate short competition-style passages for each prompt")
 def ntl_gen(llm) -> None:
     hits = glob.glob('/kaggle/input/**/prompts.csv', recursive=True)
-    prompts = pd.read_csv(hits[0]).iloc[START:START + N]
+    prompts = pd.read_csv(hits[0])
+    prompts = prompts[prompts.prompt_id.isin(IDS)] if IDS else prompts.iloc[START:START + N]
     name = str(getattr(llm, 'name', None) or getattr(llm, 'model', None) or llm)
     rows = []
     if ONLY:

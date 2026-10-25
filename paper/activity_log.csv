@@ -37,3 +37,53 @@ timestamp_utc,actor,action,target,details
 2026-10-19 06:39,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-unified-ext,unified ext rows minus speechmap/oleg plus kbench b002/b002r/b003
 2026-10-19 06:46,claude-code,kaggle push (run),ntl-lora-twostage-train,"Two-stage LoRA (Qwen3-8B 24L): stage 1 unified ext + kbench (prompt-masked), stage 2 host train (2 ep, LR/5); folds 0-2 + final"
 2026-10-19 06:48,claude-code,git push,origin/experiments/fuad,Two-stage LoRA kernel and dataset push
+2026-10-19 13:35,claude-code,download,nb/lora_twostage/full_out,Two-stage LoRA (Qwen3-8B 24L) kernel outputs without adapter weights (52 files)
+2026-10-19 13:38,claude-code,git push,origin/experiments/fuad,Two-stage LoRA (Qwen3-8B 24L) results (E048)
+2026-10-21 18:49,claude-code,kaggle push (test run),ntl-v7 v1,exact fork of public 0.607 (josephadamski91/teach-the-model-10-atlas); blank kernel source restored to lightningv08/ntl-lora24-fivefold-training
+2026-10-21 18:50,claude-code,blocked,ntl-v7 test run,Kaggle weekly GPU quota 30 h reached; v7 = fork of public 0.607 prepared in nb/v7
+2026-10-21 19:14,claude-code,file delivery,nb/colab_twostage/twostage_colab.ipynb,two-stage OLMo-2-7B LoRA trainer for Colab (built from the Kaggle trainer; dry-run plans OK; Colab CLI needs WSL on Windows)
+2026-10-24 11:36,claude-code,leaderboard + public notebook pull,research/leader_update_2026-10-24.md,LB top 0.700; public best 0.639 (kirilltym); pool_v4 84k is the key lever; 10 notebooks pulled to research/kernels_2026-10-24 (ignored)
+2026-10-24 11:36,claude-code,E047 partial read,experiments/backbones/out/summary.csv,"olmo2-7b +0.0048 3/5, qwen3-8b -0.0007; eval crashed on truncated npz; rejected"
+2026-10-24 11:40,claude-code,kaggle push,mdmuqtadirfuad/ntl-v8,"v8 = exact private copy of kirilltym 0.639 (teach-more-keep-the-signature), outputs cleared; test run v1"
+2026-10-24 11:48,claude-code,experiment E049,experiments/importance/source_shapley.py,exact Shapley of 7 sources in strong OOF blend; per label/family; CSVs in experiments/importance/out
+2026-10-24 12:04,claude-code,kaggle push,"mdmuqtadirfuad/ntl-cnn-cpu, ntl-lstm-cpu","E050 light CPU nets (byte CNN, word BiLSTM), two-stage on pool_v4; in-kernel smoke pass then full run"
+2026-10-24 12:10,claude-code,kaggle submit,ntl-v8 v1,"ref 57593727; user approved (""submit v8""); copy of public 0.639"
+2026-10-24 12:12,claude-code,kaggle push,mdmuqtadirfuad/ntl-pos-affect-cpu,"E051 POS-with-meaning feature extraction (spaCy + vaderSentiment), CPU, internet on (analysis only)"
+2026-10-24 12:17,claude-code,experiment E051 eval,experiments/pos_affect,standalone 0.189 (centred 0.240); blend -0.0021 1/5 -> rejected
+2026-10-24 12:29,claude-code,kaggle push,mdmuqtadirfuad/ntl-oneshot-logprob,"E052 one-shot style-transfer log-probs, Qwen3-4B-Base on 2xT4, 540 eval rows; user approved test"
+2026-10-24 12:32,claude-code,experiment E050 eval (cnn),experiments/cnn_lstm/out,byte-CNN standalone 0.2230; strong blend +0.0077 4/5 folds -> passes rule; lstm pending
+2026-10-24 12:36,claude-code,kaggle benchmarks run,ntl-gen b004,"daily.py --n 40; prompts [163,203) on 10 priority models; user asked (""genratetext using benchmark quota"")"
+2026-10-24 12:53,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,Reddit search page 'physics' (user paste): 126 titles -> 57 prompts; tools/prompts/clean_prompts.py
+2026-10-24 12:58,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added table-scraper CSV r/AskPhysics (139 titles via URL-slug match); total 265 raw -> 161 prompts
+2026-10-24 13:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added philosophy scrape p1 (281 titles, 223 kept); total 546 raw -> 384 prompts"
+2026-10-24 13:17,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added philosophy scrape p2
+2026-10-24 13:20,claude-code,"experiment E050 eval (cnn, lstm, both)",experiments/cnn_lstm/out,see experiments.csv E050_*
+2026-10-24 13:24,claude-code,experiment E052 eval,experiments/oneshot/out,one-shot logprob standalone 0.187; blend +0.0049 4/5 on 540 rows; ~6 GPU-h for full test -> rejected on cost
+2026-10-24 13:51,claude-code,kaggle push,mdmuqtadirfuad/ntl-lstm-final-cpu,"final word-BiLSTM: pool_v4 stage 1 + all 2,699 host rows stage 2; saves weights+vocab for v9; user asked (start training LSTM)"
+2026-10-24 13:51,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added Quora mathquestions (227 titles, 76 kept; formula titles dropped); total 951 raw -> 527 prompts"
+2026-10-24 15:21,claude-code,kaggle dataset create,mdmuqtadirfuad/ntl-lstm-final,"private; final_lstm.pt + final_lstm.json (CC-BY-SA-4.0, trained on pool_v4 + host)"
+2026-10-24 15:21,claude-code,v9 built,nb/v9,v8 + word-BiLSTM 10% before Sinkhorn; LSTM cell runs in preview too; local test on 400 train rows ok; push waiting for a free GPU session slot
+2026-10-24 19:20,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added history scrapes p1+p2
+2026-10-24 19:25,claude-code,kaggle push,mdmuqtadirfuad/ntl-v9 v1,"test run (pushed by retry loop at 01:23 after GPU slot freed); history prompts added: 860 titles, 764 kept, total 1,292"
+2026-10-24 19:28,claude-code,result,ntl-v8 submission,"public LB 0.639 (new best, was 0.556); v9 test run ok (LSTM cell scored preview rows)"
+2026-10-24 19:33,claude-code,kaggle submit,ntl-v9 v1,"ref 57604945; user approved (""submit""); v8 + LSTM 10%; 2 submissions left today"
+2026-10-24 19:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added history scrape p3
+2026-10-24 20:45,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added psychology scrape p1
+2026-10-24 21:03,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added society/business scrape
+2026-10-24 21:07,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added society p2 (Downloads 'reddit (3).csv', new file, different from history p1)"
+2026-10-24 21:12,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added society p3 (Downloads reddit.csv, new file)"
+2026-10-24 21:13,claude-code,prompt cleaning,tools/prompts/clean_prompts.py,"filters: missing-context titles, age/sex tags, hostile group generalisations/abuse, romanised non-English; society p3 added"
+2026-10-24 21:20,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added everyday/society p1 (Downloads 'reddit (1).csv', new file)"
+2026-10-24 21:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added tech: r/datasciencecareers + r/AskProgramming
+2026-10-24 22:08,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added economics p1
+2026-10-24 22:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,economics: ELI5 listing (983 posts) + single-post comment scrape (1 title)
+2026-10-24 22:11,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"economics.csv is Economics StackExchange (5,050 questions, s-link column); added StackExchange support"
+2026-10-24 22:14,claude-code,provenance note,research/own_prompts_sources.md,sources table incl. user note: Economics StackExchange scraped pages 1-51 x 50 questions
+2026-10-24 22:21,claude-code,kaggle benchmarks run,ntl-gen o001 (own prompts),"daily.py --own --n 40; first 40 interleaved own prompts x 10 models; private dataset mdmuqtadirfuad/ntl-own-prompts; user asked (""send todays benchmark 10 usd available"")"
+2026-10-24 22:34,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added cooking: r/AskCulinary (old.csv) + r/AskFoodCooking
+2026-10-24 22:51,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,added Physics StackExchange + Computational Science StackExchange
+2026-10-24 23:09,claude-code,prompt cleaning,research/ext_data/own_prompts/prompts.csv,"added r/WritingPrompts (business.csv): 940 titles, 887 story prompts; total 12,146"
+2026-10-24 23:36,claude-code,result,ntl-v9 submission,public LB 0.637 vs v8 0.639 (-0.002): LSTM at 10% does not help the strong stack; v8 stays best
+2026-10-25 06:42,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-twostage v1 (smoke),"two-stage Gemma-4-12B LoRA on pool_v4 (75,783) + host; smoke = tiny stage1a + fold0 + full-run time estimate; user approved (proceed)"
+2026-10-25 06:55,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-ts-s1,Gemma-4-12B two-stage session 1: stage1a+stage1b on pool_v4 + darragh run-1 (CC0); smoke estimate 12 GPU-h total
+2026-10-25 07:07,claude-code,experiment E053,experiments/robust/sinkhorn_mix.py,"test plan #16: Sinkhorn vs class-mix skew on strong OOF; full +0.004 if even, -0.011 at Dirichlet(3), -0.029 at Dirichlet(1); s=0.5 is the robust middle"

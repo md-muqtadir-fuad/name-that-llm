@@ -1,0 +1,4 @@
+method,config,search_reward_folds012,holdout_standalone_folds34,holdout_fold_scores,holdout_on_strong,strong_alone,member_w
+default,"{""char35"": 1.0, ""word13"": 0.7, ""shape26"": 0.5, ""func13"": 0.5, ""char12"": 0.0, ""lchar35"": 0.0, ""punct"": 0.0, ""spectro"": 0.0, ""C"": 0.5}",0.3735,0.401,"[0.4093, 0.3928]",0.4909,0.4881,0.25
+random_best,"{""char35"": 1.0, ""word13"": 1.5, ""shape26"": 0.5, ""func13"": 1.0, ""char12"": 0.0, ""lchar35"": 0.5, ""punct"": 0.0, ""spectro"": 0.5, ""C"": 0.25}",0.392,0.3982,"[0.413, 0.3835]",0.4891,0.4881,0.5
+reinforce_best,"{""char35"": 1.0, ""word13"": 1.5, ""shape26"": 0.0, ""func13"": 1.0, ""char12"": 1.0, ""lchar35"": 1.5, ""punct"": 1.5, ""spectro"": 0.5, ""C"": 1.0}",0.3926,0.4039,"[0.4074, 0.4004]",0.4956,0.4881,0.5
