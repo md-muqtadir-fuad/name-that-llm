@@ -10,8 +10,9 @@ MODE = sys.argv[1] if len(sys.argv) > 1 else 'smoke'
 KID = sys.argv[2] if len(sys.argv) > 2 else 'ntl-gemma-twostage'        # kernel id (one per session)
 PREV = sys.argv[3] if len(sys.argv) > 3 else ''                          # earlier session's kernel (resume source)
 BACKBONE = sys.argv[4] if len(sys.argv) > 4 else 'gemma4-12b'
-MODEL_SRC = {'gemma4-12b': 'google/gemma-4/Transformers/gemma-4-12b/2',
-             'llama31-8b': 'metaresearch/llama-3.1/Transformers/8b/1'}[BACKBONE]
+MODEL_SRC = {'gemma4-12b': 'google/gemma-4/Transformers/gemma-4-12b/2', 'llama31-8b': None}[BACKBONE]
+# Llama-3.1-8B: Kaggle's copy is gated for this account, so the weights come from our HF-download kernel's output
+WEIGHTS_KERNEL = {'llama31-8b': 'mdmuqtadirfuad/ntl-llama31-8b-weights'}.get(BACKBONE)
 MATCH = {'gemma4-12b': ('/gemma-4-12b/',), 'llama31-8b': ('llama-3.1', '/8b/')}[BACKBONE]   # all must be in the path
 import base64
 SRC = Path('nb/colab_twostage/twostage_train.py').read_text(encoding='utf-8')
@@ -64,8 +65,8 @@ meta = {'id': f'mdmuqtadirfuad/{KID}', 'title': KID, 'code_file': 'run.py',
         'language': 'python', 'kernel_type': 'script', 'is_private': True, 'enable_gpu': True, 'enable_tpu': False,
         'enable_internet': False,
         'dataset_sources': ['nishantdahal/ntl-handwriting-blend', 'darragh1walsh/ntl-kaggle-ai-gen-run-1'],
-        'kernel_sources': [f'mdmuqtadirfuad/{PREV}'] if PREV else [],
-        'competition_sources': ['name-that-llm'], 'model_sources': [MODEL_SRC],
+        'kernel_sources': ([f'mdmuqtadirfuad/{PREV}'] if PREV else []) + ([WEIGHTS_KERNEL] if WEIGHTS_KERNEL else []),
+        'competition_sources': ['name-that-llm'], 'model_sources': [MODEL_SRC] if MODEL_SRC else [],
         'machine_shape': 'NvidiaTeslaT4',
         'docker_image': 'gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f'}
 (d / 'kernel-metadata.json').write_text(json.dumps(meta, indent=2))
