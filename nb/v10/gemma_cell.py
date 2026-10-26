@@ -1,8 +1,12 @@
 # Gemma member (E056): Gemma-4-12B two-stage LoRA (24 layers; stage 1 pool_v4 + darragh run-1, stage 2 all host rows),
-# plain readout. Runs in every mode (also the 3-row preview, so the commit run checks loading + the anchor parity),
-# while the GPUs are still free; frees them afterwards. The final cell mixes it in before balancing.
-import gc as _gc, glob as _glob, json as _json, os as _os, pathlib as _pl
+# plain readout. Runs in every mode (also the 3-row preview, so the commit run checks loading + the anchor parity).
+# It runs in a SEPARATE PROCESS: v10 v1 kept ~12 GB reserved on GPU 0 in the notebook process (closure + caching
+# allocator) and the hidden rerun crashed when the stack's own models loaded. A process exit frees all GPU memory.
+import os as _os, pathlib as _pl, subprocess as _sp, sys as _sys
+_GEMMA_SRC = r'''
+import gc as _gc, glob as _glob, json as _json, os as _os, pathlib as _pl, sys as _sys
 import numpy as _np, pandas as _pd, torch as _torch
+DATA = _sys.argv[1]
 
 
 @_torch.no_grad()
@@ -30,6 +34,7 @@ def _gemma_member():
     _data = _pl.Path(DATA)   # DATA is a Path in v8, a str in the nlm-v27 line
     tr = _pd.read_csv(_data / 'train.csv', dtype=str).set_index('id')
     te = _pd.read_csv(_data / 'test.csv', dtype=str)
+    te['text'] = te.text.fillna('').astype(str)   # the hidden test may contain empty texts
     gtok = AutoTokenizer.from_pretrained(ck / 'tokenizer')
     BOS, EOS, PAD = list(meta['bos']), int(meta['eos']), int(meta['pad'])
     DEPTH, POOL = int(meta['depth']), [int(v) for v in meta['pool_layers']]
@@ -131,3 +136,11 @@ def _gemma_member():
 
 
 _gemma_member()
+'''
+_pl.Path('/kaggle/working/gemma_member.py').write_text(_GEMMA_SRC)
+_sp.run([_sys.executable, '-u', '/kaggle/working/gemma_member.py', str(DATA)], check=True,
+        env=dict(_os.environ, CUDA_VISIBLE_DEVICES='0'))
+_os.remove('/kaggle/working/gemma_member.py')
+_r = _sp.run(['nvidia-smi', '--query-gpu=index,memory.used,memory.total', '--format=csv,noheader'],
+             capture_output=True, text=True)
+print('GEMMA_MEMBER done; GPU memory after the Gemma process:', _r.stdout.strip().replace('\n', ' | '), flush=True)
