@@ -26,3 +26,5 @@ date,batch_id,source,route,labels,prompts,n_rows,format,status,path,notes
 2026-10-19,kb_b003,ntl-gen daily.py,Kaggle Benchmarks,10 labels,window 123-162,400/400 ok,about N words,downloaded,research/ext_data/kbench/b003,models with failures: none
 2026-10-24,kb_b004,ntl-gen daily.py,Kaggle Benchmarks,10 labels,window 163-202,400/400 ok,about N words,downloaded,research/ext_data/kbench/b004,models with failures: none
 2026-10-25,kb_o001,ntl-gen daily.py,Kaggle Benchmarks,10 labels,own prompts 40 ids,360/400 ok (claude-opus-5 returned no file),about N words,downloaded,research/ext_data/kbench/o001,models with failures: claude-opus-5-default (retry queued)
+2026-10-26,kb_o001r,ntl-gen daily.py,Kaggle Benchmarks,1 labels,own prompts 40 ids,80/80 ok,about N words,downloaded,research/ext_data/kbench/o001r,models with failures: none
+2026-10-26,kb_o002,ntl-gen daily.py,Kaggle Benchmarks,10 labels,own prompts 32 ids,320/320 ok,about N words,downloaded,research/ext_data/kbench/o002,models with failures: none
