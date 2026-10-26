@@ -23,9 +23,15 @@ ds abdullah1afify/ntl-generations research/ext_data/abdullah
 ds dophuchung/ntl-proxy-generations research/ext_data/dophuchung
 ds olegzholobov/name-that-llm-response-corpus research/ext_data/oleg \
    external_short_wide.parquet external_all_wide.parquet external_cell_metadata.parquet external_cell_provenance.parquet
+# two-stage LoRA stage-1 pools (public) and newer in-style generations
+ds nishantdahal/ntl-two-stage-lora research/ext_data/twostage pool_v1.parquet
+ds nishantdahal/ntl-handwriting-blend research/ext_data/twostage pool_v4.parquet
+ds darragh1walsh/ntl-kaggle-ai-gen-run-1 research/ext_data/darragh_run1 ntl-kaggle-ai-gen-1.csv ntl-kaggle-ai-gen-2.csv
 # our private datasets (work only after they are shared with your Kaggle account)
 ds mdmuqtadirfuad/ntl-speechmap-paragraphs research/ext_data/speechmap/kaggle_ds || echo "skip: ntl-speechmap-paragraphs not shared with you"
 ds mdmuqtadirfuad/ntl-own-generations research/ext_data/own || echo "skip: ntl-own-generations not shared with you (or not created yet)"
+ds mdmuqtadirfuad/ntl-own-prompts research/ext_data/own_prompts_ds || echo "skip: ntl-own-prompts not shared with you"
+ds mdmuqtadirfuad/ntl-lstm-final research/ext_data/lstm_final_ds || echo "skip: ntl-lstm-final not shared with you"
 
 # SpeechMap raw responses (Git LFS); only the target-model files
 if [ ! -d external_dataset/speechmap-data ]; then
