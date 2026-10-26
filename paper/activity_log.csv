@@ -98,3 +98,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 16:27,claude-code,results,"E055, E056, H4",Gemma two-stage OOF +0.085 (3/3) on strong; E055 no context-dependent token signature (bi/tri ~ uni); H4 rejected
 2026-10-26 16:30,claude-code,kaggle push,mdmuqtadirfuad/ntl-v10 v1,v10 = v8 + Gemma two-stage (E056) plain readout at 0.15 before Sinkhorn; Gemma cell runs in preview too (anchor parity check)
 2026-10-26 16:36,claude-code,result,H1 agent,gemini-3.7/3.8 and glm pair mostly irreducible; other sibling pairs learnable; parquet intermediates kept local
+2026-10-26 16:41,claude-code,result,H2 agent,surface features weak for siblings; no harmful normalisation; sibling errors length-independent

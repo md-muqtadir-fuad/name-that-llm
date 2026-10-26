@@ -1,0 +1,90 @@
+[    13s] features for 78482 passages
+[   254s] 35 features: ['n_words', 'n_chars', 'n_sents', 'sent_mean', 'sent_std', 'sent_max', 'sent_min', 'word_len', 'long_words', 'ttr', 'emdash', 'emdash_spaced', 'endash', 'hyphen_word', 'dash_ascii_spaced', 'apos_curly', 'apos_straight', 'dq_curly', 'dq_straight', 'semicolon', 'colon', 'comma', 'exclam', 'question', 'paren', 'markdown', 'ellipsis', 'slash', 'digits', 'cap_words', 'allcaps', 'nonascii_other', 'inline_enum', 'commas_per_sent', 'ends_period']
+[   596s] gemini-3.6-flash | gemini-3.7-flash: rows 5169 prompts 1675  LR 0.610  HGB 0.595  train-only 0.560  pool->train 0.607  blend s1 0.713  blend+surf 0.720->0.733
+[   644s] gemini-3.6-flash | gemini-3.8-flash: rows 6872 prompts 1863  LR 0.608  HGB 0.593  train-only 0.623  pool->train 0.563  blend s1 0.770  blend+surf 0.777->0.777
+[   759s] gemini-3.7-flash | gemini-3.8-flash: rows 5100 prompts 1606  LR 0.542  HGB 0.533  train-only 0.563  pool->train 0.570  blend s1 0.597  blend+surf 0.593->0.610
+[   797s] glm-5.3 | glm-5.3-flash: rows 11051 prompts 4670  LR 0.561  HGB 0.553  train-only 0.530  pool->train 0.507  blend s1 0.553  blend+surf 0.557->0.547
+[   846s] gpt-5.6-luna | gpt-5.6-sol: rows 11558 prompts 4071  LR 0.590  HGB 0.585  train-only 0.610  pool->train 0.597  blend s1 0.683  blend+surf 0.683->0.683
+[   888s] gpt-5.6-luna | gpt-5.6-terra: rows 12175 prompts 4378  LR 0.641  HGB 0.647  train-only 0.617  pool->train 0.597  blend s1 0.717  blend+surf 0.723->0.723
+[   929s] gpt-5.6-sol | gpt-5.6-terra: rows 11513 prompts 4173  LR 0.613  HGB 0.611  train-only 0.560  pool->train 0.563  blend s1 0.660  blend+surf 0.663->0.657
+[   959s] claude-opus-4-8 | claude-sonnet-5: rows 6974 prompts 3487  LR 0.666  HGB 0.676  train-only 0.647  pool->train 0.647  blend s1 0.717  blend+surf 0.723->0.717
+                                  pair  n_rows  n_prompts  n_pool  n_train  lr_all  hgb_all  lr_train_only  lr_pool_to_train  only_length  drop_length  only_dash_quote_unicode  drop_dash_quote_unicode  only_other_punct  drop_other_punct  only_lexical_shape  drop_lexical_shape  blend_pair_s1  blend_pair_s6  comp_blend_only  comp_blend_plus_surface  comp_blend_plus_allfeats
+0  gemini-3.6-flash | gemini-3.7-flash    5169       1675    4869      300   0.610    0.595          0.560             0.607        0.553        0.602                    0.545                    0.588             0.559             0.607               0.554               0.598          0.713          0.757            0.720                    0.733                     0.697
+1  gemini-3.6-flash | gemini-3.8-flash    6872       1863    6572      300   0.608    0.593          0.623             0.563        0.540        0.603                    0.559                    0.585             0.543             0.593               0.556               0.595          0.770          0.810            0.777                    0.777                     0.750
+2  gemini-3.7-flash | gemini-3.8-flash    5100       1606    4800      300   0.542    0.533          0.563             0.570        0.526        0.528                    0.497                    0.544             0.527             0.533               0.515               0.528          0.597          0.627            0.593                    0.610                     0.580
+3              glm-5.3 | glm-5.3-flash   11051       4670   10751      300   0.561    0.553          0.530             0.507        0.539        0.542                    0.526                    0.557             0.511             0.556               0.535               0.542          0.553          0.580            0.557                    0.547                     0.533
+4           gpt-5.6-luna | gpt-5.6-sol   11558       4071   11258      300   0.590    0.585          0.610             0.597        0.528        0.579                    0.556                    0.563             0.544             0.580               0.536               0.582          0.683          0.747            0.683                    0.683                     0.677
+5         gpt-5.6-luna | gpt-5.6-terra   12175       4378   11875      300   0.641    0.647          0.617             0.597        0.618        0.581                    0.534                    0.633             0.552             0.638               0.553               0.636          0.717          0.760            0.723                    0.723                     0.737
+6          gpt-5.6-sol | gpt-5.6-terra   11513       4173   11213      300   0.613    0.611          0.560             0.563        0.613        0.563                    0.525                    0.614             0.543             0.613               0.534               0.615          0.660          0.723            0.663                    0.657                     0.627
+7    claude-opus-4-8 | claude-sonnet-5    6974       3487    6674      300   0.666    0.676          0.647             0.647        0.611        0.645                    0.616                    0.626             0.588             0.660               0.540               0.664          0.717          0.797            0.723                    0.717                     0.723
+                                    pair          feature    auc  abs_eff  mean_a  mean_b  train_mean_a  train_mean_b
+278    claude-opus-4-8 | claude-sonnet-5  commas_per_sent  0.636    0.136   2.100   2.641         2.387         2.609
+248    claude-opus-4-8 | claude-sonnet-5        sent_mean  0.612    0.112  24.895  28.326        24.399        26.459
+261    claude-opus-4-8 | claude-sonnet-5    apos_straight  0.608    0.108   1.002   1.478         0.904         1.500
+255    claude-opus-4-8 | claude-sonnet-5           emdash  0.606    0.106   0.912   1.258         0.859         1.226
+250    claude-opus-4-8 | claude-sonnet-5         sent_max  0.602    0.102  34.346  38.366        33.653        34.860
+7    gemini-3.6-flash | gemini-3.7-flash         word_len  0.559    0.059   5.561   5.681         5.717         5.942
+8    gemini-3.6-flash | gemini-3.7-flash       long_words  0.552    0.052   0.154   0.167         0.172         0.199
+9    gemini-3.6-flash | gemini-3.7-flash              ttr  0.548    0.048   0.818   0.831         0.828         0.841
+3    gemini-3.6-flash | gemini-3.7-flash        sent_mean  0.545    0.045  21.257  21.951        24.664        23.888
+13   gemini-3.6-flash | gemini-3.7-flash      hyphen_word  0.543    0.043   0.641   0.787         0.138         0.234
+44   gemini-3.6-flash | gemini-3.8-flash              ttr  0.563    0.063   0.815   0.833         0.828         0.860
+42   gemini-3.6-flash | gemini-3.8-flash         word_len  0.544    0.044   5.553   5.643         5.717         5.898
+53   gemini-3.6-flash | gemini-3.8-flash      dq_straight  0.457    0.043   0.243   0.000         0.064         0.006
+50   gemini-3.6-flash | gemini-3.8-flash       apos_curly  0.535    0.035   0.427   0.561         0.208         0.322
+43   gemini-3.6-flash | gemini-3.8-flash       long_words  0.533    0.033   0.153   0.162         0.172         0.190
+73   gemini-3.7-flash | gemini-3.8-flash        sent_mean  0.465    0.035  21.996  21.389        23.888        22.671
+76   gemini-3.7-flash | gemini-3.8-flash         sent_min  0.467    0.033  14.713  14.138        17.500        16.293
+75   gemini-3.7-flash | gemini-3.8-flash         sent_max  0.470    0.030  29.907  29.106        31.320        29.607
+83   gemini-3.7-flash | gemini-3.8-flash      hyphen_word  0.470    0.030   0.791   0.697         0.234         0.173
+78   gemini-3.7-flash | gemini-3.8-flash       long_words  0.481    0.019   0.168   0.164         0.199         0.190
+108              glm-5.3 | glm-5.3-flash        sent_mean  0.456    0.044  25.472  24.366        23.552        23.488
+138              glm-5.3 | glm-5.3-flash  commas_per_sent  0.459    0.041   2.222   2.097         2.180         2.120
+111              glm-5.3 | glm-5.3-flash         sent_min  0.463    0.037  16.339  15.250        14.913        15.100
+113              glm-5.3 | glm-5.3-flash       long_words  0.467    0.033   0.122   0.115         0.131         0.131
+110              glm-5.3 | glm-5.3-flash         sent_max  0.470    0.030  35.157  34.059        32.747        32.047
+150           gpt-5.6-luna | gpt-5.6-sol           emdash  0.448    0.052   0.405   0.258         0.486         0.343
+148           gpt-5.6-luna | gpt-5.6-sol       long_words  0.463    0.037   0.138   0.129         0.150         0.130
+159           gpt-5.6-luna | gpt-5.6-sol        semicolon  0.532    0.032   0.399   0.491         0.449         0.643
+155           gpt-5.6-luna | gpt-5.6-sol       apos_curly  0.475    0.025   0.924   0.820         0.715         0.817
+149           gpt-5.6-luna | gpt-5.6-sol              ttr  0.524    0.024   0.797   0.804         0.825         0.827
+178         gpt-5.6-luna | gpt-5.6-terra        sent_mean  0.624    0.124  20.167  22.087        23.671        26.340
+180         gpt-5.6-luna | gpt-5.6-terra         sent_max  0.600    0.100  28.389  30.954        30.933        34.867
+208         gpt-5.6-luna | gpt-5.6-terra  commas_per_sent  0.573    0.073   1.894   2.098         2.447         2.855
+183         gpt-5.6-luna | gpt-5.6-terra       long_words  0.439    0.061   0.137   0.124         0.150         0.135
+181         gpt-5.6-luna | gpt-5.6-terra         sent_min  0.561    0.061  12.511  13.801        16.587        18.640
+213          gpt-5.6-sol | gpt-5.6-terra        sent_mean  0.627    0.127  20.163  22.132        24.792        26.340
+243          gpt-5.6-sol | gpt-5.6-terra  commas_per_sent  0.594    0.094   1.848   2.105         2.554         2.855
+215          gpt-5.6-sol | gpt-5.6-terra         sent_max  0.593    0.093  28.640  31.003        33.473        34.867
+216          gpt-5.6-sol | gpt-5.6-terra         sent_min  0.576    0.076  12.258  13.831        16.913        18.640
+212          gpt-5.6-sol | gpt-5.6-terra          n_sents  0.449    0.051   5.841   5.284         4.973         4.460
+[   959s] 18-class surface member
+[   963s]   fold 0 done
+[   969s]   fold 1 done
+[   974s]   fold 2 done
+[   980s]   fold 3 done
+[   984s]   fold 4 done
+         scenario     w    bacc  sib_acc
+0              s1  0.00  0.4686   0.3893
+1              s1  0.05  0.4760   0.3993
+2              s1  0.10  0.4763   0.4040
+3              s1  0.20  0.4849   0.4153
+4              s1  0.30  0.4837   0.4167
+5              s1  0.50  0.4782   0.4153
+6              s1  1.00  0.4552   0.4113
+7              s3  0.00  0.5431   0.4573
+8              s3  0.05  0.5479   0.4613
+9              s3  0.10  0.5494   0.4633
+10             s3  0.20  0.5475   0.4640
+11             s3  0.30  0.5494   0.4713
+12             s3  0.50  0.5408   0.4693
+13             s3  1.00  0.5052   0.4493
+14             s6  0.00  0.5627   0.4853
+15             s6  0.05  0.5660   0.4867
+16             s6  0.10  0.5660   0.4887
+17             s6  0.20  0.5679   0.4973
+18             s6  0.30  0.5701   0.4993
+19             s6  0.50  0.5586   0.4880
+20             s6  1.00  0.5230   0.4653
+21  surface_alone  1.00  0.2519   0.2420
+[   984s] done

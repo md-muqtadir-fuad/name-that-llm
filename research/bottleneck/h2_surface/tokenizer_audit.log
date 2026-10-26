@@ -1,0 +1,37 @@
+{
+ "tokenizer": "qwen3_8b",
+ "normalizer": "{\"type\": \"NFC\"}",
+ "len_median": 130,
+ "len_max": 381,
+ "frac_over_447": 0.0,
+ "frac_over_512": 0.0,
+ "roundtrip_exact": 1.0,
+ "roundtrip_ws_insensitive": 1.0,
+ "frac_with_unk": 0.0,
+ "probe_tokens": "He | Ġsaid | ĠâĢľ | wait | âĢĿ | ĠâĢĶ | Ġthen | Ġshe | âĢĻd | Ġgone | âĢ¦ | ĠIt | âĢĻs | Ġ | 5 | âĢĵ | 7 | Ġkm | ; | ĠâĢľ | Fine | ,âĢĿ | Ġshe | 'd | Ġsay | . | ĠCafÃ© | ĠÃī | T | Ãī | Ġx | Â² | ĠâĪĴ | Ġy"
+}
+{
+ "tokenizer": "glm4_9b",
+ "normalizer": "null",
+ "len_median": 130,
+ "len_max": 381,
+ "frac_over_447": 0.0,
+ "frac_over_512": 0.0,
+ "roundtrip_exact": 1.0,
+ "roundtrip_ws_insensitive": 1.0,
+ "frac_with_unk": 0.0,
+ "probe_tokens": "He | Ġsaid | ĠâĢľ | wait | âĢĿ | ĠâĢĶ | Ġthen | Ġshe | âĢĻd | Ġgone | âĢ¦ | ĠIt | âĢĻs | Ġ | 5 | âĢĵ | 7 | Ġkm | ; | ĠâĢľ | Fine | ,âĢĿ | Ġshe | 'd | Ġsay | . | ĠCafÃ© | ĠÃī | T | Ãī | Ġx | Â² | ĠâĪĴ | Ġy"
+}
+{
+ "tokenizer": "bert_uncased(bge-small)",
+ "normalizer": "{\"type\": \"BertNormalizer\", \"clean_text\": true, \"handle_chinese_chars\": true, \"strip_accents\": null, \"lowercase\": true}",
+ "len_median": 132,
+ "len_max": 379,
+ "frac_over_447": 0.0,
+ "frac_over_512": 0.0,
+ "roundtrip_exact": 0.0,
+ "roundtrip_ws_insensitive": 0.0,
+ "frac_with_unk": 0.0,
+ "probe_tokens": "he | said | “ | wait | ” | — | then | she | ’ | d | gone | … | it | ’ | s | 5 | – | 7 | km | ; | “ | fine | , | ” | she | ' | d | say | . | cafe | et | ##e | x | ##² | − | y"
+}
+cnn_lstm: frac >1024 bytes 0.252 (max 1904), frac >256 tokens 0.063 (max 326)
