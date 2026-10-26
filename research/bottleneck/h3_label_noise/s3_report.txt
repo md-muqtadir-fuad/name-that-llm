@@ -1,0 +1,110 @@
+TRAIN: 153 pairs, 126 cross-family. Cross-family mean: jacc_w1=0.1835, jacc_w3=0.0113, cos_c5=0.1701, excl_3g=0.5107, excl_4g=0.2579, abs_loglen=0.5937
+Within-family mean: jacc_w1=0.2188, jacc_w3=0.0202, cos_c5=0.2134, excl_3g=1.3990, excl_4g=0.8556, abs_loglen=0.5914
+Focus pairs (rank among 126 cross-family pairs, 1 = most similar):
+  claude-fable-5 ~ glm-5.3: jw1=0.2299 jw3=0.0222 cos5=0.2180 ex3=1.329 ex4=0.832 |dloglen|=0.549 | cross-rank cos5=3.0 ex4=1.0 jw3=2.0 z(cos5)=+2.39
+  claude-fable-5 ~ glm-5.3-flash: jw1=0.2358 jw3=0.0230 cos5=0.2263 ex3=1.262 ex4=0.792 |dloglen|=0.586 | cross-rank cos5=1.0 ex4=2.0 jw3=1.0 z(cos5)=+2.80
+  claude-opus-5 ~ glm-5.3: jw1=0.2000 jw3=0.0154 cos5=0.1778 ex3=1.053 ex4=0.587 |dloglen|=0.633 | cross-rank cos5=43.0 ex4=5.0 jw3=19.0 z(cos5)=+0.38
+  claude-opus-5 ~ glm-5.3-flash: jw1=0.1958 jw3=0.0134 cos5=0.1754 ex3=0.913 ex4=0.507 |dloglen|=0.621 | cross-rank cos5=50.0 ex4=12.0 jw3=31.0 z(cos5)=+0.26
+  claude-sonnet-5 ~ glm-5.3: jw1=0.2043 jw3=0.0158 cos5=0.1973 ex3=0.860 ex4=0.453 |dloglen|=0.602 | cross-rank cos5=13.0 ex4=15.0 jw3=16.0 z(cos5)=+1.35
+  claude-opus-4-8 ~ glm-5.3: jw1=0.2116 jw3=0.0181 cos5=0.2061 ex3=1.013 ex4=0.540 |dloglen|=0.639 | cross-rank cos5=6.0 ex4=8.0 jw3=8.0 z(cos5)=+1.79
+  claude-opus-4-6 ~ glm-5.3: jw1=0.2081 jw3=0.0171 cos5=0.1973 ex3=0.927 ex4=0.587 |dloglen|=0.537 | cross-rank cos5=12.0 ex4=5.0 jw3=11.0 z(cos5)=+1.35
+  claude-fable-5 ~ claude-opus-5: jw1=0.2121 jw3=0.0189 cos5=0.1948 ex3=1.537 ex4=1.047 |dloglen|=0.614 | cross-rank cos5=nan ex4=nan jw3=nan z(cos5)=+1.23
+  glm-5.3 ~ glm-5.3-flash: jw1=0.2119 jw3=0.0185 cos5=0.2049 ex3=1.267 ex4=0.707 |dloglen|=0.620 | cross-rank cos5=nan ex4=nan jw3=nan z(cos5)=+1.73
+  claude-fable-5 ~ kimi-k3: jw1=0.2064 jw3=0.0170 cos5=0.1882 ex3=1.007 ex4=0.577 |dloglen|=0.553 | cross-rank cos5=20.0 ex4=7.0 jw3=12.0 z(cos5)=+0.90
+  claude-fable-5 ~ gpt-5.5: jw1=0.2113 jw3=0.0157 cos5=0.1886 ex3=0.638 ex4=0.315 |dloglen|=0.555 | cross-rank cos5=19.0 ex4=32.0 jw3=17.0 z(cos5)=+0.92
+Top 12 cross-family pairs by cos_c5:
+  claude-fable-5 ~ glm-5.3-flash: cos5=0.2263 ex4=0.792 jw3=0.0230
+  claude-opus-4-8 ~ glm-5.3-flash: cos5=0.2196 ex4=0.773 jw3=0.0200
+  claude-fable-5 ~ glm-5.3: cos5=0.2180 ex4=0.832 jw3=0.0222
+  gpt-5.6-luna ~ qwen3.8-max: cos5=0.2085 ex4=0.453 jw3=0.0179
+  claude-opus-4-6 ~ glm-5.3-flash: cos5=0.2078 ex4=0.680 jw3=0.0188
+  claude-opus-4-8 ~ glm-5.3: cos5=0.2061 ex4=0.540 jw3=0.0181
+  gpt-5.6-sol ~ qwen3.8-max: cos5=0.2041 ex4=0.533 jw3=0.0191
+  gpt-5.6-terra ~ qwen3.8-max: cos5=0.2011 ex4=0.520 jw3=0.0178
+  claude-fable-5 ~ qwen3.8-max: cos5=0.1994 ex4=0.295 jw3=0.0166
+  gpt-5.5 ~ qwen3.8-max: cos5=0.1983 ex4=0.507 jw3=0.0187
+  claude-sonnet-5 ~ glm-5.3-flash: cos5=0.1980 ex4=0.460 jw3=0.0149
+  claude-opus-4-6 ~ glm-5.3: cos5=0.1973 ex4=0.587 jw3=0.0171
+Top 12 cross-family pairs by excl_4g (4-grams shared by exactly this pair on the same prompt):
+  claude-fable-5 ~ glm-5.3: ex4=0.832 ex3=1.329 cos5=0.2180
+  claude-fable-5 ~ glm-5.3-flash: ex4=0.792 ex3=1.262 cos5=0.2263
+  claude-opus-4-8 ~ glm-5.3-flash: ex4=0.773 ex3=1.293 cos5=0.2196
+  claude-opus-4-6 ~ glm-5.3-flash: ex4=0.680 ex3=1.007 cos5=0.2078
+  claude-opus-4-6 ~ glm-5.3: ex4=0.587 ex3=0.927 cos5=0.1973
+  claude-opus-5 ~ glm-5.3: ex4=0.587 ex3=1.053 cos5=0.1778
+  claude-fable-5 ~ kimi-k3: ex4=0.577 ex3=1.007 cos5=0.1882
+  claude-opus-4-8 ~ glm-5.3: ex4=0.540 ex3=1.013 cos5=0.2061
+  gpt-5.5 ~ kimi-k3: ex4=0.540 ex3=0.880 cos5=0.1797
+  gpt-5.6-sol ~ qwen3.8-max: ex4=0.533 ex3=0.813 cos5=0.2041
+  gpt-5.6-terra ~ qwen3.8-max: ex4=0.520 ex3=0.980 cos5=0.2011
+  claude-opus-5 ~ glm-5.3-flash: ex4=0.507 ex3=0.913 cos5=0.1754
+Mean words: claude-fable-5=112.5, claude-opus-5=123.4, glm-5.3=110.3, glm-5.3-flash=119.2 (all=114.7)
+Top shared distinctive n-grams fable & glm-5.3 (rate_A, rate_B, rest mean, rest max):
+  "— no": 0.027 0.027 vs 0.004 (max 0.020)
+  "at all": 0.054 0.053 vs 0.013 (max 0.053)
+  "stranger": 0.054 0.053 vs 0.015 (max 0.033)
+  "mid": 0.027 0.027 vs 0.006 (max 0.040)
+  "— yet": 0.040 0.047 vs 0.011 (max 0.033)
+  "—": 0.832 0.820 vs 0.335 (max 0.813)
+  "end": 0.040 0.047 vs 0.013 (max 0.033)
+  "— a": 0.121 0.133 vs 0.047 (max 0.140)
+  "all of": 0.027 0.027 vs 0.008 (max 0.053)
+  """: 0.087 0.093 vs 0.034 (max 0.120)
+  "on earth": 0.034 0.033 vs 0.011 (max 0.033)
+  "— and": 0.067 0.107 vs 0.026 (max 0.133)
+  "nowhere": 0.027 0.033 vs 0.009 (max 0.033)
+  "when it": 0.027 0.033 vs 0.009 (max 0.027)
+  "— the": 0.087 0.093 vs 0.039 (max 0.113)
+  "moment": 0.074 0.080 vs 0.033 (max 0.060)
+  "nothing": 0.174 0.153 vs 0.074 (max 0.187)
+  "everything": 0.087 0.067 vs 0.030 (max 0.060)
+  "since": 0.060 0.073 vs 0.027 (max 0.080)
+  "notice": 0.027 0.027 vs 0.010 (max 0.040)
+  "that never": 0.027 0.033 vs 0.011 (max 0.033)
+  "the moment": 0.040 0.027 vs 0.011 (max 0.027)
+  "billion years": 0.040 0.053 vs 0.019 (max 0.047)
+  "million": 0.040 0.040 vs 0.019 (max 0.073)
+  "her": 0.054 0.067 vs 0.027 (max 0.053)
+Jointly over-represented 1-3grams (both >=2x rest mean): cross-family median=0, max=11; top cross pairs:
+  claude-opus-5 ~ glm-5.3: 11
+  claude-opus-5 ~ glm-5.3-flash: 9
+  claude-fable-5 ~ glm-5.3: 8
+  claude-fable-5 ~ glm-5.3-flash: 6
+  claude-sonnet-5 ~ glm-5.3: 5
+  gpt-5.6-luna ~ qwen3.8-max: 4
+  claude-opus-4-8 ~ glm-5.3: 4
+  gpt-6-astra ~ kimi-k3: 4
+  gpt-5.5 ~ qwen3.8-max: 3
+  claude-sonnet-5 ~ gemini-3.7-flash: 3
+  focus claude-fable-5 ~ glm-5.3: 8 (cross rank 3.0)
+  focus claude-fable-5 ~ glm-5.3-flash: 6 (cross rank 4.0)
+  focus claude-opus-5 ~ glm-5.3: 11 (cross rank 1.0)
+  focus claude-opus-5 ~ glm-5.3-flash: 9 (cross rank 2.0)
+POOL drjcfmd: prompts=400 rows=6643
+  claude-fable-5 ~ glm-5.3: cos5=0.2501 rank_cross=3.0 z=+1.94 ex4=0.907 rank_ex4=5.0
+  claude-fable-5 ~ glm-5.3-flash: cos5=0.2527 rank_cross=2.0 z=+2.05 ex4=0.896 rank_ex4=6.0
+  claude-opus-5 ~ glm-5.3: cos5=0.1992 rank_cross=73.0 z=-0.25 ex4=0.629 rank_ex4=19.0
+  claude-opus-5 ~ glm-5.3-flash: cos5=0.2047 rank_cross=70.0 z=-0.02 ex4=0.533 rank_ex4=23.0
+  claude-sonnet-5 ~ glm-5.3: cos5=0.2346 rank_cross=14.0 z=+1.27 ex4=0.789 rank_ex4=9.0
+  claude-fable-5 ~ claude-opus-5: cos5=0.2222 rank_cross=nan z=+0.74 ex4=0.868 rank_ex4=nan
+POOL lxd: prompts=306 rows=4075
+  claude-fable-5 ~ glm-5.3: cos5=0.2611 rank_cross=3.0 z=+1.46 ex4=1.214 rank_ex4=4.0
+  claude-fable-5 ~ glm-5.3-flash: cos5=0.2604 rank_cross=4.0 z=+1.43 ex4=1.254 rank_ex4=2.0
+  claude-opus-5 ~ glm-5.3: cos5=0.2234 rank_cross=34.0 z=-0.09 ex4=0.916 rank_ex4=11.0
+  claude-opus-5 ~ glm-5.3-flash: cos5=0.2222 rank_cross=35.0 z=-0.14 ex4=0.964 rank_ex4=8.0
+  claude-sonnet-5 ~ glm-5.3: cos5=0.2283 rank_cross=28.0 z=+0.11 ex4=0.549 rank_ex4=28.0
+  claude-fable-5 ~ claude-opus-5: cos5=0.2332 rank_cross=nan z=+0.31 ex4=1.238 rank_ex4=nan
+POOL prvsiyan: prompts=227 rows=3801
+  claude-fable-5 ~ glm-5.3: cos5=0.2325 rank_cross=2.0 z=+2.23 ex4=1.009 rank_ex4=3.0
+  claude-fable-5 ~ glm-5.3-flash: cos5=0.2284 rank_cross=6.0 z=+2.00 ex4=0.850 rank_ex4=4.0
+  claude-opus-5 ~ glm-5.3: cos5=0.2039 rank_cross=34.0 z=+0.62 ex4=0.632 rank_ex4=15.0
+  claude-opus-5 ~ glm-5.3-flash: cos5=0.2037 rank_cross=36.0 z=+0.61 ex4=0.749 rank_ex4=7.0
+  claude-sonnet-5 ~ glm-5.3: cos5=0.2012 rank_cross=43.0 z=+0.46 ex4=0.632 rank_ex4=14.0
+  claude-fable-5 ~ claude-opus-5: cos5=0.2201 rank_cross=nan z=+1.53 ex4=1.010 rank_ex4=nan
+POOL arxitekton: prompts=400 rows=5858
+  claude-fable-5 ~ glm-5.3: cos5=0.2815 rank_cross=2.0 z=+2.15 ex4=1.215 rank_ex4=2.0
+  claude-fable-5 ~ glm-5.3-flash: cos5=0.2818 rank_cross=1.0 z=+2.16 ex4=1.399 rank_ex4=1.0
+  claude-opus-5 ~ glm-5.3: cos5=0.2202 rank_cross=72.0 z=-0.61 ex4=0.607 rank_ex4=16.0
+  claude-opus-5 ~ glm-5.3-flash: cos5=0.2189 rank_cross=74.0 z=-0.67 ex4=0.556 rank_ex4=25.0
+  claude-sonnet-5 ~ glm-5.3: cos5=0.2522 rank_cross=16.0 z=+0.83 ex4=0.722 rank_ex4=9.0
+  claude-fable-5 ~ claude-opus-5: cos5=0.2453 rank_cross=nan z=+0.52 ex4=1.023 rank_ex4=nan

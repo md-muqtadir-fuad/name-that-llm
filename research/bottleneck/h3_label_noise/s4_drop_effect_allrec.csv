@@ -1,0 +1,3 @@
+variant,n_train_rows,host_BA,rec_claude-fable-5,rec_claude-opus-4-6,rec_claude-opus-4-8,rec_claude-opus-5,rec_claude-sonnet-5,rec_gemini-3.1-pro-preview,rec_gemini-3.6-flash,rec_gemini-3.7-flash,rec_gemini-3.8-flash,rec_glm-5.3,rec_glm-5.3-flash,rec_gpt-5.5,rec_gpt-5.6-luna,rec_gpt-5.6-sol,rec_gpt-5.6-terra,rec_gpt-6-astra,rec_kimi-k3,rec_qwen3.8-max,fable_to_glm53
+all,21606,0.3926,0.0872,0.5333,0.3333,0.5600,0.4933,0.6733,0.5467,0.0867,0.8133,0.1667,0.1333,0.4600,0.3667,0.3000,0.3200,0.6133,0.1733,0.4067,0.1275
+drop_kimi_offproto,21144,0.3949,0.1007,0.5200,0.3333,0.5800,0.4800,0.6800,0.5400,0.0867,0.8133,0.1867,0.1667,0.4667,0.4000,0.3200,0.3200,0.6200,0.0800,0.4133,0.1409

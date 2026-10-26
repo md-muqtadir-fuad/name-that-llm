@@ -1,0 +1,186 @@
+Pool rows=75783; exact dup with train text=0; rows on a train prompt_id=0
+
+Overall pool agreement with host-trained clf: top1=0.245 top3=0.531 family=0.630 (host CV top1 mean=0.343)
+
+Per label pool agreement vs host CV:
+                         top1   top3  fam_ok  top1_hostcv  top3_hostcv
+model                                                                 
+claude-fable-5          0.074  0.278   0.603        0.087        0.315
+claude-opus-4-6         0.294  0.586   0.705        0.407        0.687
+claude-opus-4-8         0.120  0.343   0.643        0.227        0.500
+claude-opus-5           0.711  0.884   0.805        0.687        0.880
+claude-sonnet-5         0.295  0.588   0.711        0.347        0.593
+gemini-3.1-pro-preview  0.676  0.869   0.876        0.780        0.960
+gemini-3.6-flash        0.265  0.659   0.799        0.440        0.840
+gemini-3.7-flash        0.259  0.610   0.826        0.420        0.873
+gemini-3.8-flash        0.222  0.582   0.821        0.307        0.793
+glm-5.3                 0.137  0.427   0.246        0.133        0.420
+glm-5.3-flash           0.111  0.410   0.249        0.167        0.447
+gpt-5.5                 0.249  0.575   0.680        0.313        0.633
+gpt-5.6-luna            0.280  0.562   0.796        0.307        0.607
+gpt-5.6-sol             0.151  0.441   0.768        0.167        0.560
+gpt-5.6-terra           0.195  0.517   0.771        0.280        0.613
+gpt-6-astra             0.470  0.737   0.826        0.547        0.820
+kimi-k3                 0.186  0.435   0.186        0.247        0.513
+qwen3.8-max             0.200  0.429   0.200        0.313        0.660
+
+Per source agreement (all labels):
+                top1   top3  fam_ok  src_med_ratio3
+source                                             
+arxitekton_v2  0.196  0.454   0.409           1.043
+maniceet       0.164  0.456   0.454           0.977
+semenoff       0.186  0.466   0.430           0.984
+arxitekton     0.225  0.497   0.596           0.996
+prvsiyan       0.246  0.513   0.602           0.961
+seyit          0.277  0.513   0.686           0.974
+willrice       0.221  0.528   0.598           1.001
+lxd            0.267  0.543   0.590           1.051
+pardheev       0.259  0.549   0.728           1.038
+dedruck        0.249  0.553   0.760           1.050
+hailey         0.312  0.557   0.775           0.904
+ziyuzhou       0.264  0.564   0.809           0.971
+kaplinskiy     0.250  0.569   0.773           1.037
+zbigniew       0.243  0.570   0.767           1.004
+drjcfmd        0.295  0.577   0.654           1.072
+abhinav        0.260  0.582   0.768           0.941
+dophuchung     0.272  0.590   0.774           1.097
+abdullah       0.323  0.591   0.797           0.934
+jadkutbi       0.297  0.600   0.764           0.973
+prvsiyan_v1    0.345  0.603   0.773           0.986
+lucasboesen    0.304  0.607   0.801           0.970
+keshav         0.255  0.610   0.851           1.113
+alperen        0.293  0.623   0.802           0.990
+illia          0.258  0.624   0.787           1.081
+zakir          0.344  0.631   0.792           0.972
+
+FOCUS labels by source:
+       source          model    n  top1  top3   fam  norm1  norm3  ratio3     z1  resid3      top_pred looks_like_host
+          lxd claude-fable-5  317 0.063 0.230 0.599  0.075  0.282   0.816 -0.819   0.777 claude-opus-5  claude-fable-5
+        seyit claude-fable-5  970 0.065 0.255 0.597  0.077  0.286   0.892 -1.439   0.916 claude-opus-5  claude-fable-5
+     prvsiyan claude-fable-5  223 0.054 0.265 0.619  0.075  0.279   0.949 -1.225   0.988 claude-opus-5   claude-opus-5
+arxitekton_v2 claude-fable-5  934 0.072 0.275 0.589  0.075  0.279   0.987 -0.382   0.946 claude-opus-5  claude-fable-5
+   arxitekton claude-fable-5 1007 0.074 0.294 0.627  0.074  0.272   1.079  0.038   1.084 claude-opus-5  claude-fable-5
+      drjcfmd claude-fable-5  482 0.114 0.334 0.585  0.069  0.270   1.237  3.944   1.154 claude-opus-5   glm-5.3-flash
+     willrice        glm-5.3  933 0.100 0.367 0.236  0.146  0.440   0.833 -3.970   0.832 claude-opus-5   glm-5.3-flash
+     semenoff        glm-5.3  284 0.130 0.394 0.250  0.138  0.429   0.920 -0.353   0.935 claude-opus-5   glm-5.3-flash
+     maniceet        glm-5.3 1797 0.144 0.427 0.246  0.133  0.427   1.001  1.357   1.024 claude-opus-5   glm-5.3-flash
+   arxitekton        glm-5.3  994 0.147 0.437 0.226  0.135  0.424   1.029  1.123   1.034 claude-opus-5   glm-5.3-flash
+      drjcfmd        glm-5.3  458 0.153 0.459 0.284  0.136  0.423   1.083  1.082   1.010 claude-opus-5   glm-5.3-flash
+          lxd        glm-5.3  392 0.140 0.459 0.283  0.137  0.424   1.083  0.200   1.031 claude-opus-5   glm-5.3-flash
+     prvsiyan        glm-5.3  226 0.164 0.549 0.235  0.136  0.421   1.303  1.222   1.357 claude-opus-5   claude-opus-5
+   arxitekton  glm-5.3-flash 1002 0.111 0.369 0.244  0.111  0.418   0.884 -0.009   0.888 claude-opus-5   glm-5.3-flash
+          lxd  glm-5.3-flash  399 0.090 0.404 0.258  0.112  0.410   0.984 -1.397   0.936 claude-opus-5         glm-5.3
+      drjcfmd  glm-5.3-flash  452 0.137 0.407 0.268  0.109  0.410   0.993  1.941   0.927 claude-opus-5   glm-5.3-flash
+     maniceet  glm-5.3-flash 2771 0.110 0.415 0.250  0.112  0.405   1.025 -0.242   1.050 claude-opus-5   glm-5.3-flash
+     willrice  glm-5.3-flash  945 0.120 0.421 0.248  0.109  0.408   1.033  1.017   1.032 claude-opus-5   glm-5.3-flash
+     semenoff  glm-5.3-flash  292 0.099 0.442 0.250  0.111  0.408   1.082 -0.658   1.100 claude-opus-5   glm-5.3-flash
+     prvsiyan  glm-5.3-flash  228 0.083 0.447 0.211  0.112  0.408   1.096 -1.369   1.141 claude-opus-5   claude-opus-5
+
+FLAGGED (n>=30; ratio3<0.6 & z1<-3, or signature closer to another host label):
+       source           model   n  top1  top3   fam  norm1  norm3  ratio3     z1  resid3        top_pred looks_like_host  flag_label_specific
+     prvsiyan claude-opus-4-6 231 0.143 0.485 0.628  0.307  0.594   0.816 -5.408   0.849   claude-opus-5   glm-5.3-flash                False
+     prvsiyan claude-opus-4-8 231 0.117 0.351 0.602  0.120  0.343   1.023 -0.142   1.065   claude-opus-5  claude-fable-5                False
+arxitekton_v2 claude-sonnet-5  46 0.174 0.435 0.696  0.296  0.590   0.737 -1.820   0.707   claude-opus-5   claude-opus-5                False
+     prvsiyan claude-sonnet-5 227 0.185 0.449 0.705  0.302  0.597   0.752 -3.847   0.783   claude-opus-5   claude-opus-5                False
+       hailey claude-sonnet-5  78 0.179 0.474 0.654  0.297  0.590   0.804 -2.279   0.889   claude-opus-5   glm-5.3-flash                False
+  prvsiyan_v1 claude-sonnet-5  59 0.186 0.492 0.678  0.297  0.589   0.834 -1.854   0.846   claude-opus-5         glm-5.3                False
+     prvsiyan         glm-5.3 226 0.164 0.549 0.235  0.136  0.421   1.303  1.222   1.357   claude-opus-5   claude-opus-5                False
+     prvsiyan   glm-5.3-flash 228 0.083 0.447 0.211  0.112  0.408   1.096 -1.369   1.141   claude-opus-5   claude-opus-5                False
+       keshav         gpt-5.5 100 0.130 0.410 0.800  0.251  0.578   0.710 -2.790   0.638   gpt-5.6-terra   gpt-5.6-terra                 True
+     maniceet         kimi-k3  62 0.097 0.161 0.097  0.187  0.439   0.367 -1.827   0.376   claude-opus-5  claude-fable-5                 True
+          lxd         kimi-k3 349 0.069 0.183 0.069  0.197  0.459   0.400 -6.025   0.380 claude-sonnet-5  claude-fable-5                 True
+     semenoff         kimi-k3 247 0.093 0.243 0.093  0.192  0.448   0.543 -3.945   0.551   claude-opus-5   glm-5.3-flash                 True
+     prvsiyan         kimi-k3 225 0.062 0.258 0.062  0.193  0.446   0.579 -4.978   0.602   claude-opus-5   claude-opus-5                 True
+      drjcfmd         kimi-k3 458 0.114 0.299 0.114  0.195  0.453   0.661 -4.410   0.617   claude-opus-5   glm-5.3-flash                 True
+
+Focus label x source x setting (n>=20):
+         model        source                                                                                                 setting    n  top1  top3   fam        top_pred
+claude-fable-5    arxitekton                                                                                                 default   57 0.105 0.351 0.579   claude-opus-5
+claude-fable-5    arxitekton                                                                                                     low  950 0.073 0.291 0.629   claude-opus-5
+claude-fable-5 arxitekton_v2                                                                                                     low  934 0.072 0.275 0.589   claude-opus-5
+claude-fable-5       drjcfmd                                                                                                   calib   20 0.200 0.300 0.400   glm-5.3-flash
+claude-fable-5       drjcfmd                                                                                                     new  462 0.110 0.335 0.593   claude-opus-5
+claude-fable-5           lxd                                                                                                 default  317 0.063 0.230 0.599   claude-opus-5
+claude-fable-5         seyit                                                                                                 default  970 0.065 0.255 0.597   claude-opus-5
+       glm-5.3    arxitekton                                                                                                 default   57 0.211 0.579 0.316   claude-opus-5
+       glm-5.3    arxitekton                                                                                                     low  937 0.143 0.428 0.221   claude-opus-5
+       glm-5.3       drjcfmd                                                                                                     new  439 0.153 0.456 0.285   claude-opus-5
+       glm-5.3           lxd                                                                                                 default  306 0.163 0.487 0.297   claude-opus-5
+       glm-5.3           lxd                                                                                             effort_high   29 0.103 0.310 0.345   glm-5.3-flash
+       glm-5.3           lxd                                                                                              effort_low   30 0.033 0.233 0.200   claude-opus-5
+       glm-5.3           lxd                                                                                              effort_max   27 0.037 0.556 0.148   claude-opus-5
+       glm-5.3      maniceet                                                                                            orglm:Relace 1624 0.140 0.416 0.246   claude-opus-5
+       glm-5.3      maniceet                                                                                             zaiglm:Z.AI  173 0.179 0.532 0.249   claude-opus-5
+       glm-5.3      prvsiyan provider_default: no reasoning params sent; provider pinned to z-ai (order+only, allow_fallbacks=false)  226 0.164 0.549 0.235   claude-opus-5
+       glm-5.3      semenoff                                                                                                 default  284 0.130 0.394 0.250   claude-opus-5
+       glm-5.3      willrice                                                                                                     low  933 0.100 0.367 0.236   claude-opus-5
+ glm-5.3-flash    arxitekton                                                                                                 default   55 0.109 0.418 0.291   claude-opus-5
+ glm-5.3-flash    arxitekton                                                                                                     low  947 0.111 0.366 0.241   claude-opus-5
+ glm-5.3-flash       drjcfmd                                                                                                     new  434 0.136 0.410 0.263   claude-opus-5
+ glm-5.3-flash           lxd                                                                                                 default  313 0.093 0.393 0.272   claude-opus-5
+ glm-5.3-flash           lxd                                                                                             effort_high   29 0.069 0.448 0.138   claude-opus-5
+ glm-5.3-flash           lxd                                                                                              effort_low   28 0.107 0.500 0.286 claude-opus-4-6
+ glm-5.3-flash           lxd                                                                                              effort_max   29 0.069 0.379 0.207   claude-opus-5
+ glm-5.3-flash      maniceet                                                                                     orglm:OpenInference 2179 0.105 0.409 0.244   claude-opus-5
+ glm-5.3-flash      maniceet                                                                                             zaiglm:Z.AI  581 0.131 0.441 0.274   claude-opus-5
+ glm-5.3-flash      prvsiyan provider_default: no reasoning params sent; provider pinned to z-ai (order+only, allow_fallbacks=false)  228 0.083 0.447 0.211   claude-opus-5
+ glm-5.3-flash      semenoff                                                                                                 default  292 0.099 0.442 0.250   claude-opus-5
+ glm-5.3-flash      willrice                                                                                                 default  945 0.120 0.421 0.248   claude-opus-5
+
+Prediction distribution of pool "claude-fable-5" by source (top columns):
+pred           claude-opus-5  glm-5.3  claude-sonnet-5  glm-5.3-flash  claude-fable-5  claude-opus-4-6  claude-opus-4-8
+source                                                                                                                 
+arxitekton              0.30     0.11             0.11           0.09            0.07             0.08             0.06
+arxitekton_v2           0.30     0.14             0.11           0.08            0.07             0.06             0.05
+drjcfmd                 0.21     0.12             0.13           0.12            0.11             0.09             0.05
+lxd                     0.24     0.13             0.17           0.09            0.06             0.07             0.06
+prvsiyan                0.46     0.15             0.05           0.10            0.05             0.01             0.04
+seyit                   0.31     0.11             0.11           0.11            0.06             0.07             0.05
+
+Prediction distribution of pool "glm-5.3" by source (top columns):
+pred        claude-opus-5  glm-5.3  glm-5.3-flash  claude-sonnet-5  claude-opus-4-6  claude-fable-5  claude-opus-4-8
+source                                                                                                              
+arxitekton           0.30     0.15           0.08             0.11             0.07            0.06             0.05
+drjcfmd              0.22     0.15           0.13             0.15             0.08            0.05             0.04
+lxd                  0.33     0.14           0.14             0.10             0.07            0.05             0.06
+maniceet             0.31     0.14           0.10             0.11             0.06            0.06             0.05
+prvsiyan             0.55     0.16           0.07             0.03             0.00            0.06             0.02
+semenoff             0.29     0.13           0.12             0.10             0.08            0.07             0.06
+willrice             0.32     0.10           0.14             0.09             0.08            0.05             0.05
+
+Prediction distribution of pool "glm-5.3-flash" by source (top columns):
+pred        claude-opus-5  glm-5.3  glm-5.3-flash  claude-sonnet-5  claude-opus-4-6  claude-fable-5  kimi-k3
+source                                                                                                      
+arxitekton           0.29     0.13           0.11             0.12             0.09            0.04     0.05
+drjcfmd              0.28     0.13           0.14             0.13             0.04            0.08     0.05
+lxd                  0.31     0.17           0.09             0.11             0.08            0.05     0.04
+maniceet             0.33     0.14           0.11             0.10             0.06            0.05     0.05
+prvsiyan             0.58     0.13           0.08             0.05             0.00            0.03     0.06
+semenoff             0.32     0.15           0.10             0.12             0.07            0.08     0.03
+willrice             0.39     0.13           0.12             0.08             0.06            0.04     0.04
+
+Host CV confusion rows (this clf):
+
+  claude-fable-5: claude-opus-5=0.16, glm-5.3=0.14, claude-sonnet-5=0.12, glm-5.3-flash=0.11, claude-opus-4-8=0.09
+
+  glm-5.3: claude-opus-5=0.26, glm-5.3-flash=0.19, glm-5.3=0.13, claude-sonnet-5=0.09, claude-fable-5=0.07
+
+  glm-5.3-flash: glm-5.3=0.19, claude-opus-5=0.17, glm-5.3-flash=0.17, claude-sonnet-5=0.12, kimi-k3=0.06
+
+  claude-opus-5: claude-opus-5=0.69, glm-5.3=0.07, claude-opus-4-8=0.05, claude-sonnet-5=0.03, kimi-k3=0.03
+
+Blend OOF (reference, mean of 3) confusion rows:
+
+  claude-fable-5: claude-fable-5=0.21, glm-5.3=0.19, glm-5.3-flash=0.13, claude-sonnet-5=0.12, claude-opus-5=0.11
+
+  glm-5.3: glm-5.3=0.32, glm-5.3-flash=0.20, claude-fable-5=0.13, claude-opus-5=0.11, kimi-k3=0.07
+
+  glm-5.3-flash: glm-5.3-flash=0.31, glm-5.3=0.21, claude-fable-5=0.11, claude-sonnet-5=0.10, claude-opus-4-8=0.07
+
+  claude-opus-5: claude-opus-5=0.85, glm-5.3-flash=0.05, glm-5.3=0.03, claude-opus-4-8=0.02, claude-fable-5=0.01
+
+  claude-sonnet-5: claude-sonnet-5=0.59, claude-opus-4-8=0.10, claude-opus-4-6=0.07, glm-5.3-flash=0.05, claude-fable-5=0.04
+
+  claude-opus-4-8: claude-opus-4-8=0.55, claude-sonnet-5=0.15, claude-opus-4-6=0.07, glm-5.3=0.05, glm-5.3-flash=0.04
+
+Blend: P(pred glm-5.3 | fable)=0.195  P(pred fable | glm-5.3)=0.133  P(pred glm* | fable)=0.322  P(pred claude* | glm-5.3)=0.367

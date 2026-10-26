@@ -1,0 +1,21 @@
+cross-family pairwise acc: svc median 0.917, blend median 0.980
+within-family pairwise acc: svc median 0.693, blend median 0.853
+least separable cross-family pairs (blend):
+              a             b  acc_svc  acc_blend  rank_cross_svc  rank_cross_blend
+ claude-fable-5 glm-5.3-flash    0.532      0.615             1.0               1.0
+ claude-fable-5       glm-5.3    0.542      0.625             2.0               2.0
+        glm-5.3       kimi-k3    0.737      0.803            16.0               3.0
+claude-opus-4-8 glm-5.3-flash    0.740      0.823            17.0               4.0
+        gpt-5.5       kimi-k3    0.647      0.823             3.0               4.0
+        gpt-5.5   qwen3.8-max    0.690      0.823             7.0               4.0
+  glm-5.3-flash       kimi-k3    0.720      0.827            10.0               7.0
+claude-sonnet-5 glm-5.3-flash    0.653      0.837             4.0               8.0
+    gpt-5.6-sol       kimi-k3    0.720      0.837            10.0               8.0
+ claude-fable-5       kimi-k3    0.736      0.853            15.0              10.0
+             a               b  acc_svc  acc_blend
+claude-fable-5 claude-opus-4-6    0.716      0.863
+claude-fable-5 claude-opus-4-8    0.635      0.786
+claude-fable-5   claude-opus-5    0.652      0.870
+claude-fable-5 claude-sonnet-5    0.652      0.839
+claude-fable-5         glm-5.3    0.542      0.625
+claude-fable-5   glm-5.3-flash    0.532      0.615

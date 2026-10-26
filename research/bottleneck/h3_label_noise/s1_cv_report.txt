@@ -1,0 +1,20 @@
+C=0.3 5-fold GroupKFold(prompt_id) BA=0.3430
+per-class recall:
+  claude-fable-5           0.087  top: claude-opus-5=0.16, glm-5.3=0.14, claude-sonnet-5=0.12, glm-5.3-flash=0.11
+  claude-opus-4-6          0.407  top: claude-opus-4-6=0.41, claude-opus-5=0.13, claude-sonnet-5=0.12, claude-opus-4-8=0.05
+  claude-opus-4-8          0.227  top: claude-opus-4-8=0.23, claude-opus-5=0.15, claude-sonnet-5=0.12, claude-fable-5=0.11
+  claude-opus-5            0.687  top: claude-opus-5=0.69, glm-5.3=0.07, claude-opus-4-8=0.05, claude-sonnet-5=0.03
+  claude-sonnet-5          0.347  top: claude-sonnet-5=0.35, claude-opus-4-6=0.09, glm-5.3-flash=0.09, claude-opus-5=0.07
+  gemini-3.1-pro-preview   0.780  top: gemini-3.1-pro-preview=0.78, gemini-3.6-flash=0.08, gemini-3.8-flash=0.08, gemini-3.7-flash=0.04
+  gemini-3.6-flash         0.440  top: gemini-3.6-flash=0.44, gemini-3.7-flash=0.21, gemini-3.1-pro-preview=0.18, gemini-3.8-flash=0.13
+  gemini-3.7-flash         0.420  top: gemini-3.7-flash=0.42, gemini-3.8-flash=0.23, gemini-3.6-flash=0.19, gemini-3.1-pro-preview=0.14
+  gemini-3.8-flash         0.307  top: gemini-3.7-flash=0.37, gemini-3.8-flash=0.31, gemini-3.6-flash=0.15, gemini-3.1-pro-preview=0.11
+  glm-5.3                  0.133  top: claude-opus-5=0.26, glm-5.3-flash=0.19, glm-5.3=0.13, claude-sonnet-5=0.09
+  glm-5.3-flash            0.167  top: glm-5.3=0.19, claude-opus-5=0.17, glm-5.3-flash=0.17, claude-sonnet-5=0.12
+  gpt-5.5                  0.313  top: gpt-5.5=0.31, kimi-k3=0.12, qwen3.8-max=0.12, gpt-5.6-terra=0.11
+  gpt-5.6-luna             0.307  top: gpt-5.6-luna=0.31, gpt-6-astra=0.18, gpt-5.6-terra=0.16, gpt-5.6-sol=0.15
+  gpt-5.6-sol              0.167  top: gpt-5.6-luna=0.22, gpt-5.6-terra=0.21, gpt-5.6-sol=0.17, gpt-6-astra=0.11
+  gpt-5.6-terra            0.280  top: gpt-5.6-terra=0.28, gpt-5.6-luna=0.18, gpt-6-astra=0.16, gpt-5.6-sol=0.11
+  gpt-6-astra              0.547  top: gpt-6-astra=0.55, gpt-5.6-luna=0.15, kimi-k3=0.06, gpt-5.6-terra=0.05
+  kimi-k3                  0.247  top: kimi-k3=0.25, gpt-5.5=0.17, glm-5.3-flash=0.08, claude-opus-5=0.07
+  qwen3.8-max              0.313  top: qwen3.8-max=0.31, gpt-5.5=0.17, gpt-5.6-luna=0.12, kimi-k3=0.08

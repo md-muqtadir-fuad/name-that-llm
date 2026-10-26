@@ -1,0 +1,15 @@
+a,b,acc,auc
+claude-fable-5,glm-5.3,0.5518,0.5935
+claude-fable-5,glm-5.3-flash,0.5217,0.5514
+glm-5.3,glm-5.3-flash,0.4900,0.5067
+claude-fable-5,claude-opus-4-8,0.6355,0.6793
+claude-fable-5,claude-opus-5,0.7258,0.8015
+claude-fable-5,claude-sonnet-5,0.6622,0.7422
+claude-opus-5,glm-5.3,0.7200,0.7816
+claude-sonnet-5,glm-5.3,0.7067,0.7740
+claude-opus-4-8,glm-5.3,0.7267,0.8056
+claude-fable-5,kimi-k3,0.8328,0.8682
+gpt-5.5,qwen3.8-max,0.6933,0.7731
+gpt-5.5,kimi-k3,0.6800,0.7543
+gemini-3.7-flash,gemini-3.8-flash,0.5467,0.5976
+gpt-5.6-sol,gpt-5.6-terra,0.5800,0.6199

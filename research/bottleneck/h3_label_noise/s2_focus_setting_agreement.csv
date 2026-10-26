@@ -1,0 +1,32 @@
+model,source,setting,n,top1,top3,fam,top_pred
+claude-fable-5,arxitekton,default,57,0.1053,0.3509,0.5789,claude-opus-5
+claude-fable-5,arxitekton,low,950,0.0726,0.2905,0.6295,claude-opus-5
+claude-fable-5,arxitekton_v2,low,934,0.0717,0.2752,0.5889,claude-opus-5
+claude-fable-5,drjcfmd,calib,20,0.2000,0.3000,0.4000,glm-5.3-flash
+claude-fable-5,drjcfmd,new,462,0.1104,0.3355,0.5931,claude-opus-5
+claude-fable-5,lxd,default,317,0.0631,0.2303,0.5994,claude-opus-5
+claude-fable-5,seyit,default,970,0.0649,0.2546,0.5969,claude-opus-5
+glm-5.3,arxitekton,default,57,0.2105,0.5789,0.3158,claude-opus-5
+glm-5.3,arxitekton,low,937,0.1430,0.4280,0.2209,claude-opus-5
+glm-5.3,drjcfmd,new,439,0.1526,0.4556,0.2847,claude-opus-5
+glm-5.3,lxd,default,306,0.1634,0.4869,0.2974,claude-opus-5
+glm-5.3,lxd,effort_high,29,0.1034,0.3103,0.3448,glm-5.3-flash
+glm-5.3,lxd,effort_low,30,0.0333,0.2333,0.2000,claude-opus-5
+glm-5.3,lxd,effort_max,27,0.0370,0.5556,0.1481,claude-opus-5
+glm-5.3,maniceet,orglm:Relace,1624,0.1404,0.4156,0.2457,claude-opus-5
+glm-5.3,maniceet,zaiglm:Z.AI,173,0.1792,0.5318,0.2486,claude-opus-5
+glm-5.3,prvsiyan,"provider_default: no reasoning params sent; provider pinned to z-ai (order+only, allow_fallbacks=false)",226,0.1637,0.5487,0.2345,claude-opus-5
+glm-5.3,semenoff,default,284,0.1303,0.3944,0.2500,claude-opus-5
+glm-5.3,willrice,low,933,0.0997,0.3666,0.2358,claude-opus-5
+glm-5.3-flash,arxitekton,default,55,0.1091,0.4182,0.2909,claude-opus-5
+glm-5.3-flash,arxitekton,low,947,0.1109,0.3664,0.2408,claude-opus-5
+glm-5.3-flash,drjcfmd,new,434,0.1359,0.4101,0.2627,claude-opus-5
+glm-5.3-flash,lxd,default,313,0.0927,0.3930,0.2716,claude-opus-5
+glm-5.3-flash,lxd,effort_high,29,0.0690,0.4483,0.1379,claude-opus-5
+glm-5.3-flash,lxd,effort_low,28,0.1071,0.5000,0.2857,claude-opus-4-6
+glm-5.3-flash,lxd,effort_max,29,0.0690,0.3793,0.2069,claude-opus-5
+glm-5.3-flash,maniceet,orglm:OpenInference,2179,0.1051,0.4089,0.2437,claude-opus-5
+glm-5.3-flash,maniceet,zaiglm:Z.AI,581,0.1308,0.4406,0.2737,claude-opus-5
+glm-5.3-flash,prvsiyan,"provider_default: no reasoning params sent; provider pinned to z-ai (order+only, allow_fallbacks=false)",228,0.0833,0.4474,0.2105,claude-opus-5
+glm-5.3-flash,semenoff,default,292,0.0993,0.4418,0.2500,claude-opus-5
+glm-5.3-flash,willrice,default,945,0.1196,0.4212,0.2476,claude-opus-5

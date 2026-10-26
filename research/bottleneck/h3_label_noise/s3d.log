@@ -1,0 +1,14 @@
+{'a': 'claude-fable-5', 'b': 'glm-5.3', 'acc': np.float64(0.5518394648829431), 'auc': 0.5935123042505592}
+{'a': 'claude-fable-5', 'b': 'glm-5.3-flash', 'acc': np.float64(0.5217391304347826), 'auc': 0.5513646532438479}
+{'a': 'glm-5.3', 'b': 'glm-5.3-flash', 'acc': np.float64(0.49), 'auc': 0.5067111111111111}
+{'a': 'claude-fable-5', 'b': 'claude-opus-4-8', 'acc': np.float64(0.6354515050167224), 'auc': 0.6792841163310962}
+{'a': 'claude-fable-5', 'b': 'claude-opus-5', 'acc': np.float64(0.725752508361204), 'auc': 0.8015212527964206}
+{'a': 'claude-fable-5', 'b': 'claude-sonnet-5', 'acc': np.float64(0.6622073578595318), 'auc': 0.7421923937360179}
+{'a': 'claude-opus-5', 'b': 'glm-5.3', 'acc': np.float64(0.72), 'auc': 0.7815555555555557}
+{'a': 'claude-sonnet-5', 'b': 'glm-5.3', 'acc': np.float64(0.7066666666666667), 'auc': 0.7740444444444445}
+{'a': 'claude-opus-4-8', 'b': 'glm-5.3', 'acc': np.float64(0.7266666666666667), 'auc': 0.8056}
+{'a': 'claude-fable-5', 'b': 'kimi-k3', 'acc': np.float64(0.8327759197324415), 'auc': 0.8682326621923937}
+{'a': 'gpt-5.5', 'b': 'qwen3.8-max', 'acc': np.float64(0.6933333333333334), 'auc': 0.7731111111111112}
+{'a': 'gpt-5.5', 'b': 'kimi-k3', 'acc': np.float64(0.68), 'auc': 0.7543111111111112}
+{'a': 'gemini-3.7-flash', 'b': 'gemini-3.8-flash', 'acc': np.float64(0.5466666666666666), 'auc': 0.5975999999999999}
+{'a': 'gpt-5.6-sol', 'b': 'gpt-5.6-terra', 'acc': np.float64(0.58), 'auc': 0.6198666666666667}

@@ -101,3 +101,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 16:41,claude-code,result,H2 agent,surface features weak for siblings; no harmful normalisation; sibling errors length-independent
 2026-10-26 16:50,claude-code,kaggle submit,ntl-v10 v1,"ref 57672917; user approved (""submit""); v8 + Gemma two-stage 15%; 4 submissions left today"
 2026-10-26 16:55,claude-code,v11 built (not pushed),nb/v11,"v11 = avazaku verified reproduction of nlm-v27 (public 0.651) + Gemma 15% after ATLAS, before Sinkhorn; push waits for v10 score; gemma_cell accepts str DATA"
+2026-10-26 17:05,claude-code,result,H3 agent,no pool label noise; fable-glm shared style is real (GLM nearest to Claude fable); recommend 3-way specialist + block bias calibration
