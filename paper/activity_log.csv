@@ -94,3 +94,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 11:49,user,kaggle cancel,mdmuqtadirfuad/ntl-llama-ts-s1,cancelled by user in UI (GPU quota only 7-8 h left; Gemma s2 has priority); Llama restarts after weekly reset
 2026-10-26 11:51,claude-code,kaggle benchmarks run,ntl-gen o001r + o002,"daily.py --own --n 32: claude-opus-5 retry for o001's 40 ids, then 32 new own prompts x 10 models; prompts dataset re-synced (new sources)"
 2026-10-26 14:07,claude-code,docs update,"TREE.md, DATA_SOURCES.md, TEAMMATE_SETUP.md, research/next_steps.md, tools/fetch_data.sh","post-audit refresh: v8/v9, two-stage Gemma/Llama, pool_v4, darragh, own prompts, HF route, drift panel due Nov 1-3, centering rule corrected"
+2026-10-26 16:02,claude-code,experiment E054,experiments/uncertainty/routed_weight.py,"uncertainty-banded member weights vs fixed: lstm -0.0026 (0/5), cnn +0.0001 (2/5) -> rejected; log-linear blending is already confidence-adaptive"
