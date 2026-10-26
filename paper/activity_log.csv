@@ -87,3 +87,4 @@ timestamp_utc,actor,action,target,details
 2026-10-25 06:42,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-twostage v1 (smoke),"two-stage Gemma-4-12B LoRA on pool_v4 (75,783) + host; smoke = tiny stage1a + fold0 + full-run time estimate; user approved (proceed)"
 2026-10-25 06:55,claude-code,kaggle push,mdmuqtadirfuad/ntl-gemma-ts-s1,Gemma-4-12B two-stage session 1: stage1a+stage1b on pool_v4 + darragh run-1 (CC0); smoke estimate 12 GPU-h total
 2026-10-25 07:07,claude-code,experiment E053,experiments/robust/sinkhorn_mix.py,"test plan #16: Sinkhorn vs class-mix skew on strong OOF; full +0.004 if even, -0.011 at Dirichlet(3), -0.029 at Dirichlet(1); s=0.5 is the robust middle"
+2026-10-26 08:51,claude-code,kaggle push,ntl-gemma-ts-s2; ntl-llama-twostage (smoke),"Gemma s1 complete (stage1a 3.7h, stage1b 3.8h, pool 77,264); s2 = stage1c+fold0-2+final resuming from s1; Llama-3.1-8B base two-stage smoke (24 of 32 layers)"
