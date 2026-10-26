@@ -1,0 +1,13 @@
+                                pair  pair_errors_total  n_gated_true_in_pair
+0  gemini-3.6-flash|gemini-3.7-flash                 86                    83
+1  gemini-3.6-flash|gemini-3.8-flash                 69                    29
+2  gemini-3.7-flash|gemini-3.8-flash                121                   152
+3              glm-5.3|glm-5.3-flash                134                    51
+4           gpt-5.6-luna|gpt-5.6-sol                 95                    48
+5         gpt-5.6-luna|gpt-5.6-terra                 85                    58
+6          gpt-5.6-sol|gpt-5.6-terra                102                    54
+7    claude-opus-4-8|claude-sonnet-5                 85                    60
+8             claude-fable-5|glm-5.3                117                    27
+0 base 0.4686 oracle-gated 0.5545 ceiling 0.0859
+1 base 0.5431 oracle-gated 0.6335 ceiling 0.0904
+2 base 0.5627 oracle-gated 0.6571 ceiling 0.0945

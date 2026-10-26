@@ -1,0 +1,10 @@
+[   59s] gemini-3.7-flash vs gemini-3.8-flash       prompts  1606 | uni 0.533 bi 0.525 tri 0.530 | null 0.504
+[  138s] glm-5.3 vs glm-5.3-flash                   prompts  2500 | uni 0.544 bi 0.550 tri 0.550 | null 0.506
+[  191s] gemini-3.6-flash vs gemini-3.7-flash       prompts  1675 | uni 0.716 bi 0.715 tri 0.700 | null 0.507
+[  268s] gpt-5.6-sol vs gpt-5.6-terra               prompts  2500 | uni 0.596 bi 0.604 tri 0.607 | null 0.514
+[  360s] gpt-5.6-luna vs gpt-5.6-sol                prompts  2500 | uni 0.630 bi 0.639 tri 0.637 | null 0.512
+[  433s] claude-opus-4-8 vs claude-sonnet-5         prompts  2500 | uni 0.744 bi 0.749 tri 0.746 | null 0.507
+[  532s] claude-fable-5 vs glm-5.3                  prompts  2500 | uni 0.571 bi 0.576 tri 0.578 | null 0.503
+[  631s] gpt-5.5 vs gpt-5.6-terra                   prompts  2500 | uni 0.713 bi 0.712 tri 0.706 | null 0.502
+[  708s] gemini-3.6-flash vs gemini-3.8-flash       prompts  1863 | uni 0.748 bi 0.740 tri 0.727 | null 0.499
+[  792s] gpt-6-astra vs claude-opus-5               prompts  2117 | uni 0.977 bi 0.975 tri 0.968 | null 0.500
