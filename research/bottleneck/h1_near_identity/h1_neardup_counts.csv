@@ -1,0 +1,12 @@
+category,n_gt090,n_gt095,n_exact,n_gt095_same_prompt,max_cos
+cross-family,0,0,0,0,0.8235
+same-family other,1,0,0,0,0.9283
+same-model,0,0,0,0,0.8932
+sibling: claude-opus-4-8 | claude-sonnet-5,0,0,0,0,0.5598
+sibling: gemini-3.6-flash | gemini-3.7-flash,0,0,0,0,0.5839
+sibling: gemini-3.6-flash | gemini-3.8-flash,0,0,0,0,0.8136
+sibling: gemini-3.7-flash | gemini-3.8-flash,0,0,0,0,0.7617
+sibling: glm-5.3 | glm-5.3-flash,0,0,0,0,0.8031
+sibling: gpt-5.6-luna | gpt-5.6-sol,0,0,0,0,0.8335
+sibling: gpt-5.6-luna | gpt-5.6-terra,0,0,0,0,0.6071
+sibling: gpt-5.6-sol | gpt-5.6-terra,0,0,0,0,0.8456

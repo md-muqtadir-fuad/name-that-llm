@@ -1,0 +1,53 @@
+d_x,d_y,shared,containment,cos_char,exact,model_x,model_y,source_x,source_y,setting_x,setting_y,prompt_key_x,prompt_key_y,id_x,id_y,same_prompt,category
+119,14836,28,0.3544,0.8042,False,claude-fable-5,glm-5.3-flash,seyit,semenoff,default,default,seyitbank:g0025,semenoff:sk:g0025,x5c732b885d7,xa68b3191c9b,False,cross-family
+5206,5299,19,0.3115,0.8235,False,claude-fable-5,glm-5.3,lxd,lxd,default,effort_low,lxd:pilot1_s0_0001,lxd:pilot1_s0_0001,xc958ff9c09f,xe374f8b1c6d,True,cross-family
+9354,67433,21,0.4038,0.8200,False,gpt-5.6-luna,gpt-5.6-luna,prvsiyan_v1,maniceet,default,oa56b:OpenAI,prvsiyan:g022,maniceet:prv:g022,xa697caef39e,x58287bd9851,False,same-model
+10711,43718,35,0.3763,0.8321,False,gpt-5.6-sol,gpt-5.6-sol,kaplinskiy,zakir,default,rlow_t1,seyitbank:g0130,seyitbank:g0130,x5b83224a611,x5007b5b04f5,True,same-model
+10759,15168,36,0.3214,0.8692,False,gpt-5.6-sol,gpt-5.6-sol,kaplinskiy,semenoff,default,default,seyitbank:g0178,semenoff:sk:g0178,x130cbadbdb2,x8fffad2817a,False,same-model
+10863,23999,29,0.3919,0.8330,False,gpt-6-astra,gpt-6-astra,kaplinskiy,willrice,default,default,seyitbank:g0130,seyitbank:g0130,x663a6f01c67,xefffb5ba25a,True,same-model
+10863,43720,35,0.4430,0.8450,False,gpt-6-astra,gpt-6-astra,kaplinskiy,zakir,default,rlow_t1,seyitbank:g0130,seyitbank:g0130,x663a6f01c67,x0ec10167727,True,same-model
+10863,45186,33,0.4459,0.8810,False,gpt-6-astra,gpt-6-astra,kaplinskiy,zbigniew,default,default,seyitbank:g0130,seyitbank:g0130,x663a6f01c67,xf62ff9c6d74,True,same-model
+10905,15314,15,0.3947,0.8016,False,gpt-6-astra,gpt-6-astra,kaplinskiy,semenoff,default,default,seyitbank:g0174,semenoff:sk:g0174,x4266eff9843,x6940119728e,False,same-model
+10953,29353,34,0.4198,0.8095,False,gpt-6-astra,gpt-6-astra,kaplinskiy,alperen,default,default,seyitbank:g0224,seyitbank:g0224,xbb891a1efbd,xacde0edad61,True,same-model
+12197,12198,10,0.3030,0.8696,False,gpt-5.6-luna,gpt-5.6-luna,dophuchung,dophuchung,none,low,seyitbank:g0994,seyitbank:g0994,xb22c3aa95fb,xa300f42bb75,True,same-model
+15052,29135,20,0.3636,0.8672,False,gpt-5.5,gpt-5.6-terra,semenoff,alperen,default,default,semenoff:sk:g0177,seyitbank:g0177,xceef73dbab8,x99eecb01532,False,same-family other
+15082,15281,15,0.3061,0.8167,False,gpt-5.5,gpt-5.6-terra,semenoff,semenoff,default,default,semenoff:sk:g0247,semenoff:sk:g0247,x67ff74f0c84,x487be80d1ab,True,same-family other
+16469,17909,15,0.3061,0.8136,False,gemini-3.6-flash,gemini-3.8-flash,willrice,willrice,low,default,seyitbank:g0714,seyitbank:g0714,xd123843073d,xf7031979ebf,True,sibling: gemini-3.6-flash | gemini-3.8-flash
+21680,22671,23,0.4792,0.8075,False,gpt-5.6-luna,gpt-5.6-sol,willrice,willrice,default,default,seyitbank:g0777,seyitbank:g0777,x10cd030e3d5,xcb8453f985a,True,sibling: gpt-5.6-luna | gpt-5.6-sol
+21806,45829,21,0.5385,0.8335,False,gpt-5.6-luna,gpt-5.6-sol,willrice,zbigniew,default,default,seyitbank:g0904,seyitbank:g0904,xbacf200fc58,x1a6ac09b298,True,sibling: gpt-5.6-luna | gpt-5.6-sol
+21912,62650,28,0.3944,0.8085,False,gpt-5.6-sol,gpt-5.6-sol,willrice,abdullah,default,default,seyitbank:g0012,seyitbank:g0012,x15c28d3dc0d,xe1ca5e47ea9,True,same-model
+22740,24688,22,0.4783,0.8165,False,gpt-5.6-sol,gpt-6-astra,willrice,willrice,default,default,seyitbank:g0847,seyitbank:g0847,x82633df1f05,x90d984a55c9,True,same-family other
+23277,61942,28,0.7000,0.8475,False,gpt-5.6-terra,gpt-5.6-terra,willrice,abhinav,default,low,seyitbank:g0393,seyitbank:g0393,xb6655e115cb,x23be5b8217f,True,same-model
+23898,58378,18,0.3214,0.8503,False,gpt-6-astra,gpt-6-astra,willrice,lucasboesen,default,low,seyitbank:g0025,seyitbank:g0025,x188508f107d,xd6efe404807,True,same-model
+23999,29266,20,0.4255,0.8427,False,gpt-6-astra,gpt-6-astra,willrice,alperen,default,default,seyitbank:g0130,seyitbank:g0130,xefffb5ba25a,x1ccfca5a11f,True,same-model
+23999,43720,34,0.4595,0.8250,False,gpt-6-astra,gpt-6-astra,willrice,zakir,default,rlow_t1,seyitbank:g0130,seyitbank:g0130,xefffb5ba25a,x0ec10167727,True,same-model
+24065,29330,31,0.3523,0.8041,False,gpt-6-astra,gpt-6-astra,willrice,alperen,default,default,seyitbank:g0200,seyitbank:g0200,x5296b233bfb,x882a199b1b4,True,same-model
+24264,58689,28,0.5600,0.8633,False,gpt-6-astra,gpt-6-astra,willrice,lucasboesen,default,low,seyitbank:g0408,seyitbank:g0408,xbcf7b4861f3,x45f5970e6cf,True,same-model
+24362,59439,36,0.4737,0.8018,False,gpt-6-astra,gpt-6-astra,willrice,lucasboesen,default,low,seyitbank:g0510,seyitbank:g0510,xf0f8fe5c5b3,xc8155f36c1c,True,same-model
+24379,62024,24,0.6667,0.8766,False,gpt-6-astra,gpt-6-astra,willrice,abhinav,default,low,seyitbank:g0527,seyitbank:g0527,x9b95ca8d485,xcef87f98d33,True,same-model
+27016,28504,13,0.3095,0.8480,False,gemini-3.7-flash,gemini-3.1-pro-preview,alperen,alperen,default,default,seyitbank:g0427,seyitbank:g0427,x9a4c829b6f5,x33c4ce20678,True,same-family other
+28712,45608,20,0.4444,0.8528,False,gpt-5.5,gpt-5.5,alperen,zbigniew,default,default,seyitbank:g0283,seyitbank:g0283,x4b77932498f,x87cbe00266e,True,same-model
+29228,61212,45,0.6618,0.8544,False,gpt-5.6-terra,gpt-5.6-terra,alperen,abhinav,default,low,seyitbank:g0271,seyitbank:g0271,xcb06c0ea72d,xf7f3ec05b28,True,same-model
+29491,58866,14,0.3043,0.8309,False,gpt-5.6-luna,gpt-5.6-sol,alperen,lucasboesen,default,low,seyitbank:g0432,seyitbank:g0432,x88664109245,x35bda2f3fc8,True,sibling: gpt-5.6-luna | gpt-5.6-sol
+29643,29794,11,0.3056,0.8030,False,gpt-6-astra,gpt-6-astra,jadkutbi,jadkutbi,re_low,default,seyitbank:g0252,seyitbank:g0252,x19ebaa9e517,x031d084932e,True,same-model
+29895,44631,19,0.4318,0.8381,False,gpt-6-astra,gpt-6-astra,jadkutbi,zbigniew,default,default,seyitbank:g0041,seyitbank:g0041,xd20f2a1705e,xb017d94eb0a,True,same-model
+29916,43730,62,0.5439,0.8177,False,gpt-5.5,gpt-5.5,jadkutbi,zakir,default,rlow_t1,seyitbank:g0132,seyitbank:g0132,x5ccb22c7e96,xdc9af064957,True,same-model
+32761,32762,18,0.3158,0.8036,False,claude-opus-4-8,claude-opus-4-6,drjcfmd,drjcfmd,new,new,drjcfmd:n0078,drjcfmd:n0078,xc2a6f7c9ed2,x62233a61661,True,same-family other
+39385,39389,12,0.3333,0.8031,False,glm-5.3,glm-5.3-flash,drjcfmd,drjcfmd,new,new,drjcfmd:n0469,drjcfmd:n0469,x932501a0dad,xf0ee1961c32,True,sibling: glm-5.3 | glm-5.3-flash
+43392,43953,24,0.3810,0.8473,False,gpt-5.6-terra,gpt-5.6-terra,zakir,zakir,rlow_t0,rlow_t1,seyitbank:g0270,seyitbank:g0270,x1a0b78b02cb,x089d48a29fb,True,same-model
+43393,43954,64,0.5120,0.8432,False,gpt-6-astra,gpt-6-astra,zakir,zakir,rlow_t0,rlow_t1,seyitbank:g0270,seyitbank:g0270,xcdaab4908e4,x4b6a2f439ee,True,same-model
+43399,43960,18,0.4390,0.8613,False,gpt-5.6-sol,gpt-5.6-sol,zakir,zakir,rlow_t0,rlow_t1,seyitbank:g0520,seyitbank:g0520,xfa9cb5db121,x469870dcced,True,same-model
+43399,59633,14,0.3333,0.8670,False,gpt-5.6-sol,gpt-5.6-sol,zakir,lucasboesen,rlow_t0,low,seyitbank:g0520,seyitbank:g0520,xfa9cb5db121,xf7ed3a104c4,True,same-model
+43720,45186,38,0.5135,0.8770,False,gpt-6-astra,gpt-6-astra,zakir,zbigniew,rlow_t1,default,seyitbank:g0130,seyitbank:g0130,x0ec10167727,xf62ff9c6d74,True,same-model
+43960,59633,28,0.6829,0.8811,False,gpt-5.6-sol,gpt-5.6-sol,zakir,lucasboesen,rlow_t1,low,seyitbank:g0520,seyitbank:g0520,x469870dcced,xf7ed3a104c4,True,same-model
+44191,44594,23,0.6053,0.8103,False,gemini-3.8-flash,gpt-6-astra,zbigniew,zbigniew,default,default,seyitbank:g0003,seyitbank:g0003,x8fba595a1f1,x91d5d3238db,True,cross-family
+44645,58594,12,0.3077,0.8100,False,gpt-6-astra,gpt-6-astra,zbigniew,lucasboesen,default,low,seyitbank:g0055,seyitbank:g0055,xe6dd2bd9bee,x77b737b5f63,True,same-model
+45999,46711,61,0.5083,0.8932,False,claude-fable-5,claude-fable-5,arxitekton,arxitekton,default,low,arxitekton:gen1p:0002,arxitekton:gen1p:0002,xaa647669b16,x81264ea1718,True,same-model
+46009,46202,44,0.4314,0.8332,False,qwen3.8-max,qwen3.8-max,arxitekton,arxitekton,prime_t06,0902_t06,arxitekton:gen1p:0003,arxitekton:gen1p:0003,xa8ea9817fa7,x6ee6437be83,True,same-model
+52401,52416,15,0.3488,0.9283,False,gpt-5.6-terra,gpt-6-astra,arxitekton,arxitekton,default,default,arxitekton:gen1t:0425,arxitekton:gen1t:0425,xea1737b6843,x29286d9533b,True,same-family other
+58305,62930,31,0.4306,0.8430,False,gemini-3.8-flash,gemini-3.8-flash,lucasboesen,abdullah,low,default,seyitbank:g0015,seyitbank:g0015,x86137422348,x5c20a637d4b,True,same-model
+61382,63054,48,0.5275,0.8259,False,gpt-6-astra,gpt-6-astra,abhinav,abdullah,low,default,seyitbank:g0301,seyitbank:g0301,x446b6cc9d4c,xd9ae2aa1365,True,same-model
+61690,63101,23,0.3833,0.8346,False,gpt-6-astra,gpt-6-astra,abhinav,abdullah,low,default,seyitbank:g0350,seyitbank:g0350,xdc2827e4ad6,x5b50f933aa7,True,same-model
+61716,63106,17,0.4474,0.8692,False,gpt-6-astra,gpt-6-astra,abhinav,abdullah,low,default,seyitbank:g0355,seyitbank:g0355,x55170a6a90b,xb361a1e4bce,True,same-model
+61748,63111,17,0.3269,0.8220,False,gpt-6-astra,gpt-6-astra,abhinav,abdullah,low,default,seyitbank:g0360,seyitbank:g0360,x68743cd67ea,x85e47b063ce,True,same-model
+72714,73041,43,0.3209,0.8456,False,gpt-5.6-sol,gpt-5.6-terra,maniceet,maniceet,own:OpenAI,own:OpenAI,maniceet:own:x2_053,maniceet:own:x2_053,xc57bd050491,xb56a90cae85,True,sibling: gpt-5.6-sol | gpt-5.6-terra

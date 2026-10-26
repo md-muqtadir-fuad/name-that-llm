@@ -1,0 +1,3 @@
+kind,contrast,n_prompts,frac_same_source,oof_auc,oof_acc,paired_acc
+sibling,gemini-3.7-flash | gemini-3.8-flash,1456,0.9420,0.5372,0.5227,0.5694
+sibling,glm-5.3 | glm-5.3-flash,3000,1.0000,0.5651,0.5432,0.5763

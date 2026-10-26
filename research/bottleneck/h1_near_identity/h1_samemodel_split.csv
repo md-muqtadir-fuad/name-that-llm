@@ -1,0 +1,15 @@
+kind,pair,m_source,R_xcond,auc_M_gt_S_xcond,n_prompts_xcond,R_samecond,auc_M_gt_S_samecond,n_prompts_samecond,S_xcond,M_xcond,S_samecond,S_all,S_same_source,M_all,M_same_src_same_set,n_M_same_src_same_set,M_diff_setting,M_diff_source,C_all,R_same_source,n_prompts_same_source
+sibling,gemini-3.6-flash | gemini-3.7-flash,own repeats,0.7796,0.5636,781,,,0,0.4513,0.4798,0.4933,0.4620,0.4880,0.4798,,0,0.4771,0.4747,0.3707,0.8705,56
+sibling,gemini-3.6-flash | gemini-3.8-flash,own repeats,0.8321,0.5456,932,0.9017,0.4509,25,0.4476,0.4670,0.4606,0.4506,0.4594,0.4658,0.4293,149,0.4710,0.4626,0.3674,0.6946,104
+sibling,gemini-3.7-flash | gemini-3.8-flash,own repeats,1.0404,0.4942,762,,,0,0.4488,0.4475,0.5041,0.4591,0.4922,0.4475,,0,0.4446,0.4423,0.3585,1.0701,42
+sibling,glm-5.3 | glm-5.3-flash,own repeats,0.5421,0.5662,436,0.3926,0.5094,90,0.3739,0.4002,0.4002,0.3762,0.3762,0.3994,0.3966,480,0.4002,,0.3671,0.5002,479
+sibling,gpt-5.6-luna | gpt-5.6-sol,own repeats,0.6881,0.5878,832,1.0849,0.4549,8,0.4622,0.4961,0.4715,0.4646,0.4714,0.4960,0.4504,8,0.5055,0.4931,0.3821,0.5171,64
+sibling,gpt-5.6-luna | gpt-5.6-terra,own repeats,0.6683,0.5842,829,0.7031,0.3470,9,0.4529,0.4870,0.4606,0.4554,0.4615,0.4867,0.4182,9,0.4924,0.4850,0.3771,0.5484,64
+sibling,gpt-5.6-sol | gpt-5.6-terra,own repeats,0.7447,0.5640,832,0.8331,0.4418,8,0.4635,0.4901,0.4757,0.4668,0.4767,0.4900,0.4386,8,0.4969,0.4863,0.3794,0.5520,64
+sibling,claude-opus-4-8 | claude-sonnet-5,"PROXY: other models' repeats, same prompts",0.2898,0.7921,4,0.5061,0.6076,51,0.3638,0.4868,0.4341,0.4332,0.4332,0.4868,0.4597,51,0.4894,0.4858,0.3905,0.3938,162
+control,gpt-5.5 | gpt-5.6-luna,own repeats,0.5942,0.6098,827,,,0,0.4482,0.4915,0.4547,0.4502,0.4549,0.4915,,0,0.5022,0.4900,0.3813,0.4428,55
+control,gpt-6-astra | gpt-5.6-sol,own repeats,0.6175,0.6074,818,,,0,0.4630,0.5084,0.4733,0.4655,0.4741,0.5084,,0,0.5132,0.5064,0.3821,0.5355,52
+control,gemini-3.1-pro-preview | gemini-3.6-flash,own repeats,0.7172,0.5732,719,,,0,0.4648,0.4951,0.4740,0.4681,0.4701,0.4951,,0,0.4929,0.4940,0.3809,0.6822,69
+control,claude-opus-4-6 | claude-opus-4-8,"PROXY: other models' repeats, same prompts",0.2643,0.7956,5,0.5354,0.5862,50,0.3789,0.4857,0.4428,0.4422,0.4422,0.4857,0.4586,50,0.4880,0.4850,0.3927,0.4476,158
+control,claude-opus-5 | claude-sonnet-5,"PROXY: other models' repeats, same prompts",0.2010,0.8263,4,-0.0661,0.8081,43,0.3346,0.4881,0.3561,0.3560,0.3560,0.4881,0.4597,43,0.4903,0.4869,0.3528,-0.0293,144
+control,gpt-6-astra | claude-opus-5,own repeats,-0.1588,0.8671,715,,,0,0.3335,0.5221,,0.3335,,0.5221,,0,0.5194,0.5213,0.3622,,0

@@ -1,0 +1,5 @@
+{'kind': 'sibling', 'contrast': 'gemini-3.7-flash | gemini-3.8-flash', 'n_prompts': 1456, 'frac_same_source': 0.942, 'oof_auc': 0.5372407468904722, 'oof_acc': 0.5226648351648352, 'paired_acc': 0.5693681318681318} 30s
+{'kind': 'sibling', 'contrast': 'glm-5.3 | glm-5.3-flash', 'n_prompts': 3000, 'frac_same_source': 1.0, 'oof_auc': 0.5650992222222222, 'oof_acc': 0.5431666666666667, 'paired_acc': 0.5763333333333334} 90s
+   kind                            contrast  n_prompts  frac_same_source  oof_auc  oof_acc  paired_acc
+sibling gemini-3.7-flash | gemini-3.8-flash       1456             0.942 0.537241 0.522665    0.569368
+sibling             glm-5.3 | glm-5.3-flash       3000             1.000 0.565099 0.543167    0.576333

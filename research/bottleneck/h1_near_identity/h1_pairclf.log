@@ -1,0 +1,28 @@
+{'kind': 'sibling', 'contrast': 'gemini-3.6-flash | gemini-3.7-flash', 'n_prompts': 800, 'frac_same_source': 0.96, 'oof_auc': 0.6852171875, 'oof_acc': 0.635, 'paired_acc': 0.73875} 23s
+{'kind': 'sibling', 'contrast': 'gemini-3.6-flash | gemini-3.8-flash', 'n_prompts': 800, 'frac_same_source': 0.979, 'oof_auc': 0.7352749999999999, 'oof_acc': 0.673125, 'paired_acc': 0.7725} 43s
+{'kind': 'sibling', 'contrast': 'gemini-3.7-flash | gemini-3.8-flash', 'n_prompts': 800, 'frac_same_source': 0.932, 'oof_auc': 0.5145656249999999, 'oof_acc': 0.498125, 'paired_acc': 0.5075} 64s
+{'kind': 'sibling', 'contrast': 'glm-5.3 | glm-5.3-flash', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.5165734375, 'oof_acc': 0.49875, 'paired_acc': 0.50375} 85s
+{'kind': 'sibling', 'contrast': 'gpt-5.6-luna | gpt-5.6-sol', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.617640625, 'oof_acc': 0.5925, 'paired_acc': 0.64} 107s
+{'kind': 'sibling', 'contrast': 'gpt-5.6-luna | gpt-5.6-terra', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.6453031250000001, 'oof_acc': 0.614375, 'paired_acc': 0.7025} 125s
+{'kind': 'sibling', 'contrast': 'gpt-5.6-sol | gpt-5.6-terra', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.586584375, 'oof_acc': 0.561875, 'paired_acc': 0.61625} 145s
+{'kind': 'sibling', 'contrast': 'claude-opus-4-8 | claude-sonnet-5', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.7568406249999999, 'oof_acc': 0.683125, 'paired_acc': 0.80875} 171s
+{'kind': 'control', 'contrast': 'gpt-6-astra | claude-opus-5', 'n_prompts': 800, 'frac_same_source': 0.547, 'oof_auc': 0.9798921875, 'oof_acc': 0.92125, 'paired_acc': 0.9975} 191s
+{'kind': 'control', 'contrast': 'gpt-5.5 | gpt-5.6-luna', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.8214546875000001, 'oof_acc': 0.73625, 'paired_acc': 0.91} 209s
+{'kind': 'control', 'contrast': 'claude-opus-4-6 | claude-opus-4-8', 'n_prompts': 800, 'frac_same_source': 1.0, 'oof_auc': 0.7411546875, 'oof_acc': 0.68125, 'paired_acc': 0.80125} 225s
+{'kind': 'effort', 'contrast': 'gpt-5.6-luna low | default', 'n_prompts': 591, 'frac_same_source': 0.051, 'oof_auc': 0.47264809709088096, 'oof_acc': 0.46362098138747887, 'paired_acc': 0.47884940778341795} 238s
+{'kind': 'effort', 'contrast': 'gemini-3.6-flash low | default', 'n_prompts': 732, 'frac_same_source': 0.03, 'oof_auc': 0.5056119173459942, 'oof_acc': 0.5068306010928961, 'paired_acc': 0.49863387978142076} 251s
+   kind                            contrast  n_prompts  frac_same_source  oof_auc  oof_acc  paired_acc
+sibling gemini-3.6-flash | gemini-3.7-flash        800             0.960 0.685217 0.635000    0.738750
+sibling gemini-3.6-flash | gemini-3.8-flash        800             0.979 0.735275 0.673125    0.772500
+sibling gemini-3.7-flash | gemini-3.8-flash        800             0.932 0.514566 0.498125    0.507500
+sibling             glm-5.3 | glm-5.3-flash        800             1.000 0.516573 0.498750    0.503750
+sibling          gpt-5.6-luna | gpt-5.6-sol        800             1.000 0.617641 0.592500    0.640000
+sibling        gpt-5.6-luna | gpt-5.6-terra        800             1.000 0.645303 0.614375    0.702500
+sibling         gpt-5.6-sol | gpt-5.6-terra        800             1.000 0.586584 0.561875    0.616250
+sibling   claude-opus-4-8 | claude-sonnet-5        800             1.000 0.756841 0.683125    0.808750
+control         gpt-6-astra | claude-opus-5        800             0.547 0.979892 0.921250    0.997500
+control              gpt-5.5 | gpt-5.6-luna        800             1.000 0.821455 0.736250    0.910000
+control   claude-opus-4-6 | claude-opus-4-8        800             1.000 0.741155 0.681250    0.801250
+ effort          gpt-5.6-luna low | default        591             0.051 0.472648 0.463621    0.478849
+ effort      gemini-3.6-flash low | default        732             0.030 0.505612 0.506831    0.498634
+ effort         glm-5.3-flash low | default         27               NaN      NaN      NaN         NaN

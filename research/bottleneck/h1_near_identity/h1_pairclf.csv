@@ -1,0 +1,15 @@
+kind,contrast,n_prompts,frac_same_source,oof_auc,oof_acc,paired_acc
+sibling,gemini-3.6-flash | gemini-3.7-flash,800,0.9600,0.6852,0.6350,0.7388
+sibling,gemini-3.6-flash | gemini-3.8-flash,800,0.9790,0.7353,0.6731,0.7725
+sibling,gemini-3.7-flash | gemini-3.8-flash,800,0.9320,0.5146,0.4981,0.5075
+sibling,glm-5.3 | glm-5.3-flash,800,1.0000,0.5166,0.4988,0.5038
+sibling,gpt-5.6-luna | gpt-5.6-sol,800,1.0000,0.6176,0.5925,0.6400
+sibling,gpt-5.6-luna | gpt-5.6-terra,800,1.0000,0.6453,0.6144,0.7025
+sibling,gpt-5.6-sol | gpt-5.6-terra,800,1.0000,0.5866,0.5619,0.6162
+sibling,claude-opus-4-8 | claude-sonnet-5,800,1.0000,0.7568,0.6831,0.8087
+control,gpt-6-astra | claude-opus-5,800,0.5470,0.9799,0.9213,0.9975
+control,gpt-5.5 | gpt-5.6-luna,800,1.0000,0.8215,0.7362,0.9100
+control,claude-opus-4-6 | claude-opus-4-8,800,1.0000,0.7412,0.6813,0.8013
+effort,gpt-5.6-luna low | default,591,0.0510,0.4726,0.4636,0.4788
+effort,gemini-3.6-flash low | default,732,0.0300,0.5056,0.5068,0.4986
+effort,glm-5.3-flash low | default,27,,,,

@@ -1,0 +1,15 @@
+kind,pair,n_S,train_med_S,train_med_C,train_S_gt095,train_ident_sent_S,train_ident_sent_C
+sibling,gemini-3.6-flash | gemini-3.7-flash,150,0.3888,0.2841,0,0.0000,0.0001
+sibling,gemini-3.6-flash | gemini-3.8-flash,150,0.3663,0.2778,0,0.0000,0.0000
+sibling,gemini-3.7-flash | gemini-3.8-flash,150,0.3812,0.2764,0,0.0000,0.0001
+sibling,glm-5.3 | glm-5.3-flash,150,0.3367,0.3081,0,0.0000,0.0000
+sibling,gpt-5.6-luna | gpt-5.6-sol,150,0.3870,0.3095,0,0.0000,0.0000
+sibling,gpt-5.6-luna | gpt-5.6-terra,150,0.3760,0.3025,0,0.0000,0.0000
+sibling,gpt-5.6-sol | gpt-5.6-terra,150,0.3708,0.3042,0,0.0000,0.0000
+sibling,claude-opus-4-8 | claude-sonnet-5,150,0.3810,0.3178,0,0.0000,0.0000
+control,gpt-5.5 | gpt-5.6-luna,150,0.3489,0.3025,0,0.0000,0.0000
+control,gpt-6-astra | gpt-5.6-sol,150,0.3694,0.3005,0,0.0000,0.0000
+control,gemini-3.1-pro-preview | gemini-3.6-flash,150,0.3686,0.2901,0,0.0000,0.0000
+control,claude-opus-4-6 | claude-opus-4-8,150,0.3646,0.3189,0,0.0000,0.0000
+control,claude-opus-5 | claude-sonnet-5,150,0.2930,0.2858,0,0.0000,0.0000
+control,gpt-6-astra | claude-opus-5,150,0.2550,0.2740,0,0.0000,0.0000

@@ -1,0 +1,7 @@
+step,script,args,wall_s,outputs,note
+1,h1_pairs.py,,774,pairs.parquet;docs_meta.parquet;h1_pairs.log,"678,256 same-prompt pairs over pool+train (78,482 docs); char tfidf alone 349s under CPU contention"
+2,h1_analysis.py,,67,h1_pair_summary.csv;h1_samemodel_split.csv;h1_train_view.csv;h1_analysis.log,"S/M/C per pair, R with 1000-prompt bootstrap, condition-matched robustness"
+3,h1_pairclf.py,800,251,h1_pairclf.csv;h1_pairclf.log,"paired source-matched char-LR, 800 prompts/contrast subsample"
+4,h1_neardup.py,,86,h1_neardup_pairs.csv;h1_neardup_counts.csv;h1_neardup.log,"global 6-gram shingle candidates + char cosine; idf on 15k subsample"
+5,h1_pairclf.py,"3000 glm/gemini-3.7-3.8 _power3000",100,h1_pairclf_power3000.csv;h1_pairclf_power3000.log,"power check for the two null-looking pairs"
+6,h1_summary.py,,2,h1_verdict.csv;h1_summary.log,"verdict table"

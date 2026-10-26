@@ -1,0 +1,9 @@
+pair,med_S,med_M,med_C,m_source,n_prompts,R,R_lo,R_hi,R_condmatched,auc_M_gt_S,dz,clf_paired_acc_800,clf_single_acc_800,clf_paired_acc_power,clf_power_n,neardup_gt095,max_cos_any_prompt,verdict
+gemini-3.7-flash | gemini-3.8-flash,0.459,0.448,0.358,own repeats,762,1.146,1.096,1.190,1.040,0.476,-0.258,0.507,0.498,0.569,1456.000,0,0.762,SUPPORTED: as similar as same-model; residual signal faint
+gemini-3.6-flash | gemini-3.7-flash,0.462,0.480,0.371,own repeats,781,0.899,0.867,0.934,0.780,0.536,0.200,0.739,0.635,,,0,0.584,NOT SUPPORTED: close in similarity but clearly learnable
+gemini-3.6-flash | gemini-3.8-flash,0.451,0.466,0.367,own repeats,934,0.871,0.847,0.898,0.832,0.537,0.298,0.772,0.673,,,0,0.814,NOT SUPPORTED: close in similarity but clearly learnable
+gpt-5.6-sol | gpt-5.6-terra,0.467,0.490,0.379,own repeats,840,0.810,0.788,0.834,0.745,0.555,0.517,0.616,0.562,,,0,0.846,NOT SUPPORTED: learnable (weakest of the gpt trio)
+gpt-5.6-luna | gpt-5.6-sol,0.465,0.496,0.382,own repeats,840,0.730,0.711,0.750,0.688,0.580,0.767,0.640,0.593,,,0,0.834,NOT SUPPORTED: learnable
+gpt-5.6-luna | gpt-5.6-terra,0.455,0.487,0.377,own repeats,838,0.709,0.690,0.729,0.668,0.578,0.832,0.703,0.614,,,0,0.607,NOT SUPPORTED: learnable
+glm-5.3 | glm-5.3-flash,0.376,0.399,0.367,own repeats,479,0.500,0.414,0.585,0.542,0.558,0.433,0.504,0.499,0.576,3000.000,0,0.803,"PARTLY: classifier near chance, similarity only halfway (low dynamic range)"
+claude-opus-4-8 | claude-sonnet-5,0.433,0.487,0.391,"PROXY: other models' repeats, same prompts",1028,0.467,0.423,0.508,0.290,0.620,0.624,0.809,0.683,,,0,0.560,NOT SUPPORTED: ordinary within-family distance (proxy baseline)
