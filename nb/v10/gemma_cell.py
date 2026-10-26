@@ -27,8 +27,9 @@ def _gemma_member():
     assert gdir, 'attach model google/gemma-4/Transformers/gemma-4-12b/2'
     print('gemma member', ck, 'base', gdir, flush=True)
     a = _np.load(ck / 'anchor_features.npz', allow_pickle=True)
-    tr = _pd.read_csv(DATA / 'train.csv', dtype=str).set_index('id')
-    te = _pd.read_csv(DATA / 'test.csv', dtype=str)
+    _data = _pl.Path(DATA)   # DATA is a Path in v8, a str in the nlm-v27 line
+    tr = _pd.read_csv(_data / 'train.csv', dtype=str).set_index('id')
+    te = _pd.read_csv(_data / 'test.csv', dtype=str)
     gtok = AutoTokenizer.from_pretrained(ck / 'tokenizer')
     BOS, EOS, PAD = list(meta['bos']), int(meta['eos']), int(meta['pad'])
     DEPTH, POOL = int(meta['depth']), [int(v) for v in meta['pool_layers']]
