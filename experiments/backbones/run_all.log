@@ -1,0 +1,71 @@
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+gemma4-12b 5 0.3141
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+gemma4-12b 10 0.3067
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+gemma4-12b 14 0.3627
+gemma4-12b 22 0.336
+gemma4-12b 29 0.3319
+gemma4-12b 38 0.2793
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+gemma4-12b 48 0.2878
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+{'model': 'gemma4-12b', 'n_layers': 48, 'best_config': 'top3', 'best_standalone': 0.393, 'best_rel_depth': np.float64(0.29), 'top3_concat': 0.393, 'on_strong': 0.496, 'delta_on_strong': 0.0044, 'folds_pos': '4/5', 'agreement_with_strong': 0.509, 'within_claude': 0.559, 'within_gemini': 0.492, 'within_gpt': 0.445, 'within_glm': 0.563, 'lm_stats_standalone': 0.1386, 'lm_stats_within_claude': 0.346, 'lm_stats_within_gemini': 0.377, 'lm_stats_within_gpt': 0.288, 'lm_stats_within_glm': 0.53, 's_per_passage_2xT4': None, 'peak_gb': None, 'eight_bit': None, 'tokens_per_word': None}
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 3 0.3389
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 6 0.3086
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 10 0.3052
+mistral-7b 14 0.333
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 19 0.3104
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 26 0.2608
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+mistral-7b 32 0.2867
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+I:\venv_python\that_llm\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:1626: RuntimeWarning: divide by zero encountered in log
+  return xp.log(self.predict_proba(X))
+{'model': 'mistral-7b', 'n_layers': 32, 'best_config': 'top3', 'best_standalone': 0.366, 'best_rel_depth': np.float64(0.09), 'top3_concat': 0.366, 'on_strong': 0.4967, 'delta_on_strong': 0.0052, 'folds_pos': '4/5', 'agreement_with_strong': 0.484, 'within_claude': 0.527, 'within_gemini': 0.512, 'within_gpt': 0.441, 'within_glm': 0.543, 'lm_stats_standalone': 0.1433, 'lm_stats_within_claude': 0.276, 'lm_stats_within_gemini': 0.403, 'lm_stats_within_gpt': 0.275, 'lm_stats_within_glm': 0.56, 's_per_passage_2xT4': None, 'peak_gb': None, 'eight_bit': None, 'tokens_per_word': None}
+Traceback (most recent call last):
+  File "I:\venv_python\that_llm\experiments\backbones\screen_eval.py", line 85, in <module>
+    z = np.load(f, allow_pickle=True)   # ids are strings (object array); file = our own Kaggle kernel output
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "I:\venv_python\that_llm\.venv\Lib\site-packages\numpy\lib\_npyio_impl.py", line 463, in load
+    raise EOFError("No data left in file")
+EOFError: No data left in file

@@ -92,3 +92,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 11:25,claude-code,kaggle push,mdmuqtadirfuad/ntl-llama-twostage v2 (smoke),"Llama-3.1-8B weights from ntl-llama31-8b-weights output (HF download, 16.1 GB verified); Kaggle-hosted Llama is gated (403) for this account"
 2026-10-26 11:38,claude-code,kaggle push,mdmuqtadirfuad/ntl-llama-ts-s1,Llama-3.1-8B two-stage session 1 (stage1a+b); smoke est 10.5 GPU-h total
 2026-10-26 11:49,user,kaggle cancel,mdmuqtadirfuad/ntl-llama-ts-s1,cancelled by user in UI (GPU quota only 7-8 h left; Gemma s2 has priority); Llama restarts after weekly reset
+2026-10-26 11:51,claude-code,kaggle benchmarks run,ntl-gen o001r + o002,"daily.py --own --n 32: claude-opus-5 retry for o001's 40 ids, then 32 new own prompts x 10 models; prompts dataset re-synced (new sources)"
