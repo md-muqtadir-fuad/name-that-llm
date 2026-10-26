@@ -9,16 +9,21 @@ from pathlib import Path
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'smoke'
 KID = sys.argv[2] if len(sys.argv) > 2 else 'ntl-gemma-twostage'        # kernel id (one per session)
 PREV = sys.argv[3] if len(sys.argv) > 3 else ''                          # earlier session's kernel (resume source)
+BACKBONE = sys.argv[4] if len(sys.argv) > 4 else 'gemma4-12b'
+MODEL_SRC = {'gemma4-12b': 'google/gemma-4/Transformers/gemma-4-12b/2', 'llama31-8b': None}[BACKBONE]
+# Llama-3.1-8B: Kaggle's copy is gated for this account, so the weights come from our HF-download kernel's output
+WEIGHTS_KERNEL = {'llama31-8b': 'mdmuqtadirfuad/ntl-llama31-8b-weights'}.get(BACKBONE)
+MATCH = {'gemma4-12b': ('/gemma-4-12b/',), 'llama31-8b': ('llama-3.1', '/8b/')}[BACKBONE]   # all must be in the path
 import base64
 SRC = Path('nb/colab_twostage/twostage_train.py').read_text(encoding='utf-8')
 B64 = base64.b64encode(SRC.encode('utf-8')).decode('ascii')   # the trainer embeds its worker in ''' strings
 RUN = r'''import base64, glob, json, os, shutil, subprocess, sys
 SRC = base64.b64decode(B64).decode('utf-8')
 from pathlib import Path
-MODE = '%s'
+MODE, BACKBONE, MATCH = '%s', '%s', %r
 os.chdir('/kaggle/working')
 Path('twostage_train.py').write_text(SRC)
-cfg = [p for p in glob.glob('/kaggle/input/**/config.json', recursive=True) if '/gemma-4-12b/' in p.lower()]
+cfg = [p for p in glob.glob('/kaggle/input/**/config.json', recursive=True) if all(m in p.lower() for m in MATCH)]
 pool = glob.glob('/kaggle/input/**/pool_v4.parquet', recursive=True)
 train = [p for p in glob.glob('/kaggle/input/**/train.csv', recursive=True) if 'name-that-llm' in p]
 assert cfg and pool and train, (cfg, pool, train)
@@ -38,7 +43,7 @@ if dw:
     pv = pd.concat([pv[['id', 'prompt_id', 'text', 'model']].astype(str), dw], ignore_index=True)
     print('pool_v4 +', len(dw), 'darragh rows ->', len(pv), flush=True)
 pv.to_parquet('/kaggle/working/pool_merged.parquet', index=False)
-env = dict(os.environ, NTL_BACKBONE='gemma4-12b', NTL_WORK=str(work), NTL_DATA=str(Path(train[0]).parent),
+env = dict(os.environ, NTL_BACKBONE=BACKBONE, NTL_WORK=str(work), NTL_DATA=str(Path(train[0]).parent),
            NTL_POOL='/kaggle/working/pool_merged.parquet', NTL_MODEL_DIR=str(Path(cfg[0]).parent))
 subprocess.run(['nvidia-smi', '--query-gpu=name,memory.total', '--format=csv,noheader'])
 args = [sys.executable, '-u', 'twostage_train.py'] + (['--smoke'] if MODE == 'smoke' else ['--jobs', MODE.split(':', 1)[1]])
@@ -52,16 +57,16 @@ for f in ('pool_merged.parquet', str(work / 'train_plus_pool.csv')):   # large i
         os.remove(f)
 assert r.returncode == 0, 'trainer failed'
 '''
-d = Path('nb/gemma_twostage') / ('smoke' if MODE == 'smoke' else KID)
+d = Path('nb/gemma_twostage') / (f'smoke_{BACKBONE}' if MODE == 'smoke' else KID)
 d.mkdir(parents=True, exist_ok=True)
-(d / 'run.py').write_text(f"B64 = '{B64}'\n" + RUN % MODE, encoding='utf-8', newline='\n')
+(d / 'run.py').write_text(f"B64 = '{B64}'\n" + RUN % (MODE, BACKBONE, MATCH), encoding='utf-8', newline='\n')
 compile((d / 'run.py').read_text(encoding='utf-8'), 'run.py', 'exec')
 meta = {'id': f'mdmuqtadirfuad/{KID}', 'title': KID, 'code_file': 'run.py',
         'language': 'python', 'kernel_type': 'script', 'is_private': True, 'enable_gpu': True, 'enable_tpu': False,
         'enable_internet': False,
         'dataset_sources': ['nishantdahal/ntl-handwriting-blend', 'darragh1walsh/ntl-kaggle-ai-gen-run-1'],
-        'kernel_sources': [f'mdmuqtadirfuad/{PREV}'] if PREV else [],
-        'competition_sources': ['name-that-llm'], 'model_sources': ['google/gemma-4/Transformers/gemma-4-12b/2'],
+        'kernel_sources': ([f'mdmuqtadirfuad/{PREV}'] if PREV else []) + ([WEIGHTS_KERNEL] if WEIGHTS_KERNEL else []),
+        'competition_sources': ['name-that-llm'], 'model_sources': [MODEL_SRC] if MODEL_SRC else [],
         'machine_shape': 'NvidiaTeslaT4',
         'docker_image': 'gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f'}
 (d / 'kernel-metadata.json').write_text(json.dumps(meta, indent=2))

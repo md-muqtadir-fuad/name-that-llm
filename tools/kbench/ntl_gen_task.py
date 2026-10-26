@@ -11,11 +11,11 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 0, 40          # set by daily.py
+START, N = 0, 32          # set by daily.py
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
 ONLY = {}   # set by daily.py
-IDS = ["own_3aa16fe76f", "own_0fb68d5a24", "own_96d74f9900", "own_f9b757a5b1", "own_7484b2c7f5", "own_2550f54359", "own_0932fb8486", "own_3028fbda0f", "own_36c87538e6", "own_63462406f5", "own_dc2438ca50", "own_2268f2cf9e", "own_675b495b60", "own_6d6d9bd138", "own_64016cf715", "own_82a1c29140", "own_3c15ba563d", "own_dc9b9254de", "own_3baa072cda", "own_5ef1983ab3", "own_a5afff7871", "own_f4af2c47c5", "own_67f7a5e3ae", "own_e9ea9e0be5", "own_ff53c12b19", "own_b237235ca3", "own_15a09f40e0", "own_90b5ad10ff", "own_93575108a0", "own_816700be93", "own_77f25955cc", "own_68f9fcb1f2", "own_f0fc3a0c87", "own_7dbf471cdc", "own_e542d86477", "own_4bfb9fa347", "own_dd004e381b", "own_f2fbeaeaf1", "own_4055c36df8", "own_0e101b38ac"]   # set by daily.py
-BATCH = 'o001'
+IDS = ["own_93d0888704", "own_933ffc7ce9", "own_bdf1e37804", "own_b317985d8a", "own_cf477eb51d", "own_f6bbf84bc4", "own_b98f6b0da9", "own_90852f26a4", "own_ee2076513c", "own_4ffbc8b7d3", "own_961494e383", "own_226ce3022d", "own_b0ebef6b7d", "own_3abd08751f", "own_96fb074273", "own_79a10896ac", "own_084db456dd", "own_4250ca8486", "own_b7843d45fa", "own_52a804cdd6", "own_f16dd42a17", "own_a5b14fb95b", "own_5f020c5449", "own_def3258990", "own_0fd742c05d", "own_d96c88c2d3", "own_9f56383a6d", "own_c13c3b86ac", "own_afb5f81092", "own_6ce156b97a", "own_f10ea1993e", "own_ebe28a9939"]   # set by daily.py
+BATCH = 'o002'
 
 
 def word_range(prompt_id, model=''):

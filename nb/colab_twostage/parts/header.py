@@ -21,6 +21,7 @@ import os as _os
 BACKBONE = _os.environ.get('NTL_BACKBONE', 'olmo2-7b')
 BACKBONES = {
     'gemma4-12b': dict(slug='google/gemma-4/Transformers/gemma-4-12b/2', depth=24, pool_layers=[2, 4, 8, 12, 14, 16, 20, 24]),
+    'llama31-8b': dict(slug='metaresearch/llama-3.1/Transformers/8b', depth=24, pool_layers=[2, 4, 6, 8, 12, 16, 20, 24]),
     'olmo2-7b': dict(slug='allenai/OLMo-2-1124-7B', depth=24, pool_layers=[2, 4, 6, 8, 12, 16, 20, 24]),
     'qwen3-8b-base': dict(slug='Qwen/Qwen3-8B-Base', depth=24, pool_layers=[2, 4, 6, 8, 12, 16, 20, 24]),
 }

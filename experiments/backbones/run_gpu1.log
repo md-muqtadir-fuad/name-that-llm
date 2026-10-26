@@ -1,0 +1,36 @@
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+olmo2-7b 3 0.339
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+olmo2-7b 6 0.3263
+  return xp.log(self.predict_proba(X))
+olmo2-7b 10 0.3486
+olmo2-7b 14 0.3405
+olmo2-7b 19 0.3045
+olmo2-7b 26 0.2723
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+olmo2-7b 32 0.2897
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+{'model': 'olmo2-7b', 'n_layers': 32, 'best_config': 'top3', 'best_standalone': 0.3771, 'best_rel_depth': np.float64(0.31), 'top3_concat': 0.3771, 'on_strong': 0.4964, 'delta_on_strong': 0.0048, 'folds_pos': '3/5', 'agreement_with_strong': 0.479, 'within_claude': 0.547, 'within_gemini': 0.507, 'within_gpt': 0.44, 'within_glm': 0.527, 'lm_stats_standalone': 0.143, 'lm_stats_within_claude': 0.267, 'lm_stats_within_gemini': 0.388, 'lm_stats_within_gpt': 0.292, 'lm_stats_within_glm': 0.56, 's_per_passage_2xT4': 0.1731, 'peak_gb': 10.0, 'eight_bit': False, 'tokens_per_word': 1.292}
+qwen3-8b 4 0.3678
+  return xp.log(self.predict_proba(X))
+qwen3-8b 7 0.3556
+qwen3-8b 11 0.3149
+qwen3-8b 16 0.3375
+qwen3-8b 22 0.359
+qwen3-8b 29 0.3067
+qwen3-8b 36 0.3008
+  return xp.log(self.predict_proba(X))
+  return xp.log(self.predict_proba(X))
+{'model': 'qwen3-8b', 'n_layers': 36, 'best_config': 'top3', 'best_standalone': 0.3919, 'best_rel_depth': np.float64(0.11), 'top3_concat': 0.3919, 'on_strong': 0.4908, 'delta_on_strong': -0.0007, 'folds_pos': '3/5', 'agreement_with_strong': 0.523, 'within_claude': 0.547, 'within_gemini': 0.482, 'within_gpt': 0.457, 'within_glm': 0.53, 'lm_stats_standalone': 0.1452, 'lm_stats_within_claude': 0.31, 'lm_stats_within_gemini': 0.395, 'lm_stats_within_gpt': 0.319, 'lm_stats_within_glm': 0.56, 's_per_passage_2xT4': 0.1928, 'peak_gb': 11.86, 'eight_bit': False, 'tokens_per_word': 1.294}
+   model  n_layers best_config  best_standalone  best_rel_depth  top3_concat  on_strong  delta_on_strong folds_pos  agreement_with_strong  within_claude  within_gemini  within_gpt  within_glm  lm_stats_standalone  lm_stats_within_claude  lm_stats_within_gemini  lm_stats_within_gpt  lm_stats_within_glm  s_per_passage_2xT4  peak_gb  eight_bit  tokens_per_word
+olmo2-7b        32        top3           0.3771            0.31       0.3771     0.4964           0.0048       3/5                  0.479          0.547          0.507       0.440       0.527               0.1430                   0.267                   0.388                0.292                 0.56              0.1731    10.00      False            1.292
+qwen3-8b        36        top3           0.3919            0.11       0.3919     0.4908          -0.0007       3/5                  0.523          0.547          0.482       0.457       0.530               0.1452                   0.310                   0.395                0.319                 0.56              0.1928    11.86      False            1.294
