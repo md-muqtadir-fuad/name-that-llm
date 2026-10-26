@@ -90,3 +90,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 08:51,claude-code,kaggle push,ntl-gemma-ts-s2; ntl-llama-twostage (smoke),"Gemma s1 complete (stage1a 3.7h, stage1b 3.8h, pool 77,264); s2 = stage1c+fold0-2+final resuming from s1; Llama-3.1-8B base two-stage smoke (24 of 32 layers)"
 2026-10-26 09:17,claude-code,kaggle push,mdmuqtadirfuad/ntl-llama31-8b-weights,"CPU, internet on: downloads meta-llama/Llama-3.1-8B via the user's HF token (Kaggle secret HF_TOKEN) into kernel output; HF access verified locally (user mrxfuad); local token in git-ignored .env.hf"
 2026-10-26 11:25,claude-code,kaggle push,mdmuqtadirfuad/ntl-llama-twostage v2 (smoke),"Llama-3.1-8B weights from ntl-llama31-8b-weights output (HF download, 16.1 GB verified); Kaggle-hosted Llama is gated (403) for this account"
+2026-10-26 11:38,claude-code,kaggle push,mdmuqtadirfuad/ntl-llama-ts-s1,Llama-3.1-8B two-stage session 1 (stage1a+b); smoke est 10.5 GPU-h total
