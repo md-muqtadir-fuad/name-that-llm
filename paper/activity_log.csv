@@ -111,3 +111,5 @@ timestamp_utc,actor,action,target,details
 2026-10-27 09:35,claude-code,experiment E062,experiments/stacking/nnls_blend.py,"NNLS stacking on 37-member OOF bundle: log-linear NNLS 0.5382 vs hand weights 0.5248 (+0.013, 4/5 folds); prob-space +0.005; v11a test passed (preview ok, ~5 min)"
 2026-10-27 09:41,claude-code,kaggle submit,ntl-v11a v1,"ref 57696890; user approved (""submit""); exact copy of public 0.651 + preview shortcut"
 2026-10-27 10:00,claude-code,kaggle dataset create + push,mdmuqtadirfuad/ntl-oof-bundle; ntl-block-specialist-cpu v2,public lightningv08/ntl-oof-q35-heads now 403; our local copy uploaded as private dataset; E063 block specialist moved to Kaggle CPU (user request); local runs stopped
+2026-10-27 11:49,claude-code,kaggle benchmarks run,ntl-gen o003 (own prompts),"daily.py --own --n 40; user asked (""push todays benchmarking"")"
+2026-10-27 11:52,claude-code,results + data scan,"E063, E064, new datasets","E063 block specialist rejected (-0.0004); E064 NNLS +Gemma chunk-centred +0.088 9/9 (v1 prompt-centred +0.12 was oracle-inflated); new: crtproduction open pool 247k CC BY-SA, alessandrolair kbench passages 3.9k CC BY"

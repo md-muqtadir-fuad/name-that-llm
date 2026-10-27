@@ -26,3 +26,13 @@ The new pool is public: `nishantdahal/ntl-handwriting-blend/pool_v4.parquet` (35
 - The Colab OLMo-2-7B run used pool_v1 (35k); it is obsolete. Any own two-stage run must use pool_v4.
 - Frozen-feature backbone screen (E047, partial): OLMo-2-7B +0.0048 on strong (3/5 folds), Qwen3-8B -0.0007. Both fail the
   acceptance rule; the eval crashed on a truncated npz for the remaining models. Frozen features are not worth more effort.
+
+## Update 2026-10-27: new public data
+- **crtproduction/name-that-llm-open-pool** (CC BY-SA 4.0, 2026-10-27): 246,978 de-duplicated, provenance-tracked passages
+  from 56 public datasets, filtered to look like competition passages (README, sources.csv, filter_log.csv,
+  excluded_sources.csv). About 3x pool_v4. The biggest lever so far was pool size (35k -> 84k: +0.04 member OOF), so the
+  next stage-1 training should use it (or a large subsample; full size is ~3x the stage-1 GPU time).
+- **alessandrolair/ntl-kaggle-benchmarks-generated-passages** (CC BY 4.0): 3,866 passages from the 12 Benchmarks-served
+  labels on 335 invented prompts, same protocol as ours (fresh chat, "single paragraph of about N words"); not in the
+  open pool (published later the same day).
+- Data is no longer an edge by itself: everyone has the open pool. Our own-prompt Benchmarks set is the unique part.
