@@ -15,7 +15,7 @@ ds() {  # ds <owner/slug> <local dir> [file ...]
 }
 
 mkdir -p data && "$K" competitions download name-that-llm -p data -q && (cd data && unzip -o -q name-that-llm.zip) && echo "ok  competition data"
-ds lightningv08/ntl-oof-q35-heads research/ext_oof/q35heads
+ds mdmuqtadirfuad/ntl-oof-bundle research/ext_oof/q35heads || echo "skip: ntl-oof-bundle not shared with you (the public lightningv08/ntl-oof-q35-heads is gone)"
 ds prvsiyan/prvsiyans-extended-name-that-llm-dataset research/ext_data/prvsiyan
 ds seyitkaangunes/ntl-extra-api-passages research/ext_data/extra_api
 ds lucasboesen/ntl-free-proxy-generations research/ext_data/lucas

@@ -7,7 +7,7 @@ Secrets are never shared: each person uses their own `kaggle.json`, `.env` (Gemi
 | Local path | Source | How it is fetched | License / notes |
 |---|---|---|---|
 | `data/` | Kaggle competition `name-that-llm` | `kaggle competitions download` | competition rules; never commit or share outside the team |
-| `research/ext_oof/q35heads/` | Kaggle dataset `lightningv08/ntl-oof-q35-heads` | `kaggle datasets download` | public; prompt-disjoint OOF log-probs of 37 heads = the "strong" CV base |
+| `research/ext_oof/q35heads/` | originally `lightningv08/ntl-oof-q35-heads` (no longer public, 403 since 2026-10-27); our copy = Kaggle dataset `mdmuqtadirfuad/ntl-oof-bundle` (PRIVATE) | `ds` in fetch_data.sh | prompt-disjoint OOF log-probs of 37 heads = the "strong" CV base |
 | `research/ext_data/prvsiyan/` | Kaggle dataset `prvsiyan/prvsiyans-extended-name-that-llm-dataset` | `kaggle datasets download` | CC BY 4.0 |
 | `research/ext_data/extra_api/` | Kaggle dataset `seyitkaangunes/ntl-extra-api-passages` | `kaggle datasets download` | CC BY 4.0; Claude passages + the 1,000-prompt bank (`prompts.csv`) |
 | `research/ext_data/lucas/` | Kaggle dataset `lucasboesen/ntl-free-proxy-generations` | `kaggle datasets download` | CC BY 4.0 |
