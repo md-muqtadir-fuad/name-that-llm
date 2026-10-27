@@ -109,3 +109,4 @@ timestamp_utc,actor,action,target,details
 2026-10-27 09:26,claude-code,kaggle push,mdmuqtadirfuad/ntl-v11a v1,v11a = exact copy of avazaku verified reproduction of nlm-v27 (public 0.651) + preview shortcut (v8's exact 3-row check) skipping comp_stack/infer in the commit run
 2026-10-27 09:31,claude-code,v11b built (not pushed),nb/v11b,"0.651 base + Gemma as infer.py MODELS row (w 1.0, twin 0.35) + language_model name fallback; full-pipeline commit test after weekly GPU reset; Gemma stop rule applies"
 2026-10-27 09:35,claude-code,experiment E062,experiments/stacking/nnls_blend.py,"NNLS stacking on 37-member OOF bundle: log-linear NNLS 0.5382 vs hand weights 0.5248 (+0.013, 4/5 folds); prob-space +0.005; v11a test passed (preview ok, ~5 min)"
+2026-10-27 09:41,claude-code,kaggle submit,ntl-v11a v1,"ref 57696890; user approved (""submit""); exact copy of public 0.651 + preview shortcut"
