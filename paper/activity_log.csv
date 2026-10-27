@@ -107,3 +107,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 17:53,claude-code,kaggle submit,ntl-v10 v2,"ref 57674503; user approved (""submit""); Gemma in subprocess; 2 submissions left today (team)"
 2026-10-27 09:19,claude-code,results,"v10b LB, E061","v10b 0.635 (v8 0.639): Gemma plain 15% no gain on public stack; E061 gemini-3.7/3.8 attn-BiLSTM single 0.52, paired 0.55 (null 0.50/0.48), pool->host 0.53/0.55 < blend ~0.60"
 2026-10-27 09:26,claude-code,kaggle push,mdmuqtadirfuad/ntl-v11a v1,v11a = exact copy of avazaku verified reproduction of nlm-v27 (public 0.651) + preview shortcut (v8's exact 3-row check) skipping comp_stack/infer in the commit run
+2026-10-27 09:31,claude-code,v11b built (not pushed),nb/v11b,"0.651 base + Gemma as infer.py MODELS row (w 1.0, twin 0.35) + language_model name fallback; full-pipeline commit test after weekly GPU reset; Gemma stop rule applies"
