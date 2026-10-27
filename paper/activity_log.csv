@@ -105,3 +105,4 @@ timestamp_utc,actor,action,target,details
 2026-10-26 17:12,claude-code,kaggle push,mdmuqtadirfuad/ntl-gem37-38-lstm-cpu,E061 gemini-3.7 vs 3.8 attention-BiLSTM moved from local CPU to Kaggle CPU (user request); local run stopped
 2026-10-26 17:49,claude-code,fix + kaggle push,mdmuqtadirfuad/ntl-v10 v2,"v10 v1 submission failed (unhandled error); Gemma member now runs in a subprocess (GPU freed on exit), empty test texts tolerated, GPU memory printed after; v11 rebuilt with the same cell"
 2026-10-26 17:53,claude-code,kaggle submit,ntl-v10 v2,"ref 57674503; user approved (""submit""); Gemma in subprocess; 2 submissions left today (team)"
+2026-10-27 09:19,claude-code,results,"v10b LB, E061","v10b 0.635 (v8 0.639): Gemma plain 15% no gain on public stack; E061 gemini-3.7/3.8 attn-BiLSTM single 0.52, paired 0.55 (null 0.50/0.48), pool->host 0.53/0.55 < blend ~0.60"
