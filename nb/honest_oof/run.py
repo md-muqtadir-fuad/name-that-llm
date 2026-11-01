@@ -17,6 +17,8 @@ from transformers import AutoConfig, AutoModel, AutoTokenizer
 
 T0 = time.time()
 def log(*x): print(f'[{time.time() - T0:6.0f}s]', *x, flush=True)
+assert torch.cuda.is_available(), 'no GPU in this session'   # out of weekly quota, Kaggle runs "GPU" kernels on CPU
+log('gpus', [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())])
 DATA = os.path.dirname(next(p for p in glob.glob('/kaggle/input/**/train.csv', recursive=True) if 'name-that-llm' in p))
 GAUSS_SRC = None   # gauss.py from the 0.664 notebook (Apache-2.0), embedded by build.py
 open('/kaggle/working/gauss.py', 'w').write(GAUSS_SRC); sys.path.insert(0, '/kaggle/working')
@@ -63,7 +65,10 @@ for spec in MEMBERS:
     mods = [dict(m.named_modules()) for m in ms]
     enc = tok(list(train.text.values), truncation=True, max_length=384)['input_ids']
     order = np.argsort([len(x) for x in enc]); bs = spec['bs']
+    log('  param devices', sorted({str(p.device) for m in ms for p in m.parameters()}))
     plain, rc, bc = np.zeros((len(y), 18)), np.zeros((len(y), 18)), np.zeros((len(y), 18))
+    Pall, Rall = np.zeros((5, len(y), 18), np.float32), np.zeros((5, len(y), 18), np.float32)   # every row x every adapter
+    split_ok = True
     U, gm, glam = (np.zeros((len(y), 128)), np.zeros((5, 18, 128)), np.zeros((5, 128))) if spec['gauss'] else (None, None, None)
     for k in range(5):
         ad = adir(f"{spec['name']}_f{k}")
@@ -107,14 +112,18 @@ for spec in MEMBERS:
         ho = fold == k
         P = Z @ H['plain.weight'].float().numpy().T + H['plain.bias'].float().numpy()
         plain[ho] = P[ho]; rc[ho] = Z[ho] @ H['centered.weight'].float().numpy().T; bc[ho] = H['centered.bias'].float().numpy()
-        acc = (P.argmax(1) == y)
+        Pall[k] = P; Rall[k] = Z @ H['centered.weight'].float().numpy().T
+        acc = (P.argmax(1) == y); pf = [acc[fold == j].mean() for j in range(5)]
+        ok_k = int(np.argmin(pf)) == k and acc[~ho].mean() - acc[ho].mean() > 0.15   # held-out fold clearly worst
+        split_ok &= ok_k
         log(f"  {spec['name']}_f{k}: acc held-out fold {acc[ho].mean():.3f} | in-sample {acc[~ho].mean():.3f} | "
-            f"per fold {[round(acc[fold == j].mean(), 3) for j in range(5)]} | bf16 redo {sum(ovf)}")
-        if spec['gauss']:
+            f"per fold {np.round(pf, 3).tolist()} | split ok {ok_k} | bf16 redo {sum(ovf)}")
+        if spec['gauss'] and split_ok:   # a wrong split would fit the head on held-out rows; logits still saved for offline
             prm = ga.fit(Z[~ho], y[~ho], train.prompt_id.values[~ho], GCFG)
             U[ho] = ga.transform(Z[ho], prm); gm[k] = prm['m']; glam[k] = prm['lam']
     del ms, mods; torch.cuda.empty_cache()
     OUT[spec['name'] + '_plain'] = plain.astype(np.float32); OUT[spec['name'] + '_rc'] = rc.astype(np.float32); OUT[spec['name'] + '_bc'] = bc.astype(np.float32)
+    OUT[spec['name'] + '_Pall'] = Pall; OUT[spec['name'] + '_Rall'] = Rall; OUT[spec['name'] + '_split_ok'] = np.array(split_ok)
     if spec['gauss']:
         OUT[spec['name'] + '_U'] = U.astype(np.float32); OUT[spec['name'] + '_m'] = gm; OUT[spec['name'] + '_lam'] = glam
     log(f"{spec['name']} honest plain acc {(plain.argmax(1) == y).mean():.4f}")
