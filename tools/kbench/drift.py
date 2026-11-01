@@ -1,0 +1,18 @@
+"""Monthly drift panel: run the FROZEN tools/kbench/ntl_gen_task_drift.py (b002 code, prompts g0063-g0122) as batch
+drift_YYYYMM through daily.py's runner, on a copy of the task with only BATCH set. Month 0 = b002 (2026-10-18).
+Usage (repo root):  .venv\\Scripts\\python.exe tools\\kbench\\drift.py drift_202611 <model slug> [<model slug> ...] [--dry]"""
+import pathlib
+import re
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import daily  # noqa: E402
+
+batch, models = sys.argv[1], [m for m in sys.argv[2:] if m != '--dry']
+assert re.fullmatch(r'drift_\d{6}', batch), batch
+frozen = daily.ROOT / 'tools/kbench/ntl_gen_task_drift.py'
+copy = daily.ROOT / f'research/ext_data/kbench/{batch}_task.py'
+copy.parent.mkdir(parents=True, exist_ok=True)
+copy.write_text(frozen.read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
+daily.TASK = copy   # set_task only rewrites BATCH (START, N re-set to the frozen 63, 60; ONLY for retries)
+print(daily.run_batch(63, 60, batch, models, '--dry' in sys.argv))
