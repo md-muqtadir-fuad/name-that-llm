@@ -15,16 +15,13 @@ md = lambda s: C.append(('md', s.strip('\n')))
 code = lambda s: C.append(('code', s.strip('\n')))
 
 md(r'''
-# Name That LLM: data EDA and what the public results teach
+# Name That LLM: EDA and public results
 
-**Part A** looks at the data: how the 18 authors differ in length, typography and style, how strongly topic dominates
-style, which models are near-twins, and where a prompt-grouped baseline goes wrong.
-**Part B** reads the public results: how the public notebooks climbed from 0.54 to 0.664, how noisy one leaderboard
-reading is, which single changes failed, why prompt-recovery tricks lose on the board, and an honest re-scoring of the
-public 0.664 stack's members.
+Part A: the competition data (length, typography, style, topic vs author, model similarity, a prompt-grouped baseline,
+pairwise separability). Part B: results reported in public notebooks (score lineage, re-run noise, single-change
+deltas, prompt-group assignment) and our re-scoring of the public 0.664 stack's members.
 
-Everything in Part A runs on CPU in a few minutes. Part B uses numbers reported by the notebook authors (marked *claim*)
-and our own measurements (marked *ours*).
+Part B numbers are the notebook authors' public-LB claims (*claim*) unless marked *ours*.
 ''')
 code(r'''
 import glob, os, re, time, warnings
@@ -58,9 +55,8 @@ print(f'train {train.shape}, test {test.shape} (visible rows only; the hidden te
 md(r'''
 ## A1. Structure
 
-150 prompts, each answered once by (almost) every one of the 18 models, so a prompt is a perfect "same topic, different
-author" block. The visible test has only 3 rows; the hidden test (~4,000 rows, ~40% public) is not structured like this:
-the evidence in Part B says it has only a few passages per prompt.
+150 prompts; each has one answer from each of the 18 models (one answer is missing). The visible test has 3 rows. The
+hidden test has ~4,000 rows (~40% public) and, by the evidence in Part B, only a few passages per prompt.
 ''')
 code(r'''
 per_prompt = train.groupby('prompt_id').model.nunique()
@@ -73,13 +69,11 @@ print('words per passage: median', int(train.words.median()), '| 5-95%', train.w
 ''')
 
 md(r'''
-## A2. Length carries almost no author signal
+## A2. Length
 
-Passages range from ~40 to ~230 words, yet an additive model `log(words) ~ prompt + model` explains only a few percent
-of that spread: the length was evidently set per request (each answer got its own target), not by the author or the
-topic. Normalising inside each prompt (z-score over its 18 answers) shows the small author habits that remain
-(gemini-3.8-flash a bit short, Claude opus-4-8 / opus-5 a bit long), all within about a quarter of a standard deviation.
-Length is a weak feature; the real signal is in how the text is written.
+An additive model `log(words) ~ prompt + model` explains about 6% of the variance in length (prompt 5%, model 1%), so
+the length target was probably set per request. Within a prompt (z-score over its 18 answers), per-model means stay
+within about 0.25 SD: gemini-3.8-flash is slightly short, claude-opus-4-8 and claude-opus-5 slightly long.
 ''')
 code(r'''
 lw = np.log(train.words)
@@ -109,13 +103,12 @@ plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## A3. Typography fingerprints
+## A3. Typography
 
-Share of each model's passages that contain a mark at least once. These marks are the cheapest strong signal in the
-competition (the public "Who am I?" typography likelihood moved the board from 0.651 to 0.654, *claim*). Families
-cluster: Claude and GLM write closed em dashes (x—y) and straight apostrophes and never curly ones; GPT uses curly
-apostrophes and quotes; Gemini almost never uses an em dash and uses fewer colons. Spaced em dashes are an
-opus-4-6 / opus-5 habit.
+Share of each model's passages containing a mark at least once. In public notebooks a typography likelihood moved the
+LB from 0.651 to 0.654 (*claim*). Claude and GLM use closed em dashes (x—y) and straight apostrophes and no curly
+apostrophes. GPT uses curly apostrophes and quotes. Gemini rarely uses em dashes and uses fewer colons. Spaced em
+dashes appear mainly in claude-opus-4-6 and claude-opus-5.
 ''')
 code(r'''
 MARKS = {
@@ -131,16 +124,16 @@ for t, m in zip(ax.get_yticklabels(), LABELS): t.set_color(FAM_COL[fam(m)])
 for i in range(H.shape[0]):
     for j in range(H.shape[1]):
         v = H.values[i, j]; ax.text(j, i, f'{v:.2f}'.lstrip('0') if v < 1 else '1', ha='center', va='center', fontsize=6.5, color='white' if v > .55 else 'black')
-plt.colorbar(im, fraction=.025, label='share of passages'); ax.set_title('Typography: share of passages containing the mark (rows coloured by family)')
+plt.colorbar(im, fraction=.025, label='share of passages'); ax.set_title('Share of passages containing each mark')
 plt.tight_layout(); plt.show()
 spread = (H.max() - H.min()).sort_values(ascending=False)
 print('marks with the widest spread across models:', spread.head(6).round(2).to_dict())
 ''')
 
 md(r'''
-## A4. Style beyond punctuation
+## A4. Style statistics
 
-Per-passage style statistics, averaged per model and shown as z-scores across the 18 models.
+Per-passage statistics averaged per model, coloured by z-score across the 18 models.
 ''')
 code(r'''
 WORD = re.compile(r"[A-Za-z’']+")
@@ -167,13 +160,11 @@ plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## A5. Topic beats author, until the prompt is removed
+## A5. Nearest neighbours: topic vs author
 
-For each passage, find its nearest neighbour (cosine on word TF-IDF). Without help, the neighbour is almost always
-another answer to the **same prompt** (over 99%), and almost never the same model. Subtracting each prompt's mean
-vector (possible only when the other answers to the prompt are known) breaks most of the topic match and lifts
-same-model neighbours to about twice chance, no more. This is the "prompt confound": author style is a faint signal
-under a loud topic signal, and on the test the other answers to a prompt are mostly absent.
+Nearest neighbour of each passage by cosine on TF-IDF. Without centring, over 99% of neighbours answer the same
+prompt and almost none are by the same model. Subtracting each prompt's mean vector (which needs the other answers to
+that prompt) lowers same-prompt neighbours to 39-58% and raises same-model neighbours to 7-11% (chance 5.6%).
 ''')
 code(r'''
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -198,11 +189,10 @@ ax.legend(frameon=False, fontsize=8, loc='lower right'); ax.invert_yaxis(); plt.
 ''')
 
 md(r'''
-## A6. Who sounds like whom
+## A6. Model similarity
 
-Model centroids of prompt-centred character n-gram profiles, compared by cosine. The tree recovers the labs. The
-tightest cluster by far is Gemini: the 3.6, 3.7 and 3.8 flash generations (and 3.1-pro next to them) write almost the
-same way.
+Cosine between model centroids of prompt-centred character n-gram TF-IDF, with an average-linkage tree. The closest
+pairs are the Gemini flash generations (3.6, 3.7, 3.8), followed by gemini-3.1-pro-preview.
 ''')
 code(r'''
 from scipy.cluster.hierarchy import linkage, dendrogram
@@ -225,10 +215,10 @@ print('closest pairs:', [(a, b, round(v, 3)) for (a, b), v in off.head(6).items(
 ''')
 
 md(r'''
-## A7. A prompt-grouped baseline and where it fails
+## A7. Prompt-grouped baseline
 
-Character + word TF-IDF with a multinomial logistic regression, 5-fold `GroupKFold` by prompt (a prompt is never in
-train and validation at once). Scored with the competition metric, balanced accuracy.
+Character + word TF-IDF, multinomial logistic regression, 5-fold `GroupKFold` by prompt, scored with balanced
+accuracy.
 ''')
 code(r'''
 from sklearn.linear_model import LogisticRegression
@@ -271,13 +261,12 @@ plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## A8. How much does knowing the other answers to a prompt help?
+## A8. Centring with k passages per prompt
 
-The same baseline, but each held-out prompt is cut into random groups of *k* passages whose mean is subtracted before
-the readout (a model trained on prompt-centred features). With all 18 answers this is the "oracle" that makes
-prompt-recovery tricks look great in CV. With the 2-3 answers per prompt the test seems to have, centring is no better
-than reading each passage alone, and with 2 it is worse (the pair mean still carries the partner's style).
-Features: 384-dim SVD of the TF-IDF (unsupervised, fit once on all train text).
+Same features reduced to 384 SVD dimensions (fit once on all train text, no labels). A model trained on
+prompt-centred features reads held-out prompts split into random groups of k passages, each group centred on its own
+mean; k = 1 is the uncentred model. Centring helps with 6 or 18 passages, matches no centring at k = 3 and is worse at
+k = 2.
 ''')
 code(r'''
 from sklearn.decomposition import TruncatedSVD
@@ -303,16 +292,15 @@ for k in (1, 2, 3, 6, 18):
 res = pd.Series(res)
 print('balanced accuracy by known passages per prompt:', res.round(4).to_dict())
 ax = res.plot(marker='o', figsize=(6, 3.2), color='#4c78a8'); ax.set_xscale('log'); ax.set_xticks(res.index, res.index)
-ax.set_xlabel('passages per prompt known together (k)'); ax.set_ylabel('balanced accuracy'); ax.set_title('Prompt centring needs company')
+ax.set_xlabel('passages per prompt known together (k)'); ax.set_ylabel('balanced accuracy'); ax.set_title('Balanced accuracy vs passages per prompt (k)')
 plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## A9. Sibling pairs: separable or not?
+## A9. Pairwise separability
 
-For each pair, a binary logistic regression on character TF-IDF, prompt-grouped CV (*single*: one passage at a time).
-*Paired*: both answers to the same prompt are seen together and the classifier only has to say which is which
-(difference of the two vectors), the best case for any "relative" trick. Cross-family pairs are references.
+Binary logistic regression on character TF-IDF per pair, prompt-grouped CV. *single*: one passage at a time.
+*paired*: both answers to a prompt, classified from the difference of their vectors. Cross-lab pairs are references.
 ''')
 code(r'''
 PAIRS = [('gemini-3.7-flash', 'gemini-3.8-flash'), ('glm-5.3', 'glm-5.3-flash'), ('gpt-5.6-sol', 'gpt-5.6-terra'),
@@ -336,25 +324,23 @@ print(PR.round(3).to_string())
 ax = PR[['single', 'paired']].plot.barh(figsize=(9, 4.6), color=['#9ecae1', '#3182bd']); ax.axvline(.5, color='k', lw=.8, ls=':')
 ax.set_xlim(.4, 1); ax.invert_yaxis(); ax.set_xlabel('accuracy (0.5 = chance)'); ax.legend(frameon=False, loc='lower right')
 for t in ax.get_yticklabels(): t.set_fontweight('bold' if PR.loc[t.get_text(), 'family'] == 'cross' else 'normal')
-ax.set_title('Pairwise separability (bold = cross-family reference)'); plt.tight_layout(); plt.show()
+ax.set_title('Pairwise accuracy (bold = cross-lab reference)'); plt.tight_layout(); plt.show()
 print(f'Part A done in {time.time() - T0:.0f}s')
 ''')
 
 md(r'''
-**Reading.** Cross-lab references separate at 0.89-0.96 from a single passage. Inside a lab it ranges from chance
-(gemini-3.7 vs 3.8-flash, glm-5.3 vs flash, gpt-5.6-sol vs terra) to 0.73 (Claude opus-4-6 vs opus-4-8). Seeing both
-answers to the same prompt helps the pairs that have a real difference (Claude, gemini-3.6 vs 3.8, gpt-luna vs terra)
-and does nothing for the chance-level pairs. claude-fable-5 vs glm-5.3 is the odd one: two labs, yet as hard as the
-hardest siblings, which matches their shared closed em dashes, straight apostrophes and colons in A3.
+Cross-lab references reach 0.89-0.96 on single passages. Within labs, gemini-3.7 vs 3.8-flash, glm-5.3 vs flash and
+gpt-5.6-sol vs terra are near chance; claude-opus-4-6 vs 4-8 reaches 0.73. Pairing helps the separable pairs (Claude,
+gemini-3.6 vs 3.8, gpt-5.6-luna vs terra) and not the near-chance ones. claude-fable-5 vs glm-5.3 is cross-lab but near
+chance, consistent with the shared typography in A3.
 ''')
 
 md(r'''
-# Part B: what the public results teach
+# Part B. Public results
 
-Numbers below are the authors' own public-leaderboard claims unless marked *ours*. Sources: the notebooks' markdown,
-pulled 2026-10-24 to 2026-11-01.
+Sources: notebook markdown pulled 2026-10-24 to 2026-11-01.
 
-## B1. How the public notebooks climbed
+## B1. Score lineage
 ''')
 code(r'''
 LINEAGE = [  # (public LB claim, notebook, what it added)
@@ -379,18 +365,17 @@ for i, r in LB.iterrows():
     ax.annotate(f"{r.lb:.3f}  {r.notebook}", (i, r.lb), xytext=(6, -3 if i % 2 else 7), textcoords='offset points', fontsize=7, rotation=0)
 for v, t, c in ((0.703, 'LB #1, 2026-10-25', '#e45756'), (0.737, 'LB #1, 2026-11-01', '#b22222'), (0.66, 'gold cut-off ~0.66 (2026-10-25)', '#e6a700')):
     ax.axhline(v, ls='--', lw=.8, color=c); ax.text(len(LB) - .5, v + .002, t, ha='right', fontsize=7, color=c)
-ax.set_xticks([]); ax.set_ylabel('public LB (claim)'); ax.set_title('Public notebook lineage: each step is one idea'); ax.set_xlim(-.5, len(LB) + 2.5)
+ax.set_xticks([]); ax.set_ylabel('public LB (claim)'); ax.set_title('Public notebook lineage (public LB, claim)'); ax.set_xlim(-.5, len(LB) + 2.5)
 plt.tight_layout(); plt.show()
 print(LB.to_string(index=False))
 ''')
 
 md(r'''
-**Reading.** The two big jumps came from **data** (Nishant: public pool 35k -> 84k, +0.04 per member) and from
-**stronger fold-averaged LoRA members** (0.639 -> 0.651). Everything after 0.651 is single knobs worth 0.001-0.006,
-which is about the noise of one leaderboard reading (B2). The gap to the top private teams (0.70+) is not explained by
-any public notebook.
+The two large steps are the larger public pool (Nishant, 35k -> 84k passages, about +0.04 per member) and the
+fold-averaged LoRA members (0.639 -> 0.651). Later steps are 0.001-0.006 each, within the re-run spread in B2. No public
+notebook comes close to the top of the LB (0.70+).
 
-## B2. One leaderboard reading is noisy
+## B2. Re-run noise
 ''')
 code(r'''
 NOISE = {'nlm-v27': [0.651, 0.651, 0.643, 0.651], '"Who am I?"': [0.645, 0.654], 'V31': [0.660, 0.660], 'omer 0.663': [0.663, 0.662],
@@ -403,12 +388,11 @@ ax.set_xticks(range(len(NOISE)), NOISE.keys(), rotation=20); ax.set_ylabel('scor
 ax.set_title('Identical code, re-submitted (alexchilton et al., claim)'); plt.tight_layout(); plt.show()
 ''')
 md(r'''
-Up to **0.009** apart on identical code. One passage of the ~1,600 public rows is worth about 0.0006, and the class mix of
-the public and private parts differs (organisers). Any single-change gain below ~0.01 cannot be read from one
-submission. A forum test (discussion 753177) found that out-of-fold scoring on **2 answers per prompt** tracks the board
-with correlation **0.91**, against **0.13** for scoring all 18 per prompt.
+Identical code differs by up to 0.009. One passage of ~1,600 public rows is worth about 0.0006, and the public and
+private class mixes differ (organisers). A forum test (discussion 753177) found that OOF scored on 2 answers per prompt
+correlates 0.91 with the LB, against 0.13 for all 18 per prompt.
 
-## B3. Single changes that were tried in public
+## B3. Single-change deltas
 ''')
 code(r'''
 DELTAS = [  # (change, base LB, new LB, source)
@@ -444,35 +428,33 @@ ax.barh(range(len(Dd)), Dd.delta, color=np.where(Dd.delta > 0, '#54a24b', '#e457
 ax.set_yticks(range(len(Dd)), [f'{c}  ({s})' for c, s in zip(Dd.change, Dd.source)], fontsize=7.5)
 ax.axvspan(-.0045, .0045, color='grey', alpha=.15, label='inside one re-run spread')
 ax.axvline(0, color='k', lw=.6); ax.set_xlabel('change in public LB (claim)'); ax.legend(frameon=False, loc='lower right')
-ax.set_title('Single changes on public notebooks'); plt.tight_layout(); plt.show()
+ax.set_title('Single changes on public notebooks (claim)'); plt.tight_layout(); plt.show()
 print(f"{(Dd.delta <= -0.005).sum()} of {len(Dd)} changes lost >= 0.005; {(Dd.delta >= 0.005).sum()} gained >= 0.005")
 ''')
 md(r'''
-**Pattern.** Adding a strong new member at a sizeable weight loses, even when it scores 0.60+ alone and helps offline
-(Ministral, Qwen3.5-27B, ModernBERT, a second ATLAS). Removing Llama costs 0.005-0.008, so diversity matters, but only
-in members whose weights were tuned with the rest. Hard assignment inside recovered prompt groups loses everywhere
-(-0.017 to -0.028).
+Strong new members at sizeable weights lost even when they scored 0.60+ alone and helped offline (Ministral,
+Qwen3.5-27B, ModernBERT, a second ATLAS). Removing Llama cost 0.005-0.008. Hard assignment inside recovered prompt
+groups lost 0.017-0.028.
 
-## B4. The prompt-recovery trap
+## B4. Prompt-group assignment
 ''')
 code(r'''
 TRAP = pd.DataFrame({'dev OOF (all 18 per prompt)': [0.327, 0.419, 0.501], 'public LB': [0.336, 0.308, 0.351]},
                     index=['SVC, independent', 'SVC + group assignment', 'style LR + assignment'])
 ax = TRAP.plot.bar(figsize=(7, 3.4), color=['#9ecae1', '#e45756'], rot=0); ax.set_ylabel('balanced accuracy')
-ax.set_title('yangkuangou: CV rewards assignment, the board punishes it (claim)'); ax.legend(frameon=False, fontsize=8)
+ax.set_title('Dev OOF vs public LB (yangkuangou, claim)'); ax.legend(frameon=False, fontsize=8)
 plt.tight_layout(); plt.show()
 ''')
 md(r'''
-Part A8 shows why: centring on the other answers to a prompt pays only with many of them (18), and is useless or
-harmful with 2-3. The test evidently has few passages per prompt, while the hidden batches can merge near-topic prompts. Only *soft* use of
-recovered groups (twin heads at 0.35, the Gaussian head) survives in the 0.66 notebooks.
+Consistent with A8: centring on the other answers to a prompt only pays with many of them. The 0.66 notebooks use
+recovered groups only softly (twin heads at 0.35, the Gaussian head).
 
-## B5. Honest re-scoring of the public 0.664 stack (ours)
+## B5. Re-scoring the public 0.664 stack (ours)
 
-The 0.664 recipe's `--sim` mode averages all five fold adapters plus the full-data adapter, so its LoRA members see
-the held-out rows (leaky). We re-scored each member on rows its model never saw: the CPU members are refit per fold,
-and each fold adapter `*_f{k}` is applied only to its own held-out fold. The fold split was confirmed per adapter
-(e.g. q8v5_f0: 0.624 on its held-out fold vs 0.882 in-sample).
+The 0.664 `--sim` mode averages all five fold adapters plus the full-data adapter, so its LoRA members have seen the
+held-out rows. We scored each member only on rows its model did not train on: CPU members are refit per fold, and fold
+adapter `*_f{k}` is applied only to fold k. The fold split was checked per adapter (q8v5_f0: 0.624 held-out vs 0.882
+in-sample).
 ''')
 code(r'''
 HONEST = pd.DataFrame([
@@ -486,23 +468,17 @@ HONEST = pd.DataFrame([
 print(HONEST.to_string(index=False))
 ''')
 md(r'''
-The SVC alone reproduces its author's number, so the open-pool SVC is genuinely worth ~0.50 on unseen prompts, and in
-the 0.664 blend it carries almost all of the CPU part. The GPU members (Qwen3-14B, Qwen3-8B, Llama-3.1-8B fold
-adapters) are being re-scored the same way; that lets the blend weights, the Sinkhorn strength and any extra member be
-fitted on honest out-of-fold predictions instead of single noisy leaderboard readings.
+The SVC reproduces its author's CV (0.504 vs 0.501) and carries almost all of the CPU part of the blend. The GPU
+members (Qwen3-14B, Qwen3-8B, Llama-3.1-8B fold adapters) are being scored the same way, so blend weights, Sinkhorn
+strength and extra members can be fitted on these OOF predictions instead of single LB readings.
 
-## Takeaways
+## Summary
 
-1. Topic dominates style; style is recoverable when the other answers to a prompt are known, but the test rarely has
-   them (A5, A8, B4). Use groups softly or not at all.
-2. Typography habits are strong, cheap, family-level signals (A3); length is not (A2). Shared typography explains
-   cross-lab confusions such as claude-fable-5 vs GLM.
-3. Some pairs are close to indistinguishable on this data (A6, A9): gemini-3.7 vs 3.8-flash, glm-5.3 vs flash,
-   gpt-5.6-sol vs terra, and, across labs, claude-fable-5 vs glm-5.3. Effort there has a low ceiling. Claude siblings,
-   gpt-5.6-luna vs terra and gemini-3.6 vs 3.8 do separate, much better when both answers to a prompt are seen.
-4. The 6 labels with no Benchmarks data have the lowest recall (A7).
-5. Public progress came from data and fold-averaged LoRA members; later knobs sit inside a 0.009 noise band (B1-B3).
-   Decide with honest, test-like out-of-fold scores, not one public score.
+- Topic dominates TF-IDF neighbours; centring on the prompt needs many answers per prompt, which the test lacks (A5, A8, B4).
+- Typography separates families; length does not (A2, A3).
+- Near-chance pairs: gemini-3.7 vs 3.8-flash, glm-5.3 vs flash, gpt-5.6-sol vs terra, claude-fable-5 vs glm-5.3 (A9).
+- The 6 labels without Benchmarks data have the lowest recall (A7).
+- Public gains after 0.651 are within re-run noise (B1-B3).
 ''')
 
 
