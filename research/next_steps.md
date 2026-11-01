@@ -1,39 +1,33 @@
-# Next steps (updated 2026-10-26)
+# Next steps (updated 2026-11-02)
 
 ## Where we stand
-- Public LB: **v8 = 0.639** (private copy of the public 0.639 stack; best). v9 (v8 + word-BiLSTM 10%) = 0.637, rejected.
-  Public top notebook 0.641 (= 0.639 + Qwen3.8-27B 10%, about +0.001 on its own); leaderboard top 0.700.
-- The public stack's LLMs are all Qwen-family (plus DeBERTa, GLM-9B in the complement, a Llama in the 0.641 version).
-  E049: unique signal comes from other families, so we train non-Qwen two-stage LoRAs.
-- Public-LB steps of +-0.002 are inside noise; trust prompt-grouped CV and changes of meaningful size.
+- Public LB: v8 0.639 (copy of a public notebook), v9 0.637, v10b 0.635, v11a timeout (CPU docker image).
+  **v12 submitted 2026-11-02 (ref 57882460)** = public 0.664 + our Gemma-4-12B two-stage row (plain 2, centred twin 2.8).
+  Best public notebook 0.664; LB top 0.737. One public reading moves by up to 0.009 on identical code.
+- No paper unless an own method beats the base (user, 2026-11-02). Everything goes to the score.
+- Decisions now come from honest OOF (seeded split of the public fold adapters, test-like 2-3 answer groups, infer.py
+  estimated clusters): `experiments/honest/` (E065-E067b). Members we can score honestly: q14v5 0.635, q8v5 0.615,
+  ll8v5 0.593, svc4 0.504, tfidf 0.421, distort 0.322; our Gemma two-stage plain 0.578 / centred 0.563 (folds 0-2).
+- Settled: keep the 0.664 hand weights (NNLS -0.004); Sinkhorn 0-0.45 equal, never 1.0; Gemma centred head +0.011.
 
-## Running
-1. **Gemma-4-12B two-stage** (`nb/gemma_twostage`): s1 done (stage1a/b, pool_v4 + darragh = 77,264 rows);
-   s2 `ntl-gemma-ts-s2` (stage1c, folds 0-2, final) running since 2026-10-26 08:50 UTC (~6.5 h).
-2. **Daily Benchmarks** on the own prompt set: `python tools/kbench/daily.py --own --n 40` (n 32 on days with an Opus
-   retry). Done: o001, o001r, o002 (72 prompts x 10 models). Credit is separate from GPU quota.
+## Queue (one at a time, each logged as an E-row before the next starts)
+1. **E068 - our Benchmarks passages as SVC/TF-IDF training data** (CPU, Kaggle). ~3,400 passages (b002-b004, o001-o003,
+   drift_202611; 12 labels) added to the open pool for the 0.664 CPU members; honest OOF with vs without, 5 folds, plus
+   the honest blend. Risk to watch: data for only 12 labels can pull predictions away from the 6 unserved labels.
+   If it gains, v13 = v12 + our data in the SVC pool (data must be public by the deadline).
+2. **Daily Benchmarks** own-prompt batch: `python tools/kbench/daily.py --own --n 40` (credit is separate).
+3. **v12 result** (user reports it): if >= 0.665 keep Gemma and test centred weight 2.8 vs 4 on honest OOF;
+   if < 0.655 drop Gemma (stop rule).
+4. **Open-pool stage-1 retrain** of one LoRA member (15-18 GPU-h; user decision on quota). Candidate: Llama-3.1-8B
+   two-stage (Llama-family diversity is worth +0.005-0.008 on the LB, public A/Bs), stage 1 on the 198k open pool.
+5. Head/tail pooling: the other agent tests it (user, 2026-11-02); read its result when reported.
 
-## Next (in order)
-1. Gemma s2 done -> OOF eval on folds 0-2 against the strong bundle (`experiments/gemma_oof.py`-style) -> E054.
-2. v10 = v8 + Gemma at 10-15% (single change) -> 3-row test run -> **runtime check #19** (v8 + Gemma must stay < 9 h;
-   needs ~3 GPU-h after the weekly reset) -> ask the user -> submit.
-3. **Llama-3.1-8B two-stage** after the weekly GPU reset (cancelled 2026-10-26 for quota):
-   `python nb/gemma_twostage/build.py jobs:stage1a,stage1b ntl-llama-ts-s1 "" llama31-8b`, push; then s2 with
-   `jobs:stage1c,fold0,fold1,fold2,final ntl-llama-ts-s2 ntl-llama-ts-s1 llama31-8b` (~10.5 GPU-h total).
-   Add **length-crop augmentation (test plan #10)** to the next new LoRA as its one recipe change.
-4. **LSTM probe of our own Benchmarks data** at ~2,000 own passages (CPU): does it raise CV? If yes, include our passages
-   in the next stage-1 pool (and publish them before the deadline).
-
-## Paper obligations (paper/PROTOCOL.md)
-- **Drift panel**: month 0 = drift_202611 (2026-11-01, 720/720, frozen `tools/kbench/ntl_gen_task_drift.py`,
-  g0003-g0062). Next: `drift_202612` on **Dec 1-3** via `tools/kbench/drift.py drift_202612 <12 slugs>`, then monthly.
-- **Final freeze (late Dec)**: 5-fold OOF for every final member, leave-one-component-out ablation, dry sensitivity grid;
-  class-mix part done (E053).
-- **Final 2 submissions**: best stack with full Sinkhorn + same stack with Sinkhorn strength 0.5 (E053 hedge).
-- **After 2027-01-13**: late submissions of the ablated notebooks (private-test ablation).
-- Publish any external data a submission uses before the deadline (darragh run-1 is already public, CC0).
+## Rules learned this week
+- GPU kernels: GPU byod image `gcr.io/kaggle-private-byod/python@sha256:2757e0c7...`, `assert torch.cuda.is_available()`,
+  watch `kaggle kernels logs -f` for the first minutes; `tools/check_meta.py` before every push (now fails on CPU images).
+- Do not poll submission scores.
+- Publish any external data a submission uses before 2027-01-13 (darragh run-1 is already public, CC0).
 
 ## Untested ideas (lower priority)
-SYNTHESIS M3 soft kernel centring, M4 hierarchical / contrastive objective, M5 sibling-aware decoding, M6 stacking with
-per-member temperature, M7 distribution-matching transduction; TEST_PLAN #9 SupCon, #12e self-distillation, #14 fold
-soup, #18 test-time augmentation, #20 distillation.
+SYNTHESIS M3 soft kernel centring, M5 sibling-aware decoding, M7 distribution-matching transduction; TEST_PLAN #9
+SupCon, #12e self-distillation, #14 fold soup, #18 test-time augmentation, #20 distillation.
