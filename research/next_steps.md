@@ -25,8 +25,8 @@
    in the next stage-1 pool (and publish them before the deadline).
 
 ## Paper obligations (paper/PROTOCOL.md)
-- **Drift panel**: month 0 = b002 (2026-10-18). Re-run the FROZEN `tools/kbench/ntl_gen_task_drift.py` on **Nov 1-3**
-  as `drift_202611` (60 prompts x 12 labels, ~1.5 days of Benchmarks credit), then monthly.
+- **Drift panel**: month 0 = drift_202611 (2026-11-01, 720/720, frozen `tools/kbench/ntl_gen_task_drift.py`,
+  g0003-g0062). Next: `drift_202612` on **Dec 1-3** via `tools/kbench/drift.py drift_202612 <12 slugs>`, then monthly.
 - **Final freeze (late Dec)**: 5-fold OOF for every final member, leave-one-component-out ablation, dry sensitivity grid;
   class-mix part done (E053).
 - **Final 2 submissions**: best stack with full Sinkhorn + same stack with Sinkhorn strength 0.5 (E053 hedge).

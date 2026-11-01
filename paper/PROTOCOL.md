@@ -29,7 +29,8 @@ Nothing is reported in the paper unless it has a log row. Results files referenc
 
 ## 4. Drift panel (fixed, re-run monthly)
 - `tools/kbench/ntl_gen_task_drift.py` is FROZEN (never edited): prompts g0003-g0062, the 12 Kaggle-Benchmarks
-  labels, original range-format instruction "(lo-hi words)", per-prompt range. Month 0 = batch b001 (2026-10-17).
+  labels, original range-format instruction "(lo-hi words)", per-prompt range. Month 0 = batch drift_202611 (2026-11-01, 720/720 ok; every target reproduced by the frozen
+  file). b001 (2026-10-17) is not usable as month 0: chat-contaminated (shared history) and mostly failed.
 - Re-run on the 1st-3rd of each month with BATCH='drift_YYYYMM'; compare per-label statistics (em-dash share,
   curly apostrophe share, sentence length, words, type-token ratio) and a fixed classifier's accuracy across months.
 

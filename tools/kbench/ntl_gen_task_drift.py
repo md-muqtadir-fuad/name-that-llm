@@ -1,6 +1,7 @@
-# FROZEN drift panel (month 0 = b002, 2026-10-18; b001 was discarded as chat-contaminated): the b002 task code
-# (verified: reproduces all 836 b002/b002r word targets) on the same window, prompts g0063-g0122 of
-# seyitkaangunes/ntl-extra-api-passages. Run monthly via tools/kbench/drift.py; do not edit.
+# Kaggle Benchmarks task: generate competition-style passages with the model this run is bound to.
+# Push:  kaggle b t push ntl-gen -f tools/kbench/ntl_gen_task.py -d seyitkaangunes/ntl-extra-api-passages
+# Run:   kaggle b t run ntl-gen -m gpt-5.6-luna -m claude-opus-5-default ... --wait
+# Fetch: kaggle b t download ntl-gen -o research/ext_data/kbench/<batch>
 import glob
 import hashlib
 import json
@@ -10,34 +11,28 @@ import time
 import kaggle_benchmarks as kbench
 import pandas as pd
 
-START, N = 63, 60
+START, N = 3, 60          # FROZEN drift panel: prompts g0003-g0062 (do not edit)
 MAX_OUT = 4000   # output cap: keeps the proxy's per-call cost reservation small
-ONLY = {}   # failed-pair retries only (set by drift.py)
-IDS = []
 BATCH = 'drift_YYYYMM'   # set at run time only
 
 
 def word_range(prompt_id, model=''):
-    """Per-generation target N ('about N words'), drawn from the train word-count distribution clipped to
-    [40, 250] (median ~100), seeded per prompt x model. Returns (N, N) for schema compatibility."""
-    r = random.Random(int(hashlib.md5((prompt_id + '|' + model).encode()).hexdigest(), 16))
-    n = int(min(250, max(40, round(r.lognormvariate(4.6, 0.45)))))
-    return n, n
+    """FROZEN b001 format: per-prompt range (model ignored)."""
+    r = random.Random(int(hashlib.md5(prompt_id.encode()).hexdigest(), 16))
+    lo = r.randint(38, 62)
+    return lo, r.randint(max(lo + 60, 140), 260)
 
 
 def build_prompt(text, lo, hi):
-    return f"{text.strip()} Write it as a single self-contained paragraph with no headings or lists. (about {lo} words)"
+    return f"{text.strip()} Write it as a single cohesive paragraph with no headings, lists or markdown. ({lo}-{hi} words)"
 
 
 @kbench.task(name="ntl-gen", description="Generate short competition-style passages for each prompt")
 def ntl_gen(llm) -> None:
     hits = glob.glob('/kaggle/input/**/prompts.csv', recursive=True)
-    prompts = pd.read_csv(hits[0])
-    prompts = prompts[prompts.prompt_id.isin(IDS)] if IDS else prompts.iloc[START:START + N]
+    prompts = pd.read_csv(hits[0]).iloc[START:START + N]
     name = str(getattr(llm, 'name', None) or getattr(llm, 'model', None) or llm)
     rows = []
-    if ONLY:
-        prompts = prompts[prompts.prompt_id.isin(ONLY.get(name, []))]
     for p in prompts.itertuples():
         lo, hi = word_range(p.prompt_id, name)
         q = build_prompt(p.prompt, lo, hi)

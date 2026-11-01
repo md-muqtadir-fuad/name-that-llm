@@ -29,3 +29,4 @@ date,batch_id,source,route,labels,prompts,n_rows,format,status,path,notes
 2026-10-26,kb_o001r,ntl-gen daily.py,Kaggle Benchmarks,1 labels,own prompts 40 ids,80/80 ok,about N words,downloaded,research/ext_data/kbench/o001r,models with failures: none
 2026-10-26,kb_o002,ntl-gen daily.py,Kaggle Benchmarks,10 labels,own prompts 32 ids,320/320 ok,about N words,downloaded,research/ext_data/kbench/o002,models with failures: none
 2026-10-27,kb_o003,ntl-gen daily.py,Kaggle Benchmarks,10 labels,own prompts 40 ids,400/400 ok,about N words,downloaded,research/ext_data/kbench/o003,models with failures: none
+2026-11-01,kb_drift_202611,ntl-gen_task_drift.py (frozen) via tools/kbench/drift.py,Kaggle Benchmarks,12 labels,g0003-g0062 (drift panel month 0),720/720 ok,"range (lo-hi words), frozen format",downloaded,research/ext_data/kbench/drift_202611,models with failures: none
