@@ -26,6 +26,13 @@ for k in SOURCES:
 for k in IDENTITY:
     if ours.get(k) != base.get(k):
         print(f'identity        {k}: ours={str(ours.get(k))[:60]!r}  base={str(base.get(k))[:60]!r}')
+img = ours.get('docker_image') or ''
+if ours.get('enable_gpu') and img.startswith('gcr.io/kaggle-images/'):
+    # 2026-11-01: gcr.io/kaggle-images/* are CPU images (torch sees no GPU, the T4 session is still charged). Pulled
+    # metadata of a public notebook can carry one (its latest version saved on CPU): v11a copied 17b2... and timed out.
+    bad = True
+    print(f'RUNTIME CHANGE  docker_image is a CPU image with enable_gpu=true: {img[:60]}... '
+          f'use the GPU byod image gcr.io/kaggle-private-byod/python@sha256:2757e0c7...')
 other = sorted((set(ours) | set(base)) - set(RUNTIME) - set(SOURCES) - set(IDENTITY))
 for k in other:
     if ours.get(k) != base.get(k):

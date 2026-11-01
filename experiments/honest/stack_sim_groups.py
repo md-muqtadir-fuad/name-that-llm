@@ -138,7 +138,7 @@ S.to_csv(OUT / 'stack_sim_groups.csv', index=False)
 est = S[S['mode'] == 'estimated clusters'].set_index('config')
 gem = est.loc[[c for c in est.index if c.startswith('gemma')]]
 best = gem['diff'].idxmax()
-log_row(id='E067', category='honest-oof', metric='bacc_sim_1group2-3_per_prompt',
+log_row(id='E067' + ('b' if 'q14v5' in LORA else ''), category='honest-oof', metric='bacc_sim_1group2-3_per_prompt',
         description='Gemma gain check: true groups vs public-infer estimated clusters (TF-IDF capped agglo 0.15) on the honest 0.664 subset; twins upweighted as control',
         config=f'{NDRAW} draws, one 2-3 group per prompt of our folds 0-2 ({len(PROMPTS)} prompts); members ' + '+'.join(LORA) + ' + tfidf/distort/svc4',
         baseline=f"{est.loc['base', 'bacc']:.4f}", value=f"{gem.loc[best, 'bacc']:.4f}", folds_pos=gem.loc[best, 'better'],

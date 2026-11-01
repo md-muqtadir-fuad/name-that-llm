@@ -1,0 +1,37 @@
+[{"stream_name":"stdout","time":36.141873708,"data":"[     0s] gpus ['Tesla T4', 'Tesla T4']\n"}
+,{"stream_name":"stdout","time":42.408455882,"data":"[     7s] member q14v5 /kaggle/input/models/qwen-lm/qwen-3/transformers/14b-base/1\n"}
+,{"stream_name":"stderr","time":76.946716217,"data":"\rLoading weights:   0%|          | 0/299 [00:00\u003c?, ?it/s]\rLoading weights:   0%|          | 1/299 [00:09\u003c48:17,  9.72s/it]\rLoading weights:  23%|██▎       | 70/299 [00:09\u003c00:22, 10.06it/s]\rLoading weights:  35%|███▍      | 104/299 [00:13\u003c00:20,  9.60it/s]\rLoading weights:  41%|████      | 123/299 [00:14\u003c00:16, 10.46it/s]\rLoading weights:  45%|████▌     | 135/299 [00:16\u003c00:17,  9.22it/s]\rLoading weights:  48%|████▊     | 143/299 [00:17\u003c00:14, 10.53it/s]\rLoading weights:  51%|█████     | 151/299 [00:18\u003c00:15,  9.85it/s]\rLoading weights:  53%|█████▎    | 157/299 [00:18\u003c00:15,  9.29it/s]\rLoading weights:  54%|█████▍    | 161/299 [00:19\u003c00:13,  9.94it/s]\rLoading weights:  56%|█████▌    | 168/299 [00:19\u003c00:13,  9.67it/s]\rLoading weights:  57%|█████▋    | 171/299 [00:20\u003c00:12, 10.05it/s]\rLoading weights:  60%|█████▉    | 179/299 [00:21\u003c00:12,  9.74it/s]\rLoading weights:  64%|██████▎   | 190/299 [00:22\u003c00:10, 10.04it/s]\rLoading weights:  64%|██████▍   | 192/299 [00:22\u003c00:10, 10.15it/s]\rLoading weights:  67%|██████▋   | 201/299 [00:23\u003c00:09, 10.50it/s]\rLoading weights:  68%|██████▊   | 203/299 [00:23\u003c00:09, 10.04it/s]\rLoading weights:  71%|███████   | 212/299 [00:24\u003c00:08, 10.34it/s]\rLoading weights:  72%|███████▏  | 214/299 [00:24\u003c00:08, 10.53it/s]\rLoading weights:  75%|███████▍  | 223/299 [00:25\u003c00:07, 10.26it/s]\rLoading weights:  75%|███████▌  | 225/299 [00:25\u003c00:07, 10.45it/s]\rLoading weights:  78%|███████▊  | 234/299 [00:26\u003c00:05, 11.41it/s]\rLoading weights:  79%|███████▉  | 236/299 [00:26\u003c00:05, 10.71it/s]\rLoading weights:  82%|████████▏ | 245/299 [00:27\u003c00:05, 10.80it/s]\rLoading weights:  83%|████████▎ | 247/299 [00:27\u003c00:04, 10.89it/s]\rLoading weights:  86%|████████▌ | 256/299 [00:28\u003c00:04, 10.17it/s]\rLoading weights:  86%|████████▋ | 258/299 [00:28\u003c00:03, 10.68it/s]\rLoading weights:  89%|████████▉ | 267/299 [00:29\u003c00:03, 10.60it/s]\rLoading weights:  90%|████████▉ | 269/299 [00:29\u003c00:02, 10.46it/s]\rLoading weights:  93%|█████████▎| 278/299 [00:30\u003c00:02, 10.34it/s]\rLoading weights:  94%|█████████▎| 280/299 [00:30\u003c00:01, 10.45it/s]\rLoading weights:  97%|█████████▋| 289/299 [00:31\u003c00:00, 10.49it/s]\rLoading weights:  97%|█████████▋| 291/299 [00:31\u003c00:00, 11.09it/s]\rLoading weights: 100%|██████████| 299/299 [00:31\u003c00:00,  9.47it/s]\n"}
+,{"stream_name":"stderr","time":77.179454687,"data":"[transformers] \u001b[1mQwen3Model LOAD REPORT\u001b[0m from: /kaggle/input/models/qwen-lm/qwen-3/transformers/14b-base/1\n"}
+,{"stream_name":"stderr","time":77.179486183,"data":"Key                                                    | Status     |  | \n"}
+,{"stream_name":"stderr","time":77.179492083,"data":"-------------------------------------------------------+------------+--+-\n"}
+,{"stream_name":"stderr","time":77.17949718,"data":"model.layers.{27...39}.self_attn.o_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179502031,"data":"model.layers.{27...39}.mlp.up_proj.weight              | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179507027,"data":"model.layers.{27...39}.self_attn.q_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179525187,"data":"model.layers.{27...39}.mlp.gate_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179529475,"data":"model.layers.{27...39}.mlp.down_proj.weight            | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179533362,"data":"model.layers.{27...39}.post_attention_layernorm.weight | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.17953726,"data":"model.layers.{27...39}.self_attn.v_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179541258,"data":"model.layers.{27...39}.self_attn.k_norm.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179545634,"data":"model.layers.{27...39}.input_layernorm.weight          | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179549552,"data":"model.layers.{27...39}.self_attn.q_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179553587,"data":"model.layers.{27...39}.self_attn.k_proj.weight         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179557586,"data":"lm_head.weight                                         | UNEXPECTED |  | \n"}
+,{"stream_name":"stderr","time":77.179561569,"data":"\n"}
+,{"stream_name":"stderr","time":77.17956534,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":77.179569117,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":77.787820361,"data":"[    42s]   param devices ['cuda:0', 'cuda:1']\n"}
+,{"stream_name":"stdout","time":603.910783805,"data":"[   568s]   q14v5_f0: acc held-out fold 0.628 | in-sample 0.903 | per fold [0.628, 0.9, 0.917, 0.906, 0.889] | split ok True | bf16 redo 0\n"}
+,{"stream_name":"stdout","time":1141.035919079,"data":"[  1105s]   q14v5_f1: acc held-out fold 0.642 | in-sample 0.901 | per fold [0.9, 0.642, 0.907, 0.913, 0.885] | split ok True | bf16 redo 0\n"}
+,{"stream_name":"stdout","time":1678.865833592,"data":"[  1643s]   q14v5_f2: acc held-out fold 0.639 | in-sample 0.900 | per fold [0.889, 0.911, 0.639, 0.919, 0.883] | split ok True | bf16 redo 0\n"}
+,{"stream_name":"stdout","time":2215.707786471,"data":"[  2180s]   q14v5_f3: acc held-out fold 0.641 | in-sample 0.899 | per fold [0.894, 0.907, 0.906, 0.641, 0.891] | split ok True | bf16 redo 0\n"}
+,{"stream_name":"stdout","time":2753.352857096,"data":"[  2718s]   q14v5_f4: acc held-out fold 0.624 | in-sample 0.906 | per fold [0.898, 0.892, 0.926, 0.907, 0.624] | split ok True | bf16 redo 0\n"}
+,{"stream_name":"stdout","time":2760.047146013,"data":"[  2724s]   gpu memory after free gpu0:0.0GB gpu1:0.0GB\n"}
+,{"stream_name":"stdout","time":2760.048140666,"data":"[  2724s] q14v5 honest plain acc 0.6347\n"}
+,{"stream_name":"stdout","time":2760.236295214,"data":"[  2724s] done\n"}
+,{"stream_name":"stderr","time":2766.930157434,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2766.930183959,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2767.211118976,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2767.211145161,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2768.081578193,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2769.169174353,"data":"[NbConvertApp] Writing 361086 bytes to __results__.html\n"}
+]
