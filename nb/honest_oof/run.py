@@ -19,6 +19,7 @@ T0 = time.time()
 def log(*x): print(f'[{time.time() - T0:6.0f}s]', *x, flush=True)
 assert torch.cuda.is_available(), 'no GPU in this session'   # out of weekly quota, Kaggle runs "GPU" kernels on CPU
 log('gpus', [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())])
+torch.set_grad_enabled(False)   # in-place LoRA merge into leaf weights (worker threads use their own no_grad)
 DATA = os.path.dirname(next(p for p in glob.glob('/kaggle/input/**/train.csv', recursive=True) if 'name-that-llm' in p))
 GAUSS_SRC = None   # gauss.py from the 0.664 notebook (Apache-2.0), embedded by build.py
 open('/kaggle/working/gauss.py', 'w').write(GAUSS_SRC); sys.path.insert(0, '/kaggle/working')

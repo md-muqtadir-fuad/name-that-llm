@@ -14,6 +14,6 @@ src = src.replace('GAUSS_SRC = None', 'GAUSS_SRC = ' + repr((D / 'gauss.py').rea
     'dataset_sources': ['dhruvtibarewal/nlm-l24-adapters-v5'], 'competition_sources': ['name-that-llm'], 'kernel_sources': [],
     'model_sources': ['qwen-lm/qwen-3/Transformers/8b-base/1', 'qwen-lm/qwen-3/Transformers/14b-base/1',
                       'alexchilton/llama-3-1-8b-base/Transformers/default/1'],
-    'docker_image': 'gcr.io/kaggle-images/python@sha256:81b1e7c4b4f0f2a7e0a33943c95754b1b7af6b30d65221633a284b6b601cd84a',
+    'docker_image': 'gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f',
     'machine_shape': 'NvidiaTeslaT4'}, indent=1), encoding='utf-8')
 print('built', K)
