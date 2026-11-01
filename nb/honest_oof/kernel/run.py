@@ -9,7 +9,7 @@
 #   rc, bc = Z @ Wc.T and bc of the honest adapter: centred head on any grouping g is rc - mean_g(rc) + bc (exact, linear)
 #   U, m, lam = the shared-prompt Gaussian head (gauss.py, the 0.664 cfg d=128) fit on the adapter's training rows, U for
 #               the held-out rows; offline gauss.scores(None, groups, prm, U=U) with T1 = Tg = 3 as in infer.py
-import glob, json, os, sys, time
+import gc, glob, json, os, sys, time
 import numpy as np, pandas as pd, torch
 from concurrent.futures import ThreadPoolExecutor
 from safetensors.torch import load_file
@@ -38,6 +38,9 @@ L = [2, 4, 6, 8, 12, 16, 20, 24]
 MEMBERS = [dict(name='q8v5', path=mdir('/qwen-3/', '/8b-base/'), keep=24, bs=16, dp=True, gauss=True),
            dict(name='ll8v5', path=mdir('/llama-3-1-8b-base/'), keep=24, bs=16, dp=True, gauss=False),
            dict(name='q14v5', path=mdir('/qwen-3/', '/14b-base/'), keep=27, bs=8, dp=False, gauss=True)]
+RUN = ['q14v5']   # member names to run (set by build.py); v2 output already has q8v5 and ll8v5
+MEMBERS = [m for m in MEMBERS if RUN is None or m['name'] in RUN]
+def gpu_mem(): return ' '.join(f'gpu{i}:{torch.cuda.memory_allocated(i) / 1e9:.1f}GB' for i in range(torch.cuda.device_count()))
 GCFG = dict(red='wpca', d=128, se_shrink='lw', sp_shrink='lw', lam_floor=1e-4, n_exact=3, inj=True, iters=5, repel=True, sp_scale=1.0)
 OUT = {'ids': np.array(train.id.astype(str).tolist()), 'fold': fold, 'y': y, 'labels': np.array(LABELS)}
 
@@ -60,7 +63,7 @@ for spec in MEMBERS:
                 assert torch.cuda.max_memory_allocated(d) < torch.cuda.get_device_properties(d).total_memory - (1 << 30), 'under 1 GiB to spare'
         except Exception as e:
             log(f'  one split copy instead of one per GPU ({e!r:.80})'); ms = []
-        torch.cuda.empty_cache()
+        gc.collect(); torch.cuda.empty_cache()
     if not ms:
         ms = [AutoModel.from_pretrained(spec['path'], config=cfg, dtype=torch.float16, device_map='auto').eval()]
     mods = [dict(m.named_modules()) for m in ms]
@@ -122,7 +125,8 @@ for spec in MEMBERS:
         if spec['gauss'] and split_ok:   # a wrong split would fit the head on held-out rows; logits still saved for offline
             prm = ga.fit(Z[~ho], y[~ho], train.prompt_id.values[~ho], GCFG)
             U[ho] = ga.transform(Z[ho], prm); gm[k] = prm['m']; glam[k] = prm['lam']
-    del ms, mods; torch.cuda.empty_cache()
+    md = W = B = v = H = None   # loop variables kept the last model copy (md) alive: q14v5 OOM at load in v2
+    del ms, mods; gc.collect(); torch.cuda.empty_cache(); log('  gpu memory after free', gpu_mem())
     OUT[spec['name'] + '_plain'] = plain.astype(np.float32); OUT[spec['name'] + '_rc'] = rc.astype(np.float32); OUT[spec['name'] + '_bc'] = bc.astype(np.float32)
     OUT[spec['name'] + '_Pall'] = Pall; OUT[spec['name'] + '_Rall'] = Rall; OUT[spec['name'] + '_split_ok'] = np.array(split_ok)
     if spec['gauss']:

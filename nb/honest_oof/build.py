@@ -7,6 +7,9 @@ K = D / 'kernel'
 K.mkdir(exist_ok=True)
 src = (D / 'run.py').read_text(encoding='utf-8')
 src = src.replace('GAUSS_SRC = None', 'GAUSS_SRC = ' + repr((D / 'gauss.py').read_text(encoding='utf-8')), 1)
+import sys
+if len(sys.argv) > 1:   # e.g. build.py q14v5 -> run only that member
+    src = src.replace('RUN = None', 'RUN = ' + repr(sys.argv[1].split(',')), 1)
 (K / 'run.py').write_text(src, encoding='utf-8', newline='\n')
 (K / 'kernel-metadata.json').write_text(json.dumps({
     'id': 'mdmuqtadirfuad/ntl-honest-oof', 'title': 'ntl-honest-oof', 'code_file': 'run.py', 'language': 'python',
