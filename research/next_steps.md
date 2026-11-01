@@ -21,6 +21,7 @@
 4. **Open-pool stage-1 retrain** of one LoRA member (15-18 GPU-h; user decision on quota). Candidate: Llama-3.1-8B
    two-stage (Llama-family diversity is worth +0.005-0.008 on the LB, public A/Bs), stage 1 on the 198k open pool.
 5. Head/tail pooling: the other agent tests it (user, 2026-11-02); read its result when reported.
+6. **E069 - per-class bias correction of the blend** (CPU, minutes): members over-predict gemini-3.8 vs 3.7 and fable vs glm-5.3 on honest OOF; learn an 18-dim offset on 4 folds, score the 5th, before Sinkhorn 0.45, uniform and skewed class mixes.
 
 ## Rules learned this week
 - GPU kernels: GPU byod image `gcr.io/kaggle-private-byod/python@sha256:2757e0c7...`, `assert torch.cuda.is_available()`,
