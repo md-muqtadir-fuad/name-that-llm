@@ -1,0 +1,73 @@
+[{"stream_name":"stdout","time":12.788337993,"data":"pool 198507 extra /kaggle/input/datasets/dhruvtibarewal/nlm-matched-clean/nlm_matched_clean.parquet\n"}
+,{"stream_name":"stdout","time":18.368419855,"data":"[      0s] train 2159 test 540\n"}
+,{"stream_name":"stdout","time":19.613573614,"data":"[      1s] test clusters 79 sizes [0, 24, 6, 6, 9, 2, 3, 2, 1, 2, 3, 1, 0, 1, 1, 1, 3, 1, 13]\n"}
+,{"stream_name":"stdout","time":19.71018084,"data":"[      1s] cluster ARI vs truth 0.822\n"}
+,{"stream_name":"stdout","time":22.950671436,"data":"[      5s] matched-clean extra rows after exact de-dup 24443\n"}
+,{"stream_name":"stdout","time":513.797790962,"data":"[    496s] tfidf done\n"}
+,{"stream_name":"stdout","time":536.262439869,"data":"[    518s] svc4 fit rows=208073 source_weighted; external clean=24443\n"}
+,{"stream_name":"stdout","time":1833.117805536,"data":"[   1815s] svc4 done\n"}
+,{"stream_name":"stdout","time":2204.192889082,"data":"[   2186s] distort done\n"}
+,{"stream_name":"stdout","time":2224.37813712,"data":"[   2206s]   tfidf        arg 0.4722 hung 0.5130\n"}
+,{"stream_name":"stdout","time":2224.380890043,"data":"[   2206s]   svc4         arg 0.4981 hung 0.5963\n"}
+,{"stream_name":"stdout","time":2224.383559439,"data":"[   2206s]   distort      arg 0.3370 hung 0.4093\n"}
+,{"stream_name":"stdout","time":2224.387236847,"data":"[   2206s] ENSEMBLE arg 0.4685 | hung(est clusters) 0.4685 | hung(true prompts) 0.6241\n"}
+,{"stream_name":"stdout","time":2224.424045087,"data":"[   2206s] wrote /kaggle/working/sim0.parquet {'gemini-3.8-flash': 57, 'claude-sonnet-5': 51, 'claude-fable-5': 39, 'gpt-5.6-luna': 38, 'claude-opus-5': 34, 'gpt-5.6-sol': 32, 'claude-opus-4-8': 31, 'gemini-3.6-flash': 31, 'gpt-5.6-terra': 30, 'claude-opus-4-6': 30, 'qwen3.8-max': 28, 'kimi-k3': 26, 'gpt-5.5': 24, 'gemini-3.1-pro-preview': 24, 'gemini-3.7-flash': 22, 'gpt-6-astra': 19, 'glm-5.3': 16, 'glm-5.3-flash': 8}\n"}
+,{"stream_name":"stdout","time":2228.418691271,"data":"[      0s] train 2160 test 539\n"}
+,{"stream_name":"stdout","time":2229.269219615,"data":"[      1s] test clusters 58 sizes [0, 12, 5, 5, 5, 0, 0, 1, 1, 1, 2, 0, 0, 1, 5, 0, 1, 3, 16]\n"}
+,{"stream_name":"stdout","time":2229.292205804,"data":"[      1s] cluster ARI vs truth 0.8961\n"}
+,{"stream_name":"stdout","time":2232.238089229,"data":"[      4s] matched-clean extra rows after exact de-dup 24443\n"}
+,{"stream_name":"stdout","time":2705.891847022,"data":"[    478s] tfidf done\n"}
+,{"stream_name":"stdout","time":2728.547643946,"data":"[    500s] svc4 fit rows=208074 source_weighted; external clean=24443\n"}
+,{"stream_name":"stdout","time":4080.362761793,"data":"[   1852s] svc4 done\n"}
+,{"stream_name":"stdout","time":4437.932553419,"data":"[   2210s] distort done\n"}
+,{"stream_name":"stdout","time":4443.308936922,"data":"[   2215s]   tfidf        arg 0.4208 hung 0.5097\n"}
+,{"stream_name":"stdout","time":4443.311534351,"data":"[   2215s]   svc4         arg 0.5133 hung 0.5873\n"}
+,{"stream_name":"stdout","time":4443.314143586,"data":"[   2215s]   distort      arg 0.3263 hung 0.3983\n"}
+,{"stream_name":"stdout","time":4443.317984477,"data":"[   2215s] ENSEMBLE arg 0.4430 | hung(est clusters) 0.4430 | hung(true prompts) 0.5579\n"}
+,{"stream_name":"stdout","time":4443.348213392,"data":"[   2215s] wrote /kaggle/working/sim1.parquet {'gemini-3.8-flash': 49, 'claude-opus-4-6': 45, 'qwen3.8-max': 44, 'gpt-5.6-luna': 43, 'claude-sonnet-5': 41, 'gemini-3.6-flash': 34, 'claude-opus-4-8': 34, 'gpt-5.6-terra': 33, 'gpt-5.5': 30, 'claude-opus-5': 29, 'claude-fable-5': 29, 'gpt-6-astra': 26, 'gemini-3.1-pro-preview': 25, 'gemini-3.7-flash': 23, 'gpt-5.6-sol': 22, 'glm-5.3-flash': 16, 'kimi-k3': 9, 'glm-5.3': 7}\n"}
+,{"stream_name":"stdout","time":4448.64193165,"data":"[      0s] train 2159 test 540\n"}
+,{"stream_name":"stdout","time":4449.571895006,"data":"[      1s] test clusters 63 sizes [0, 17, 7, 4, 5, 1, 1, 0, 0, 0, 0, 0, 2, 1, 1, 2, 4, 3, 15]\n"}
+,{"stream_name":"stdout","time":4449.601641879,"data":"[      1s] cluster ARI vs truth 0.8988\n"}
+,{"stream_name":"stdout","time":4452.624547151,"data":"[      4s] matched-clean extra rows after exact de-dup 24443\n"}
+,{"stream_name":"stdout","time":4858.12635087,"data":"[    410s] tfidf done\n"}
+,{"stream_name":"stdout","time":4880.816711499,"data":"[    432s] svc4 fit rows=208073 source_weighted; external clean=24443\n"}
+,{"stream_name":"stdout","time":6246.300134449,"data":"[   1798s] svc4 done\n"}
+,{"stream_name":"stdout","time":6601.905102651,"data":"[   2153s] distort done\n"}
+,{"stream_name":"stdout","time":6608.698056366,"data":"[   2160s]   tfidf        arg 0.3815 hung 0.4815\n"}
+,{"stream_name":"stdout","time":6608.700804312,"data":"[   2160s]   svc4         arg 0.4833 hung 0.5778\n"}
+,{"stream_name":"stdout","time":6608.703601128,"data":"[   2160s]   distort      arg 0.2981 hung 0.3593\n"}
+,{"stream_name":"stdout","time":6608.707628365,"data":"[   2160s] ENSEMBLE arg 0.4315 | hung(est clusters) 0.4315 | hung(true prompts) 0.5463\n"}
+,{"stream_name":"stdout","time":6608.752873874,"data":"[   2160s] wrote /kaggle/working/sim2.parquet {'gemini-3.8-flash': 57, 'claude-sonnet-5': 53, 'gpt-5.6-luna': 41, 'gemini-3.6-flash': 37, 'claude-opus-4-6': 36, 'claude-opus-4-8': 36, 'claude-opus-5': 35, 'gpt-5.5': 35, 'claude-fable-5': 32, 'qwen3.8-max': 31, 'gpt-5.6-sol': 30, 'gpt-6-astra': 29, 'gpt-5.6-terra': 29, 'gemini-3.1-pro-preview': 19, 'gemini-3.7-flash': 16, 'glm-5.3': 10, 'kimi-k3': 8, 'glm-5.3-flash': 6}\n"}
+,{"stream_name":"stdout","time":6614.096737401,"data":"[      0s] train 2159 test 540\n"}
+,{"stream_name":"stdout","time":6614.962528688,"data":"[      1s] test clusters 97 sizes [0, 29, 21, 12, 5, 3, 1, 3, 1, 1, 1, 1, 0, 0, 0, 2, 1, 1, 15]\n"}
+,{"stream_name":"stdout","time":6614.98781442,"data":"[      1s] cluster ARI vs truth 0.8043\n"}
+,{"stream_name":"stdout","time":6617.966064024,"data":"[      4s] matched-clean extra rows after exact de-dup 24443\n"}
+,{"stream_name":"stdout","time":7110.986543353,"data":"[    497s] tfidf done\n"}
+,{"stream_name":"stdout","time":7134.153767329,"data":"[    520s] svc4 fit rows=208073 source_weighted; external clean=24443\n"}
+,{"stream_name":"stdout","time":8497.111144495,"data":"[   1883s] svc4 done\n"}
+,{"stream_name":"stdout","time":8900.652855494,"data":"[   2287s] distort done\n"}
+,{"stream_name":"stdout","time":8907.596194873,"data":"[   2294s]   tfidf        arg 0.4185 hung 0.5204\n"}
+,{"stream_name":"stdout","time":8907.59921765,"data":"[   2294s]   svc4         arg 0.5259 hung 0.5907\n"}
+,{"stream_name":"stdout","time":8907.602258008,"data":"[   2294s]   distort      arg 0.3278 hung 0.3667\n"}
+,{"stream_name":"stdout","time":8907.606232993,"data":"[   2294s] ENSEMBLE arg 0.4333 | hung(est clusters) 0.4333 | hung(true prompts) 0.5926\n"}
+,{"stream_name":"stdout","time":8907.660584512,"data":"[   2294s] wrote /kaggle/working/sim3.parquet {'claude-sonnet-5': 59, 'gemini-3.8-flash': 54, 'gpt-5.6-terra': 50, 'claude-opus-4-6': 43, 'claude-fable-5': 40, 'claude-opus-5': 37, 'gpt-5.6-sol': 33, 'gemini-3.6-flash': 32, 'qwen3.8-max': 28, 'gemini-3.1-pro-preview': 26, 'gpt-5.6-luna': 25, 'claude-opus-4-8': 24, 'gpt-5.5': 22, 'gpt-6-astra': 17, 'kimi-k3': 15, 'gemini-3.7-flash': 15, 'glm-5.3-flash': 13, 'glm-5.3': 7}\n"}
+,{"stream_name":"stdout","time":8913.272450104,"data":"[      0s] train 2159 test 540\n"}
+,{"stream_name":"stdout","time":8914.180713302,"data":"[      1s] test clusters 88 sizes [0, 22, 16, 10, 7, 3, 4, 2, 0, 1, 0, 2, 3, 0, 2, 2, 1, 0, 13]\n"}
+,{"stream_name":"stdout","time":8914.210408928,"data":"[      1s] cluster ARI vs truth 0.7956\n"}
+,{"stream_name":"stdout","time":8917.235979271,"data":"[      4s] matched-clean extra rows after exact de-dup 24443\n"}
+,{"stream_name":"stdout","time":9421.805991468,"data":"[    509s] tfidf done\n"}
+,{"stream_name":"stdout","time":9444.888141787,"data":"[    532s] svc4 fit rows=208073 source_weighted; external clean=24443\n"}
+,{"stream_name":"stdout","time":10816.00449538,"data":"[   1903s] svc4 done\n"}
+,{"stream_name":"stdout","time":11203.34619489,"data":"[   2290s] distort done\n"}
+,{"stream_name":"stdout","time":11208.28158871,"data":"[   2295s]   tfidf        arg 0.4111 hung 0.4889\n"}
+,{"stream_name":"stdout","time":11208.284353856,"data":"[   2295s]   svc4         arg 0.5000 hung 0.5704\n"}
+,{"stream_name":"stdout","time":11208.287256469,"data":"[   2295s]   distort      arg 0.3204 hung 0.3574\n"}
+,{"stream_name":"stdout","time":11208.291181264,"data":"[   2295s] ENSEMBLE arg 0.4389 | hung(est clusters) 0.4389 | hung(true prompts) 0.5593\n"}
+,{"stream_name":"stdout","time":11208.31319744,"data":"[   2295s] wrote /kaggle/working/sim4.parquet {'gemini-3.8-flash': 61, 'claude-opus-4-6': 46, 'claude-sonnet-5': 43, 'gemini-3.6-flash': 43, 'claude-fable-5': 39, 'gpt-5.6-luna': 38, 'claude-opus-4-8': 34, 'claude-opus-5': 33, 'qwen3.8-max': 33, 'gpt-5.6-terra': 33, 'gpt-5.5': 28, 'gpt-5.6-sol': 28, 'gpt-6-astra': 24, 'gemini-3.7-flash': 19, 'gemini-3.1-pro-preview': 18, 'glm-5.3': 10, 'kimi-k3': 6, 'glm-5.3-flash': 4}\n"}
+,{"stream_name":"stderr","time":11214.316649758,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11214.31673271,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11214.608405842,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11214.608459257,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":11215.561809748,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11216.681500259,"data":"[NbConvertApp] Writing 411365 bytes to __results__.html\n"}
+]
