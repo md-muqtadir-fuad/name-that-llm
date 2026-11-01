@@ -11,8 +11,8 @@ import nbformat as nbf
 
 D = Path('nb/eda')
 C = []
-md = lambda s: C.append(('md', s.strip('\n')))
-code = lambda s: C.append(('code', s.strip('\n')))
+md = lambda s, only=None: C.append(('md', s.strip('\n'), only))      # only: None = both versions, 'priv' / 'pub'
+code = lambda s, only=None: C.append(('code', s.strip('\n'), only))
 
 md(r'''
 # Name That LLM: EDA and public results
@@ -22,7 +22,16 @@ pairwise separability). Part B: results reported in public notebooks (score line
 deltas, prompt-group assignment) and our re-scoring of the public 0.664 stack's members.
 
 Part B numbers are the notebook authors' public-LB claims (*claim*) unless marked *ours*.
-''')
+''', only='priv')
+md(r'''
+# Name That LLM: EDA and public results
+
+Part A: the competition data (length, typography, style, topic vs author, model similarity, a prompt-grouped baseline,
+pairwise separability). Part B: results reported in public notebooks (score lineage, re-run noise, single-change
+deltas, prompt-group assignment).
+
+Part B numbers are the notebook authors' public-LB claims (*claim*).
+''', only='pub')
 code(r'''
 import glob, os, re, time, warnings
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
@@ -448,14 +457,15 @@ plt.tight_layout(); plt.show()
 md(r'''
 Consistent with A8: centring on the other answers to a prompt only pays with many of them. The 0.66 notebooks use
 recovered groups only softly (twin heads at 0.35, the Gaussian head).
-
+''')
+md(r'''
 ## B5. Re-scoring the public 0.664 stack (ours)
 
 The 0.664 `--sim` mode averages all five fold adapters plus the full-data adapter, so its LoRA members have seen the
 held-out rows. We scored each member only on rows its model did not train on: CPU members are refit per fold, and fold
 adapter `*_f{k}` is applied only to fold k. The fold split was checked per adapter (q8v5_f0: 0.624 held-out vs 0.882
 in-sample).
-''')
+''', only='priv')
 code(r'''
 HONEST = pd.DataFrame([
     ('svc4 (4-view n-gram SVC, 198k open pool)', 0.5042, 'ours, E065'),
@@ -466,12 +476,13 @@ HONEST = pd.DataFrame([
     ('q8v5_f0 on its held-out fold (one adapter, one fold)', 0.624, 'ours'),
 ], columns=['member', 'balanced accuracy (5-fold, prompt-held-out)', 'source'])
 print(HONEST.to_string(index=False))
-''')
+''', only='priv')
 md(r'''
 The SVC reproduces its author's CV (0.504 vs 0.501) and carries almost all of the CPU part of the blend. The GPU
 members (Qwen3-14B, Qwen3-8B, Llama-3.1-8B fold adapters) are being scored the same way, so blend weights, Sinkhorn
 strength and extra members can be fitted on these OOF predictions instead of single LB readings.
-
+''', only='priv')
+md(r'''
 ## Summary
 
 - Topic dominates TF-IDF neighbours; centring on the prompt needs many answers per prompt, which the test lacks (A5, A8, B4).
@@ -482,20 +493,31 @@ strength and extra members can be fitted on these OOF predictions instead of sin
 ''')
 
 
-def build():
+def cells(version):
+    return [(t, s) for t, s, only in C if only in (None, version)]
+
+
+def build(version):
+    """priv: full notebook (nb/eda, private). pub: without B5 (our re-scoring of the 0.664 stack) -> nb/eda_public,
+    public, default Kaggle image (the byod image of our private kernels is not meant for others)."""
+    out = D if version == 'priv' else Path('nb/eda_public')
+    out.mkdir(exist_ok=True)
     nb = nbf.v4.new_notebook()
-    nb.cells = [nbf.v4.new_markdown_cell(s) if t == 'md' else nbf.v4.new_code_cell(s) for t, s in C]
+    nb.cells = [nbf.v4.new_markdown_cell(s) if t == 'md' else nbf.v4.new_code_cell(s) for t, s in cells(version)]
     nb.metadata = {'kernelspec': {'display_name': 'Python 3', 'language': 'python', 'name': 'python3'},
                    'language_info': {'name': 'python'}}
-    nbf.write(nb, D / 'ntl-eda.ipynb')
-    (D / 'kernel-metadata.json').write_text(json.dumps({
-        'id': 'mdmuqtadirfuad/ntl-eda-and-public-results', 'title': 'NTL EDA and public results',
-        'code_file': 'ntl-eda.ipynb', 'language': 'python', 'kernel_type': 'notebook', 'is_private': True,
-        'enable_gpu': False, 'enable_tpu': False, 'enable_internet': False, 'dataset_sources': [], 'kernel_sources': [],
-        'competition_sources': ['name-that-llm'], 'model_sources': [],
-        'docker_image': 'gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f'},
-        indent=1), encoding='utf-8')
-    print('built', D / 'ntl-eda.ipynb', len(C), 'cells')
+    nbf.write(nb, out / 'ntl-eda.ipynb')
+    meta = {'id': 'mdmuqtadirfuad/ntl-eda-and-public-results', 'title': 'NTL EDA and public results',
+            'code_file': 'ntl-eda.ipynb', 'language': 'python', 'kernel_type': 'notebook', 'is_private': True,
+            'enable_gpu': False, 'enable_tpu': False, 'enable_internet': False, 'dataset_sources': [], 'kernel_sources': [],
+            'competition_sources': ['name-that-llm'], 'model_sources': [],
+            'docker_image': 'gcr.io/kaggle-private-byod/python@sha256:2757e0c7d1e0a9cb43da657b97e223c321a98f5014bdf64f44f2f6b083ad2b2f'}
+    if version == 'pub':
+        meta.update(id='mdmuqtadirfuad/name-that-llm-eda-and-public-results', title='Name That LLM: EDA and public results',
+                    is_private=False)
+        del meta['docker_image']
+    (out / 'kernel-metadata.json').write_text(json.dumps(meta, indent=1), encoding='utf-8')
+    print('built', out / 'ntl-eda.ipynb', len(nb.cells), 'cells', '(public)' if version == 'pub' else '(private)')
 
 
 if __name__ == '__main__':
@@ -505,9 +527,10 @@ if __name__ == '__main__':
         import matplotlib.pyplot as _plt
         _plt.show = lambda *a, **k: _plt.close('all')
         g = {}
-        for i, (t, s) in enumerate(C):
+        for i, (t, s) in enumerate(cells('pub' if '--pub' in sys.argv else 'priv')):
             if t == 'code':
                 t0 = time.time()
                 exec(compile(s, f'cell{i}', 'exec'), g)
                 print(f'--- cell {i} ok ({time.time() - t0:.0f}s)', flush=True)
-    build()
+    build('priv')
+    build('pub')

@@ -1,0 +1,17 @@
+{
+ "id": "mdmuqtadirfuad/name-that-llm-eda-and-public-results",
+ "title": "Name That LLM: EDA and public results",
+ "code_file": "ntl-eda.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": false,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": false,
+ "dataset_sources": [],
+ "kernel_sources": [],
+ "competition_sources": [
+  "name-that-llm"
+ ],
+ "model_sources": []
+}
