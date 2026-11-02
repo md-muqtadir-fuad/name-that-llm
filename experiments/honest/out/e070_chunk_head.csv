@@ -1,0 +1,256 @@
+fold,split,draw,test,head,bacc
+fold0,0,0,groups 2-3,whole prompt,0.4074074074074074
+fold0,0,0,groups 2-3,chunks 2-3,0.42592592592592593
+fold0,0,0,groups 2-3,trained twin head (ref),0.5648148148148147
+fold0,0,1,groups 2-3,whole prompt,0.4351851851851852
+fold0,0,1,groups 2-3,chunks 2-3,0.4351851851851851
+fold0,0,1,groups 2-3,trained twin head (ref),0.5555555555555556
+fold0,0,2,groups 2-3,whole prompt,0.3888888888888888
+fold0,0,2,groups 2-3,chunks 2-3,0.5092592592592592
+fold0,0,2,groups 2-3,trained twin head (ref),0.48148148148148157
+fold0,0,3,groups 2-3,whole prompt,0.3796296296296296
+fold0,0,3,groups 2-3,chunks 2-3,0.4629629629629629
+fold0,0,3,groups 2-3,trained twin head (ref),0.5833333333333333
+fold0,0,4,groups 2-3,whole prompt,0.39814814814814814
+fold0,0,4,groups 2-3,chunks 2-3,0.4444444444444444
+fold0,0,4,groups 2-3,trained twin head (ref),0.5833333333333333
+fold0,0,0,whole prompt (oracle),whole prompt,0.5277777777777778
+fold0,0,0,whole prompt (oracle),chunks 2-3,0.5555555555555557
+fold0,1,0,groups 2-3,whole prompt,0.45370370370370366
+fold0,1,0,groups 2-3,chunks 2-3,0.4351851851851852
+fold0,1,0,groups 2-3,trained twin head (ref),0.6574074074074074
+fold0,1,1,groups 2-3,whole prompt,0.38888888888888884
+fold0,1,1,groups 2-3,chunks 2-3,0.4629629629629629
+fold0,1,1,groups 2-3,trained twin head (ref),0.6481481481481481
+fold0,1,2,groups 2-3,whole prompt,0.4444444444444444
+fold0,1,2,groups 2-3,chunks 2-3,0.5
+fold0,1,2,groups 2-3,trained twin head (ref),0.6388888888888888
+fold0,1,3,groups 2-3,whole prompt,0.4537037037037038
+fold0,1,3,groups 2-3,chunks 2-3,0.48148148148148145
+fold0,1,3,groups 2-3,trained twin head (ref),0.6111111111111112
+fold0,1,4,groups 2-3,whole prompt,0.4722222222222222
+fold0,1,4,groups 2-3,chunks 2-3,0.4999999999999999
+fold0,1,4,groups 2-3,trained twin head (ref),0.5925925925925926
+fold0,1,0,whole prompt (oracle),whole prompt,0.5185185185185185
+fold0,1,0,whole prompt (oracle),chunks 2-3,0.5555555555555555
+fold0,2,0,groups 2-3,whole prompt,0.39814814814814814
+fold0,2,0,groups 2-3,chunks 2-3,0.4259259259259259
+fold0,2,0,groups 2-3,trained twin head (ref),0.5
+fold0,2,1,groups 2-3,whole prompt,0.4444444444444444
+fold0,2,1,groups 2-3,chunks 2-3,0.5277777777777779
+fold0,2,1,groups 2-3,trained twin head (ref),0.4629629629629629
+fold0,2,2,groups 2-3,whole prompt,0.45370370370370366
+fold0,2,2,groups 2-3,chunks 2-3,0.425925925925926
+fold0,2,2,groups 2-3,trained twin head (ref),0.5092592592592592
+fold0,2,3,groups 2-3,whole prompt,0.49074074074074076
+fold0,2,3,groups 2-3,chunks 2-3,0.4907407407407407
+fold0,2,3,groups 2-3,trained twin head (ref),0.5648148148148149
+fold0,2,4,groups 2-3,whole prompt,0.4074074074074074
+fold0,2,4,groups 2-3,chunks 2-3,0.4444444444444444
+fold0,2,4,groups 2-3,trained twin head (ref),0.4722222222222222
+fold0,2,0,whole prompt (oracle),whole prompt,0.5740740740740741
+fold0,2,0,whole prompt (oracle),chunks 2-3,0.5462962962962963
+fold0,3,0,groups 2-3,whole prompt,0.4444444444444444
+fold0,3,0,groups 2-3,chunks 2-3,0.4907407407407407
+fold0,3,0,groups 2-3,trained twin head (ref),0.5277777777777778
+fold0,3,1,groups 2-3,whole prompt,0.48148148148148145
+fold0,3,1,groups 2-3,chunks 2-3,0.5092592592592592
+fold0,3,1,groups 2-3,trained twin head (ref),0.6388888888888888
+fold0,3,2,groups 2-3,whole prompt,0.4722222222222222
+fold0,3,2,groups 2-3,chunks 2-3,0.5
+fold0,3,2,groups 2-3,trained twin head (ref),0.537037037037037
+fold0,3,3,groups 2-3,whole prompt,0.5
+fold0,3,3,groups 2-3,chunks 2-3,0.5925925925925927
+fold0,3,3,groups 2-3,trained twin head (ref),0.5740740740740741
+fold0,3,4,groups 2-3,whole prompt,0.5
+fold0,3,4,groups 2-3,chunks 2-3,0.5
+fold0,3,4,groups 2-3,trained twin head (ref),0.5925925925925927
+fold0,3,0,whole prompt (oracle),whole prompt,0.6203703703703705
+fold0,3,0,whole prompt (oracle),chunks 2-3,0.6111111111111112
+fold0,4,0,groups 2-3,whole prompt,0.48148148148148145
+fold0,4,0,groups 2-3,chunks 2-3,0.4907407407407407
+fold0,4,0,groups 2-3,trained twin head (ref),0.5462962962962963
+fold0,4,1,groups 2-3,whole prompt,0.4351851851851851
+fold0,4,1,groups 2-3,chunks 2-3,0.48148148148148157
+fold0,4,1,groups 2-3,trained twin head (ref),0.537037037037037
+fold0,4,2,groups 2-3,whole prompt,0.4351851851851852
+fold0,4,2,groups 2-3,chunks 2-3,0.49074074074074076
+fold0,4,2,groups 2-3,trained twin head (ref),0.5555555555555556
+fold0,4,3,groups 2-3,whole prompt,0.4259259259259259
+fold0,4,3,groups 2-3,chunks 2-3,0.42592592592592593
+fold0,4,3,groups 2-3,trained twin head (ref),0.537037037037037
+fold0,4,4,groups 2-3,whole prompt,0.5092592592592593
+fold0,4,4,groups 2-3,chunks 2-3,0.4722222222222222
+fold0,4,4,groups 2-3,trained twin head (ref),0.6111111111111112
+fold0,4,0,whole prompt (oracle),whole prompt,0.5185185185185186
+fold0,4,0,whole prompt (oracle),chunks 2-3,0.5648148148148148
+fold1,0,0,groups 2-3,whole prompt,0.4444444444444444
+fold1,0,0,groups 2-3,chunks 2-3,0.4444444444444444
+fold1,0,0,groups 2-3,trained twin head (ref),0.611111111111111
+fold1,0,1,groups 2-3,whole prompt,0.3888888888888889
+fold1,0,1,groups 2-3,chunks 2-3,0.41666666666666663
+fold1,0,1,groups 2-3,trained twin head (ref),0.5370370370370371
+fold1,0,2,groups 2-3,whole prompt,0.45370370370370366
+fold1,0,2,groups 2-3,chunks 2-3,0.5092592592592593
+fold1,0,2,groups 2-3,trained twin head (ref),0.5648148148148149
+fold1,0,3,groups 2-3,whole prompt,0.4351851851851852
+fold1,0,3,groups 2-3,chunks 2-3,0.4444444444444444
+fold1,0,3,groups 2-3,trained twin head (ref),0.5277777777777777
+fold1,0,4,groups 2-3,whole prompt,0.42592592592592593
+fold1,0,4,groups 2-3,chunks 2-3,0.4444444444444444
+fold1,0,4,groups 2-3,trained twin head (ref),0.537037037037037
+fold1,0,0,whole prompt (oracle),whole prompt,0.5648148148148149
+fold1,0,0,whole prompt (oracle),chunks 2-3,0.5277777777777778
+fold1,1,0,groups 2-3,whole prompt,0.4629629629629629
+fold1,1,0,groups 2-3,chunks 2-3,0.5
+fold1,1,0,groups 2-3,trained twin head (ref),0.574074074074074
+fold1,1,1,groups 2-3,whole prompt,0.48148148148148157
+fold1,1,1,groups 2-3,chunks 2-3,0.48148148148148145
+fold1,1,1,groups 2-3,trained twin head (ref),0.5833333333333335
+fold1,1,2,groups 2-3,whole prompt,0.5092592592592592
+fold1,1,2,groups 2-3,chunks 2-3,0.5092592592592592
+fold1,1,2,groups 2-3,trained twin head (ref),0.6203703703703703
+fold1,1,3,groups 2-3,whole prompt,0.5
+fold1,1,3,groups 2-3,chunks 2-3,0.537037037037037
+fold1,1,3,groups 2-3,trained twin head (ref),0.638888888888889
+fold1,1,4,groups 2-3,whole prompt,0.5
+fold1,1,4,groups 2-3,chunks 2-3,0.5185185185185186
+fold1,1,4,groups 2-3,trained twin head (ref),0.574074074074074
+fold1,1,0,whole prompt (oracle),whole prompt,0.5925925925925927
+fold1,1,0,whole prompt (oracle),chunks 2-3,0.5740740740740741
+fold1,2,0,groups 2-3,whole prompt,0.40740740740740744
+fold1,2,0,groups 2-3,chunks 2-3,0.462962962962963
+fold1,2,0,groups 2-3,trained twin head (ref),0.5277777777777778
+fold1,2,1,groups 2-3,whole prompt,0.41666666666666663
+fold1,2,1,groups 2-3,chunks 2-3,0.4629629629629629
+fold1,2,1,groups 2-3,trained twin head (ref),0.5462962962962963
+fold1,2,2,groups 2-3,whole prompt,0.4444444444444444
+fold1,2,2,groups 2-3,chunks 2-3,0.45370370370370366
+fold1,2,2,groups 2-3,trained twin head (ref),0.4999999999999999
+fold1,2,3,groups 2-3,whole prompt,0.4259259259259259
+fold1,2,3,groups 2-3,chunks 2-3,0.5277777777777779
+fold1,2,3,groups 2-3,trained twin head (ref),0.5648148148148148
+fold1,2,4,groups 2-3,whole prompt,0.3888888888888889
+fold1,2,4,groups 2-3,chunks 2-3,0.4351851851851852
+fold1,2,4,groups 2-3,trained twin head (ref),0.5185185185185185
+fold1,2,0,whole prompt (oracle),whole prompt,0.5092592592592593
+fold1,2,0,whole prompt (oracle),chunks 2-3,0.5277777777777778
+fold1,3,0,groups 2-3,whole prompt,0.48148148148148145
+fold1,3,0,groups 2-3,chunks 2-3,0.4722222222222222
+fold1,3,0,groups 2-3,trained twin head (ref),0.5925925925925926
+fold1,3,1,groups 2-3,whole prompt,0.4722222222222222
+fold1,3,1,groups 2-3,chunks 2-3,0.48148148148148145
+fold1,3,1,groups 2-3,trained twin head (ref),0.5648148148148149
+fold1,3,2,groups 2-3,whole prompt,0.41666666666666663
+fold1,3,2,groups 2-3,chunks 2-3,0.48148148148148145
+fold1,3,2,groups 2-3,trained twin head (ref),0.5555555555555555
+fold1,3,3,groups 2-3,whole prompt,0.5
+fold1,3,3,groups 2-3,chunks 2-3,0.5185185185185186
+fold1,3,3,groups 2-3,trained twin head (ref),0.5462962962962963
+fold1,3,4,groups 2-3,whole prompt,0.45370370370370366
+fold1,3,4,groups 2-3,chunks 2-3,0.45370370370370366
+fold1,3,4,groups 2-3,trained twin head (ref),0.5185185185185185
+fold1,3,0,whole prompt (oracle),whole prompt,0.5370370370370371
+fold1,3,0,whole prompt (oracle),chunks 2-3,0.5185185185185185
+fold1,4,0,groups 2-3,whole prompt,0.4629629629629629
+fold1,4,0,groups 2-3,chunks 2-3,0.4629629629629629
+fold1,4,0,groups 2-3,trained twin head (ref),0.5648148148148149
+fold1,4,1,groups 2-3,whole prompt,0.3796296296296296
+fold1,4,1,groups 2-3,chunks 2-3,0.41666666666666663
+fold1,4,1,groups 2-3,trained twin head (ref),0.49074074074074076
+fold1,4,2,groups 2-3,whole prompt,0.4351851851851852
+fold1,4,2,groups 2-3,chunks 2-3,0.4722222222222222
+fold1,4,2,groups 2-3,trained twin head (ref),0.5
+fold1,4,3,groups 2-3,whole prompt,0.40740740740740733
+fold1,4,3,groups 2-3,chunks 2-3,0.45370370370370366
+fold1,4,3,groups 2-3,trained twin head (ref),0.5277777777777778
+fold1,4,4,groups 2-3,whole prompt,0.49074074074074076
+fold1,4,4,groups 2-3,chunks 2-3,0.48148148148148157
+fold1,4,4,groups 2-3,trained twin head (ref),0.5185185185185186
+fold1,4,0,whole prompt (oracle),whole prompt,0.48148148148148157
+fold1,4,0,whole prompt (oracle),chunks 2-3,0.5277777777777779
+fold2,0,0,groups 2-3,whole prompt,0.49074074074074076
+fold2,0,0,groups 2-3,chunks 2-3,0.4722222222222222
+fold2,0,0,groups 2-3,trained twin head (ref),0.5740740740740741
+fold2,0,1,groups 2-3,whole prompt,0.49074074074074076
+fold2,0,1,groups 2-3,chunks 2-3,0.4629629629629631
+fold2,0,1,groups 2-3,trained twin head (ref),0.6296296296296297
+fold2,0,2,groups 2-3,whole prompt,0.5370370370370369
+fold2,0,2,groups 2-3,chunks 2-3,0.48148148148148145
+fold2,0,2,groups 2-3,trained twin head (ref),0.6296296296296295
+fold2,0,3,groups 2-3,whole prompt,0.4444444444444444
+fold2,0,3,groups 2-3,chunks 2-3,0.48148148148148145
+fold2,0,3,groups 2-3,trained twin head (ref),0.5925925925925926
+fold2,0,4,groups 2-3,whole prompt,0.48148148148148145
+fold2,0,4,groups 2-3,chunks 2-3,0.5462962962962963
+fold2,0,4,groups 2-3,trained twin head (ref),0.6296296296296295
+fold2,0,0,whole prompt (oracle),whole prompt,0.5277777777777778
+fold2,0,0,whole prompt (oracle),chunks 2-3,0.574074074074074
+fold2,1,0,groups 2-3,whole prompt,0.42592592592592593
+fold2,1,0,groups 2-3,chunks 2-3,0.5092592592592592
+fold2,1,0,groups 2-3,trained twin head (ref),0.6296296296296297
+fold2,1,1,groups 2-3,whole prompt,0.4074074074074074
+fold2,1,1,groups 2-3,chunks 2-3,0.4999999999999999
+fold2,1,1,groups 2-3,trained twin head (ref),0.6296296296296298
+fold2,1,2,groups 2-3,whole prompt,0.4629629629629629
+fold2,1,2,groups 2-3,chunks 2-3,0.5277777777777779
+fold2,1,2,groups 2-3,trained twin head (ref),0.5925925925925926
+fold2,1,3,groups 2-3,whole prompt,0.4722222222222222
+fold2,1,3,groups 2-3,chunks 2-3,0.5277777777777777
+fold2,1,3,groups 2-3,trained twin head (ref),0.6388888888888888
+fold2,1,4,groups 2-3,whole prompt,0.45370370370370366
+fold2,1,4,groups 2-3,chunks 2-3,0.4907407407407407
+fold2,1,4,groups 2-3,trained twin head (ref),0.6666666666666666
+fold2,1,0,whole prompt (oracle),whole prompt,0.5648148148148149
+fold2,1,0,whole prompt (oracle),chunks 2-3,0.5833333333333334
+fold2,2,0,groups 2-3,whole prompt,0.5185185185185185
+fold2,2,0,groups 2-3,chunks 2-3,0.4722222222222222
+fold2,2,0,groups 2-3,trained twin head (ref),0.5648148148148148
+fold2,2,1,groups 2-3,whole prompt,0.5000000000000001
+fold2,2,1,groups 2-3,chunks 2-3,0.4444444444444444
+fold2,2,1,groups 2-3,trained twin head (ref),0.5277777777777778
+fold2,2,2,groups 2-3,whole prompt,0.5185185185185185
+fold2,2,2,groups 2-3,chunks 2-3,0.5462962962962963
+fold2,2,2,groups 2-3,trained twin head (ref),0.6018518518518517
+fold2,2,3,groups 2-3,whole prompt,0.4629629629629629
+fold2,2,3,groups 2-3,chunks 2-3,0.4722222222222222
+fold2,2,3,groups 2-3,trained twin head (ref),0.5
+fold2,2,4,groups 2-3,whole prompt,0.4722222222222222
+fold2,2,4,groups 2-3,chunks 2-3,0.4722222222222222
+fold2,2,4,groups 2-3,trained twin head (ref),0.574074074074074
+fold2,2,0,whole prompt (oracle),whole prompt,0.5370370370370371
+fold2,2,0,whole prompt (oracle),chunks 2-3,0.5277777777777777
+fold2,3,0,groups 2-3,whole prompt,0.4907407407407407
+fold2,3,0,groups 2-3,chunks 2-3,0.48148148148148145
+fold2,3,0,groups 2-3,trained twin head (ref),0.5555555555555556
+fold2,3,1,groups 2-3,whole prompt,0.4722222222222221
+fold2,3,1,groups 2-3,chunks 2-3,0.5185185185185186
+fold2,3,1,groups 2-3,trained twin head (ref),0.6018518518518519
+fold2,3,2,groups 2-3,whole prompt,0.5185185185185185
+fold2,3,2,groups 2-3,chunks 2-3,0.5833333333333333
+fold2,3,2,groups 2-3,trained twin head (ref),0.6296296296296297
+fold2,3,3,groups 2-3,whole prompt,0.5
+fold2,3,3,groups 2-3,chunks 2-3,0.4444444444444444
+fold2,3,3,groups 2-3,trained twin head (ref),0.5092592592592593
+fold2,3,4,groups 2-3,whole prompt,0.5092592592592592
+fold2,3,4,groups 2-3,chunks 2-3,0.5
+fold2,3,4,groups 2-3,trained twin head (ref),0.5740740740740741
+fold2,3,0,whole prompt (oracle),whole prompt,0.6111111111111112
+fold2,3,0,whole prompt (oracle),chunks 2-3,0.5925925925925927
+fold2,4,0,groups 2-3,whole prompt,0.5648148148148148
+fold2,4,0,groups 2-3,chunks 2-3,0.5925925925925926
+fold2,4,0,groups 2-3,trained twin head (ref),0.611111111111111
+fold2,4,1,groups 2-3,whole prompt,0.4444444444444444
+fold2,4,1,groups 2-3,chunks 2-3,0.5185185185185186
+fold2,4,1,groups 2-3,trained twin head (ref),0.638888888888889
+fold2,4,2,groups 2-3,whole prompt,0.49074074074074076
+fold2,4,2,groups 2-3,chunks 2-3,0.5277777777777778
+fold2,4,2,groups 2-3,trained twin head (ref),0.5648148148148148
+fold2,4,3,groups 2-3,whole prompt,0.5277777777777778
+fold2,4,3,groups 2-3,chunks 2-3,0.537037037037037
+fold2,4,3,groups 2-3,trained twin head (ref),0.6574074074074074
+fold2,4,4,groups 2-3,whole prompt,0.48148148148148157
+fold2,4,4,groups 2-3,chunks 2-3,0.5277777777777778
+fold2,4,4,groups 2-3,trained twin head (ref),0.5833333333333335
+fold2,4,0,whole prompt (oracle),whole prompt,0.6481481481481481
+fold2,4,0,whole prompt (oracle),chunks 2-3,0.6481481481481481
