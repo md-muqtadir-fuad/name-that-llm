@@ -1,0 +1,26 @@
+control member standalone 0.3393
+  q 0.3 fold 0: pseudo rows 162, pseudo-label accuracy 0.951
+  q 0.3 fold 1: pseudo rows 162, pseudo-label accuracy 0.957
+  q 0.3 fold 2: pseudo rows 162, pseudo-label accuracy 0.975
+  q 0.3 fold 3: pseudo rows 162, pseudo-label accuracy 0.957
+  q 0.3 fold 4: pseudo rows 162, pseudo-label accuracy 0.963
+  q 0.6 fold 0: pseudo rows 324, pseudo-label accuracy 0.836
+  q 0.6 fold 1: pseudo rows 323, pseudo-label accuracy 0.851
+  q 0.6 fold 2: pseudo rows 324, pseudo-label accuracy 0.833
+  q 0.6 fold 3: pseudo rows 324, pseudo-label accuracy 0.830
+  q 0.6 fold 4: pseudo rows 324, pseudo-label accuracy 0.827
+draw 0 control        standalone 0.3393 blend 0.6698 weights [1.0, 0.0, 1.0, 0.5, 0.5]
+draw 0 pseudo q=0.3   standalone 0.3922 blend 0.6690 weights [0.5, 0.0, 0.25, 0.5, 0.25]
+draw 0 pseudo q=0.6   standalone 0.5371 blend 0.6694 weights [0.0, 0.0, 0.0, 0.5, 0.0]
+draw 1 control        standalone 0.3393 blend 0.6668 weights [0.0, 0.0, 0.0, 0.5, 0.0]
+draw 1 pseudo q=0.3   standalone 0.3922 blend 0.6683 weights [0.0, 0.0, 0.0, 0.0, 0.0]
+draw 1 pseudo q=0.6   standalone 0.5371 blend 0.6683 weights [0.0, 0.0, 0.0, 0.0, 0.0]
+draw 2 control        standalone 0.3393 blend 0.6687 weights [1.0, 0.5, 1.0, 0.5, 0.5]
+draw 2 pseudo q=0.3   standalone 0.3922 blend 0.6683 weights [0.5, 0.5, 0.5, 0.5, 0.5]
+draw 2 pseudo q=0.6   standalone 0.5371 blend 0.6668 weights [0.25, 0.0, 0.0, 0.25, 0.25]
+              standalone   blend
+member                          
+control           0.3393  0.6684
+pseudo q=0.3      0.3922  0.6686
+pseudo q=0.6      0.5371  0.6682
+pseudo vs control in blend: q=0.3: +0.0001 (se 0.0007, 1/3); q=0.6: -0.0002 (se 0.0010, 1/3)

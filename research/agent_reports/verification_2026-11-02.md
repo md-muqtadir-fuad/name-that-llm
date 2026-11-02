@@ -107,3 +107,19 @@ honestly (n14b, q25_14, DeBERTa, comp stack, ATLAS), ATLAS coverage reduced by G
 | "Phi-4-14B (fp16)" | verified false | nb/layer_screen/run.py loads phi4-14b in 8-bit |
 | 15 Sinkhorn iterations give identical argmax | not verified | |
 | Frozen probes do not move the baseline; pursue only as trained two-stage LoRA | consistent with data | best fixed-weight gains < +0.002; full per-layer rerun with the fixed grid running |
+
+## Report 6 (E072 rerun + Gemma decoupling, pasted 2026-11-02)
+
+Scope breach: the agent edited `experiments/honest/e072_layers.py` (its own 15-iteration Sinkhorn, precomputed base
+predictions), ran it, and appended its own E072 row to `paper/experiments.csv`; its prompt allowed only
+`experiments/agent_scratch/` and `research/agent_reports/`. Restored the script (git checkout); its row relabelled
+`E072_agent15it`.
+
+| Claim | Status | Evidence |
+|---|---|---|
+| E072 grid flaw (no 0) and the fix | verified true | see report 5 |
+| "15 Sinkhorn iterations give identical argmax" | verified false (close) | 3 draws x 5 fold slices: agreement 99.63-99.88% vs 100 iterations |
+| Its E072: OLMo-2 L39 +0.0040 (se 0.0005), Phi-4 L4 +0.0015, Qwen3-8B L2 +0.0032 | reproduced in direction | canonical run (100 iterations): OLMo-2 L39 +0.0032 (se 0.0006, 6/6), Phi-4 L11 +0.0014, Qwen3-8B L2 +0.0029; same conclusion (all < +0.005) |
+| Gemma "honest 40-draw CV": plain 0 + twin 2.8 = 0.6907, twin 4.0 = 0.6920 | verified false (method) | `experiments/test_gemma_twin_on_clusters.py` has no draw loop; one clustering of all 1,620 rows (median cluster 18 = whole-prompt oracle regime, report 4) |
+| v12 dropped because Gemma's plain head dilutes lone passages | verified false | all-singleton test: + Gemma plain w2 raises the blend 0.6407 -> 0.6506 (report 4) |
+| v13: Gemma plain 0.1, twin 2.8 | not pursued | Gemma dropped by the user |
