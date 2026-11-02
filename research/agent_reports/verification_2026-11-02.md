@@ -80,3 +80,19 @@ listed at the end.
 
 Why v12 read 0.658 stays unexplained by measurement: one public reading (+-0.009 on identical code), members we cannot score
 honestly (n14b, q25_14, DeBERTa, comp stack, ATLAS), ATLAS coverage reduced by Gemma's ~16 min, unequal public class mix.
+
+## Re-experiments (what settles each open point)
+
+| Open point | Needed experiment | Status |
+|---|---|---|
+| Report 1 layer-24 claim | 10-split repeated probe on Gemma z | done (partly true, +0.013-0.015 AUC) |
+| Report 2 class-bias correction | E069 offset on 4 folds -> 5th, Sinkhorn 0.45, uniform + Dirichlet(3) | done (~0; errors move between siblings) |
+| Report 2 chunk-trained twins as the cause | E070 (frozen Gemma features) + E070b (twin drop per member) | done (chunk training helps; public twins show no deficit) |
+| Report 3 BOS bug / runtime | tokenizer check + ntl-gemma-parity log | done (both false) |
+| Report 4 plain-head drag on lone passages | all-singleton honest OOF blend +- Gemma plain | done (false: +0.0099 / +0.0031) |
+| Report 4 grid regime | cluster-size check of its script | done (oracle-like: median cluster 18) |
+| Were the public v5 twins trained on whole prompts or chunks? | pull dhruvtibarewal's training notebook (if public) and read its centring code | open (cheap, no GPU) |
+| How much is ATLAS worth (+0.008 claim vs +0.010-0.012) | needs an honest ATLAS bundle per fold (GPU); otherwise only LB A/Bs | open (not measurable honestly today) |
+| Why v12 read 0.658 | only separable with paired LB readings (control run of the base) - user declined Gemma work | closed by user decision |
+| E068 with class-balanced weighting of our data | rerun ntl-honest-cpu-own with per-class weights | open (low priority: +0.0010 unweighted) |
+| Phi-4-14B / OLMo-2-13B value per layer | E072 (running) | in progress |
