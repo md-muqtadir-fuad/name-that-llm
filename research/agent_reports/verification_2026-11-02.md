@@ -44,3 +44,25 @@ listed at the end.
 - I called the report-1 layer-24 gain "within ~0.04 SE" without running it. Re-run: direction confirmed, about +0.013-0.015 AUC.
 - I said report 2's Docker claim was false ("it had no such logs") without checking what it accessed: changed to not verified.
 - I called "unreleased internal checkpoints" unsupported: changed to not verified.
+
+## Report 3 ("Gemma status & strategic recommendation", pasted 2026-11-02)
+
+| Claim | Status | Evidence |
+|---|---|---|
+| Plain bacc q14v5 0.6290, q8v5 0.6068, ll8v5 0.5790, Gemma 0.5778 (same 1,620 rows) | verified true | honest OOF re-computed: identical |
+| Agreement with q14v5: q8v5 71.9%, ll8v5 68.9%, Gemma 64.3% | verified true | re-computed: 0.719 / 0.689 / 0.643 |
+| "Plain + Centred (Twin)" column (0.669 / 0.657 / 0.644 / 0.637) | not verified | combination method not stated |
+| E067b's +0.0114 is on an incomplete subset (no n14b, q25_14, deb, comp, ATLAS) | verified true | stated in E066/E067 descriptions |
+| v12 used one Gemma adapter (final), no fold averaging | verified true | v12 MODELS row `'adapters': [GEMMA_FINAL]`; folds 3-4 never trained |
+| "Gemma ~2.2 s/row on 2x T4, ~2.4 h of the budget, starved ATLAS" | verified false | ntl-gemma-parity log: 129 s for 540 rows including load -> <= ~16 min for 4,000 rows (same loader, same hardware) |
+| "infer.py `_tk` did not prepend BOS; the position-0 mask removed the first real word" | verified false | Gemma tokenizer saved with the checkpoint: `tok(text)` (infer.py style, add_special_tokens default) -> ids start with 2 = bos_token_id; parity: argmax agreement 1.0 and identical accuracy (0.5741) on 216 rows vs training-time OOF |
+| "ATLAS is worth +0.010 to +0.012 on the LB" | not verified | our community record has +0.008 (ATLAS-off 0.643 vs 0.651, *claim*) |
+| "Early layers (2, 4, 8) are pure noise (AUC 0.50)" | verified false | re-run (10 prompt splits): gemini-3.7/3.8 L2 0.535, L4 0.549, L8 0.527; sol/terra L2 0.657, L4 0.650 |
+| "552,960 head parameters on 1,080 samples" | verified false | head trained on 77,264 stage-1 rows + host folds |
+| Qwen3.5-27B NF4 "too slow, caused timeouts" | verified false (timeout part) | community record: it scored 0.638 (a completed run); no reason stated |
+| ModernBERT "overfitted on local prompts" | not verified | no reason in our record |
+| OLMo2-7B 0.597 -> 0.594, 0.377 standalone | verified true (two sources) | community: OLMo2 member at log-prob weight 0.03 -> 0.594; 0.377 = our E047 frozen top-3 probe |
+| "New families have a 100% failure rate" | partly true | every public new-member A/B lost except Llama (+0.005 to +0.008 when removed); Llama is in the stack |
+| "Calibrating the sibling prior repairs 3.7-flash recall at zero cost" | verified false (as a gain) | E069: offset raises 3.7 recall 0.467 -> 0.533 but 3.8 drops 0.647 -> 0.580; bacc ~0 |
+| "Data pool expansion for Qwen/Llama is the real lever" (Nishant 35k -> 84k: 0.569 -> 0.611 member OOF) | verified true (as a reported result) | community record (*claim*); our option 4 (open-pool stage-1 retrain) |
+| "Dropping Gemma restores 0.664" | not verified | 0.664 is the base author's reading, not ours |
