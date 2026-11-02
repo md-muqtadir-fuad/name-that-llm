@@ -96,3 +96,14 @@ honestly (n14b, q25_14, DeBERTa, comp stack, ATLAS), ATLAS coverage reduced by G
 | Why v12 read 0.658 | only separable with paired LB readings (control run of the base) - user declined Gemma work | closed by user decision |
 | E068 with class-balanced weighting of our data | rerun ntl-honest-cpu-own with per-class weights | open (low priority: +0.0010 unweighted) |
 | Phi-4-14B / OLMo-2-13B value per layer | E072 (running) | in progress |
+
+## Report 5 (E072 failure analysis, pasted 2026-11-02)
+
+| Claim | Status | Evidence |
+|---|---|---|
+| `WGRID = (0.5, 1, 2, 3)` has no 0, so every layer is forced to a harmful weight | verified true | code line 23; fixed-weight check: weight 0.5 hurts every model's layer 4 (-0.0024 to -0.0033), 1.0 -0.011 to -0.015, 2.0 -0.033 |
+| Small weights help a little (OLMo +0.0015, Phi-4 +0.0030, Qwen3-8B +0.0037 at w 0.2; base 0.6494) | direction true; values not reproduced | our check (base 0.6687, Sinkhorn 0.45 per fold slice, 6 draws): OLMo-2 +0.0012 (w 0.1, se 0.0008), Phi-4 +0.0019 (w 0.2, se 0.0008, 5/6), Qwen3-8B +0.0005 (w 0.05); its base differs, setup not stated |
+| ~17,850 Sinkhorn calls at ~72 ms -> > 17 min | plausible | measured 23 ms per call on a 540-row fold slice |
+| "Phi-4-14B (fp16)" | verified false | nb/layer_screen/run.py loads phi4-14b in 8-bit |
+| 15 Sinkhorn iterations give identical argmax | not verified | |
+| Frozen probes do not move the baseline; pursue only as trained two-stage LoRA | consistent with data | best fixed-weight gains < +0.002; full per-layer rerun with the fixed grid running |
