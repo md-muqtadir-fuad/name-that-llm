@@ -66,3 +66,17 @@ listed at the end.
 | "Calibrating the sibling prior repairs 3.7-flash recall at zero cost" | verified false (as a gain) | E069: offset raises 3.7 recall 0.467 -> 0.533 but 3.8 drops 0.647 -> 0.580; bacc ~0 |
 | "Data pool expansion for Qwen/Llama is the real lever" (Nishant 35k -> 84k: 0.569 -> 0.611 member OOF) | verified true (as a reported result) | community record (*claim*); our option 4 (open-pool stage-1 retrain) |
 | "Dropping Gemma restores 0.664" | not verified | 0.664 is the base author's reading, not ours |
+
+## Report 4 ("why v12 scored 0.658", pasted 2026-11-02)
+
+| Claim | Status | Evidence |
+|---|---|---|
+| Accepts BOS and runtime corrections (report 3) | consistent | see report 3 rows |
+| Grid on 1,620 rows: base 0.6698; Gemma plain 0 + twin 2.8 = 0.6907 (+0.0210); plain 2 + twin 2.8 = 0.6833 (+0.0136) | numbers verified true; setting is oracle-like | re-ran `experiments/test_gemma_twin_on_clusters.py`: identical numbers. It clusters all 1,620 rows (90 prompts x 18 answers) at once: 193 clusters, median cluster size of a row 18, 81% of rows in clusters >= 10, 3% singletons -> near whole-prompt centring, not the test's 2-3 answers per prompt. Test-like version (E067b, one 2-3 group per prompt, same clustering, 40 draws): plain 0 + centred 2.8 +0.0098, plain 2 + centred 2.8 +0.0114 |
+| "Gemma's plain head (w 2) drags lone passages toward a 0.578 model -> LB drop" | verified false (on honest OOF) | all 1,620 rows as singletons (no twin, no Gaussian, as infer.py does for size-1 clusters): base 0.6407 -> + Gemma plain w2 0.6506 without Sinkhorn; 0.6426 -> 0.6457 with Sinkhorn 0.45 (w 0.5: 0.6457/0.6469, w 1: 0.6469/0.6457) |
+| Single final adapter vs 6-adapter averages | verified true (fact) / effect not verified | v12 row `adapters: [GEMMA_FINAL]` |
+| Recommendations (Gemma plain 0, folds 3-4, layer-24 head) | not pursued | Gemma dropped by the user (2026-11-02) |
+| "Do not switch to outside architectures" | partly true | public A/Bs cited are real (*claim*); Llama is the exception; E072 tests Phi-4 / OLMo-2 at layer level on honest OOF (user request) |
+
+Why v12 read 0.658 stays unexplained by measurement: one public reading (+-0.009 on identical code), members we cannot score
+honestly (n14b, q25_14, DeBERTa, comp stack, ATLAS), ATLAS coverage reduced by Gemma's ~16 min, unequal public class mix.
