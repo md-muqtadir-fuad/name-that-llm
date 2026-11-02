@@ -16,10 +16,8 @@
    the honest blend. Risk to watch: data for only 12 labels can pull predictions away from the 6 unserved labels.
    If it gains, v13 = v12 + our data in the SVC pool (data must be public by the deadline).
 2. **Daily Benchmarks** own-prompt batch: `python tools/kbench/daily.py --own --n 40` (credit is separate).
-3. **v12 result** (user reports it): if >= 0.665 keep Gemma and test centred weight 2.8 vs 4 on honest OOF;
-   if < 0.655 drop Gemma (stop rule).
-4. **Open-pool stage-1 retrain** of one LoRA member (15-18 GPU-h; user decision on quota). Candidate: Llama-3.1-8B
-   two-stage (Llama-family diversity is worth +0.005-0.008 on the LB, public A/Bs), stage 1 on the 198k open pool.
+3. v12 = 0.658 public (our best). Gemma dropped completely (user, 2026-11-02).
+4. Done and not adopted: E068 own data in CPU members (+0.0010), E069 class-bias offset (~0), E070 chunk-trained twins (no lever).
 5. Head/tail pooling: the other agent tests it (user, 2026-11-02); read its result when reported.
 6. **E069 - per-class bias correction of the blend** (CPU, minutes): members over-predict gemini-3.8 vs 3.7 and fable vs glm-5.3 on honest OOF; learn an 18-dim offset on 4 folds, score the 5th, before Sinkhorn 0.45, uniform and skewed class mixes.
 
